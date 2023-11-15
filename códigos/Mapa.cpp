@@ -38,21 +38,20 @@ void Mapa::carregarMapa(const std::string& arquivoMapa) {
     const char* tilesetImage = doc.FirstChildElement("map")->FirstChildElement("tileset")->FirstChildElement("image")->Attribute("source");
     texturatileset.loadFromFile(tilesetImage);
 
+    const char* blocoMoeda = doc.FirstChildElement("map")->FirstChildElement("tileset")->NextSiblingElement("tileset")->FirstChildElement("image")->Attribute("source");
+    texturatileset2.loadFromFile(blocoMoeda);
+
     // Define o tamanho do tile (32x32 neste caso)
     const int tileSize = 32;
     const int largura_tileset= 280;
 
-    // Configuração da cor preta para os quadrados onde o valor é zero
-    sf::Color corPreta(0, 0, 0, 255);
-
     // Preenche o array de vértices com base nos dados do mapa
     for (size_t i = 0; i < tileData.size(); ++i) {
-        int tileNumber = tileData[i] - 1; // Ajusta o índice do tile (começa em 1 no TMX)
 
+        int tileNumber = tileData[i]; // Ajusta o índice do tile (começa em 1 no TMX)
         // Calcula as coordenadas do tile no tileset
-        int tu = tileNumber % (texturatileset.getSize().x / tileSize);
-        int tv = tileNumber / (texturatileset.getSize().x / tileSize);
 
+        if(tileNumber != 0){
         // Obtém o quad (quatro vértices) atual
         sf::Vertex* quad = &vertices[i * 4];
 
@@ -63,28 +62,12 @@ void Mapa::carregarMapa(const std::string& arquivoMapa) {
         quad[3].position = sf::Vector2f((i % largura_tileset) * tileSize, (i / largura_tileset + 1) * tileSize);
 
         // Define as coordenadas de textura dos vértices
-        quad[0].texCoords = sf::Vector2f(tu * tileSize, tv * tileSize);
-        quad[1].texCoords = sf::Vector2f((tu+1) * tileSize, tv * tileSize);
-        quad[2].texCoords = sf::Vector2f((tu+1) * tileSize, (tv + 1) * tileSize);
-        quad[3].texCoords = sf::Vector2f(tu * tileSize, (tv + 1) * tileSize);
-
-        tileNumber++;
-        // Configura a cor dos vértices - preto se o valor for zero, caso contrário, cor padrão (branco)
-        if(tileNumber==0){
-        sf::Color corAtual = corPreta;
-
-        quad[0].color = corAtual;
-        quad[1].color = corAtual;
-        quad[2].color = corAtual;
-        quad[3].color = corAtual;
+        quad[0].texCoords = sf::Vector2f(0, 0);
+        quad[1].texCoords = sf::Vector2f(tileSize,0);
+        quad[2].texCoords = sf::Vector2f(tileSize, tileSize);
+        quad[3].texCoords = sf::Vector2f(0, tileSize);
         }
-        else if(tileNumber==2){
-        sf::Color corAtual = sf::Color::Blue;  
-        quad[0].color = corAtual;
-        quad[1].color = corAtual;
-        quad[2].color = corAtual;
-        quad[3].color = corAtual;
-        }
+
     }
 }
 
