@@ -25,6 +25,8 @@ public:
     void atualizar();
     void atualizarEventos();
     void renderizar();
+    float getAlturaTela() const;
+    float getLarguraTela() const;
 };
 
 #endif

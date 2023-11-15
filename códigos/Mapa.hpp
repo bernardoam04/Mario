@@ -9,7 +9,7 @@
 
 class Mapa {
 private:
-    sf::Texture texturaTileset;
+    sf::Texture texturatileset;
     sf::VertexArray vertices;
 
 public:
