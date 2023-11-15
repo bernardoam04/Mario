@@ -6,27 +6,22 @@
 #include <SFML/Window.hpp>
 #include <SFML/Audio.hpp>
 #include <SFML/Network.hpp>
+#include "Mapa.hpp"
 
-class GerenciadorGeral {
+class GerenciadorGeral{
 private:
-    //Variaveis
     sf::RenderWindow* janela;
     sf::VideoMode tela;
     sf::Event ev;
+    Mapa mapa;  
 
-    //Inicialização
     void inicializarVariaveis();
     void iniciarJanela();
 
 public:
-    //Construtores e Destrutores
     GerenciadorGeral();
     virtual ~GerenciadorGeral();
-
-    //Acesso
     bool janelaAberta() const;
-
-    //Funções
     void atualizar();
     void atualizarEventos();
     void renderizar();
