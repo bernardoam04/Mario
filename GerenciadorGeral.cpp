@@ -7,15 +7,15 @@ void GerenciadorGeral::inicializarVariaveis()
 
 void GerenciadorGeral::iniciarJanela()
 {
-    this->tela.height=900;
-    this->tela.width=1200;
+    this->tela.height=640 ;
+    this->tela.width=640;
     this->janela = new sf::RenderWindow(this->tela, "Mario!");
 }
 
-GerenciadorGeral::GerenciadorGeral()
-{
+GerenciadorGeral::GerenciadorGeral() {
     this->inicializarVariaveis();
     this->iniciarJanela();
+    this->mapa.carregarMapa("cenario.tmx");
 }
 
 GerenciadorGeral::~GerenciadorGeral(){
@@ -48,6 +48,6 @@ void GerenciadorGeral::renderizar()
     this->janela->clear(sf::Color::Black);
 
     //Desenha o jogo
-
+    this->mapa.renderizar(*this->janela);
     this->janela->display();
 }
