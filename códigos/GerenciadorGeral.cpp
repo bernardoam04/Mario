@@ -51,3 +51,13 @@ void GerenciadorGeral::renderizar()
     this->mapa.renderizar(*this->janela);
     this->janela->display();
 }
+
+float GerenciadorGeral::getAlturaTela() const
+{
+    return this->tela.height;
+}
+
+float GerenciadorGeral::getLarguraTela() const
+{
+    return this->tela.width;
+}
