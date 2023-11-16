@@ -1,11 +1,26 @@
 #include "Mapa.hpp"
 
 Mapa::Mapa() {
-    // Inicialize qualquer coisa necessária para o mapa
+}
+
+int Mapa::getTileSize()
+{
+    return tileSize;
+}
+
+int Mapa::getLarguraTileset()
+{
+    return larguraTileset;
+}
+
+int Mapa::getLarguraMapa()
+{
+    return larguraTileset * tileSize;
 }
 
 void Mapa::carregarMapa(const std::string& arquivoMapa) {
-    // Carregue o arquivo TMX usando a biblioteca tinyxml2
+
+    // Carregamento do arquivo TMX usando a biblioteca tinyxml2
     tinyxml2::XMLDocument doc;
     doc.LoadFile(arquivoMapa.c_str());
 
@@ -33,7 +48,7 @@ void Mapa::carregarMapa(const std::string& arquivoMapa) {
     vertices.setPrimitiveType(sf::Quads);
     vertices.resize(tileData.size() * 4);
 
-    // Obtém a textura do tileset
+    // Obtém as texturas do tileset
     tinyxml2::XMLNode * pRootElement = doc.FirstChildElement("map")->FirstChildElement("tileset");
     int count = 1;
     while(pRootElement){
@@ -41,25 +56,20 @@ void Mapa::carregarMapa(const std::string& arquivoMapa) {
         pRootElement = pRootElement->NextSiblingElement("tileset");
     }
 
-    // Define o tamanho do tile (32x32 neste caso)
-    const int tileSize = 32;
-    const int largura_tileset= 280;
-
     // Preenche o array de vértices com base nos dados do mapa
     for (size_t i = 0; i < tileData.size(); ++i) {
 
-        int tileNumber = tileData[i]; // Ajusta o índice do tile (começa em 1 no TMX)
-        // Calcula as coordenadas do tile no tileset
+        int tileNumber = tileData[i]; 
 
         if(tileNumber != 0){
         // Obtém o quad (quatro vértices) atual
         sf::Vertex* quad = &vertices[i * 4];
 
         // Define as posições dos vértices
-        quad[0].position = sf::Vector2f((i % largura_tileset) * tileSize, (i / largura_tileset) * tileSize);
-        quad[1].position = sf::Vector2f((i % largura_tileset + 1) * tileSize, (i / largura_tileset) * tileSize);
-        quad[2].position = sf::Vector2f((i % largura_tileset + 1) * tileSize, (i / largura_tileset + 1) * tileSize);
-        quad[3].position = sf::Vector2f((i % largura_tileset) * tileSize, (i / largura_tileset + 1) * tileSize);
+        quad[0].position = sf::Vector2f((i % larguraTileset) * tileSize, (i / larguraTileset) * tileSize);
+        quad[1].position = sf::Vector2f((i % larguraTileset + 1) * tileSize, (i / larguraTileset) * tileSize);
+        quad[2].position = sf::Vector2f((i % larguraTileset + 1) * tileSize, (i / larguraTileset + 1) * tileSize);
+        quad[3].position = sf::Vector2f((i % larguraTileset) * tileSize, (i / larguraTileset + 1) * tileSize);
 
         // Define as coordenadas de textura dos vértices
         quad[0].texCoords = sf::Vector2f(0, 0);
@@ -67,22 +77,31 @@ void Mapa::carregarMapa(const std::string& arquivoMapa) {
         quad[2].texCoords = sf::Vector2f(tileSize, tileSize);
         quad[3].texCoords = sf::Vector2f(0, tileSize);
 
+        // Se a cor do pixel na posição (0, 0) da textura for branca, torna transparente
+        if (texturas[tileNumber].copyToImage().getPixel(0, 0) == sf::Color::White) {
+            quad[0].color = sf::Color::Transparent;
+            quad[1].color = sf::Color::Transparent;
+            quad[2].color = sf::Color::Transparent;
+            quad[3].color = sf::Color::Transparent;
+        }
+
         }
 
     }
 }
 
 void Mapa::renderizar(sf::RenderWindow& janela) {
+
+
     // Renderiza os vértices na janela
        for (size_t i = 0; i < tileData.size(); ++i) {
         int tileNumber = tileData[i];
 
         // Somente renderiza se não for um bloco vazio (tipo 0)
         if (tileNumber != 0) {
-            // Obtém o quad (quatro vértices) atual
+
             sf::Vertex* quad = &vertices[i * 4];
             janela.draw(quad, 4, sf::Quads, &texturas[tileNumber]);
-            // Adicione mais condições conforme necessário para outros tipos de bloco
         }
     }
 }

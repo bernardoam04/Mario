@@ -15,8 +15,10 @@ int main() {
 
     while (jogo.janelaAberta()) {
         
+        //Atualiza o jogo
         jogo.atualizar();
 
+        //Desenha o jogo
         jogo.renderizar();
 
     }

@@ -42,29 +42,28 @@ void GerenciadorGeral::atualizarEventos()
             }
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
             // Move a câmera para a direita com uma velocidade fixa 
-                sf::Vector2f novaPosicao = this->camera.getView().getCenter();
-                novaPosicao.x += camera.getVelocidadeCamera();
-                this->camera.setCenter(novaPosicao);
+                camera.movimentarCameraDireita(mapa.getLarguraMapa(), largura_tela);
             }
 
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
             // Move a câmera para a esquerda com uma velocidade fixa 
-                sf::Vector2f novaPosicao = this->camera.getView().getCenter();
-                novaPosicao.x -= camera.getVelocidadeCamera();
-                this->camera.setCenter(novaPosicao);
+                camera.movimentarCameraEsquerda(largura_tela);
             }
         }
 }
 
 void GerenciadorGeral::renderizar()
 {
+    //Limpa a tela
     this->janela->clear(sf::Color::Blue);
 
+    //Ajusta a visão da câmera
     this->janela->setView(this->camera.getView());
     
-    //Desenha o jogo
+    //Desenha o mapa
     this->mapa.renderizar(*this->janela);
 
+    //Mostra a tela
     this->janela->display();
 }
 

@@ -14,6 +14,9 @@ public:
 
     float getVelocidadeCamera();
 
+    void movimentarCameraDireita(int larguraMapa, int larguraTela);
+    void movimentarCameraEsquerda(int larguraTela);
+
     // Obtenha a visão da câmera
     const sf::View& getView() const;
 };
