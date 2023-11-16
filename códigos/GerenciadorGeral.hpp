@@ -7,13 +7,17 @@
 #include <SFML/Audio.hpp>
 #include <SFML/Network.hpp>
 #include "Mapa.hpp"
+#include "Camera.hpp"
 
 class GerenciadorGeral{
 private:
     sf::RenderWindow* janela;
     sf::VideoMode tela;
+    float altura_tela =640;
+    float largura_tela =640;
     sf::Event ev;
     Mapa mapa;  
+    Camera camera;
 
     void inicializarVariaveis();
     void iniciarJanela();
