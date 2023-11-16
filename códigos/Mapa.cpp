@@ -34,11 +34,12 @@ void Mapa::carregarMapa(const std::string& arquivoMapa) {
     vertices.resize(tileData.size() * 4);
 
     // Obtém a textura do tileset
-    const char* tilesetImage = doc.FirstChildElement("map")->FirstChildElement("tileset")->FirstChildElement("image")->Attribute("source");
-    texturatileset.loadFromFile(tilesetImage);
-
-    const char* blocoMoeda = doc.FirstChildElement("map")->FirstChildElement("tileset")->NextSiblingElement("tileset")->FirstChildElement("image")->Attribute("source");
-    texturatileset2.loadFromFile(blocoMoeda);
+    tinyxml2::XMLNode * pRootElement = doc.FirstChildElement("map")->FirstChildElement("tileset");
+    int count = 1;
+    while(pRootElement){
+        this->texturas[count++].loadFromFile(pRootElement->FirstChildElement("image")->Attribute("source"));
+        pRootElement = pRootElement->NextSiblingElement("tileset");
+    }
 
     // Define o tamanho do tile (32x32 neste caso)
     const int tileSize = 32;
@@ -80,13 +81,7 @@ void Mapa::renderizar(sf::RenderWindow& janela) {
         if (tileNumber != 0) {
             // Obtém o quad (quatro vértices) atual
             sf::Vertex* quad = &vertices[i * 4];
-
-            // Seleciona a textura com base no tipo de bloco
-            if (tileNumber == 1) {
-                janela.draw(quad, 4, sf::Quads, &texturatileset);
-            } else if (tileNumber == 2) {
-                janela.draw(quad, 4, sf::Quads, &texturatileset2);
-            } 
+            janela.draw(quad, 4, sf::Quads, &texturas[tileNumber]);
             // Adicione mais condições conforme necessário para outros tipos de bloco
         }
     }

@@ -7,11 +7,11 @@
 #include <sstream>
 #include <iostream>
 #include <vector>
+#include <unordered_map>
 
 class Mapa {
 private:
-    sf::Texture texturatileset;
-    sf::Texture texturatileset2;
+    std::unordered_map<int, sf::Texture> texturas;  
     sf::VertexArray vertices;
     std::vector<int> tileData;
 public:
