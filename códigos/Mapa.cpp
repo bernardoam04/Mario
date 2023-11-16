@@ -21,7 +21,6 @@ void Mapa::carregarMapa(const std::string& arquivoMapa) {
     const char* data = layer->FirstChildElement("data")->GetText();
 
     // Processa os dados e preenche o array de vértices
-    std::vector<int> tileData;
     std::stringstream ss(data);
     int tileId;
     while (ss >> tileId) {
@@ -66,6 +65,7 @@ void Mapa::carregarMapa(const std::string& arquivoMapa) {
         quad[1].texCoords = sf::Vector2f(tileSize,0);
         quad[2].texCoords = sf::Vector2f(tileSize, tileSize);
         quad[3].texCoords = sf::Vector2f(0, tileSize);
+
         }
 
     }
@@ -73,5 +73,21 @@ void Mapa::carregarMapa(const std::string& arquivoMapa) {
 
 void Mapa::renderizar(sf::RenderWindow& janela) {
     // Renderiza os vértices na janela
-    janela.draw(vertices, &texturatileset);
+       for (size_t i = 0; i < tileData.size(); ++i) {
+        int tileNumber = tileData[i];
+
+        // Somente renderiza se não for um bloco vazio (tipo 0)
+        if (tileNumber != 0) {
+            // Obtém o quad (quatro vértices) atual
+            sf::Vertex* quad = &vertices[i * 4];
+
+            // Seleciona a textura com base no tipo de bloco
+            if (tileNumber == 1) {
+                janela.draw(quad, 4, sf::Quads, &texturatileset);
+            } else if (tileNumber == 2) {
+                janela.draw(quad, 4, sf::Quads, &texturatileset2);
+            } 
+            // Adicione mais condições conforme necessário para outros tipos de bloco
+        }
+    }
 }

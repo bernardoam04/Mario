@@ -6,13 +6,14 @@
 
 #include <sstream>
 #include <iostream>
+#include <vector>
 
 class Mapa {
 private:
     sf::Texture texturatileset;
     sf::Texture texturatileset2;
     sf::VertexArray vertices;
-
+    std::vector<int> tileData;
 public:
     Mapa();
     void carregarMapa(const std::string& arquivoMapa);
