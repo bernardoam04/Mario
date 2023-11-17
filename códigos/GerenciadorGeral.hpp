@@ -8,6 +8,7 @@
 #include <SFML/Network.hpp>
 #include "Mapa.hpp"
 #include "Camera.hpp"
+#include "Colisao.hpp"
 
 class GerenciadorGeral{
 private:
@@ -18,11 +19,13 @@ private:
     sf::Event ev;
     Mapa mapa;  
     Camera camera;
+    Colisao *colisao;
 
     void inicializarVariaveis();
     void iniciarJanela();
 
 public:
+    int verificarColisao(float x, float y) const;
     GerenciadorGeral();
     virtual ~GerenciadorGeral();
     bool janelaAberta() const;

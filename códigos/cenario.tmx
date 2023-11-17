@@ -18,7 +18,7 @@
  <tileset firstgid="6" name="canosuperiordireito" tilewidth="32" tileheight="32" tilecount="1" columns="1">
   <image source="../imagens/canosuperiordireito.png" width="32" height="32"/>
  </tileset>
- <tileset firstgid="7" name="canosuperioresqueerdo" tilewidth="32" tileheight="32" tilecount="1" columns="1">
+ <tileset firstgid="7" name="canosuperioresquerdo" tilewidth="32" tileheight="32" tilecount="1" columns="1">
   <image source="../imagens/canosuperioresquerdo.png" width="32" height="32"/>
  </tileset>
  <tileset firstgid="8" name="escada" tilewidth="32" tileheight="32" tilecount="1" columns="1">

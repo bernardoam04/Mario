@@ -21,6 +21,7 @@ public:
     int getTileSize();
     int getLarguraTileset();
     int getLarguraMapa();
+    std::vector<std::vector<int> > getDadosMapa();
     void carregarMapa(const std::string& arquivoMapa);
     void renderizar(sf::RenderWindow& janela);
 };

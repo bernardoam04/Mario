@@ -12,15 +12,25 @@ void GerenciadorGeral::iniciarJanela()
     this->janela = new sf::RenderWindow(this->tela, "Mario!");
 }
 
-GerenciadorGeral::GerenciadorGeral(): camera(largura_tela, altura_tela)  {
+int GerenciadorGeral::verificarColisao(float x, float y) const
+{
+    return colisao->verificarColisao(x,y);
+}
+
+GerenciadorGeral::GerenciadorGeral() : camera(largura_tela, altura_tela), colisao(nullptr)
+{
     this->inicializarVariaveis();
     this->iniciarJanela();
     this->mapa.carregarMapa("cenario.tmx");
+    this->colisao = new Colisao(this->mapa.getDadosMapa(), this->mapa.getTileSize());
 }
 
-GerenciadorGeral::~GerenciadorGeral(){
+GerenciadorGeral::~GerenciadorGeral()
+{
     delete this->janela;
+    delete this->colisao;
 }
+
 
 bool GerenciadorGeral::janelaAberta() const
 {

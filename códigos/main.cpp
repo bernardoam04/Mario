@@ -1,8 +1,7 @@
 #include "GerenciadorGeral.hpp"
 
-
 /*
-g++ -Wall -Wextra -Werror main.cpp GerenciadorGeral.cpp Mapa.cpp -o app.exe -lsfml-graphics -lsfml-window -lsfml-system tinyxml2.cpp
+g++ -Wall -Wextra -Werror main.cpp GerenciadorGeral.cpp Mapa.cpp Camera.cpp Colisao.cpp -o app.exe -lsfml-graphics -lsfml-window -lsfml-system tinyxml2.cpp
 .\app.exe
 */
 
