@@ -3,7 +3,7 @@
 Colisao::Colisao(const std::vector<std::vector<int>>& dadosMapa, int tileSize)
     : dadosMapa(dadosMapa), tileSize(tileSize) {}
 
-int Colisao::verificarColisao(float x, float y) const {
+int Colisao::verificarColisao(float x, float y) {
     // Converte as coordenadas para índices da matriz
     unsigned int coluna = static_cast<int>(x / tileSize);
     unsigned int linha = static_cast<int>(y / tileSize);

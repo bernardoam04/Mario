@@ -12,23 +12,17 @@ void GerenciadorGeral::iniciarJanela()
     this->janela = new sf::RenderWindow(this->tela, "Mario!");
 }
 
-int GerenciadorGeral::verificarColisao(float x, float y) const
-{
-    return colisao->verificarColisao(x,y);
-}
-
-GerenciadorGeral::GerenciadorGeral() : camera(largura_tela, altura_tela), colisao(nullptr)
+GerenciadorGeral::GerenciadorGeral() : camera(largura_tela, altura_tela), poderesEspeciais()
 {
     this->inicializarVariaveis();
     this->iniciarJanela();
     this->mapa.carregarMapa("cenario.tmx");
-    this->colisao = new Colisao(this->mapa.getDadosMapa(), this->mapa.getTileSize());
+    this->poderesEspeciais.inicializar(1, 100.0f, 200.0f); 
 }
 
 GerenciadorGeral::~GerenciadorGeral()
 {
     delete this->janela;
-    delete this->colisao;
 }
 
 
@@ -72,7 +66,8 @@ void GerenciadorGeral::renderizar()
     
     //Desenha o mapa
     this->mapa.renderizar(*this->janela);
-
+    this->poderesEspeciais.desenhar(*this->janela);
+    
     //Mostra a tela
     this->janela->display();
 }

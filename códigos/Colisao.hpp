@@ -7,13 +7,11 @@
 class Colisao {
 public:
     Colisao(const std::vector<std::vector<int>>& dadosMapa, int tileSize);
-
-    int verificarColisao(float x, float y) const;
-
+    int verificarColisao(float x, float y);
+    
 private:
     const std::vector<std::vector<int>>& dadosMapa;
     const int tileSize;
-
     static const int BLOCO_CHAO = 1; 
     static const int BLOCO_MOEDA = 2; 
     static const int BLOCO_NORMAL = 3; 
