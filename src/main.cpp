@@ -1,4 +1,4 @@
-#include "GerenciadorGeral.hpp"
+#include "../include/GerenciadorGeral.hpp"
 
 /*
 g++ -Wall -Wextra -Werror main.cpp GerenciadorGeral.cpp Mapa.cpp PoderesEspeciais.cpp Camera.cpp Colisao.cpp -o app.exe -lsfml-graphics -lsfml-window -lsfml-system tinyxml2.cpp
@@ -9,10 +9,10 @@ int main() {
     
     //Inicializa o gerenciador do jogo
     Mapa mapa;
-    mapa.carregarMapa("cenario.tmx");
+    mapa.carregarMapa("../imagens/cenario.tmx");
 
     Colisao colisao(mapa.getDadosMapa(), mapa.getTileSize());
-
+    
     PoderesEspeciais poderesEspeciais(colisao);
     poderesEspeciais.inicializar(1,512,100);
 
@@ -22,7 +22,6 @@ int main() {
 
     while (jogo.janelaAberta()) {
         sf::Time deltaTime = timer.restart(); 
-        std::cout<<deltaTime.asSeconds()<<std::endl;
         //Atualiza o jogo
         jogo.atualizar();
         poderesEspeciais.atualizar(deltaTime);

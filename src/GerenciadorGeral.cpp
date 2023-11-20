@@ -1,4 +1,4 @@
-#include "GerenciadorGeral.hpp"
+#include "../include/GerenciadorGeral.hpp"
 
 void GerenciadorGeral::inicializarVariaveis()
 {
@@ -16,12 +16,13 @@ GerenciadorGeral::GerenciadorGeral() : camera(largura_tela, altura_tela)
 {
     this->inicializarVariaveis();
     this->iniciarJanela();
-    this->mapa.carregarMapa("cenario.tmx");
+    this->mapa.carregarMapa("../imagens/cenario.tmx");
 }
 
 GerenciadorGeral::~GerenciadorGeral()
 {
     delete this->janela;
+
 }
 
 

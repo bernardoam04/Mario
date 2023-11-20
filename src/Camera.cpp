@@ -1,4 +1,4 @@
-#include "Camera.hpp"
+#include "../include/Camera.hpp"
 
 Camera::Camera(float largura, float altura) {
     // Configuração inicial da câmera (pode ser ajustada conforme necessário)

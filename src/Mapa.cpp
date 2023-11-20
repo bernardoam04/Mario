@@ -1,4 +1,4 @@
-    #include "Mapa.hpp"
+    #include "../include/Mapa.hpp"
 
     Mapa::Mapa() {
     }

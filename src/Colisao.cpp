@@ -1,4 +1,4 @@
-#include "Colisao.hpp"
+#include "../include/Colisao.hpp"
 
 Colisao::Colisao(const std::vector<std::vector<int>> dadosMapa, int tileSize)
     : dadosMapa(dadosMapa), tileSize(tileSize) {}
@@ -29,6 +29,5 @@ int Colisao::verificarColisao(float x, float y) {
         }
     }
 
-    // Retorna 0 se estiver fora dos limites
     return 0;
 }

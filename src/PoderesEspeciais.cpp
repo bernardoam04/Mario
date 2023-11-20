@@ -1,4 +1,4 @@
-#include "PoderesEspeciais.hpp"
+#include "../include/PoderesEspeciais.hpp"
 #include <iostream>
 
 PoderesEspeciais::PoderesEspeciais(Colisao &colisao) : colisao(colisao)

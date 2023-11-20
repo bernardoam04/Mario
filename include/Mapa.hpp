@@ -2,7 +2,7 @@
 #define MAPA_HPP
 
 #include <SFML/Graphics.hpp>
-#include "tinyxml2.hpp"
+#include "../lib/tinyxml2.hpp"
 
 #include <sstream>
 #include <iostream>
