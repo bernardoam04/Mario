@@ -24,15 +24,13 @@ private:
     void iniciarJanela();
 
 public:
-
-    PoderesEspeciais poderesEspeciais;
     int verificarColisao(float x, float y) const;
     GerenciadorGeral();
     virtual ~GerenciadorGeral();
     bool janelaAberta() const;
     void atualizar();
     void atualizarEventos();
-    void renderizar();
+    void renderizar(PoderesEspeciais poderesEspeciais);
     float getAlturaTela() const;
     float getLarguraTela() const;
 };

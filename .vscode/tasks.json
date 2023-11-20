@@ -1,28 +1,35 @@
 {
+    "version": "2.0.0",
     "tasks": [
         {
-            "type": "cppbuild",
-            "label": "C/C++: gcc.exe arquivo de build ativo",
-            "command": "C:\\winlibs-x86_64-posix-seh-gcc-13.1.0-mingw-w64msvcrt-11.0.0-r5 (1)\\mingw64\\bin\\gcc.exe",
+            "label": "build",
+            "type": "shell",
+            "command": "g++",
             "args": [
-                "-fdiagnostics-color=always",
-                "-g",
-                "${file}",
+                "-Wall",
+                "-Wextra",
+                "-Werror",
+                "${workspaceFolder}/códigos/main.cpp",
+                "${workspaceFolder}/códigos/GerenciadorGeral.cpp",
+                "${workspaceFolder}/códigos/Mapa.cpp",
+                "${workspaceFolder}/códigos/PoderesEspeciais.cpp",
+                "${workspaceFolder}/códigos/Camera.cpp",
+                "${workspaceFolder}/códigos/Colisao.cpp",
                 "-o",
-                "${fileDirname}\\${fileBasenameNoExtension}.exe"
-            ],
-            "options": {
-                "cwd": "${fileDirname}"
-            },
-            "problemMatcher": [
-                "$gcc"
+                "${workspaceFolder}/app.exe",
+                "-lsfml-graphics",
+                "-lsfml-window",
+                "-lsfml-system",
+                "${workspaceFolder}/códigos/tinyxml2.cpp"
             ],
             "group": {
                 "kind": "build",
                 "isDefault": true
             },
-            "detail": "Tarefa gerada pelo Depurador."
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
         }
-    ],
-    "version": "2.0.0"
+    ]
 }

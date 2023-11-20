@@ -4,27 +4,27 @@
 #include "Colisao.hpp"
 #include <SFML/Graphics.hpp>
 
-class PoderesEspeciais {
+class PoderesEspeciais  {
 private:
     sf::Texture cogumeloTexture; 
     sf::Texture estrelaTexture;
-    sf::Sprite poderSprite; 
+    mutable sf::Sprite poderSprite;  
     sf::Vector2f posicao; 
     static const int COGUMELO = 1; 
     static const int ESTRELA = 2; 
     float tileSize = 32.0f;
-    float velocidadeVertical = 0.0f;
-    float aceleracaoGravidade = 9.8f;  
+    float velocidadeVertical = 37.0f;
+    float aceleracaoGravidade = 1.8f;  
     bool estaNoAr = false; 
     int tipo;
-
+    Colisao& colisao; 
 public:
-    PoderesEspeciais();
+    PoderesEspeciais(Colisao& colisao);
 
     void inicializar(int tipo, float x, float y);
     void desenhar(sf::RenderWindow& janela);
-
-    void atualizar();
+    int verificarColisaoPoder(float x, float y);
+    void atualizar(sf::Time deltaTime);
 };
 
 #endif 

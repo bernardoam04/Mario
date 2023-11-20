@@ -13,23 +13,22 @@ int main() {
 
     Colisao colisao1(mapa1.getDadosMapa(), mapa1.getTileSize());
 
-    std::cout<< colisao1.verificarColisao(3,3)<<std::endl;
-    std::cout<< colisao1.verificarColisao(208,560)<<std::endl;
-    std::cout<< colisao1.verificarColisao(208,637)<<std::endl;
-    std::cout<< colisao1.verificarColisao(34,637)<<std::endl;
-    std::cout<< colisao1.verificarColisao(208,560)<<std::endl;
+    PoderesEspeciais poderesEspeciais(colisao1);
+    poderesEspeciais.inicializar(1,100,500);
 
     GerenciadorGeral jogo;
 
     sf::Clock timer;
 
     while (jogo.janelaAberta()) {
-        
+        sf::Time deltaTime = timer.restart(); 
+
         //Atualiza o jogo
         jogo.atualizar();
+        poderesEspeciais.atualizar(deltaTime);
 
         //Desenha o jogo
-        jogo.renderizar();
+        jogo.renderizar(poderesEspeciais);
 
     }
 

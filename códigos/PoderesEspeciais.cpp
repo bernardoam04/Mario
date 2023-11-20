@@ -1,6 +1,6 @@
 #include "PoderesEspeciais.hpp"
 
-PoderesEspeciais::PoderesEspeciais()
+PoderesEspeciais::PoderesEspeciais(Colisao& colisao) : colisao(colisao) 
 {
 
     cogumeloTexture.loadFromFile("../imagens/cogumelo.png"); 
@@ -28,5 +28,29 @@ void PoderesEspeciais::inicializar(int tipo, float x, float y)
 }
 
 void PoderesEspeciais::desenhar(sf::RenderWindow& janela) {
+    poderSprite.setPosition(posicao);
     janela.draw(poderSprite);
 }
+
+int PoderesEspeciais::verificarColisaoPoder(float x, float y)
+{
+    return colisao.verificarColisao(x,y);
+}
+
+void PoderesEspeciais::atualizar(sf::Time deltaTime)
+{
+    float x = posicao.x +tileSize/2;
+    float y = posicao.y+tileSize;
+    velocidadeVertical +=aceleracaoGravidade;
+
+    if(colisao.verificarColisao(x, y)  != 0 && colisao.verificarColisao(x, y) != 9  ) {
+        posicao.x += 50.0f * deltaTime.asSeconds();
+    }
+
+    else{
+        posicao.y += velocidadeVertical * deltaTime.asSeconds();
+    }
+    // Ajuste a velocidade horizontal conforme necessário
+}
+
+
