@@ -6,15 +6,15 @@ g++ -Wall -Wextra -Werror main.cpp GerenciadorGeral.cpp Mapa.cpp PoderesEspeciai
 */
 
 int main() {
-
+    
     //Inicializa o gerenciador do jogo
-    Mapa mapa1;
-    mapa1.carregarMapa("cenario.tmx");
+    Mapa mapa;
+    mapa.carregarMapa("cenario.tmx");
 
-    Colisao colisao1(mapa1.getDadosMapa(), mapa1.getTileSize());
+    Colisao colisao(mapa.getDadosMapa(), mapa.getTileSize());
 
-    PoderesEspeciais poderesEspeciais(colisao1);
-    poderesEspeciais.inicializar(1,100,500);
+    PoderesEspeciais poderesEspeciais(colisao);
+    poderesEspeciais.inicializar(1,512,100);
 
     GerenciadorGeral jogo;
 
@@ -22,7 +22,7 @@ int main() {
 
     while (jogo.janelaAberta()) {
         sf::Time deltaTime = timer.restart(); 
-
+        std::cout<<deltaTime.asSeconds()<<std::endl;
         //Atualiza o jogo
         jogo.atualizar();
         poderesEspeciais.atualizar(deltaTime);
@@ -31,6 +31,5 @@ int main() {
         jogo.renderizar(poderesEspeciais);
 
     }
-
     return 0;
 }

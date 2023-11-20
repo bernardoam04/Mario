@@ -1,17 +1,16 @@
 #include "PoderesEspeciais.hpp"
+#include <iostream>
 
-PoderesEspeciais::PoderesEspeciais(Colisao& colisao) : colisao(colisao) 
+PoderesEspeciais::PoderesEspeciais(Colisao &colisao) : colisao(colisao)
 {
-
     cogumeloTexture.loadFromFile("../imagens/cogumelo.png"); 
-    estrelaTexture.loadFromFile("../imagens/estrela.png"); 
+    estrelaTexture.loadFromFile("../imagens/estrela.png");
 }
 
 void PoderesEspeciais::inicializar(int tipo, float x, float y)
 {
     this->tipo = tipo;
-    this->posicao.x = x;
-    this->posicao.y = y;
+    this->posicao = sf::Vector2f(x, y);
 
     // Configure o sprite e a textura com base no tipo
     switch (tipo) {
@@ -32,25 +31,35 @@ void PoderesEspeciais::desenhar(sf::RenderWindow& janela) {
     janela.draw(poderSprite);
 }
 
-int PoderesEspeciais::verificarColisaoPoder(float x, float y)
-{
-    return colisao.verificarColisao(x,y);
-}
-
 void PoderesEspeciais::atualizar(sf::Time deltaTime)
 {
-    float x = posicao.x +tileSize/2;
-    float y = posicao.y+tileSize;
-    velocidadeVertical +=aceleracaoGravidade;
-
-    if(colisao.verificarColisao(x, y)  != 0 && colisao.verificarColisao(x, y) != 9  ) {
-        posicao.x += 50.0f * deltaTime.asSeconds();
-    }
-
-    else{
+    
+    if ( (colisao.verificarColisao(posicao.x, posicao.y+tileSize+1) != 0 && colisao.verificarColisao(posicao.x, posicao.y+tileSize+1) !=9) ||
+    (colisao.verificarColisao(posicao.x + tileSize, posicao.y+tileSize+1) != 0 && colisao.verificarColisao(posicao.x + tileSize, posicao.y+tileSize+1))) {
+        // Movimento horizontal
+        velocidadeVertical=0;
+        if (movDireita) {
+            posicao.x += 50.0f * deltaTime.asSeconds();
+        } else if (movEsquerda) {
+            posicao.x -= 50.0f * deltaTime.asSeconds();
+        }
+    } else {
+        // Movimento vertical
+        velocidadeVertical += aceleracaoGravidade;
         posicao.y += velocidadeVertical * deltaTime.asSeconds();
     }
-    // Ajuste a velocidade horizontal conforme necessário
+
+    if ( (movDireita && colisao.verificarColisao(posicao.x + tileSize, posicao.y+tileSize/2) != 0 && colisao.verificarColisao(posicao.x + tileSize, posicao.y+tileSize/2)!=9) ) {
+        // Colisão à direita, ajusta posição
+        posicao.x -= 50.0f * deltaTime.asSeconds();
+        movEsquerda = true;
+        movDireita = false;
+    } else if ( movEsquerda && colisao.verificarColisao(posicao.x, posicao.y+tileSize/2) != 0 && colisao.verificarColisao(posicao.x, posicao.y+tileSize/2)!=9)  {
+        // Colisão à esquerda, ajusta posição
+        posicao.x += 50.0f * deltaTime.asSeconds();
+        movEsquerda = false;
+        movDireita = true;
+    }
 }
 
 
