@@ -20,6 +20,8 @@ private:
     sf::Event ev;
     Mapa mapa;  
     Camera camera;
+    Colisao *colisao;
+    PoderesEspeciais *poderesEspeciais;
     void inicializarVariaveis();
     void iniciarJanela();
 
@@ -28,9 +30,9 @@ public:
     GerenciadorGeral();
     virtual ~GerenciadorGeral();
     bool janelaAberta() const;
-    void atualizar();
+    void atualizar(sf::Time deltaTime);
     void atualizarEventos();
-    void renderizar(PoderesEspeciais poderesEspeciais);
+    void renderizar();
     float getAlturaTela() const;
     float getLarguraTela() const;
 };

@@ -12,17 +12,20 @@ void GerenciadorGeral::iniciarJanela()
     this->janela = new sf::RenderWindow(this->tela, "Mario!");
 }
 
-GerenciadorGeral::GerenciadorGeral() : camera(largura_tela, altura_tela) 
+GerenciadorGeral::GerenciadorGeral() : camera(largura_tela, altura_tela) , colisao(nullptr) , poderesEspeciais(nullptr)
 {
     this->inicializarVariaveis();
     this->iniciarJanela();
     this->mapa.carregarMapa("../imagens/cenario.tmx");
+    colisao = new Colisao (mapa.getDadosMapa(), mapa.getTileSize());
+    poderesEspeciais = new PoderesEspeciais (*colisao);
+    poderesEspeciais->inicializar(1, 500, 100);
 }
 
 GerenciadorGeral::~GerenciadorGeral()
 {
     delete this->janela;
-
+    delete this->colisao;
 }
 
 
@@ -31,8 +34,9 @@ bool GerenciadorGeral::janelaAberta() const
     return this->janela->isOpen();
 }
 
-void GerenciadorGeral::atualizar()
+void GerenciadorGeral::atualizar(sf::Time deltaTime)
 {
+    poderesEspeciais->atualizar(deltaTime);
     this->atualizarEventos();
 }
 
@@ -56,7 +60,7 @@ void GerenciadorGeral::atualizarEventos()
         }
 }
 
-void GerenciadorGeral::renderizar( PoderesEspeciais poderesEspeciais)
+void GerenciadorGeral::renderizar()
 {
     //Limpa a tela
     this->janela->clear(sf::Color::Blue);
@@ -66,7 +70,7 @@ void GerenciadorGeral::renderizar( PoderesEspeciais poderesEspeciais)
     
     //Desenha o mapa
     this->mapa.renderizar(*this->janela);
-    poderesEspeciais.desenhar(*this->janela);
+    poderesEspeciais->desenhar(*this->janela);
     
     //Mostra a tela
     this->janela->display();

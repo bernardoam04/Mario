@@ -6,27 +6,35 @@
 
 class PoderesEspeciais  {
 private:
-    float tileSize=32;
+    //Texturas e posições
     sf::Texture cogumeloTexture; 
     sf::Texture estrelaTexture;
-    mutable sf::Sprite poderSprite;  
+    sf::Sprite poderSprite;  
     sf::Vector2f posicao; 
+
+    //Constantes
+    const float aceleracaoGravidade = 4.8f;  
     static const int COGUMELO = 1; 
     static const int ESTRELA = 2; 
+    const float tileSize=32;
+
+    //Modificáveis
     float velocidadeVertical = 0.0f;
     float velocidadeHorizontal = 50.0f;
-    float aceleracaoGravidade = 9.8f;  
-    bool estaNoAr = false; 
-    int tipo;
+
+    //Verificações
+    bool estaNoAr = false;
     bool movDireita=true;
     bool movEsquerda=false;
+    bool existe = false;
+
     Colisao &colisao;
+
 public:
     PoderesEspeciais(Colisao &colisao);  
     int verificarColisao(sf::Vector2f coordenadas);
     void inicializar(int tipo, float x, float y);
     void desenhar(sf::RenderWindow& janela);
-    int verificarColisaoPoder(float x, float y);
     void atualizar(sf::Time deltaTime);
 };
 

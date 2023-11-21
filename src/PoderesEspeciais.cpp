@@ -9,7 +9,6 @@ PoderesEspeciais::PoderesEspeciais(Colisao &colisao) : colisao(colisao)
 
 void PoderesEspeciais::inicializar(int tipo, float x, float y)
 {
-    this->tipo = tipo;
     this->posicao = sf::Vector2f(x, y);
 
     // Configure o sprite e a textura com base no tipo
@@ -20,9 +19,7 @@ void PoderesEspeciais::inicializar(int tipo, float x, float y)
         case ESTRELA:
             poderSprite.setTexture(estrelaTexture);
             break;
-        // Adicione mais casos conforme necessário para outros tipos de poderes especiais
     }
-
     poderSprite.setPosition(posicao);
 }
 
@@ -33,7 +30,6 @@ void PoderesEspeciais::desenhar(sf::RenderWindow& janela) {
 
 void PoderesEspeciais::atualizar(sf::Time deltaTime)
 {
-    
     if ( (colisao.verificarColisao(posicao.x, posicao.y+tileSize+1) != 0 && colisao.verificarColisao(posicao.x, posicao.y+tileSize+1) !=9) ||
     (colisao.verificarColisao(posicao.x + tileSize, posicao.y+tileSize+1) != 0 && colisao.verificarColisao(posicao.x + tileSize, posicao.y+tileSize+1))) {
         // Movimento horizontal
