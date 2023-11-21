@@ -18,14 +18,39 @@ GerenciadorGeral::GerenciadorGeral() : camera(largura_tela, altura_tela) , colis
     this->iniciarJanela();
     this->mapa.carregarMapa("../imagens/cenario.tmx");
     colisao = new Colisao (mapa.getDadosMapa(), mapa.getTileSize());
-    poderesEspeciais = new PoderesEspeciais (*colisao);
-    poderesEspeciais->inicializar(1, 500, 100);
+    InicializarPoderesEspeciais();
+}
+
+void GerenciadorGeral::InicializarPoderesEspeciais(){
+    int tileSize = mapa.getTileSize();
+    auto dadosMapa = mapa.getDadosMapa();
+
+    for (unsigned int i = 0; i < dadosMapa.size(); ++i) {
+        for (unsigned int j = 0; j < dadosMapa[i].size(); ++j) {
+            // Verifica se o bloco é do tipo desejado (nesse caso, tipo 2)
+            if (dadosMapa[i][j] == 2) {
+                // Calcula a posição do bloco acima
+                float x = j * tileSize;
+                float y = (i - 1) * tileSize;
+
+                // Inicializa um novo PoderEspecial na posição acima do bloco
+                poderesEspeciais = new PoderesEspeciais(*colisao);
+                poderesEspeciais->inicializar(x, y);
+                vetorPoderesEspeciais.push_back(poderesEspeciais);
+            }
+        }
+    }
 }
 
 GerenciadorGeral::~GerenciadorGeral()
 {
     delete this->janela;
     delete this->colisao;
+
+    // Libera memória dos PoderesEspeciais no vetor
+    for (auto& poder : vetorPoderesEspeciais) {
+        delete poder;
+    }
 }
 
 
@@ -36,7 +61,10 @@ bool GerenciadorGeral::janelaAberta() const
 
 void GerenciadorGeral::atualizar(sf::Time deltaTime)
 {
-    poderesEspeciais->atualizar(deltaTime);
+    for (auto& poder : vetorPoderesEspeciais) {
+        poder->atualizar(deltaTime);
+    }
+
     this->atualizarEventos();
 }
 
@@ -70,7 +98,11 @@ void GerenciadorGeral::renderizar()
     
     //Desenha o mapa
     this->mapa.renderizar(*this->janela);
-    poderesEspeciais->desenhar(*this->janela);
+    int i =0;
+    for (auto& poder : vetorPoderesEspeciais) {
+        poder->desenhar(*this->janela);
+        i++;
+    }    
     
     //Mostra a tela
     this->janela->display();

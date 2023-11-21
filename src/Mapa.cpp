@@ -1,4 +1,5 @@
     #include "../include/Mapa.hpp"
+#include "Mapa.hpp"
 
     Mapa::Mapa() {
     }
@@ -13,6 +14,10 @@
         return larguraTileset;
     }
 
+    int Mapa::getAlturaTileset()
+    {
+        return alturaTileset;
+    }
     int Mapa::getLarguraMapa()
     {
         return larguraTileset * tileSize;

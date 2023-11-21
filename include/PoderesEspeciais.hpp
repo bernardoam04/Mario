@@ -10,7 +10,6 @@ private:
     sf::Texture cogumeloTexture; 
     sf::Texture estrelaTexture;
     sf::Sprite poderSprite;  
-    sf::Vector2f posicao; 
 
     //Constantes
     const float aceleracaoGravidade = 4.8f;  
@@ -31,10 +30,14 @@ private:
     Colisao &colisao;
 
 public:
+    sf::Vector2f posicao; 
     PoderesEspeciais(Colisao &colisao);  
     int verificarColisao(sf::Vector2f coordenadas);
-    void inicializar(int tipo, float x, float y);
+    int gerarTipoAleatorio();
+    bool inicializarNoMapa(Mapa& mapa);
+    void inicializar(float x, float y);
     void desenhar(sf::RenderWindow& janela);
+    void ModificacaoPosicao(sf::Time deltaTime);
     void atualizar(sf::Time deltaTime);
 };
 

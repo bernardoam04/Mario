@@ -21,8 +21,10 @@ private:
     Mapa mapa;  
     Camera camera;
     Colisao *colisao;
-    PoderesEspeciais *poderesEspeciais;
+    PoderesEspeciais* poderesEspeciais;  // Adicione esta linha
+    std::vector<PoderesEspeciais*> vetorPoderesEspeciais;
     void inicializarVariaveis();
+    void InicializarPoderesEspeciais();
     void iniciarJanela();
 
 public:
