@@ -1,91 +1,92 @@
     #include "../include/Mapa.hpp"
 #include "Mapa.hpp"
 
-    Mapa::Mapa() {
-    }
+Mapa::Mapa() {
+}
 
-    int Mapa::getTileSize()
-    {
-        return tileSize;
-    }
+int Mapa::getTileSize()
+{
+    return tileSize;
+}
 
-    int Mapa::getLarguraTileset()
-    {
-        return larguraTileset;
-    }
+int Mapa::getLarguraTileset()
+{
+    return larguraTileset;
+}
 
-    int Mapa::getAlturaTileset()
-    {
-        return alturaTileset;
-    }
-    int Mapa::getLarguraMapa()
-    {
-        return larguraTileset * tileSize;
-    }
+int Mapa::getAlturaTileset()
+{
+    return alturaTileset;
+}
 
-    std::vector<std::vector<int>> Mapa::getDadosMapa()
-    {
-        std::vector<std::vector<int>> matriz;
+int Mapa::getLarguraMapa()
+{
+    return larguraTileset * tileSize;
+}
 
-        for (unsigned int i = 0; i < tileData.size() / larguraTileset; ++i) {
-            std::vector<int> linha;
+std::vector<std::vector<int>> Mapa::getDadosMapa()
+{
+    std::vector<std::vector<int>> matriz;
+       
+    for (unsigned int i = 0; i < tileData.size() / larguraTileset; ++i) {
+        std::vector<int> linha;
 
-            for (int j = 0; j < larguraTileset; ++j) {
-                int indice = i * larguraTileset + j;
-                linha.push_back(tileData[indice]);
-            }
-
-            matriz.push_back(linha);
+        for (int j = 0; j < larguraTileset; ++j) {
+            int indice = i * larguraTileset + j;
+            linha.push_back(tileData[indice]);
         }
 
-        return matriz;
+        matriz.push_back(linha);
     }
 
+    return matriz;
+}
 
-    void Mapa::carregarMapa(const std::string& arquivoMapa) {
 
-        // Carregamento do arquivo TMX usando a biblioteca tinyxml2
-        tinyxml2::XMLDocument doc;
-        doc.LoadFile(arquivoMapa.c_str());
+void Mapa::carregarMapa(const std::string& arquivoMapa) {
 
-        if (doc.Error()) {
-            std::cerr << "Erro ao carregar o arquivo TMX: " << doc.ErrorStr() << std::endl;
-            return;
-        }
+    // Carregamento do arquivo TMX usando a biblioteca tinyxml2
+    tinyxml2::XMLDocument doc;
+    doc.LoadFile(arquivoMapa.c_str());
 
-        // Obtém a primeira camada (layer) do mapa
-        tinyxml2::XMLElement* layer = doc.FirstChildElement("map")->FirstChildElement("layer");
+    if (doc.Error()) {
+        std::cerr << "Erro ao carregar o arquivo TMX: " << doc.ErrorStr() << std::endl;
+        return;
+    }
 
-        // Obtém os dados codificados em CSV
-        const char* data = layer->FirstChildElement("data")->GetText();
+    // Obtém a primeira camada (layer) do mapa
+    tinyxml2::XMLElement* layer = doc.FirstChildElement("map")->FirstChildElement("layer");
 
-        // Processa os dados e preenche o array de vértices
-        std::stringstream ss(data);
-        int tileId;
-        while (ss >> tileId) {
-            tileData.push_back(tileId);
-            if (ss.peek() == ',')
-                ss.ignore();
-        }
+    // Obtém os dados codificados em CSV
+    const char* data = layer->FirstChildElement("data")->GetText();
 
-        // Define o tamanho do array de vértices
-        vertices.setPrimitiveType(sf::Quads);
-        vertices.resize(tileData.size() * 4);
+    // Processa os dados e preenche o array de vértices
+    std::stringstream ss(data);
+    int tileId;
+    while (ss >> tileId) {
+        tileData.push_back(tileId);
+        if (ss.peek() == ',')
+            ss.ignore();
+    }
 
-        // Obtém as texturas do tileset
-        tinyxml2::XMLNode * pRootElement = doc.FirstChildElement("map")->FirstChildElement("tileset");
-        int count = 1;
-        while(pRootElement){
-            this->texturas[count++].loadFromFile(pRootElement->FirstChildElement("image")->Attribute("source"));
-            pRootElement = pRootElement->NextSiblingElement("tileset");
-        }
+    // Define o tamanho do array de vértices
+    vertices.setPrimitiveType(sf::Quads);
+    vertices.resize(tileData.size() * 4);
 
-        // Preenche o array de vértices com base nos dados do mapa
-        for (size_t i = 0; i < tileData.size(); ++i) {
+    // Obtém as texturas do tileset
+    tinyxml2::XMLNode * pRootElement = doc.FirstChildElement("map")->FirstChildElement("tileset");
+    int count = 1;
+    while(pRootElement){
+        this->texturas[count++].loadFromFile(pRootElement->FirstChildElement("image")->Attribute("source"));
+        pRootElement = pRootElement->NextSiblingElement("tileset");
+    }
+    
+    // Preenche o array de vértices com base nos dados do mapa
+    for (size_t i = 0; i < tileData.size(); ++i) {
 
-            int tileNumber = tileData[i]; 
+        int tileNumber = tileData[i]; 
 
-            if(tileNumber != 0){
+        if(tileNumber != 0){
             // Obtém o quad (quatro vértices) atual
             sf::Vertex* quad = &vertices[i * 4];
 
@@ -101,31 +102,45 @@
             quad[2].texCoords = sf::Vector2f(tileSize, tileSize);
             quad[3].texCoords = sf::Vector2f(0, tileSize);
 
-            // Se a cor do pixel na posição (0, 0) da textura for branca, torna transparente
-            if (texturas[tileNumber].copyToImage().getPixel(0, 0) == sf::Color::White) {
-                quad[0].color = sf::Color::Transparent;
-                quad[1].color = sf::Color::Transparent;
-                quad[2].color = sf::Color::Transparent;
-                quad[3].color = sf::Color::Transparent;
-            }
-
-            }
-
         }
     }
+}
 
-    void Mapa::renderizar(sf::RenderWindow& janela) {
+void Mapa::renderizar(sf::RenderWindow& janela, sf::Time tempoAtual) {
+    int tempo = static_cast<int> (tempoAtual.asSeconds());
+    tempo = tempo % 2;
 
+    //int tamanhoMapa = texturas.size();
+    // Renderiza os vértices na janela
+    for (size_t i = 0; i < tileData.size(); ++i) {
+        int tileNumber = tileData[i];
 
-        // Renderiza os vértices na janela
-        for (size_t i = 0; i < tileData.size(); ++i) {
-            int tileNumber = tileData[i];
-
-            // Somente renderiza se não for um bloco vazio (tipo 0)
-            if (tileNumber != 0) {
-
+        // Somente renderiza se não for um bloco vazio (tipo 0)
+        if (tileNumber != 0 && tileNumber!= 2 && tileNumber!=9) {
+            sf::Vertex* quad = &vertices[i * 4];
+            janela.draw(quad, 4, sf::Quads, &texturas[tileNumber]);
+        }
+        else if(tileNumber == 2){
+            if(colisaoBlocoMoeda == false){
+                if(tempo == 0){
+                        sf::Vertex* quad = &vertices[i * 4];
+                        janela.draw(quad, 4, sf::Quads, &texturas[2]);
+                }
+                else{
+                    sf::Vertex* quad = &vertices[i * 4];
+                    janela.draw(quad, 4, sf::Quads, &texturas[27]);
+                }
+            }
+            else{
+                sf::Vertex* quad = &vertices[i * 4];
+                    janela.draw(quad, 4, sf::Quads, &texturas[28]);
+            }
+        }
+        else if(tileNumber ==9){
+            if(colisaoMoeda == false){
                 sf::Vertex* quad = &vertices[i * 4];
                 janela.draw(quad, 4, sf::Quads, &texturas[tileNumber]);
             }
         }
     }
+}

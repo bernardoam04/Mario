@@ -21,12 +21,16 @@ private:
     const int larguraTileset = 280;
     const int alturaTileset = 20;
 
+    //Dados de Verificação
+    bool colisaoBlocoMoeda = false;
+    bool colisaoMoeda = false;
+
 public:
    //Construtor 
     Mapa();
 
     void carregarMapa(const std::string& arquivoMapa);
-    void renderizar(sf::RenderWindow& janela);
+    void renderizar(sf::RenderWindow& janela, sf::Time tempoAtual);
 
     //Getters
     std::vector<std::vector<int>> getDadosMapa();

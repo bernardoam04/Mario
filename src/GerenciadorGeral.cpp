@@ -90,7 +90,7 @@ void GerenciadorGeral::atualizarEventos()
         }
 }
 
-void GerenciadorGeral::renderizar()
+void GerenciadorGeral::renderizar(sf::Time tempoAtual)
 {
     //Limpa a tela
     this->janela->clear(sf::Color::Blue);
@@ -99,7 +99,7 @@ void GerenciadorGeral::renderizar()
     this->janela->setView(this->camera.getView());
     
     //Desenha o mapa
-    this->mapa.renderizar(*this->janela);
+    this->mapa.renderizar(*this->janela, tempoAtual);
 
     //Desenha os Poderes Especiais
     for (auto& poder : vetorPoderesEspeciais) {

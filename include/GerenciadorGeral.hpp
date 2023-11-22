@@ -42,7 +42,7 @@ public:
     //Métodos utilizados no jogo diretamente
     void atualizar(sf::Time tempoAtual, sf::Time deltaTime);
     void atualizarEventos();
-    void renderizar();
+    void renderizar(sf::Time tempoAtual);
 
     //Getters
     float getAlturaTela() const;

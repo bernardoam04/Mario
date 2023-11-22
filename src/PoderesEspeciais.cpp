@@ -12,9 +12,6 @@ PoderesEspeciais::PoderesEspeciais(Colisao &colisao) : colisao(colisao)
     cogumeloTexture.loadFromFile("../imagens/cogumelo.png");
     cogumeloTextures.push_back(cogumeloTexture);
 
-    cogumeloTexture1.loadFromFile("../imagens/cogumelo2.png");
-    cogumeloTextures.push_back(cogumeloTexture1);
-
     cogumeloTexture2.loadFromFile("../imagens/cogumelo3.png");
     cogumeloTextures.push_back(cogumeloTexture2);
 
@@ -24,9 +21,6 @@ PoderesEspeciais::PoderesEspeciais(Colisao &colisao) : colisao(colisao)
 
     estrelaTexture1.loadFromFile("../imagens/estrela2.png");
     estrelaTextures.push_back(estrelaTexture1);
-
-    estrelaTexture2.loadFromFile("../imagens/estrela3.png");
-    estrelaTextures.push_back(estrelaTexture2);
 
     estrelaTexture3.loadFromFile("../imagens/estrela4.png");
     estrelaTextures.push_back(estrelaTexture3);
@@ -104,12 +98,12 @@ void PoderesEspeciais::ModificacaoPosicao(sf::Time deltaTime)
 void PoderesEspeciais::atualizar(sf::Time tempoAtual, sf::Time deltaTime)
 {
     int tempo = static_cast<int> (tempoAtual.asSeconds());
-    tempo = tempo % 4;
+    tempo = tempo % 3;
 
     //Atualização da textura de acordo com o tempo
     switch (tipo) {
         case COGUMELO:
-            if(tempo == 3){
+            if(tempo == 2){
                 poderSprite.setTexture(cogumeloTextures[1]);
             }
             else{

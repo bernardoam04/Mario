@@ -23,13 +23,13 @@ int main() {
         sf::Time deltaTime = timer2.restart(); 
 
         // Calcula o tempo que passou desde o início do jogo
-        sf::Time elapsedTime = timer.getElapsedTime();
+        sf::Time tempoAtual = timer.getElapsedTime();
         
         //Atualiza o jogo
-        jogo.atualizar(elapsedTime, deltaTime);
+        jogo.atualizar(tempoAtual, deltaTime);
 
         //Desenha o jogo
-        jogo.renderizar();
+        jogo.renderizar(tempoAtual);
 
     }
     return 0;
