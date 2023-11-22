@@ -17,6 +17,7 @@ GerenciadorGeral::GerenciadorGeral() : camera(largura_tela, altura_tela) , colis
     this->inicializarVariaveis();
     this->iniciarJanela();
     this->mapa.carregarMapa("../imagens/cenario.tmx");
+    this->mapa.inicializarColisoes();
     colisao = new Colisao (mapa.getDadosMapa(), mapa.getTileSize());
     InicializarPoderesEspeciais();
 }

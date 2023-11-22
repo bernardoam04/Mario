@@ -42,9 +42,22 @@ std::vector<std::vector<int>> Mapa::getDadosMapa()
     return matriz;
 }
 
+void Mapa::inicializarColisoes()
+{   
+        int data = 0;
+        for(unsigned int i = 0; i<tileData.size();i++){
+            if(tileData[i] == 9){
+                colisaoMoeda.push_back(data);
+            }
+            else if(tileData[i] == 2){
+                colisaoBlocoMoeda.push_back(data);
+            }
+        }
+        std::cout<<colisaoBlocoMoeda.size();
+}
 
-void Mapa::carregarMapa(const std::string& arquivoMapa) {
-
+void Mapa::carregarMapa(const std::string &arquivoMapa)
+{
     // Carregamento do arquivo TMX usando a biblioteca tinyxml2
     tinyxml2::XMLDocument doc;
     doc.LoadFile(arquivoMapa.c_str());
@@ -68,7 +81,7 @@ void Mapa::carregarMapa(const std::string& arquivoMapa) {
         if (ss.peek() == ',')
             ss.ignore();
     }
-
+    
     // Define o tamanho do array de vértices
     vertices.setPrimitiveType(sf::Quads);
     vertices.resize(tileData.size() * 4);
@@ -110,7 +123,8 @@ void Mapa::renderizar(sf::RenderWindow& janela, sf::Time tempoAtual) {
     int tempo = static_cast<int> (tempoAtual.asSeconds());
     tempo = tempo % 2;
 
-    //int tamanhoMapa = texturas.size();
+    int contagemMoedas = 0;
+    int contagemBlocoMoeda = 0;
     // Renderiza os vértices na janela
     for (size_t i = 0; i < tileData.size(); ++i) {
         int tileNumber = tileData[i];
@@ -121,7 +135,7 @@ void Mapa::renderizar(sf::RenderWindow& janela, sf::Time tempoAtual) {
             janela.draw(quad, 4, sf::Quads, &texturas[tileNumber]);
         }
         else if(tileNumber == 2){
-            if(colisaoBlocoMoeda == false){
+            if(colisaoBlocoMoeda[contagemBlocoMoeda] == 0){
                 if(tempo == 0){
                         sf::Vertex* quad = &vertices[i * 4];
                         janela.draw(quad, 4, sf::Quads, &texturas[2]);
@@ -135,12 +149,14 @@ void Mapa::renderizar(sf::RenderWindow& janela, sf::Time tempoAtual) {
                 sf::Vertex* quad = &vertices[i * 4];
                     janela.draw(quad, 4, sf::Quads, &texturas[28]);
             }
+            contagemBlocoMoeda++;
         }
         else if(tileNumber ==9){
-            if(colisaoMoeda == false){
-                sf::Vertex* quad = &vertices[i * 4];
-                janela.draw(quad, 4, sf::Quads, &texturas[tileNumber]);
-            }
+                if(colisaoMoeda[contagemMoedas] == 0){
+                    sf::Vertex* quad = &vertices[i * 4];
+                    janela.draw(quad, 4, sf::Quads, &texturas[tileNumber]);
+                    contagemMoedas++;
+                }
         }
     }
 }

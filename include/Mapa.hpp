@@ -22,13 +22,14 @@ private:
     const int alturaTileset = 20;
 
     //Dados de Verificação
-    bool colisaoBlocoMoeda = false;
-    bool colisaoMoeda = false;
+    std::vector<int> colisaoBlocoMoeda;
+    std::vector<int> colisaoMoeda;
 
 public:
    //Construtor 
     Mapa();
 
+    void inicializarColisoes();
     void carregarMapa(const std::string& arquivoMapa);
     void renderizar(sf::RenderWindow& janela, sf::Time tempoAtual);
 
