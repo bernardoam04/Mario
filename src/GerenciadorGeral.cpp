@@ -12,7 +12,7 @@ void GerenciadorGeral::iniciarJanela()
     this->janela = new sf::RenderWindow(this->tela, "Mario!");
 }
 
-GerenciadorGeral::GerenciadorGeral() : camera(largura_tela, altura_tela) , colisao(nullptr) , poderesEspeciais(nullptr)
+GerenciadorGeral::GerenciadorGeral() : camera(largura_tela, altura_tela) , colisao(nullptr)
 {
     this->inicializarVariaveis();
     this->iniciarJanela();
@@ -27,20 +27,21 @@ void GerenciadorGeral::InicializarPoderesEspeciais(){
 
     for (unsigned int i = 0; i < dadosMapa.size(); ++i) {
         for (unsigned int j = 0; j < dadosMapa[i].size(); ++j) {
+
             // Verifica se o bloco é do tipo desejado (nesse caso, tipo 2)
             if (dadosMapa[i][j] == 2) {
                 // Calcula a posição do bloco acima
                 float x = j * tileSize;
                 float y = (i - 1) * tileSize;
-
                 // Inicializa um novo PoderEspecial na posição acima do bloco
-                poderesEspeciais = new PoderesEspeciais(*colisao);
+                PoderesEspeciais *poderesEspeciais = new PoderesEspeciais(*colisao);
                 poderesEspeciais->inicializar(x, y);
                 vetorPoderesEspeciais.push_back(poderesEspeciais);
             }
         }
     }
 }
+
 
 GerenciadorGeral::~GerenciadorGeral()
 {
@@ -59,13 +60,14 @@ bool GerenciadorGeral::janelaAberta() const
     return this->janela->isOpen();
 }
 
-void GerenciadorGeral::atualizar(sf::Time deltaTime)
+void GerenciadorGeral::atualizar(sf::Time tempoAtual, sf::Time deltaTime)
 {
     for (auto& poder : vetorPoderesEspeciais) {
-        poder->atualizar(deltaTime);
+        poder->atualizar(tempoAtual, deltaTime);
     }
 
     this->atualizarEventos();
+
 }
 
 void GerenciadorGeral::atualizarEventos()
@@ -77,12 +79,12 @@ void GerenciadorGeral::atualizarEventos()
                     break;
             }
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-            // Move a câmera para a direita com uma velocidade fixa 
+                // Move a câmera para a direita com uma velocidade fixa 
                 camera.movimentarCameraDireita(mapa.getLarguraMapa(), largura_tela);
             }
 
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-            // Move a câmera para a esquerda com uma velocidade fixa 
+                // Move a câmera para a esquerda com uma velocidade fixa 
                 camera.movimentarCameraEsquerda(largura_tela);
             }
         }
@@ -98,12 +100,12 @@ void GerenciadorGeral::renderizar()
     
     //Desenha o mapa
     this->mapa.renderizar(*this->janela);
-    int i =0;
+
+    //Desenha os Poderes Especiais
     for (auto& poder : vetorPoderesEspeciais) {
         poder->desenhar(*this->janela);
-        i++;
     }    
-    
+
     //Mostra a tela
     this->janela->display();
 }
