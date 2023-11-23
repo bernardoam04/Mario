@@ -1,7 +1,7 @@
 # Compiler
 CC := g++
 # Compiler flags
-CFLAGS := -Wall -Wextra -Werror
+CFLAGS := -g -Wall -Wextra -Werror
 # SFML libraries
 SFML_LIBS := -lsfml-graphics -lsfml-window -lsfml-system
 # Source files

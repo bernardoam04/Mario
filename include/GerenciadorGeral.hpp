@@ -6,6 +6,9 @@
 #include <SFML/Window.hpp>
 #include <SFML/Audio.hpp>
 #include <SFML/Network.hpp>
+
+#include <memory>
+
 #include "Mapa.hpp"
 #include "Camera.hpp"
 #include "Colisao.hpp"
@@ -19,18 +22,18 @@ private:
     const float larguraTela = 640;
 
     //Tipos Abstratos
-    sf::RenderWindow* janela; 
+    std::shared_ptr <sf::RenderWindow> janela;
     Mapa mapa;  
     Camera camera;
-    Colisao *colisao;
-    std::vector<PoderesEspeciais*> vetorPoderesEspeciais;
+    std::shared_ptr <Colisao> colisao;
+    std::vector<std::shared_ptr <PoderesEspeciais>> vetorPoderesEspeciais;
 
     //Métodos privados
     void inicializarVariaveis();
     void InicializarPoderesEspeciais();
 public:
     //Construtor e Destrutor
-    GerenciadorGeral(sf::RenderWindow *janela);
+    GerenciadorGeral(std::shared_ptr <sf::RenderWindow> janela1);
     virtual ~GerenciadorGeral();
 
     //Métodos de Verificação

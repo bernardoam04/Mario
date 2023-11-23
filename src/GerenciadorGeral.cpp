@@ -1,12 +1,12 @@
 #include "../include/GerenciadorGeral.hpp"
 
 
-GerenciadorGeral::GerenciadorGeral(sf::RenderWindow *janela1) : camera(larguraTela, alturaTela) , colisao(nullptr)
+GerenciadorGeral::GerenciadorGeral(std::shared_ptr <sf::RenderWindow> janela1) : camera(larguraTela, alturaTela) , colisao(nullptr)
 {
     this->janela = janela1;
     this->mapa.carregarMapa("../imagens/cenario.tmx");
     this->mapa.inicializarColisoes();
-    colisao = new Colisao (mapa.getDadosMapa(), mapa.getTileSize());
+    colisao = std::make_shared<Colisao>(mapa.getDadosMapa(), mapa.getTileSize());
     InicializarPoderesEspeciais();
 }
 
@@ -23,7 +23,7 @@ void GerenciadorGeral::InicializarPoderesEspeciais(){
                 float x = j * tileSize;
                 float y = (i - 1) * tileSize;
                 // Inicializa um novo PoderEspecial na posição acima do bloco
-                PoderesEspeciais *poderesEspeciais = new PoderesEspeciais(*colisao);
+                std::shared_ptr<PoderesEspeciais> poderesEspeciais = std::make_shared<PoderesEspeciais>(*colisao);
                 poderesEspeciais->inicializar(x, y);
                 vetorPoderesEspeciais.push_back(poderesEspeciais);
             }
@@ -34,13 +34,6 @@ void GerenciadorGeral::InicializarPoderesEspeciais(){
 
 GerenciadorGeral::~GerenciadorGeral()
 {
-    delete this->colisao;
-    delete this->janela;
-
-    // Libera memória dos PoderesEspeciais no vetor
-    for (auto& poder : vetorPoderesEspeciais) {
-        delete poder;
-    }
 }
 
 void GerenciadorGeral::atualizar(sf::Time tempoAtual, sf::Time deltaTime, sf::Event ev)

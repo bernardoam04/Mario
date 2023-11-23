@@ -16,7 +16,7 @@ int main() {
     tela.width = larguraTela;
 
     //Inicializa a janela
-    sf::RenderWindow* janela = new sf::RenderWindow(tela, "Mario!");
+    std::shared_ptr<sf::RenderWindow> janela = std::make_shared<sf::RenderWindow>(tela, "Mario!");
 
     // Inicializa o gerenciador do jogo    
     GerenciadorGeral jogo(janela);
@@ -82,7 +82,6 @@ int main() {
             jogo.renderizar(tempoAtual);
         }    
     }
-    
-    delete janela;
+
     return 0;
 }
