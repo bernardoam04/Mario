@@ -13,14 +13,13 @@
 
 class GerenciadorGeral{
 private:
-    //Constantes
-    const float altura_tela =640;
-    const float largura_tela =640;
+
+    //Informações da tela(mesma do main)
+    const float alturaTela = 640;
+    const float larguraTela = 640;
 
     //Tipos Abstratos
-    sf::RenderWindow* janela;
-    sf::VideoMode tela;
-    sf::Event ev;
+    sf::RenderWindow* janela; 
     Mapa mapa;  
     Camera camera;
     Colisao *colisao;
@@ -29,10 +28,9 @@ private:
     //Métodos privados
     void inicializarVariaveis();
     void InicializarPoderesEspeciais();
-    void iniciarJanela();
 public:
     //Construtor e Destrutor
-    GerenciadorGeral();
+    GerenciadorGeral(sf::RenderWindow *janela);
     virtual ~GerenciadorGeral();
 
     //Métodos de Verificação
@@ -40,8 +38,8 @@ public:
     bool janelaAberta() const;
 
     //Métodos utilizados no jogo diretamente
-    void atualizar(sf::Time tempoAtual, sf::Time deltaTime);
-    void atualizarEventos();
+    void atualizar(sf::Time tempoAtual, sf::Time deltaTime, sf::Event ev);
+    void atualizarEventos(sf::Event ev);
     void renderizar(sf::Time tempoAtual);
 
     //Getters

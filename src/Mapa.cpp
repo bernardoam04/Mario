@@ -53,7 +53,6 @@ void Mapa::inicializarColisoes()
                 colisaoBlocoMoeda.push_back(data);
             }
         }
-        std::cout<<colisaoBlocoMoeda.size();
 }
 
 void Mapa::carregarMapa(const std::string &arquivoMapa)
