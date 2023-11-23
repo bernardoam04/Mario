@@ -13,6 +13,7 @@
 #include "Camera.hpp"
 #include "Colisao.hpp"
 #include "PoderesEspeciais.hpp"
+#include "Pontuacao.hpp"
 
 class GerenciadorGeral{
 private:
@@ -23,8 +24,9 @@ private:
 
     //Tipos Abstratos
     std::shared_ptr <sf::RenderWindow> janela;
+    Pontuacao *pontuacao;
     Mapa mapa;  
-    Camera camera;
+    Camera *camera;
     std::shared_ptr <Colisao> colisao;
     std::vector<std::shared_ptr <PoderesEspeciais>> vetorPoderesEspeciais;
 
@@ -33,7 +35,7 @@ private:
     void InicializarPoderesEspeciais();
 public:
     //Construtor e Destrutor
-    GerenciadorGeral(std::shared_ptr <sf::RenderWindow> janela1);
+    GerenciadorGeral(std::shared_ptr <sf::RenderWindow> janela1, sf::Font &fonte);
     virtual ~GerenciadorGeral();
 
     //Métodos de Verificação

@@ -18,9 +18,6 @@ int main() {
     //Inicializa a janela
     std::shared_ptr<sf::RenderWindow> janela = std::make_shared<sf::RenderWindow>(tela, "Mario!");
 
-    // Inicializa o gerenciador do jogo    
-    GerenciadorGeral jogo(janela);
-
     //Inicializa 2 timers, um para contar o deltaTime, outro pra contar o tempo de jogo
     sf::Clock timer;
     sf::Clock timer2;
@@ -31,12 +28,16 @@ int main() {
 
     //Carregamento da fonte do MENU(provavelmente vai ser trocada por imagens)
     sf::Font fonte;
-    if (!fonte.loadFromFile("../imagens/arial.ttf")) {
+    if (!fonte.loadFromFile("../imagens/font.ttf")) {
         exit(1);
     }
-    sf::Text textoMenu("Aperte qualquer tecla para ir para o jogo", fonte, 20);
+    // Inicializa o gerenciador do jogo    
+    GerenciadorGeral jogo(janela, fonte);
+
+    sf::Text textoMenu("Aperte qualquer tecla para ir para o jogo", fonte, 15);
     textoMenu.setFillColor(sf::Color::White);
-    textoMenu.setPosition(100, 300);
+    textoMenu.setPosition(30, 300);
+
     //Fim do texto do carregamento do texto do
 
 
@@ -74,7 +75,6 @@ int main() {
             
             //Limpa a janela com cor de fundo azul
             janela->clear(sf::Color::Blue);
-
             // Atualiza o jogo principal
             jogo.atualizar(tempoAtual, deltaTime, ev);
 

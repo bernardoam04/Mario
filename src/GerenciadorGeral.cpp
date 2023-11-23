@@ -1,13 +1,16 @@
 #include "../include/GerenciadorGeral.hpp"
 
 
-GerenciadorGeral::GerenciadorGeral(std::shared_ptr <sf::RenderWindow> janela1) : camera(larguraTela, alturaTela) , colisao(nullptr)
+GerenciadorGeral::GerenciadorGeral(std::shared_ptr <sf::RenderWindow> janela1, sf::Font &fonte) : pontuacao(nullptr), camera(nullptr) , colisao(nullptr)
 {
     this->janela = janela1;
     this->mapa.carregarMapa("../imagens/cenario.tmx");
     this->mapa.inicializarColisoes();
     colisao = std::make_shared<Colisao>(mapa.getDadosMapa(), mapa.getTileSize());
     InicializarPoderesEspeciais();
+    camera = new Camera(larguraTela, alturaTela);
+    pontuacao = new Pontuacao(fonte, camera);
+
 }
 
 void GerenciadorGeral::InicializarPoderesEspeciais(){
@@ -31,9 +34,10 @@ void GerenciadorGeral::InicializarPoderesEspeciais(){
     }
 }
 
-
 GerenciadorGeral::~GerenciadorGeral()
 {
+    delete pontuacao;
+    delete camera;
 }
 
 void GerenciadorGeral::atualizar(sf::Time tempoAtual, sf::Time deltaTime, sf::Event ev)
@@ -42,7 +46,9 @@ void GerenciadorGeral::atualizar(sf::Time tempoAtual, sf::Time deltaTime, sf::Ev
         poder->atualizar(tempoAtual, deltaTime);
     }
     this->atualizarEventos(ev);
+    pontuacao->atualizarPontuacao(tempoAtual, 1);
 }
+
 
 void GerenciadorGeral::atualizarEventos(sf::Event ev)
 {
@@ -54,12 +60,12 @@ void GerenciadorGeral::atualizarEventos(sf::Event ev)
             }
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
                 // Move a câmera para a direita com uma velocidade fixa 
-                camera.movimentarCameraDireita(mapa.getLarguraMapa(), larguraTela);
+                camera->movimentarCameraDireita(mapa.getLarguraMapa(), larguraTela);
             }
 
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
                 // Move a câmera para a esquerda com uma velocidade fixa 
-                camera.movimentarCameraEsquerda(larguraTela);
+                camera->movimentarCameraEsquerda(larguraTela);
             }
         }
 }
@@ -67,10 +73,12 @@ void GerenciadorGeral::atualizarEventos(sf::Event ev)
 void GerenciadorGeral::renderizar(sf::Time tempoAtual)
 {
     //Ajusta a visão da câmera
-    janela->setView(this->camera.getView());
+    janela->setView(this->camera->getView());
     
     //Desenha o mapa
     this->mapa.renderizar(*this->janela, tempoAtual);
+
+    janela->draw(pontuacao->exibirPontuacao());
 
     //Desenha os Poderes Especiais
     for (auto& poder : vetorPoderesEspeciais) {
