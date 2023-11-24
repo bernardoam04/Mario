@@ -73,22 +73,20 @@ void GameOver::atualizarPosicaoTextos(const sf::View& view)
     // Calcula a posição centralizada do texto2
     sf::FloatRect textoRect2 = texto2.getLocalBounds();
     float x2 = view.getCenter().x - view.getSize().x / 2.0f + (view.getSize().x - textoRect2.width) / 2.0f;
-    float y2 = (((janela->getSize().y - textoRect2.height) / 4.0f) + textoRect2.height * 5.0f);
+    float y2 = (((view.getCenter().y - textoRect2.height) / 4.0f) + textoRect2.height * 5.0f);
 
     texto2.setPosition(x2, y2);
 
     // Calcula a posição centralizada do texto3
     sf::FloatRect textoRect3 = texto3.getLocalBounds();
-    float x3 = view.getCenter().x - view.getSize().x / 2.0f + (view.getSize().x - textoRect3.width) / 2.0f;
-    float y3 = (((janela->getSize().y - textoRect3.height) / 2.0f) + textoRect3.height * 5.0f);
+    float x3 = view.getCenter().x - view.getSize().x / 2.0f + (view.getSize().x - textoRect3.width*texto3.getScale().x) / 2.0f;
+    float y3 = ((view.getCenter().y - textoRect3.height) + textoRect3.height * 5.0f);
 
     texto3.setPosition(x3, y3);
 }
 
 bool GameOver::atualizar(sf::Event ev, const sf::View &view)
 {
-    // Atualiza a posição dos textos de acordo com a view da câmera
-    atualizarPosicaoTextos(view);
     
     while (this->janela->pollEvent(ev)) {
 
@@ -141,6 +139,9 @@ bool GameOver::atualizar(sf::Event ev, const sf::View &view)
         }
 
         }
+
+        // Atualiza a posição dos textos de acordo com a view da câmera
+        atualizarPosicaoTextos(view);
 
     return true;
 }
