@@ -26,8 +26,8 @@ private:
 
     //Verificações
     bool estaNoAr = false;
-    bool movDireita=true;
-    bool movEsquerda=false;
+    bool movDireita= true;
+    bool movEsquerda= false;
     bool existe = false;
 
     Colisao &colisao;
