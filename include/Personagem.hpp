@@ -29,6 +29,18 @@ class Personagem {
         virtual void desenharPersonagem(sf::RenderWindow& janela);
         virtual void modificarPosicao(sf::Time deltaTime);
 
+        // Métodos get
+        sf::Vector2f getPosicao() const;
+        float getVelocidadeHorizontal() const;
+        float getVelocidadeVertical() const;
+        bool getEstaNoAr() const;
+
+        // Métodos set
+        void setPosicao(const sf::Vector2f& posicao);
+        void setVelocidadeHorizontal(float velocidade);
+        void setVelocidadeVertical(float velocidade);
+        void setEstaNoAr(bool estado);
+
 
 };
 #endif

@@ -11,6 +11,7 @@ class Jogador : public Personagem {
 
     public:
         Jogador();
+        void modificarPosicao(sf::Time deltaTime) override;
 
 };
 #endif
