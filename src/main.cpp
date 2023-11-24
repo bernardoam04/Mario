@@ -1,5 +1,6 @@
 #include "../include/GerenciadorGeral.hpp"
 #include "GameOver.hpp"
+#include "Menu.hpp"
 
 const float alturaTela = 640;
 const float larguraTela = 640;
@@ -17,6 +18,7 @@ int main() {
     tela.height = alturaTela;
     tela.width = larguraTela;
 
+
     //Inicializa a janela
     std::shared_ptr<sf::RenderWindow> janela = std::make_shared<sf::RenderWindow>(tela, "Mario!");
 
@@ -26,7 +28,7 @@ int main() {
 
     sf::Time deltaTime;
 
-    EstadoJogo estadoAtual = EstadoJogo::JOGO; 
+    EstadoJogo estadoAtual = EstadoJogo::MENU; 
 
     //Carregamento da fonte do MENU(provavelmente vai ser trocada por imagens)
     sf::Font fonte;
@@ -34,8 +36,9 @@ int main() {
         exit(1);
     }
     // Inicializa o gerenciador do jogo    
-    std::shared_ptr <GerenciadorGeral> jogo = std::make_shared <GerenciadorGeral>(janela, fonte);
+    std::shared_ptr <GerenciadorGeral> jogo = std::make_shared <GerenciadorGeral> (janela, fonte);
     GameOver gameOver(janela, fonte);
+    Menu menu(janela, fonte);
     
 
     sf::Text textoMenu("Aperte qualquer tecla para ir para o jogo", fonte, 15);
@@ -54,21 +57,24 @@ int main() {
         
         //IMPLEMENTAR MENU NESSE IF
         if (estadoAtual == EstadoJogo::MENU) {
-            while (janela->pollEvent(ev)) {
-                if (ev.type == sf::Event::Closed) {
-                    janela->close();
-                }
-                if (ev.type == sf::Event::KeyPressed) {
-                    timer.restart();
-                    estadoAtual = EstadoJogo::JOGO;
-                }
+
+            // Calcula o tempo que passou desde o início do jogo
+            sf::Time tempoAtual = timer.getElapsedTime();
+
+           janela->clear(sf::Color::Blue);
+           jogo->desenharMapa(tempoAtual);
+
+            bool menuAtivo = menu.atualizar(ev);  
+
+            if (menuAtivo == false) {
+                timer.restart();
+                estadoAtual = EstadoJogo::JOGO;
             }
-        janela->clear(sf::Color::Blue);
 
-        // Desenho do texto do menu inicial
-        janela->draw(textoMenu);
+            // Desenho do Game Over
+            menu.desenharTela();
 
-        janela->display();
+            janela->display();
         }
         //MENU ACABA AQUI
 
