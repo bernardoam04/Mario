@@ -1,5 +1,5 @@
 #include "../include/GerenciadorGeral.hpp"
-#include "GameOver.hpp"
+#include "../include/GameOver.hpp"
 
 const float alturaTela = 640;
 const float larguraTela = 640;
@@ -19,6 +19,7 @@ int main() {
 
     //Inicializa a janela
     std::shared_ptr<sf::RenderWindow> janela = std::make_shared<sf::RenderWindow>(tela, "Mario!");
+    janela->setFramerateLimit(60);
 
     //Inicializa 2 timers, um para contar o deltaTime, outro pra contar o tempo de jogo
     sf::Clock timer;

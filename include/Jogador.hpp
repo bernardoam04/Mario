@@ -1,6 +1,6 @@
 #ifndef JOGADOR_HPP
 #define JOGADOR_HPP
-#include "Personagem.hpp"
+#include "../include/Personagem.hpp"
 
 class Jogador : public Personagem {
     private: 

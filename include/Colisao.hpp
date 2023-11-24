@@ -1,7 +1,7 @@
 #ifndef COLISAO_HPP
 #define COLISAO_HPP
 
-#include "Mapa.hpp"
+#include "../include/Mapa.hpp"
 #include <vector>
 
 class Colisao {

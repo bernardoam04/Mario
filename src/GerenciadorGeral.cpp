@@ -1,5 +1,4 @@
 #include "../include/GerenciadorGeral.hpp"
-#include "GerenciadorGeral.hpp"
 
 
 GerenciadorGeral::GerenciadorGeral(std::shared_ptr <sf::RenderWindow> janela1, sf::Font &fonte) : pontuacao(nullptr), camera(nullptr) , colisao(nullptr)
@@ -63,15 +62,13 @@ bool GerenciadorGeral::atualizarEventos(sf::Event ev)
             if (ev.type == sf::Event::Closed){
                 return false;
             }
-            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-                // Move a câmera para a direita com uma velocidade fixa 
-                camera->movimentarCameraDireita(mapa.getLarguraMapa(), larguraTela);
-            }
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) { 
+        camera->movimentarCameraDireita(mapa.getLarguraMapa(), larguraTela);
+    }
 
-            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-                // Move a câmera para a esquerda com uma velocidade fixa 
-                camera->movimentarCameraEsquerda(larguraTela);
-            }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+        camera->movimentarCameraEsquerda(larguraTela);
     }
     return true;
 }

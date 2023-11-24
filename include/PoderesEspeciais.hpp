@@ -2,7 +2,7 @@
 #define PODERESESPECIAIS_HPP
 
 #include <SFML/Graphics.hpp>
-#include "Colisao.hpp"
+#include "../include/Colisao.hpp"
 
 class PoderesEspeciais  {
 private:

@@ -1,4 +1,4 @@
-#include "Pontuacao.hpp"
+#include "../include/Pontuacao.hpp"
 #include <sstream>
 #include <iostream>
 

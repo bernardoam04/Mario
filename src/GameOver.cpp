@@ -1,4 +1,4 @@
-#include "GameOver.hpp"
+#include "../include/../include/GameOver.hpp"
 #include <sstream>
 #include <iostream>
 

@@ -6,7 +6,7 @@
 class Camera {
 private:
     sf::View view;
-    const float velocidadeCamera = 5.0f;
+    const float velocidadeCamera = 2.3f;
 public:
     //Construtor
     Camera(float largura, float altura);

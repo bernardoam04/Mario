@@ -1,11 +1,11 @@
 #ifndef GERENCIADORGERAL_HPP
 #define GERENCIADORGERAL_HPP
 
-#include "Mapa.hpp"
-#include "Camera.hpp"
-#include "Colisao.hpp"
-#include "PoderesEspeciais.hpp"
-#include "Pontuacao.hpp"
+#include "../include/Mapa.hpp"
+#include "../include/Camera.hpp"
+#include "../include/Colisao.hpp"
+#include "../include/PoderesEspeciais.hpp"
+#include "../include/Pontuacao.hpp"
 
 class GerenciadorGeral{
 private:

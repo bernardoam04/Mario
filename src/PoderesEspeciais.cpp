@@ -1,6 +1,5 @@
 #include "../include/PoderesEspeciais.hpp"
 #include <iostream>
-#include "PoderesEspeciais.hpp"
 #include <random>
 
 PoderesEspeciais::PoderesEspeciais(Colisao &colisao) : colisao(colisao)

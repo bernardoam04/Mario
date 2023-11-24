@@ -7,7 +7,7 @@
 #include <SFML/Audio.hpp>
 #include <SFML/Network.hpp>
 
-#include "Camera.hpp"
+#include "../include/Camera.hpp"
 #include <memory>
 
 

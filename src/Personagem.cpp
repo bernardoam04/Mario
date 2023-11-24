@@ -1,5 +1,4 @@
-#include "Personagem.hpp"
-
+#include "../include/Personagem.hpp"
 
 void Personagem::inicializarPersonagem(float x, float y)
 {

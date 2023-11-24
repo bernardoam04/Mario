@@ -1,4 +1,4 @@
-#include "Jogador.hpp"
+#include "../include/Jogador.hpp"
 
 Jogador::Jogador(){
     jogadorTexture.loadFromFile("../imagens/cogumelo.png");

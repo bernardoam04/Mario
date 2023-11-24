@@ -2,10 +2,10 @@
 #define PERSONAGEM_HPP
 
 #include <SFML/Graphics.hpp>
-#include "Mapa.hpp"
-#include "Camera.hpp"
-#include "PoderesEspeciais.hpp"
-#include "Colisao.hpp"
+#include "../include/Mapa.hpp"
+#include "../include/Camera.hpp"
+#include "../include/PoderesEspeciais.hpp"
+#include "../include/Colisao.hpp"
 
 
 class Personagem {
