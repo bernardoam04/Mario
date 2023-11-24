@@ -1,11 +1,13 @@
 #include "../include/GerenciadorGeral.hpp"
+#include "GameOver.hpp"
 
 const float alturaTela = 640;
 const float larguraTela = 640;
 
 enum EstadoJogo {
     MENU,
-    JOGO
+    JOGO,
+    GAMEOVER
 };
 
 int main() {
@@ -24,7 +26,7 @@ int main() {
 
     sf::Time deltaTime;
 
-    EstadoJogo estadoAtual = EstadoJogo::MENU; 
+    EstadoJogo estadoAtual = EstadoJogo::JOGO; 
 
     //Carregamento da fonte do MENU(provavelmente vai ser trocada por imagens)
     sf::Font fonte;
@@ -32,7 +34,9 @@ int main() {
         exit(1);
     }
     // Inicializa o gerenciador do jogo    
-    GerenciadorGeral jogo(janela, fonte);
+    std::shared_ptr <GerenciadorGeral> jogo = std::make_shared <GerenciadorGeral>(janela, fonte);
+    GameOver gameOver(janela, fonte);
+    
 
     sf::Text textoMenu("Aperte qualquer tecla para ir para o jogo", fonte, 15);
     textoMenu.setFillColor(sf::Color::White);
@@ -68,18 +72,41 @@ int main() {
         }
         //MENU ACABA AQUI
 
-        if (estadoAtual == EstadoJogo::JOGO) {
+        else if (estadoAtual == EstadoJogo::JOGO) {
 
             // Calcula o tempo que passou desde o início do jogo
             sf::Time tempoAtual = timer.getElapsedTime();
             
             //Limpa a janela com cor de fundo azul
             janela->clear(sf::Color::Blue);
+
             // Atualiza o jogo principal
-            jogo.atualizar(tempoAtual, deltaTime, ev);
+            bool jogoAtivo = jogo->atualizar(tempoAtual, deltaTime, ev);
+
+            if(jogoAtivo == false){
+                estadoAtual = EstadoJogo::GAMEOVER;
+            }
 
             //Desenha o jogo principal
-            jogo.renderizar(tempoAtual);
+            jogo->renderizar(tempoAtual);
+        }
+
+        else if (estadoAtual == EstadoJogo::GAMEOVER) {
+            
+            janela->clear(sf::Color::Black);
+
+            bool jogoEmGameOver = gameOver.atualizar(ev, jogo->getViewCamera());  
+
+            if (jogoEmGameOver == false) {
+                jogo = std::make_shared <GerenciadorGeral>(janela, fonte);
+                timer.restart();
+                estadoAtual = EstadoJogo::JOGO;
+            }
+
+            // Desenho do Game Over
+            gameOver.desenharTela(jogo->getPontuacaoTotal(),jogo->getViewCamera());
+
+            janela->display();
         }    
     }
 

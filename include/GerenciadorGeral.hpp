@@ -1,14 +1,6 @@
 #ifndef GERENCIADORGERAL_HPP
 #define GERENCIADORGERAL_HPP
 
-#include <SFML/Graphics.hpp>
-#include <SFML/System.hpp>
-#include <SFML/Window.hpp>
-#include <SFML/Audio.hpp>
-#include <SFML/Network.hpp>
-
-#include <memory>
-
 #include "Mapa.hpp"
 #include "Camera.hpp"
 #include "Colisao.hpp"
@@ -24,9 +16,9 @@ private:
 
     //Tipos Abstratos
     std::shared_ptr <sf::RenderWindow> janela;
-    Pontuacao *pontuacao;
+    std::shared_ptr <Pontuacao> pontuacao;
     Mapa mapa;  
-    Camera *camera;
+    std::shared_ptr <Camera> camera;
     std::shared_ptr <Colisao> colisao;
     std::vector<std::shared_ptr <PoderesEspeciais>> vetorPoderesEspeciais;
 
@@ -43,13 +35,17 @@ public:
     bool janelaAberta() const;
 
     //Métodos utilizados no jogo diretamente
-    void atualizar(sf::Time tempoAtual, sf::Time deltaTime, sf::Event ev);
-    void atualizarEventos(sf::Event ev);
+    bool atualizar(sf::Time tempoAtual, sf::Time deltaTime, sf::Event ev);
+    bool atualizarEventos(sf::Event ev);
     void renderizar(sf::Time tempoAtual);
 
     //Getters
     float getAlturaTela() const;
     float getLarguraTela() const;
+    int getPontuacaoTotal() const;
+    const sf::View& getViewCamera() const;
+
+
 };
 
 #endif

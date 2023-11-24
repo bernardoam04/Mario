@@ -8,18 +8,25 @@
 #include <SFML/Network.hpp>
 
 #include "Camera.hpp"
+#include <memory>
+
 
 class Pontuacao {
 private:
     int contagem;
     sf::Text texto;
-    Camera *camera; 
+    std::shared_ptr <Camera> camera;
 public:
-    Pontuacao(sf::Font &fonte, Camera *camera);
+    //Construtor e Destrutor
+    Pontuacao(sf::Font &fonte, std::shared_ptr <Camera> camera);
     ~Pontuacao();
 
-    void atualizarPontuacao(sf::Time tempoAtual, int contagemMoedas);
+    //Atualizações e renderização
+    void atualizarPontuacao(sf::Time tempoAtual, float taxa);
     sf::Text exibirPontuacao();
+
+    //Getter
+    int getPontuacaoTotal();
 };
 
 #endif 
