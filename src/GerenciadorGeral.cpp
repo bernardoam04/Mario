@@ -100,3 +100,7 @@ int GerenciadorGeral::getPontuacaoTotal() const
 const sf::View& GerenciadorGeral::getViewCamera() const {
     return this->camera->getView();
 }
+
+void GerenciadorGeral::desenharMapa(sf::Time tempoAtual){
+    this->mapa.renderizar(*this->janela, tempoAtual);
+}

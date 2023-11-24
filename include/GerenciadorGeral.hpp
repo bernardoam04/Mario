@@ -38,6 +38,7 @@ public:
     bool atualizar(sf::Time tempoAtual, sf::Time deltaTime, sf::Event ev);
     bool atualizarEventos(sf::Event ev);
     void renderizar(sf::Time tempoAtual);
+    void desenharMapa(sf::Time tempoAtual);
 
     //Getters
     float getAlturaTela() const;
