@@ -1,3 +1,7 @@
+#ifndef PERSONAGEM_HPP
+#define PERSONAGEM_HPP
+
+#include <SFML/Graphics.hpp>
 #include "Mapa.hpp"
 #include "Camera.hpp"
 #include "PoderesEspeciais.hpp"
@@ -6,22 +10,25 @@
 
 class Personagem {
     private:
-        //Posicao e modificadores
-        int coord_x;
-        int coord_y;
+        //Texturas, Posicao e modificadores
+        sf::Sprite personagemSprite;  
+        sf::Vector2f posicaoPersonagem; 
         float velocidadeVertical;
         float velocidadeHorizontal;
 
         //Verificacoes
-        bool vivo;
+        //bool vivo; Nao esta sendo utilizado ainda
         bool estaNoAr;
-        bool movDireita;
-        bool movEsquerda;
 
         //Colisao
-        Colisao &colisao;
-        
+        //Colisao &colisao;
+
     public:
 
+        virtual void inicializarPersonagem(float x, float y);
+        virtual void desenharPersonagem(sf::RenderWindow& janela);
+        virtual void modificarPosicao(sf::Time deltaTime);
 
-}
+
+};
+#endif
