@@ -76,6 +76,7 @@ bool GerenciadorGeral::atualizarEventos(sf::Event ev)
     return true;
 }
 
+
 void GerenciadorGeral::renderizar(sf::Time tempoAtual)
 {
     //Ajusta a visão da câmera
