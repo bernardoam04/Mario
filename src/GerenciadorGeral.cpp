@@ -1,10 +1,11 @@
 #include "../include/GerenciadorGeral.hpp"
 
 
-GerenciadorGeral::GerenciadorGeral(std::shared_ptr <sf::RenderWindow> janela1, sf::Font &fonte) : pontuacao(nullptr), camera(nullptr) , colisao(nullptr)
+GerenciadorGeral::GerenciadorGeral(std::shared_ptr <sf::RenderWindow> janela1, sf::Font &fonte, std::shared_ptr<SoundManager> sounds) : pontuacao(nullptr), camera(nullptr) , colisao(nullptr), _sounds(sounds)
 {
     this->janela = janela1;
     this->mapa.carregarMapa("../imagens/cenario.tmx");
+    this->_sounds->reiniciarMusica();
     this->mapa.inicializarColisoes();
     colisao = std::make_shared<Colisao>(mapa.getDadosMapa(), mapa.getTileSize());
     InicializarPoderesEspeciais();
@@ -16,7 +17,6 @@ GerenciadorGeral::GerenciadorGeral(std::shared_ptr <sf::RenderWindow> janela1, s
 void GerenciadorGeral::InicializarPoderesEspeciais(){
     int tileSize = mapa.getTileSize();
     auto dadosMapa = mapa.getDadosMapa();
-
     for (unsigned int i = 0; i < dadosMapa.size(); ++i) {
         for (unsigned int j = 0; j < dadosMapa[i].size(); ++j) {
 
