@@ -1,4 +1,6 @@
 #include "../include/Mapa.hpp"
+#include "Mapa.hpp"
+#include <iostream>
 
 
 Mapa::Mapa() {
@@ -154,8 +156,51 @@ void Mapa::renderizar(sf::RenderWindow& janela, sf::Time tempoAtual) {
                 if(colisaoMoeda[contagemMoedas] == 0){
                     sf::Vertex* quad = &vertices[i * 4];
                     janela.draw(quad, 4, sf::Quads, &texturas[tileNumber]);
-                    contagemMoedas++;
                 }
+                contagemMoedas++;
         }
     }
 }
+void Mapa::aplicarColisaoMoeda(float x, float y) {
+    int contagemMoeda = 0;
+
+    // Convertendo coordenadas para índices
+    unsigned int indiceX = static_cast<unsigned int>(x / tileSize);
+    unsigned int indiceY = static_cast<unsigned int>(y / tileSize);
+    
+    // Calculando o índice na matriz
+    unsigned int indice = indiceY * larguraTileset + indiceX;
+
+    for (unsigned int i = 0; i < tileData.size(); i++) {
+        if (tileData[i] == 9) {
+            if (i == indice) {
+                colisaoMoeda[contagemMoeda] = 1;
+                break;
+            }
+            contagemMoeda++;
+        }
+    }
+}
+
+void Mapa::aplicarColisaoBlocoMoeda(float x, float y) {
+    int contagemBlocoMoeda = 0;
+
+    // Convertendo coordenadas para índices
+    unsigned int indiceX = static_cast<unsigned int>(x / tileSize);
+    unsigned int indiceY = static_cast<unsigned int>(y / tileSize);
+    
+    // Calculando o índice na matriz
+    unsigned int indice = indiceY * larguraTileset + indiceX;
+
+    for (unsigned int i = 0; i < tileData.size(); i++) {
+        if (tileData[i] == 2) {
+            if (i == indice) {
+                colisaoBlocoMoeda[contagemBlocoMoeda] = 1;
+                break;
+            }
+            contagemBlocoMoeda++;
+        }
+    }
+}
+
+

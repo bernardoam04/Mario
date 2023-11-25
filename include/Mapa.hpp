@@ -32,6 +32,8 @@ public:
     void inicializarColisoes();
     void carregarMapa(const std::string& arquivoMapa);
     void renderizar(sf::RenderWindow& janela, sf::Time tempoAtual);
+    void aplicarColisaoMoeda(float x, float y);
+    void aplicarColisaoBlocoMoeda(float x, float y);
 
     //Getters
     std::vector<std::vector<int>> getDadosMapa();

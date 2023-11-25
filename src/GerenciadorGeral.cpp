@@ -49,7 +49,6 @@ bool GerenciadorGeral::atualizar(sf::Time tempoAtual, sf::Time deltaTime, sf::Ev
     {
         return false;
     }
-    
     pontuacao->atualizarPontuacao(tempoAtual,0.0001);
     return true;
 }
