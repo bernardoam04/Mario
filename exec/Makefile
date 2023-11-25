@@ -3,7 +3,7 @@ CC := g++
 # Compiler flags
 CFLAGS := -g -Wall -Wextra 
 # SFML libraries
-SFML_LIBS := -lsfml-graphics -lsfml-window -lsfml-system
+SFML_LIBS := -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 # Source files
 SRC_DIR := ../src
 SRCS := $(wildcard $(SRC_DIR)/*.cpp)

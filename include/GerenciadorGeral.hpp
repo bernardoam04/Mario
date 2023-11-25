@@ -6,6 +6,7 @@
 #include "../include/Colisao.hpp"
 #include "../include/PoderesEspeciais.hpp"
 #include "../include/Pontuacao.hpp"
+#include "../include/SoundManager.hpp"
 
 class GerenciadorGeral{
 private:
@@ -21,13 +22,14 @@ private:
     std::shared_ptr <Camera> camera;
     std::shared_ptr <Colisao> colisao;
     std::vector<std::shared_ptr <PoderesEspeciais>> vetorPoderesEspeciais;
+    std::shared_ptr<SoundManager> _sounds;
 
     //Métodos privados
     void inicializarVariaveis();
     void InicializarPoderesEspeciais();
 public:
     //Construtor e Destrutor
-    GerenciadorGeral(std::shared_ptr <sf::RenderWindow> janela1, sf::Font &fonte);
+    GerenciadorGeral(std::shared_ptr <sf::RenderWindow> janela1, sf::Font &fonte, std::shared_ptr<SoundManager> sounds);
     virtual ~GerenciadorGeral();
 
     //Métodos de Verificação

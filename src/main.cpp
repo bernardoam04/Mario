@@ -21,6 +21,7 @@ int main() {
 
     //Inicializa a janela
     std::shared_ptr<sf::RenderWindow> janela = std::make_shared<sf::RenderWindow>(tela, "Mario!");
+    std::shared_ptr<SoundManager> sounds = std::make_shared<SoundManager>();
     janela->setFramerateLimit(60);
 
     //Inicializa 2 timers, um para contar o deltaTime, outro pra contar o tempo de jogo
@@ -37,7 +38,7 @@ int main() {
         exit(1);
     }
     // Inicializa o gerenciador do jogo    
-    std::shared_ptr <GerenciadorGeral> jogo = std::make_shared <GerenciadorGeral> (janela, fonte);
+    std::shared_ptr <GerenciadorGeral> jogo = std::make_shared <GerenciadorGeral> (janela, fonte, sounds);
     GameOver gameOver(janela, fonte);
     Menu menu(janela, fonte);
     
@@ -58,6 +59,7 @@ int main() {
         
         //IMPLEMENTAR MENU NESSE IF
         if (estadoAtual == EstadoJogo::MENU) {
+
 
             // Calcula o tempo que passou desde o início do jogo
             sf::Time tempoAtual = timer.getElapsedTime();
@@ -106,7 +108,7 @@ int main() {
             bool jogoEmGameOver = gameOver.atualizar(ev, jogo->getViewCamera());  
 
             if (jogoEmGameOver == false) {
-                jogo = std::make_shared <GerenciadorGeral>(janela, fonte);
+                jogo = std::make_shared <GerenciadorGeral>(janela, fonte, sounds);
                 timer.restart();
                 estadoAtual = EstadoJogo::JOGO;
             }
