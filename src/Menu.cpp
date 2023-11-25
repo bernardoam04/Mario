@@ -1,4 +1,4 @@
-#include "Menu.hpp"
+#include "../include/Menu.hpp"
 #include <iostream>
 
 Menu::Menu(std::shared_ptr<sf::RenderWindow> janela1, sf::Font &fonte)
