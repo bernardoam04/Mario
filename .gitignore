@@ -1,0 +1,14 @@
+# Ignorar pasta do Visual Studio Code
+.vscode/
+
+# Ignorar a build dentro do diretório exec
+exec/build/
+
+# Ignorar arquivos objeto (.o)
+*.o
+
+# Executáveis
+*.exe
+
+# macOS
+.DS_Store
