@@ -34,6 +34,7 @@ public:
     void renderizar(sf::RenderWindow& janela, sf::Time tempoAtual);
     void aplicarColisaoMoeda(float x, float y);
     void aplicarColisaoBlocoMoeda(float x, float y);
+    int getColisaoBlocoMoeda(float x, float y);
 
     //Getters
     std::vector<std::vector<int>> getDadosMapa();

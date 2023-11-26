@@ -10,6 +10,7 @@ private:
     std::vector<sf::Texture> cogumeloTextures; 
     std::vector<sf::Texture> estrelaTextures; 
     sf::Sprite poderSprite;  
+    sf::Vector2f posicaoInicial; 
     sf::Vector2f posicao; 
     int tipo;
 
@@ -41,6 +42,9 @@ public:
     void desenhar(sf::RenderWindow& janela);
     void ModificacaoPosicao(sf::Time deltaTime);
     void atualizar(sf::Time deltaTime, sf::Time tempoAtual);
+
+    //Getters
+    sf::Vector2f getPosicaoInicial();
 };
 
 #endif 

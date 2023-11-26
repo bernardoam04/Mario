@@ -13,7 +13,6 @@ GerenciadorGeral::GerenciadorGeral(std::shared_ptr <sf::RenderWindow> janela1, s
     pontuacao = std::make_shared<Pontuacao>(fonte, camera);
 }
 
-
 void GerenciadorGeral::InicializarPoderesEspeciais(){
     int tileSize = mapa.getTileSize();
     auto dadosMapa = mapa.getDadosMapa();
@@ -40,8 +39,8 @@ GerenciadorGeral::~GerenciadorGeral()
 
 bool GerenciadorGeral::atualizar(sf::Time tempoAtual, sf::Time deltaTime, sf::Event ev)
 {
-    for (auto& poder : vetorPoderesEspeciais) {
-        poder->atualizar(tempoAtual, deltaTime);
+    for (unsigned int i = 0; i < vetorPoderesEspeciais.size(); i++) {
+        vetorPoderesEspeciais[i]->atualizar(tempoAtual, deltaTime);
     }
     bool jogoAtivo = this->atualizarEventos(ev);
 
@@ -84,8 +83,15 @@ void GerenciadorGeral::renderizar(sf::Time tempoAtual)
     janela->draw(pontuacao->exibirPontuacao());
 
     //Desenha os Poderes Especiais
-    for (auto& poder : vetorPoderesEspeciais) {
-        poder->desenhar(*this->janela);
+    for (unsigned int i = 0; i < vetorPoderesEspeciais.size(); i++) {
+        int tileSize = mapa.getTileSize();
+        int x= vetorPoderesEspeciais[i]->getPosicaoInicial().x;
+        int y= vetorPoderesEspeciais[i]->getPosicaoInicial().y + tileSize;
+        std::cout<< mapa.getColisaoBlocoMoeda(x,y)<<std::endl;
+
+        if(mapa.getColisaoBlocoMoeda(x,y) == 1){
+            vetorPoderesEspeciais[i]->desenhar(*this->janela);
+        }
     }    
 
     //Mostra a tela

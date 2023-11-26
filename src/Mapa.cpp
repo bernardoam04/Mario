@@ -203,4 +203,23 @@ void Mapa::aplicarColisaoBlocoMoeda(float x, float y) {
     }
 }
 
+int Mapa::getColisaoBlocoMoeda(float x, float y) {
+    int contagemBlocoMoeda = 0;
 
+    // Convertendo coordenadas para índices
+    unsigned int indiceX = static_cast<unsigned int>(x / tileSize);
+    unsigned int indiceY = static_cast<unsigned int>(y / tileSize);
+    
+    // Calculando o índice na matriz
+    unsigned int indice = indiceY * larguraTileset + indiceX;
+
+    for (unsigned int i = 0; i < tileData.size(); i++) {
+        if (tileData[i] == 2) {
+            if (i == indice) {
+                return colisaoBlocoMoeda[contagemBlocoMoeda];
+            }
+            contagemBlocoMoeda++;
+        }
+    }
+    return -1;
+}

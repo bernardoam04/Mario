@@ -1,6 +1,7 @@
 #include "../include/PoderesEspeciais.hpp"
 #include <iostream>
 #include <random>
+#include "PoderesEspeciais.hpp"
 
 PoderesEspeciais::PoderesEspeciais(Colisao &colisao) : colisao(colisao)
 {
@@ -37,6 +38,7 @@ int PoderesEspeciais::gerarTipoAleatorio()
 void PoderesEspeciais::inicializar(float x, float y)
 {
     this->posicao = sf::Vector2f(x, y);
+    this->posicaoInicial = posicao;
 
     tipo = gerarTipoAleatorio();
 
@@ -117,4 +119,7 @@ void PoderesEspeciais::atualizar(sf::Time tempoAtual, sf::Time deltaTime)
     ModificacaoPosicao(deltaTime);
 }
 
-
+sf::Vector2f PoderesEspeciais::getPosicaoInicial()
+{
+    return posicaoInicial;
+}
