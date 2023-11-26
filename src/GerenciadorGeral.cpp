@@ -87,8 +87,6 @@ void GerenciadorGeral::renderizar(sf::Time tempoAtual)
         int tileSize = mapa.getTileSize();
         int x= vetorPoderesEspeciais[i]->getPosicaoInicial().x;
         int y= vetorPoderesEspeciais[i]->getPosicaoInicial().y + tileSize;
-        std::cout<< mapa.getColisaoBlocoMoeda(x,y)<<std::endl;
-
         if(mapa.getColisaoBlocoMoeda(x,y) == 1){
             vetorPoderesEspeciais[i]->desenhar(*this->janela);
         }

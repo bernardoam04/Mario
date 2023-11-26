@@ -3,12 +3,14 @@
 
 #include <SFML/Graphics.hpp>
 #include "../include/Colisao.hpp"
+#include "../lib/tinyxml2.hpp"
 
 class PoderesEspeciais  {
 private:
     //Texturas e posições
     std::vector<sf::Texture> cogumeloTextures; 
     std::vector<sf::Texture> estrelaTextures; 
+    std::vector<sf::Texture> moedaTextures; 
     sf::Sprite poderSprite;  
     sf::Vector2f posicaoInicial; 
     sf::Vector2f posicao; 
@@ -16,16 +18,21 @@ private:
 
 
     //Constantes
+    const float aceleracaoGravidadeMoeda = 40.8f;;
     const float aceleracaoGravidade = 4.8f;;
     static const int COGUMELO = 1; 
     static const int ESTRELA = 2; 
+    static const int MOEDA = 3; 
     const float tileSize=32;
 
     //Modificáveis
     float velocidadeVertical = 0.0f;;
     float velocidadeHorizontal = 50.0f;
+    float velocidadeInicialPulo = 1000.0f;
 
     //Verificações
+    bool moedaColetada = false;
+    bool puloIniciado = false;
     bool estaNoAr = false;
     bool movDireita= true;
     bool movEsquerda= false;
@@ -36,11 +43,16 @@ public:
     //Construtor
     PoderesEspeciais(Colisao &colisao);  
 
+    //Carregamento
+    void carregarMoedas();
+    void carregarPoderes();
+
     int gerarTipoAleatorio();
     bool inicializarNoMapa(Mapa& mapa);
     void inicializar(float x, float y);
     void desenhar(sf::RenderWindow& janela);
-    void ModificacaoPosicao(sf::Time deltaTime);
+    void ModificacaoPosicaoPoderes(sf::Time deltaTime);
+    void ModificacaoPosicaoMoeda(sf::Time deltaTime);
     void atualizar(sf::Time deltaTime, sf::Time tempoAtual);
 
     //Getters
