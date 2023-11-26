@@ -1,6 +1,7 @@
 #include "../include/Mapa.hpp"
 #include "Mapa.hpp"
 #include <iostream>
+#include <cmath>
 
 
 Mapa::Mapa() {
@@ -121,8 +122,11 @@ void Mapa::carregarMapa(const std::string &arquivoMapa)
 }
 
 void Mapa::renderizar(sf::RenderWindow& janela, sf::Time tempoAtual) {
-    int tempo = static_cast<int> (tempoAtual.asSeconds());
-    tempo = tempo % 2;
+    int tempoBloco = static_cast<int> (tempoAtual.asSeconds());
+    tempoBloco = tempoBloco % 2;
+
+    int tempoMoeda = static_cast<int> (tempoAtual.asMilliseconds()/100);
+    tempoMoeda = tempoMoeda % 8;
 
     int contagemMoedas = 0;
     int contagemBlocoMoeda = 0;
@@ -137,7 +141,7 @@ void Mapa::renderizar(sf::RenderWindow& janela, sf::Time tempoAtual) {
         }
         else if(tileNumber == 2){
             if(colisaoBlocoMoeda[contagemBlocoMoeda] == 0){
-                if(tempo == 0){
+                if(tempoBloco == 0){
                         sf::Vertex* quad = &vertices[i * 4];
                         janela.draw(quad, 4, sf::Quads, &texturas[2]);
                 }
@@ -146,18 +150,42 @@ void Mapa::renderizar(sf::RenderWindow& janela, sf::Time tempoAtual) {
                     janela.draw(quad, 4, sf::Quads, &texturas[27]);
                 }
             }
-            else{
-                sf::Vertex* quad = &vertices[i * 4];
-                    janela.draw(quad, 4, sf::Quads, &texturas[28]);
-            }
-            contagemBlocoMoeda++;
-        }
-        else if(tileNumber ==9){
-                if(colisaoMoeda[contagemMoedas] == 0){
+                else{
                     sf::Vertex* quad = &vertices[i * 4];
-                    janela.draw(quad, 4, sf::Quads, &texturas[tileNumber]);
+                    janela.draw(quad, 4, sf::Quads, &texturas[28]);
                 }
-                contagemMoedas++;
+                contagemBlocoMoeda++;
+        }
+        else if(tileNumber == 9){
+            if(colisaoMoeda[contagemMoedas] == 0){
+                sf::Vertex* quad = &vertices[i * 4];
+                switch(tempoMoeda){
+                    case 0:
+                        janela.draw(quad, 4, sf::Quads, &texturas[9]);
+                        break;
+                    case 1:
+                        janela.draw(quad, 4, sf::Quads, &texturas[29]);
+                        break;
+                    case 2:
+                        janela.draw(quad, 4, sf::Quads, &texturas[30]);
+                        break;
+                    case 3:
+                        janela.draw(quad, 4, sf::Quads, &texturas[31]);
+                        break;
+                    case 4:
+                        janela.draw(quad, 4, sf::Quads, &texturas[32]);
+                        break;
+                    case 5:
+                        janela.draw(quad, 4, sf::Quads, &texturas[33]);
+                        break;
+                    case 6:
+                        janela.draw(quad, 4, sf::Quads, &texturas[34]);
+                        break;
+                    case 7:
+                        janela.draw(quad, 4, sf::Quads, &texturas[35]);
+                        break;
+                }
+            }
         }
     }
 }

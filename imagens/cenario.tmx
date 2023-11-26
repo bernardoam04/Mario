@@ -84,6 +84,27 @@
  <tileset firstgid="28" name="blocoMoeda3" tilewidth="32" tileheight="32" tilecount="1" columns="1">
   <image source="../imagens/blocoMoeda3.png" width="32" height="32"/>
  </tileset>
+ <tileset firstgid="29" name="moeda1" tilewidth="32" tileheight="32" tilecount="1" columns="1">
+  <image source="../imagens/moeda1.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="30" name="moeda2" tilewidth="32" tileheight="32" tilecount="1" columns="1">
+  <image source="../imagens/moeda2.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="31" name="moeda3" tilewidth="32" tileheight="32" tilecount="1" columns="1">
+  <image source="../imagens/moeda3.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="32" name="moeda4" tilewidth="32" tileheight="32" tilecount="1" columns="1">
+  <image source="../imagens/moeda4.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="33" name="moeda5" tilewidth="32" tileheight="32" tilecount="1" columns="1">
+  <image source="../imagens/moeda5.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="34" name="moeda6" tilewidth="32" tileheight="32" tilecount="1" columns="1">
+  <image source="../imagens/moeda6.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="35" name="moeda7" tilewidth="32" tileheight="32" tilecount="1" columns="1">
+  <image source="../imagens/moeda7.png" width="32" height="32"/>
+ </tileset>
  <layer id="1" name="Camada de Blocos 1" width="280" height="20">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,

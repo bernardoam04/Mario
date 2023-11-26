@@ -8,6 +8,8 @@ PoderesEspeciais::PoderesEspeciais(Colisao &colisao) : colisao(colisao)
     sf::Texture cogumeloTexture, cogumeloTexture1, cogumeloTexture2;
     sf::Texture estrelaTexture, estrelaTexture1, estrelaTexture2, estrelaTexture3;
 
+    //Carregamento das Moedas
+
     //Carregamento dos cogumelos
     cogumeloTexture.loadFromFile("../imagens/cogumelo.png");
     cogumeloTextures.push_back(cogumeloTexture);
@@ -24,6 +26,7 @@ PoderesEspeciais::PoderesEspeciais(Colisao &colisao) : colisao(colisao)
 
     estrelaTexture3.loadFromFile("../imagens/estrela4.png");
     estrelaTextures.push_back(estrelaTexture3);
+
 }
 
 int PoderesEspeciais::gerarTipoAleatorio()

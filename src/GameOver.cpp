@@ -18,7 +18,6 @@ GameOver::GameOver(std::shared_ptr<sf::RenderWindow> janela1, sf::Font &fonte)
 
     texto2.setFillColor(sf::Color::White);
 
-
     // Calcula a posição centralizada do texto
     sf::FloatRect textoRect2 = texto2.getLocalBounds();
     float x2 = (janela->getSize().x - textoRect2.width) / 2.0f;
