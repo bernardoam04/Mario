@@ -1,6 +1,6 @@
 #include "../include/GerenciadorGeral.hpp"
 
-GerenciadorGeral::GerenciadorGeral(std::shared_ptr <sf::RenderWindow> janela1, sf::Font &fonte) : pontuacao(nullptr),  camera(nullptr), colisao(nullptr), mario(nullptr), _sounds(sounds)
+GerenciadorGeral::GerenciadorGeral(std::shared_ptr <sf::RenderWindow> janela1, sf::Font &fonte, std::shared_ptr<SoundManager> sounds) : pontuacao(nullptr),  camera(nullptr), colisao(nullptr), _sounds(sounds), mario(nullptr)
 {
     this->janela = janela1;
     this->mapa.carregarMapa("../imagens/cenario.tmx");
