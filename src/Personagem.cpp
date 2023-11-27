@@ -1,35 +1,27 @@
 #include "../include/Personagem.hpp"
 
-void Personagem::inicializarPersonagem(float x, float y)
+Personagem::Personagem(Colisao &colisao) : colisao(colisao)
 {
-    this->posicaoPersonagem = sf::Vector2f(x, y);
-}
-
-void Personagem::desenharPersonagem(sf::RenderWindow& janela)
-{
+    personagemSprite.setTexture(personagemTexture);
     personagemSprite.setPosition(posicaoPersonagem);
-    janela.draw(personagemSprite);
 }
 
-void Personagem::modificarPosicao(sf::Time deltaTime) {
-    // Implementação padrão para personagens não controlados pelo jogador
-
-    // Lógica de movimentação automática (Sera melhorada conforme a colisao ainda)
-    float velocidadeHorizontal = 50.0f;
-    float aceleracaoGravidade = 9.8f;
-
-    // Movimentação automática para a direita
-    posicaoPersonagem.x += velocidadeHorizontal * deltaTime.asSeconds();
-
-    // Simulação simples de gravidade
-    velocidadeVertical += aceleracaoGravidade;
-    posicaoPersonagem.y += velocidadeVertical * deltaTime.asSeconds();
-
-
+void Personagem::modificarPosicao(sf::Time deltaTime, int larguraMapa) {
+    (void)deltaTime;  // Evita o aviso de parâmetro não utilizado
+    (void)larguraMapa;
 }
 
 sf::Vector2f Personagem::getPosicao() const {
     return posicaoPersonagem;
+}
+
+sf::Texture Personagem::getTexture() const {
+    return personagemTexture;
+}
+
+float Personagem::getAceleracaoGravidade() const {
+    return aceleracaoGravidade;
+
 }
 
 float Personagem::getVelocidadeHorizontal() const {
@@ -39,12 +31,27 @@ float Personagem::getVelocidadeHorizontal() const {
 float Personagem::getVelocidadeVertical() const {
     return velocidadeVertical;
 }
+float Personagem::getAlturaChao() const {
+    return alturaChao;
+}
 
 bool Personagem::getEstaNoAr() const {
     return estaNoAr;
 }
 
-void Personagem::setPosicao(const sf::Vector2f& posicao) {
+float Personagem::getTileSize() const{
+    return tileSize;
+}
+
+bool Personagem::getMovEsquerda() const {
+    return movEsquerda;
+}
+
+bool Personagem::getMovDireita() const {
+    return movDireita;
+}
+
+void Personagem::setPosicaoPersonagem(const sf::Vector2f& posicao) {
     posicaoPersonagem = posicao;
 }
 
@@ -58,4 +65,12 @@ void Personagem::setVelocidadeVertical(float velocidade) {
 
 void Personagem::setEstaNoAr(bool estado) {
     estaNoAr = estado;
+}
+
+void Personagem::setMovEsquerda(bool movimento) {
+    movEsquerda = movimento;
+}
+
+void Personagem::setMovDireita(bool movimento) {
+    movDireita = movimento;
 }

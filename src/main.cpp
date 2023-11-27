@@ -1,6 +1,7 @@
 #include "../include/GerenciadorGeral.hpp"
 #include "../include/GameOver.hpp"
 #include "../include/Menu.hpp"
+#include "Jogador.hpp"
 
 const float alturaTela = 640;
 const float larguraTela = 640;
@@ -92,6 +93,7 @@ int main() {
 
             // Atualiza o jogo principal
             bool jogoAtivo = jogo->atualizar(tempoAtual, deltaTime, ev);
+
 
             if(jogoAtivo == false){
                 estadoAtual = EstadoJogo::GAMEOVER;
