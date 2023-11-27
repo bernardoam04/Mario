@@ -1,13 +1,13 @@
 #include "../include/GerenciadorGeral.hpp"
 
-
-GerenciadorGeral::GerenciadorGeral(std::shared_ptr <sf::RenderWindow> janela1, sf::Font &fonte, std::shared_ptr<SoundManager> sounds) : pontuacao(nullptr), camera(nullptr) , colisao(nullptr), _sounds(sounds)
+GerenciadorGeral::GerenciadorGeral(std::shared_ptr <sf::RenderWindow> janela1, sf::Font &fonte) : pontuacao(nullptr),  camera(nullptr), colisao(nullptr), mario(nullptr), _sounds(sounds)
 {
     this->janela = janela1;
     this->mapa.carregarMapa("../imagens/cenario.tmx");
     this->_sounds->reiniciarMusica();
     this->mapa.inicializarColisoes();
     colisao = std::make_shared<Colisao>(mapa.getDadosMapa(), mapa.getTileSize());
+    mario = std::make_shared<Jogador>(*colisao);
     InicializarPoderesEspeciais();
     camera = std::make_shared<Camera>(larguraTela, alturaTela);
     pontuacao = std::make_shared<Pontuacao>(fonte, camera);
@@ -44,6 +44,8 @@ bool GerenciadorGeral::atualizar(sf::Time tempoAtual, sf::Time deltaTime, sf::Ev
     }
     bool jogoAtivo = this->atualizarEventos(ev);
 
+    mario->modificarPosicao(deltaTime, mapa.getLarguraMapa());
+
     if (jogoAtivo == false)
     {
         return false;
@@ -71,7 +73,6 @@ bool GerenciadorGeral::atualizarEventos(sf::Event ev)
     return true;
 }
 
-
 void GerenciadorGeral::renderizar(sf::Time tempoAtual)
 {
     //Ajusta a visão da câmera
@@ -81,6 +82,8 @@ void GerenciadorGeral::renderizar(sf::Time tempoAtual)
     this->mapa.renderizar(*this->janela, tempoAtual);
 
     janela->draw(pontuacao->exibirPontuacao());
+
+    desenharJogador(mario->getPosicao()); 
 
     //Desenha os Poderes Especiais
     for (unsigned int i = 0; i < vetorPoderesEspeciais.size(); i++) {
@@ -106,4 +109,10 @@ const sf::View& GerenciadorGeral::getViewCamera() const {
 
 void GerenciadorGeral::desenharMapa(sf::Time tempoAtual){
     this->mapa.renderizar(*this->janela, tempoAtual);
+}
+
+void GerenciadorGeral::desenharJogador(sf::Vector2f posicao) {//TRANSFERIR ESSA FUNCAO PRA CLASSE PERSONAGEM DEPOIS
+    sf::Sprite sprite(mario->getTexture());  // Tamanho do sprite
+    sprite.setPosition(posicao);
+    janela->draw(sprite);
 }

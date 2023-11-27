@@ -7,6 +7,7 @@
 #include "../include/PoderesEspeciais.hpp"
 #include "../include/Pontuacao.hpp"
 #include "../include/SoundManager.hpp"
+#include "Jogador.hpp"
 
 class GerenciadorGeral{
 private:
@@ -23,6 +24,7 @@ private:
     std::shared_ptr <Colisao> colisao;
     std::vector<std::shared_ptr <PoderesEspeciais>> vetorPoderesEspeciais;
     std::shared_ptr<SoundManager> _sounds;
+    std::shared_ptr <Jogador> mario;
 
     //Métodos privados
     void inicializarVariaveis();
@@ -41,6 +43,7 @@ public:
     bool atualizarEventos(sf::Event ev);
     void renderizar(sf::Time tempoAtual);
     void desenharMapa(sf::Time tempoAtual);
+    void desenharJogador(sf::Vector2f posicao);
 
     //Getters
     float getAlturaTela() const;
