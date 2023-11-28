@@ -120,7 +120,7 @@ void Jogador::modificarPosicao(sf::Time deltaTime, int larguraMapa) {
     // Verificação para pulo
     if (estaPulando() && !estaNoArAtual  && verificarColisaoDistanciaX(posicaoAtual.x, posicaoAtual.y+alturaJogador, larguraJogador) 
         ) {
-        setVelocidadeVertical(-300.0f);
+        setVelocidadeVertical(-350.0f);
         setEstaNoAr(true);
     }
     // Aplicação da gravidade se estiver no ar
