@@ -13,6 +13,7 @@ GerenciadorGeral::GerenciadorGeral(std::shared_ptr <sf::RenderWindow> janela1, s
     pontuacao = std::make_shared<Pontuacao>(fonte, camera);
 }
 
+
 void GerenciadorGeral::InicializarPoderesEspeciais(){
     int tileSize = mapa.getTileSize();
     auto dadosMapa = mapa.getDadosMapa();

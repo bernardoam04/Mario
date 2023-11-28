@@ -9,11 +9,15 @@ class Jogador : public Personagem {
         int vida;
         int moedas;
         bool ativarPoder;
+        unsigned int alturaJogador;
+        unsigned int larguraJogador;
 
     public:
         Jogador(Colisao &colisao);
         Jogador& operator=(const Jogador& other);
         virtual ~Jogador();
         void modificarPosicao(sf::Time deltaTime, int larguraMapa) override;
+        bool verificarColisaoDistanciaX(float x, float y, float largura);
+        bool verificarColisaoDistanciaY(float x, float y, float altura);
 };
 #endif
