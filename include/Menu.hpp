@@ -11,10 +11,24 @@
 
 class Menu{
 private:
+    enum OpcaoSelecionada {
+        NenhumaSelecao,
+        IniciarJogo,
+        Opcoes,
+        Sair
+    };
+
     std::shared_ptr <sf::RenderWindow> janela;
-    sf::Text texto;
+    sf::Text iniciarJogoTexto;
+    sf::Text opcoesTexto;
+    sf::Text sairTexto;
     sf::Texture menuTexture; 
     sf::Sprite menuSprite; 
+    OpcaoSelecionada opcaoSelecionada;
+
+    void ajustarPosicaoMenu();
+    void ajustarPosicaoTextos();
+
 public:
     Menu(std::shared_ptr <sf::RenderWindow> janela1, sf::Font &fonte);
     void desenharTela();

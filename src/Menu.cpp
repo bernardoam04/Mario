@@ -2,93 +2,107 @@
 #include <iostream>
 
 Menu::Menu(std::shared_ptr<sf::RenderWindow> janela1, sf::Font &fonte)
-: texto("Iniciar Jogo", fonte, 30)
-{
-    this->janela = janela1;
-
+    : janela(janela1),
+      iniciarJogoTexto("Iniciar Jogo", fonte, 30),
+      opcoesTexto("options", fonte, 22),
+      sairTexto("Sair", fonte, 22),
+      opcaoSelecionada(NenhumaSelecao) {
     menuTexture.loadFromFile("../imagens/placaMenu.png");
 
     menuSprite.setTexture(menuTexture);
-    menuSprite.setScale(2.5,2.5);
-    menuSprite.setPosition( (janela->getSize().x - (menuTexture.getSize().x * menuSprite.getScale().x)) /2.0f, 
-    (janela->getSize().y - (menuTexture.getSize().y * menuSprite.getScale().y))/5.0f );
+    ajustarPosicaoMenu();
 
-    texto.setFillColor(sf::Color::White);
+    iniciarJogoTexto.setFillColor(sf::Color::White);
+    opcoesTexto.setFillColor(sf::Color::White);
+    sairTexto.setFillColor(sf::Color::White);
 
-    // Calcula a posição centralizada do texto
-    sf::FloatRect textoRect = texto.getLocalBounds();
-    float x = (janela->getSize().x - textoRect.width) / 2.0f;
-    float y = (janela->getSize().y - textoRect.height) / 1.7f;
-
-    // Define a posição do texto
-    texto.setPosition(x, y);
+    ajustarPosicaoTextos();
 }
 
-void Menu::desenharTela()
-{
-    janela->draw(texto);
+void Menu::ajustarPosicaoMenu() {
+    menuSprite.setScale(2.5, 2.5);
+    menuSprite.setPosition((janela->getSize().x - (menuTexture.getSize().x * menuSprite.getScale().x)) / 2.0f,
+                           (janela->getSize().y - (menuTexture.getSize().y * menuSprite.getScale().y)) / 5.0f);
+}
+
+void Menu::ajustarPosicaoTextos() {
+    sf::FloatRect iniciarJogoRect = iniciarJogoTexto.getLocalBounds();
+    iniciarJogoTexto.setOrigin(iniciarJogoRect.width / 2.0f, iniciarJogoRect.height / 2.0f);
+    iniciarJogoTexto.setPosition(janela->getSize().x / 2.0f,
+                                 (janela->getSize().y - iniciarJogoRect.height) / 1.7f);
+
+    sf::FloatRect opcoesRect = opcoesTexto.getLocalBounds();
+    opcoesTexto.setOrigin(opcoesRect.width / 2.0f, opcoesRect.height / 2.0f);
+    opcoesTexto.setPosition(janela->getSize().x / 2.0f,
+                            (janela->getSize().y - opcoesRect.height) / 1.7f + 60.0f);
+
+    sf::FloatRect sairRect = sairTexto.getLocalBounds();
+    sairTexto.setOrigin(sairRect.width / 2.0f, sairRect.height / 2.0f);
+    sairTexto.setPosition(janela->getSize().x / 2.0f,
+                          (janela->getSize().y - sairRect.height) / 1.7f + 120.0f);
+}
+
+void Menu::desenharTela() {
     janela->draw(menuSprite);
+
+    // Ajuste de escala para a opção Iniciar Jogo
+    if (opcaoSelecionada == IniciarJogo) {
+        iniciarJogoTexto.setScale(1.3, 1.3);
+    } else {
+        iniciarJogoTexto.setScale(1.0, 1.0);
+    }
+    janela->draw(iniciarJogoTexto);
+
+    // Ajuste de escala para a opção Opções
+    if (opcaoSelecionada == Opcoes) {
+        opcoesTexto.setScale(1.3, 1.3);
+    } else {
+        opcoesTexto.setScale(1.0, 1.0);
+    }
+    janela->draw(opcoesTexto);
+
+    // Ajuste de escala para a opção Sair
+    if (opcaoSelecionada == Sair) {
+        sairTexto.setScale(1.3, 1.3);
+    } else {
+        sairTexto.setScale(1.0, 1.0);
+    }
+    janela->draw(sairTexto);
 }
 
-bool Menu::atualizar(sf::Event ev)
-{
-    while (this->janela->pollEvent(ev)) {
+bool Menu::atualizar(sf::Event ev) {
+    while (janela->pollEvent(ev)) {
+        if (ev.type == sf::Event::Closed) {
+            janela->close();
+            return false;  // Retorna false para indicar que o jogo deve encerrar
+        } else if (ev.type == sf::Event::MouseMoved) {
+            sf::Vector2i mousePosition = sf::Mouse::getPosition(*janela);
 
-            if (ev.type == sf::Event::Closed){
-                    janela->close();
-                    break;
+            // Verifica se o mouse está sobre uma opção
+            if (iniciarJogoTexto.getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePosition))) {
+                opcaoSelecionada = IniciarJogo;
+            } else if (opcoesTexto.getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePosition))) {
+                opcaoSelecionada = Opcoes;
+            } else if (sairTexto.getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePosition))) {
+                opcaoSelecionada = Sair;
+            } else {
+                opcaoSelecionada = NenhumaSelecao;
             }
+        } else if (ev.type == sf::Event::MouseButtonPressed) {
+            sf::Vector2i mousePosition = sf::Mouse::getPosition(*janela);
 
-            else if (ev.type == sf::Event::MouseMoved) {
-                // Obtém a posição atual do mouse
-                sf::Vector2i mousePosition = sf::Mouse::getPosition(*janela);
-
-                // Define a área desejada onde o evento deve ser acionado
-                sf::FloatRect areaDesejada = texto.getGlobalBounds();
-
-                // Verifica se a posição do mouse está dentro da área desejada
-                if (areaDesejada.contains(static_cast<float>(mousePosition.x), static_cast<float>(mousePosition.y))) {
-                    texto.setScale(1.3, 1.3);
-
-                    // Obtém a nova posição centralizada do texto3 após a mudança de escala
-                    sf::FloatRect textoRect = texto.getLocalBounds();
-                    float x = (janela->getSize().x - (textoRect.width * 1.3f)) / 2.0f;
-                    float y = (janela->getSize().y - (textoRect.height * 1.3f)) / 1.7f;
-
-                    // Define a nova posição do texto3
-                    texto.setPosition(x, y);
-                }
-                else {
-                    // Mouse está fora da área desejada
-                    texto.setScale(1.0, 1.0); // Define a escala de volta para o valor original
-
-                    // Calcula a posição centralizada do texto
-                    sf::FloatRect textoRect = texto.getLocalBounds();
-                    float x = (janela->getSize().x - textoRect.width) / 2.0f;
-                    float y = (janela->getSize().y - textoRect.height) / 1.7f;
-                    
-                    // Define a nova posição do texto3
-                    texto.setPosition(x, y);
-                }
+            if (iniciarJogoTexto.getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePosition))) {
+                return false;
             }
+        }
+    }
 
-            else if (ev.type == sf::Event::MouseButtonPressed) {
-                // Verifica se o clique ocorreu dentro da área desejada
-                sf::Vector2i mousePosition = sf::Mouse::getPosition(*janela);
-
-                // Define a área desejada onde o evento deve ser acionado
-                sf::FloatRect areaDesejada = texto.getGlobalBounds();
-
-
-                if (areaDesejada.contains(static_cast<float>(mousePosition.x), static_cast<float>(mousePosition.y))) {
-                    return false;
-                }
-            }
-
-    }   
     return true;
 }
 
-void Menu::atualizarPosicaoTextos()
-{
+
+
+void Menu::atualizarPosicaoTextos() {
+    ajustarPosicaoTextos();
+    ajustarPosicaoMenu();
 }

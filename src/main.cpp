@@ -65,7 +65,7 @@ int main() {
             // Calcula o tempo que passou desde o início do jogo
             sf::Time tempoAtual = timer.getElapsedTime();
 
-           janela->clear(sf::Color::Blue);
+           janela->clear(sf::Color(132, 112, 255));
            jogo->desenharMapa(tempoAtual);
 
             bool menuAtivo = menu.atualizar(ev);  
