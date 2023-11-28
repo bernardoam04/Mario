@@ -99,14 +99,14 @@ void Jogador::modificarPosicao(sf::Time deltaTime, int larguraMapa) {
     setVelocidadeHorizontal(180.0f);
 
     // Movimentação horizontal
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && !verificarColisaoDistanciaY(posicaoAtual.x, posicaoAtual.y, alturaJogador-3) 
+    if (estaMovendoEsquerda() && !verificarColisaoDistanciaY(posicaoAtual.x, posicaoAtual.y, alturaJogador-3) 
         && (posicaoAtual.x > 0))//Verifica se o jogador esta nos limites do mapa
     {
 
         posicaoAtual.x -= velocidadeHorizontalAtual * deltaTime.asSeconds();
         setMovEsquerda(true);//ainda sera corrigido
 
-    } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && !verificarColisaoDistanciaY(posicaoAtual.x +larguraJogador, posicaoAtual.y, alturaJogador-3) 
+    } else if (estaMovendoDireita() && !verificarColisaoDistanciaY(posicaoAtual.x +larguraJogador, posicaoAtual.y, alturaJogador-3) 
         && (posicaoAtual.x < larguraMapa)) {//Verifica se o jogador esta nos limites do mapa
 
         posicaoAtual.x += velocidadeHorizontalAtual * deltaTime.asSeconds();
@@ -114,31 +114,54 @@ void Jogador::modificarPosicao(sf::Time deltaTime, int larguraMapa) {
     }
 
     // Verificação para pulo
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && !estaNoArAtual  && verificarColisaoDistanciaX(posicaoAtual.x, posicaoAtual.y+alturaJogador, larguraJogador) 
+    if (estaPulando() && !estaNoArAtual  && verificarColisaoDistanciaX(posicaoAtual.x, posicaoAtual.y+alturaJogador, larguraJogador) 
         ) {
         setVelocidadeVertical(-300.0f);
         setEstaNoAr(true);
     }
 
+    std::cout<<estaNoArAtual<<std::endl;
     // Aplicação da gravidade se estiver no ar
     if (estaNoArAtual) {
         setVelocidadeVertical(velocidadeVerticalAtual + getAceleracaoGravidade());
         posicaoAtual.y += velocidadeVerticalAtual * deltaTime.asSeconds();
 
         // Verifica se a posição é maior ou igual à altura do chão
-        if (verificarColisaoDistanciaX(posicaoAtual.x, posicaoAtual.y+alturaJogador, larguraJogador)) {
+        if (verificarColisaoDistanciaX(posicaoAtual.x +3, posicaoAtual.y+alturaJogador, larguraJogador-6)) {
             setVelocidadeVertical(0);
             setEstaNoAr(false);
         }
-        else if (verificarColisaoDistanciaX(posicaoAtual.x, posicaoAtual.y, larguraJogador)) {
-            setVelocidadeVertical(0.0f);
+        else if (verificarColisaoDistanciaX(posicaoAtual.x +3, posicaoAtual.y, larguraJogador - 6)) {
+            setVelocidadeVertical(50); 
+            colisaoCabeca = true;
         }
     }
     else{
-        if (!verificarColisaoDistanciaX(posicaoAtual.x, posicaoAtual.y+alturaJogador, larguraJogador)) {
+        if (!verificarColisaoDistanciaX(posicaoAtual.x+3, posicaoAtual.y+alturaJogador, larguraJogador - 6)) {
             setEstaNoAr(true);
+        }
+    }
+    
+    if (colisaoCabeca) {
+        setVelocidadeVertical(getVelocidadeVertical() + getAceleracaoGravidade());
+        posicaoAtual.y += velocidadeVerticalAtual * deltaTime.asSeconds();
+        
+        if (!verificarColisaoDistanciaX(posicaoAtual.x + 3, posicaoAtual.y, larguraJogador - 6)) {
+            colisaoCabeca = false;
         }
     }
     // Configurando a nova posição
     setPosicaoPersonagem(posicaoAtual);
+}
+
+void Jogador::setMovendoDireita(bool movendo) {
+    movendoDireita = movendo;
+}
+
+void Jogador::setMovendoEsquerda(bool movendo) {
+    movendoEsquerda = movendo;
+}
+
+void Jogador::setPulando(bool pulo) {
+    pulando = pulo;
 }

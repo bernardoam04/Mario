@@ -1,6 +1,7 @@
 #include "../include/GerenciadorGeral.hpp"
 
-GerenciadorGeral::GerenciadorGeral(std::shared_ptr <sf::RenderWindow> janela1, sf::Font &fonte, std::shared_ptr<SoundManager> sounds) : pontuacao(nullptr),  camera(nullptr), colisao(nullptr), _sounds(sounds), mario(nullptr)
+GerenciadorGeral::GerenciadorGeral(std::shared_ptr <sf::RenderWindow> janela1, sf::Font &fonte, std::shared_ptr<SoundManager> sounds) : pontuacao(nullptr),  
+camera(nullptr), colisao(nullptr), _sounds(sounds), mario(nullptr), puloHabilitado(true)
 {
     this->janela = janela1;
     this->mapa.carregarMapa("../imagens/cenario.tmx");
@@ -66,10 +67,32 @@ bool GerenciadorGeral::atualizarEventos(sf::Event ev)
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) { 
         camera->movimentarCameraDireita(mapa.getLarguraMapa(), larguraTela);
+        mario->setMovendoDireita(true);
+        mario->setMovendoEsquerda(false);
     }
 
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
         camera->movimentarCameraEsquerda(larguraTela);
+        mario->setMovendoDireita(false);
+        mario->setMovendoEsquerda(true);
+    }
+    else{
+        mario->setMovendoDireita(false);
+        mario->setMovendoEsquerda(false);
+    }
+
+    // Verifica o pulo
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && puloHabilitado) {
+        mario->setPulando(true);
+        puloHabilitado = false; 
+    }
+    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && !puloHabilitado) {
+        mario->setPulando(false);
+    }
+    else if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+        // Habilita o pulo quando a tecla é liberada
+        puloHabilitado = true;
+        mario->setPulando(false);
     }
     return true;
 }
