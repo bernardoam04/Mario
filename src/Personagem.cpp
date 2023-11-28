@@ -24,7 +24,6 @@ float Personagem::getAceleracaoGravidade() const {
 
 }
 
-
 float Personagem::getVelocidadeHorizontal() const {
     return velocidadeHorizontal;
 }

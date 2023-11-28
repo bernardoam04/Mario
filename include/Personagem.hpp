@@ -22,7 +22,7 @@ class Personagem {
 
         //Constantes
         const float tileSize=32;
-        const float aceleracaoGravidade = 3.8f;
+        const float aceleracaoGravidade = 10.0f;
         const float alturaChao = 640.0 - 156.0;
 
     protected:
