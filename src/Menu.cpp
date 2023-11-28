@@ -70,6 +70,10 @@ void Menu::desenharTela() {
     janela->draw(sairTexto);
 }
 
+bool Menu::sair() {
+    janela->close();
+    return false;  // Retorna false para indicar que o jogo deve encerrar
+}
 bool Menu::atualizar(sf::Event ev) {
     while (janela->pollEvent(ev)) {
         if (ev.type == sf::Event::Closed) {
@@ -79,11 +83,11 @@ bool Menu::atualizar(sf::Event ev) {
             sf::Vector2i mousePosition = sf::Mouse::getPosition(*janela);
 
             // Verifica se o mouse está sobre uma opção
-            if (iniciarJogoTexto.getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePosition))) {
+            if (iniciarJogoTexto.getGlobalBounds().contains(static_cast<float>(mousePosition.x), static_cast<float>(mousePosition.y))) {
                 opcaoSelecionada = IniciarJogo;
-            } else if (opcoesTexto.getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePosition))) {
+            } else if (opcoesTexto.getGlobalBounds().contains(static_cast<float>(mousePosition.x), static_cast<float>(mousePosition.y))) {
                 opcaoSelecionada = Opcoes;
-            } else if (sairTexto.getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePosition))) {
+            } else if (sairTexto.getGlobalBounds().contains(static_cast<float>(mousePosition.x), static_cast<float>(mousePosition.y))) {
                 opcaoSelecionada = Sair;
             } else {
                 opcaoSelecionada = NenhumaSelecao;
@@ -91,8 +95,12 @@ bool Menu::atualizar(sf::Event ev) {
         } else if (ev.type == sf::Event::MouseButtonPressed) {
             sf::Vector2i mousePosition = sf::Mouse::getPosition(*janela);
 
-            if (iniciarJogoTexto.getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePosition))) {
+            if (iniciarJogoTexto.getGlobalBounds().contains(static_cast<float>(mousePosition.x), static_cast<float>(mousePosition.y))) {
                 return false;
+            } else if (opcoesTexto.getGlobalBounds().contains(static_cast<float>(mousePosition.x), static_cast<float>(mousePosition.y))) {
+                // Restante do código para a opção "Opções" omitido para brevidade
+            } else if (sairTexto.getGlobalBounds().contains(static_cast<float>(mousePosition.x), static_cast<float>(mousePosition.y))) {
+                return sair();
             }
         }
     }
@@ -105,4 +113,7 @@ bool Menu::atualizar(sf::Event ev) {
 void Menu::atualizarPosicaoTextos() {
     ajustarPosicaoTextos();
     ajustarPosicaoMenu();
-}
+};
+
+//     Menu::~Menu() {
+//  };

@@ -34,6 +34,8 @@ public:
     void desenharTela();
     bool atualizar(sf::Event ev);
     void atualizarPosicaoTextos();
+    // virtual ~Menu();
+    bool sair();
 };
 
 #endif
