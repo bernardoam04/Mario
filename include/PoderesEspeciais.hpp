@@ -54,6 +54,7 @@ public:
     void ModificacaoPosicaoPoderes(sf::Time deltaTime);
     void ModificacaoPosicaoMoeda(sf::Time deltaTime);
     void atualizar(sf::Time deltaTime, sf::Time tempoAtual);
+    void voltarPosicaoInicial();
 
     //Getters
     sf::Vector2f getPosicaoInicial();

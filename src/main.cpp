@@ -33,6 +33,7 @@ int main() {
 
     EstadoJogo estadoAtual = EstadoJogo::MENU; 
 
+
     //Carregamento da fonte do MENU(provavelmente vai ser trocada por imagens)
     sf::Font fonte;
     if (!fonte.loadFromFile("../imagens/font.ttf")) {

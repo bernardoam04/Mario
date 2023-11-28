@@ -32,6 +32,7 @@ private:
 
     //Verificações
     bool puloHabilitado;
+    std::vector <int> contagemDesenhoPoderes;
 
 public:
     //Construtor e Destrutor

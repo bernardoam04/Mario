@@ -31,6 +31,10 @@ public:
     bool estaMovendoEsquerda() const { return movendoEsquerda; }
     bool estaPulando() const { return pulando; }
 
+    //Getters
+    int getLarguraJogador();
+
+
     // Métodos para definir o estado dos movimentos
     void setMovendoDireita(bool movendo);
     void setMovendoEsquerda(bool movendo);

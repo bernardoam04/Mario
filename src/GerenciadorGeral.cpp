@@ -30,6 +30,7 @@ void GerenciadorGeral::InicializarPoderesEspeciais(){
                 std::shared_ptr<PoderesEspeciais> poderesEspeciais = std::make_shared<PoderesEspeciais>(*colisao);
                 poderesEspeciais->inicializar(x, y);
                 vetorPoderesEspeciais.push_back(poderesEspeciais);
+                contagemDesenhoPoderes.push_back(0);
             }
         }
     }
@@ -41,6 +42,7 @@ GerenciadorGeral::~GerenciadorGeral()
 
 bool GerenciadorGeral::atualizar(sf::Time tempoAtual, sf::Time deltaTime, sf::Event ev)
 {
+
     for (unsigned int i = 0; i < vetorPoderesEspeciais.size(); i++) {
         vetorPoderesEspeciais[i]->atualizar(tempoAtual, deltaTime);
     }
@@ -99,6 +101,19 @@ bool GerenciadorGeral::atualizarEventos(sf::Event ev)
 
 void GerenciadorGeral::renderizar(sf::Time tempoAtual)
 {
+    int posicaoX = static_cast<int>(mario->getPosicao().x + mario->getLarguraJogador() / 2);
+    int posicaoY = static_cast<int>(mario->getPosicao().y);
+
+    /* Teste de posição que dá certo
+    int x = 528;
+    int y = 464;
+    */
+
+    if(colisao->verificarColisao(posicaoX, posicaoY) ==2){
+        mapa.aplicarColisaoBlocoMoeda(posicaoX, posicaoY);
+        std::cout << posicaoX << " "<< posicaoY<<std::endl;
+    }
+
     //Ajusta a visão da câmera
     janela->setView(this->camera->getView());
     
@@ -114,8 +129,14 @@ void GerenciadorGeral::renderizar(sf::Time tempoAtual)
         int tileSize = mapa.getTileSize();
         int x= vetorPoderesEspeciais[i]->getPosicaoInicial().x;
         int y= vetorPoderesEspeciais[i]->getPosicaoInicial().y + tileSize;
+
         if(mapa.getColisaoBlocoMoeda(x,y) == 1){
+           if(contagemDesenhoPoderes[i] ==0){
+                vetorPoderesEspeciais[i]->inicializar(vetorPoderesEspeciais[i]->getPosicaoInicial().x, vetorPoderesEspeciais[i]->getPosicaoInicial().y);
+            }
             vetorPoderesEspeciais[i]->desenhar(*this->janela);
+            std::cout<< vetorPoderesEspeciais[i]->getPosicaoInicial().y<<std::endl;
+            contagemDesenhoPoderes[i]++;
         }
     }    
 

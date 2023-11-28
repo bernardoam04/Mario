@@ -68,17 +68,15 @@ int PoderesEspeciais::gerarTipoAleatorio()
         return MOEDA;
     }
     else {
-        // 15% de chance de gerar um cogumelo
-        if (randomValue < 85) {
+        // 50% de chance de gerar uma estrela ou cogumelo entre os poderes especiais
+        if (randomValue < 50) {
             return COGUMELO;
         }
-        // 15% de chance de gerar uma estrela
         else {
             return ESTRELA;
         }
     }
 }
-
 
 void PoderesEspeciais::inicializar(float x, float y)
 {
@@ -103,8 +101,13 @@ void PoderesEspeciais::inicializar(float x, float y)
     poderSprite.setPosition(posicao);
 }
 
+void PoderesEspeciais::voltarPosicaoInicial(){
+    posicao = posicaoInicial;
+}
+
 void PoderesEspeciais::desenhar(sf::RenderWindow& janela) 
 {
+
     if(tipo != MOEDA){
         poderSprite.setPosition(posicao);
         janela.draw(poderSprite);
@@ -121,7 +124,7 @@ void PoderesEspeciais::ModificacaoPosicaoPoderes(sf::Time deltaTime)
 {
     //Verificação de colisão com o chão (gravidade)
     if ( (colisao.verificarColisao(posicao.x, posicao.y+tileSize+1) != 0 && colisao.verificarColisao(posicao.x, posicao.y+tileSize+1) !=9) ||
-        (colisao.verificarColisao(posicao.x + tileSize, posicao.y+tileSize+1) != 0 && colisao.verificarColisao(posicao.x + tileSize, posicao.y+tileSize+1))) {
+        (colisao.verificarColisao(posicao.x + tileSize, posicao.y+tileSize+1) != 0 && colisao.verificarColisao(posicao.x + tileSize, posicao.y+tileSize+1) !=9)) {
 
         // Movimento horizontal
         velocidadeVertical=0;
@@ -176,7 +179,6 @@ void PoderesEspeciais::ModificacaoPosicaoMoeda(sf::Time deltaTime)
         }
     }
 }
-
 
 void PoderesEspeciais::atualizar(sf::Time tempoAtual, sf::Time deltaTime)
 {

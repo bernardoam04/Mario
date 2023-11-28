@@ -118,8 +118,6 @@ void Jogador::modificarPosicao(sf::Time deltaTime, int larguraMapa) {
         setVelocidadeVertical(-300.0f);
         setEstaNoAr(true);
     }
-
-    std::cout<<estaNoArAtual<<std::endl;
     // Aplicação da gravidade se estiver no ar
     if (estaNoArAtual) {
         if(getVelocidadeVertical()< 200 || getVelocidadeVertical()<0){
@@ -150,13 +148,34 @@ void Jogador::modificarPosicao(sf::Time deltaTime, int larguraMapa) {
         }
         if (!verificarColisaoDistanciaX(posicaoAtual.x + 3, posicaoAtual.y, larguraJogador - 6)) {
             colisaoCabeca = false;
+            // Movimentação horizontal
+        if (estaMovendoEsquerda() && !verificarColisaoDistanciaY(posicaoAtual.x, posicaoAtual.y, alturaJogador-3) 
+            && (posicaoAtual.x > 0))//Verifica se o jogador esta nos limites do mapa
+        {
+
+            posicaoAtual.x -= velocidadeHorizontalAtual * deltaTime.asSeconds();
+            setMovEsquerda(true);//ainda sera corrigido
+
+        } else if (estaMovendoDireita() && !verificarColisaoDistanciaY(posicaoAtual.x +larguraJogador, posicaoAtual.y, alturaJogador-3) 
+            && (posicaoAtual.x < larguraMapa)) {//Verifica se o jogador esta nos limites do mapa
+
+            posicaoAtual.x += velocidadeHorizontalAtual * deltaTime.asSeconds();
+            setMovDireita(true);
         }
+        }
+
     }
     // Configurando a nova posição
     setPosicaoPersonagem(posicaoAtual);
 }
 
-void Jogador::setMovendoDireita(bool movendo) {
+int Jogador::getLarguraJogador()
+{
+    return larguraJogador;
+}
+
+void Jogador::setMovendoDireita(bool movendo)
+{
     movendoDireita = movendo;
 }
 
