@@ -25,6 +25,9 @@ private:
     std::vector<int> colisaoBlocoMoeda;
     std::vector<int> colisaoMoeda;
 
+    //Contagem 
+    int contagemMoeda = 0;
+
 public:
    //Construtor 
     Mapa();
@@ -42,6 +45,9 @@ public:
     int getLarguraTileset();
     int getAlturaTileset();
     int getLarguraMapa();
-};
+    int getContagemMoeda();
 
+    //Setters
+    void atualizarContagemMoeda(int contagemMoedasMisteriosas);
+};  
 #endif

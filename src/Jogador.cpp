@@ -186,3 +186,16 @@ void Jogador::setMovendoEsquerda(bool movendo) {
 void Jogador::setPulando(bool pulo) {
     pulando = pulo;
 }
+
+void Jogador::atualizarColisao(Mapa &mapa)
+{
+    int posicaoX = static_cast<int>(getPosicao().x + larguraJogador/2);
+    int posicaoY = static_cast<int>(getPosicao().y);
+
+    mapa.aplicarColisaoBlocoMoeda(posicaoX, posicaoY);
+
+    int posicaoX2 = static_cast<int>(getPosicao().x + larguraJogador/2);
+    int posicaoY2 = static_cast<int>(getPosicao().y + alturaJogador* 0.75);
+
+    mapa.aplicarColisaoMoeda(posicaoX2, posicaoY2);
+}

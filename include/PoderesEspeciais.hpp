@@ -58,6 +58,7 @@ public:
 
     //Getters
     sf::Vector2f getPosicaoInicial();
+    int getTipo();
 };
 
 #endif 

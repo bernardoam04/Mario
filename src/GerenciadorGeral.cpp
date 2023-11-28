@@ -42,7 +42,6 @@ GerenciadorGeral::~GerenciadorGeral()
 
 bool GerenciadorGeral::atualizar(sf::Time tempoAtual, sf::Time deltaTime, sf::Event ev)
 {
-
     for (unsigned int i = 0; i < vetorPoderesEspeciais.size(); i++) {
         vetorPoderesEspeciais[i]->atualizar(tempoAtual, deltaTime);
     }
@@ -54,7 +53,7 @@ bool GerenciadorGeral::atualizar(sf::Time tempoAtual, sf::Time deltaTime, sf::Ev
     {
         return false;
     }
-    pontuacao->atualizarPontuacao(tempoAtual,0.0001);
+    pontuacao->atualizarPontuacao(mapa.getContagemMoeda());
     return true;
 }
 
@@ -101,18 +100,8 @@ bool GerenciadorGeral::atualizarEventos(sf::Event ev)
 
 void GerenciadorGeral::renderizar(sf::Time tempoAtual)
 {
-    int posicaoX = static_cast<int>(mario->getPosicao().x + mario->getLarguraJogador() / 2);
-    int posicaoY = static_cast<int>(mario->getPosicao().y);
 
-    /* Teste de posição que dá certo
-    int x = 528;
-    int y = 464;
-    */
-
-    if(colisao->verificarColisao(posicaoX, posicaoY) ==2){
-        mapa.aplicarColisaoBlocoMoeda(posicaoX, posicaoY);
-        std::cout << posicaoX << " "<< posicaoY<<std::endl;
-    }
+    mario->atualizarColisao(mapa);
 
     //Ajusta a visão da câmera
     janela->setView(this->camera->getView());
@@ -124,6 +113,7 @@ void GerenciadorGeral::renderizar(sf::Time tempoAtual)
 
     desenharJogador(mario->getPosicao()); 
 
+    int contagemMoedasMisteriosas = 0;
     //Desenha os Poderes Especiais
     for (unsigned int i = 0; i < vetorPoderesEspeciais.size(); i++) {
         int tileSize = mapa.getTileSize();
@@ -131,14 +121,17 @@ void GerenciadorGeral::renderizar(sf::Time tempoAtual)
         int y= vetorPoderesEspeciais[i]->getPosicaoInicial().y + tileSize;
 
         if(mapa.getColisaoBlocoMoeda(x,y) == 1){
-           if(contagemDesenhoPoderes[i] ==0){
-                vetorPoderesEspeciais[i]->inicializar(vetorPoderesEspeciais[i]->getPosicaoInicial().x, vetorPoderesEspeciais[i]->getPosicaoInicial().y);
+            if(vetorPoderesEspeciais[i]->getTipo() ==3){
+                contagemMoedasMisteriosas++;
+            }
+            if(contagemDesenhoPoderes[i] ==0){
+                    vetorPoderesEspeciais[i]->inicializar(vetorPoderesEspeciais[i]->getPosicaoInicial().x, vetorPoderesEspeciais[i]->getPosicaoInicial().y);
             }
             vetorPoderesEspeciais[i]->desenhar(*this->janela);
-            std::cout<< vetorPoderesEspeciais[i]->getPosicaoInicial().y<<std::endl;
             contagemDesenhoPoderes[i]++;
         }
     }    
+    mapa.atualizarContagemMoeda(contagemMoedasMisteriosas);
 
     //Mostra a tela
     this->janela->display();

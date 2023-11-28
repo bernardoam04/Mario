@@ -22,7 +22,7 @@ public:
     ~Pontuacao();
 
     //Atualizações e renderização
-    void atualizarPontuacao(sf::Time tempoAtual, float taxa);
+    void atualizarPontuacao(int contagemMoeda);
     sf::Text exibirPontuacao();
 
     //Getter

@@ -15,11 +15,12 @@ Pontuacao::~Pontuacao()
 {
 }
 
-void Pontuacao::atualizarPontuacao(sf::Time tempoAtual, float taxa)
+void Pontuacao::atualizarPontuacao(int contagemMoedas)
 {
+    int taxa = 100;
 
     // Pontuação aumenta a cada loop
-    contagem = tempoAtual.asMicroseconds() * taxa;
+    contagem = contagemMoedas * taxa;
 
     // Converter int para string
     std::ostringstream converter;

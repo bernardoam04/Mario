@@ -27,6 +27,22 @@ int Mapa::getLarguraMapa()
     return larguraTileset * tileSize;
 }
 
+int Mapa::getContagemMoeda()
+{
+    return contagemMoeda;
+}
+
+void Mapa::atualizarContagemMoeda(int contagemMoedasMisteriosas)
+{
+    int contagem = 0;
+    for(unsigned int i = 0; i < colisaoMoeda.size(); i++){
+        if(colisaoMoeda[i] ==1){
+            contagem++;
+        }
+    }
+    contagemMoeda = contagem + contagemMoedasMisteriosas;
+}
+
 std::vector<std::vector<int>> Mapa::getDadosMapa()
 {
     std::vector<std::vector<int>> matriz;
@@ -186,6 +202,7 @@ void Mapa::renderizar(sf::RenderWindow& janela, sf::Time tempoAtual) {
                         break;
                 }
             }
+            contagemMoedas++;
         }
     }
 }

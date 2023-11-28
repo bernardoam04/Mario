@@ -39,5 +39,6 @@ public:
     void setMovendoDireita(bool movendo);
     void setMovendoEsquerda(bool movendo);
     void setPulando(bool pulo);
+    void atualizarColisao(Mapa &mapa);
 };
 #endif

@@ -64,7 +64,7 @@ int PoderesEspeciais::gerarTipoAleatorio()
     int randomValue = std::rand() % 100;
 
     // 70% de chance de gerar uma moeda
-    if (randomValue < 70) {
+    if (randomValue < 90) {
         return MOEDA;
     }
     else {
@@ -214,4 +214,9 @@ void PoderesEspeciais::atualizar(sf::Time tempoAtual, sf::Time deltaTime)
 sf::Vector2f PoderesEspeciais::getPosicaoInicial()
 {
     return posicaoInicial;
+}
+
+int PoderesEspeciais::getTipo()
+{
+    return tipo;
 }
