@@ -67,13 +67,17 @@ bool GerenciadorGeral::atualizarEventos(sf::Event ev)
             }
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) { 
-        camera->movimentarCameraDireita(mapa.getLarguraMapa(), larguraTela);
+        if(mario->getMovDireita()){
+            camera->movimentarCameraDireita(mapa.getLarguraMapa(), larguraTela);
+        }
         mario->setMovendoDireita(true);
         mario->setMovendoEsquerda(false);
     }
 
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-        camera->movimentarCameraEsquerda(larguraTela);
+        if(mario->getMovEsquerda()){
+            camera->movimentarCameraEsquerda(larguraTela);
+        }
         mario->setMovendoDireita(false);
         mario->setMovendoEsquerda(true);
     }

@@ -1,6 +1,7 @@
 #include "../include/Camera.hpp"
 
-Camera::Camera(float largura, float altura) {
+Camera::Camera(float largura, float altura) 
+{
     view.setSize(largura, altura);
     view.setCenter(largura/2, altura/2);
 }
@@ -17,19 +18,20 @@ float Camera::getVelocidadeCamera()
 void Camera::movimentarCameraDireita(int larguraMapa, int larguraTela )
 {
     sf::Vector2f novaPosicao = view.getCenter();
-
-    if(novaPosicao.x < larguraMapa - larguraTela / 2){
-        novaPosicao.x += velocidadeCamera;
-        setCenter(novaPosicao);
-    }
+        if(novaPosicao.x < larguraMapa - larguraTela / 2){
+            novaPosicao.x += velocidadeCamera;
+            setCenter(novaPosicao);
+        }
 }
+
 
 void Camera::movimentarCameraEsquerda(int larguraTela)
 {
     sf::Vector2f novaPosicao = view.getCenter();
-    if(novaPosicao.x > larguraTela / 2){
-        novaPosicao.x -= velocidadeCamera;
-        setCenter(novaPosicao);
+
+        if(novaPosicao.x > larguraTela / 2){
+            novaPosicao.x -= velocidadeCamera;
+            setCenter(novaPosicao);
     }
 }
 

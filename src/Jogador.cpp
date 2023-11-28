@@ -101,15 +101,20 @@ void Jogador::modificarPosicao(sf::Time deltaTime, int larguraMapa) {
     if (estaMovendoEsquerda() && !verificarColisaoDistanciaY(posicaoAtual.x, posicaoAtual.y, alturaJogador-3) 
         && (posicaoAtual.x > 0))//Verifica se o jogador esta nos limites do mapa
     {
-
         posicaoAtual.x -= velocidadeHorizontalAtual * deltaTime.asSeconds();
-        setMovEsquerda(true);//ainda sera corrigido
-
-    } else if (estaMovendoDireita() && !verificarColisaoDistanciaY(posicaoAtual.x +larguraJogador, posicaoAtual.y, alturaJogador-3) 
+        setMovEsquerda(true);
+    } 
+    else if(estaMovendoEsquerda() && verificarColisaoDistanciaY(posicaoAtual.x, posicaoAtual.y, alturaJogador-3) ){
+        setMovEsquerda(false);
+    }
+    else if (estaMovendoDireita() && !verificarColisaoDistanciaY(posicaoAtual.x +larguraJogador, posicaoAtual.y, alturaJogador-3) 
         && (posicaoAtual.x < larguraMapa)) {//Verifica se o jogador esta nos limites do mapa
 
         posicaoAtual.x += velocidadeHorizontalAtual * deltaTime.asSeconds();
         setMovDireita(true);
+    }
+    else if(estaMovendoDireita() && verificarColisaoDistanciaY(posicaoAtual.x +larguraJogador, posicaoAtual.y, alturaJogador-3) ){
+        setMovDireita(false);
     }
 
     // Verificação para pulo
