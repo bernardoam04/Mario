@@ -8,7 +8,7 @@ Implemetar corretamente a colisao e pisar nas plataformas (interacao com os bloc
 Arrumar os spirtes*/
 
 
-Jogador::Jogador(Colisao &colisao, const float larguraTela) : Personagem(colisao){
+Jogador::Jogador(Colisao &colisao, const float larguraTela, std::shared_ptr <sf::RenderWindow> janela1) : Personagem(colisao), janela(janela1){
 
     setPosicaoPersonagem(sf::Vector2f(larguraTela/2,getAlturaChao())); 
     personagemTexture.loadFromFile("../imagens/marioDir1.png");
@@ -216,4 +216,11 @@ void Jogador::atualizarColisao(Mapa &mapa)
     posicoes[1] = std::make_pair(posicaoX2, posicaoY2);
 
     mapa.aplicarColisao(posicoes);
+}
+
+
+void Jogador::desenhar() {//TRANSFERIR ESSA FUNCAO PRA CLASSE PERSONAGEM DEPOIS
+    sf::Sprite sprite(personagemTexture);  // Tamanho do sprite
+    sprite.setPosition(getPosicao());
+    janela->draw(sprite);
 }

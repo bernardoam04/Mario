@@ -1,6 +1,7 @@
     #ifndef JOGADOR_HPP
     #define JOGADOR_HPP
     #include "../include/Personagem.hpp"
+    #include <SFML/Graphics.hpp>
 
     class Jogador : public Personagem {
     private: 
@@ -9,6 +10,9 @@
         bool ativarPoder;
         unsigned int alturaJogador;
         unsigned int larguraJogador;
+        std::shared_ptr <sf::RenderWindow> janela;
+
+
 
         //Verificações
         bool movendoDireita;
@@ -17,12 +21,13 @@
         bool colisaoCabeca = false;
 
     public:
-        Jogador(Colisao &colisao, const float larguraTela);
+        Jogador(Colisao &colisao, const float larguraTela,std::shared_ptr <sf::RenderWindow> janela1);
         Jogador& operator=(const Jogador& other);
         virtual ~Jogador();
         void modificarPosicao(sf::Time deltaTime, int larguraMapa) override;
         bool verificarColisaoDistanciaX(float x, float y, float largura);
         bool verificarColisaoDistanciaY(float x, float y, float altura);
+        void desenhar();
 
         // Métodos para obter o estado dos movimentos
         bool estaMovendoDireita() const { return movendoDireita; }
