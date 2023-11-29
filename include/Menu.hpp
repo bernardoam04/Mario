@@ -9,7 +9,7 @@
 
 #include <memory>
 
-class Menu{
+class Menu {
 private:
     enum OpcaoSelecionada {
         NenhumaSelecao,
@@ -18,24 +18,25 @@ private:
         Sair
     };
 
-    std::shared_ptr <sf::RenderWindow> janela;
+    std::shared_ptr<sf::RenderWindow> janela;
     sf::Text iniciarJogoTexto;
     sf::Text opcoesTexto;
     sf::Text sairTexto;
-    sf::Texture menuTexture; 
-    sf::Sprite menuSprite; 
+    sf::Texture menuTexture;
+    sf::Sprite menuSprite;
     OpcaoSelecionada opcaoSelecionada;
 
     void ajustarPosicaoMenu();
     void ajustarPosicaoTextos();
 
 public:
-    Menu(std::shared_ptr <sf::RenderWindow> janela1, sf::Font &fonte);
+    Menu(std::shared_ptr<sf::RenderWindow> janela1, sf::Font &fonte);
     void desenharTela();
     bool atualizar(sf::Event ev);
     void atualizarPosicaoTextos();
-    // virtual ~Menu();
     bool sair();
+    void atualizarOpcaoSelecionada();
+    bool tratarCliqueMouse();
 };
 
 #endif
