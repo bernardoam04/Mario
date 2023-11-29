@@ -34,9 +34,9 @@ int Mapa::getContagemMoeda()
 void Mapa::atualizarContagemMoeda(int contagemMoedasMisteriosas)
 {
     int contagem = 0;
-    for(unsigned int i = 0; i < colisaoMoeda.size(); i++){
-        if(colisaoMoeda[i] ==1){
-            contagem++;
+    for(unsigned int i = 0; i < tileData.size(); i++){
+        if(tileData[i].first == MOEDA){
+            contagem += (tileData[i].second == true ? 1 : 0);
         }
     }
     contagemMoeda = contagem + contagemMoedasMisteriosas;
@@ -51,7 +51,7 @@ std::vector<std::vector<int>> Mapa::getDadosMapa()
 
         for (int j = 0; j < larguraTileset; ++j) {
             int indice = i * larguraTileset + j;
-            linha.push_back(tileData[indice]);
+            linha.push_back(tileData[indice].first);
         }
 
         matriz.push_back(linha);
@@ -64,10 +64,10 @@ void Mapa::inicializarColisoes()
 {   
         int data = 0;
         for(unsigned int i = 0; i<tileData.size();i++){
-            if(tileData[i] == 9){
+            if(tileData[i].first == 9){
                 colisaoMoeda.push_back(data);
             }
-            else if(tileData[i] == 2){
+            else if(tileData[i].first == 2){
                 colisaoBlocoMoeda.push_back(data);
             }
         }
@@ -94,7 +94,7 @@ void Mapa::carregarMapa(const std::string &arquivoMapa)
     std::stringstream ss(data);
     int tileId;
     while (ss >> tileId) {
-        tileData.push_back(tileId);
+        tileData.push_back(std::make_pair(tileId, false));
         if (ss.peek() == ',')
             ss.ignore();
     }
@@ -114,7 +114,7 @@ void Mapa::carregarMapa(const std::string &arquivoMapa)
     // Preenche o array de vértices com base nos dados do mapa
     for (size_t i = 0; i < tileData.size(); ++i) {
 
-        int tileNumber = tileData[i]; 
+        int tileNumber = tileData[i].first; 
 
         if(tileNumber != 0){
             // Obtém o quad (quatro vértices) atual
@@ -147,15 +147,15 @@ void Mapa::renderizar(sf::RenderWindow& janela, sf::Time tempoAtual) {
     int contagemBlocoMoeda = 0;
     // Renderiza os vértices na janela
     for (size_t i = 0; i < tileData.size(); ++i) {
-        int tileNumber = tileData[i];
+        int tileNumber = tileData[i].first;
 
         // Somente renderiza se não for um bloco vazio (tipo 0)
-        if (tileNumber != 0 && tileNumber!= 2 && tileNumber!=9) {
+        if (colisaoEspecial.count(tileNumber) == 0) {
             sf::Vertex* quad = &vertices[i * 4];
             janela.draw(quad, 4, sf::Quads, &texturas[tileNumber]);
         }
-        else if(tileNumber == 2){
-            if(colisaoBlocoMoeda[contagemBlocoMoeda] == 0){
+        if(tileNumber == SURPRESA){
+            if(tileData[i].second == false){
                 if(tempoBloco == 0){
                         sf::Vertex* quad = &vertices[i * 4];
                         janela.draw(quad, 4, sf::Quads, &texturas[2]);
@@ -164,15 +164,14 @@ void Mapa::renderizar(sf::RenderWindow& janela, sf::Time tempoAtual) {
                     sf::Vertex* quad = &vertices[i * 4];
                     janela.draw(quad, 4, sf::Quads, &texturas[27]);
                 }
+            }else{
+                sf::Vertex* quad = &vertices[i * 4];
+                janela.draw(quad, 4, sf::Quads, &texturas[28]);
             }
-                else{
-                    sf::Vertex* quad = &vertices[i * 4];
-                    janela.draw(quad, 4, sf::Quads, &texturas[28]);
-                }
-                contagemBlocoMoeda++;
+            contagemBlocoMoeda++;
         }
-        else if(tileNumber == 9){
-            if(colisaoMoeda[contagemMoedas] == 0){
+        if(tileNumber == MOEDA){
+            if(tileData[i].second == false){
                 sf::Vertex* quad = &vertices[i * 4];
                 switch(tempoMoeda){
                     case 0:
@@ -205,31 +204,33 @@ void Mapa::renderizar(sf::RenderWindow& janela, sf::Time tempoAtual) {
         }
     }
 }
-void Mapa::aplicarColisaoMoeda(float x, float y) {
-    int contagemMoeda = 0;
+void Mapa::aplicarColisao(std::vector<std::pair<int,int>> posicoes) {
+    std::set<unsigned int> indices;
 
-    // Convertendo coordenadas para índices
-    unsigned int indiceX = static_cast<unsigned int>(x / tileSize);
-    unsigned int indiceY = static_cast<unsigned int>(y / tileSize);
-    
-    // Calculando o índice na matriz
-    unsigned int indice = indiceY * larguraTileset + indiceX;
+    for(auto& posicao : posicoes){
+        // Convertendo coordenadas para índices
+        unsigned int indiceX = static_cast<unsigned int>(posicao.first / tileSize);
+        unsigned int indiceY = static_cast<unsigned int>(posicao.second / tileSize);
+        // Calculando o índice na matriz
+        unsigned int indice = indiceY * larguraTileset + indiceX;
+        indices.insert(indice);
+    }
 
     for (unsigned int i = 0; i < tileData.size(); i++) {
-        if (tileData[i] == 9) {
-            if (i == indice && colisaoMoeda[contagemMoeda] != 1) {
-                colisaoMoeda[contagemMoeda] = 1;
-                this->_sounds->somMoeda();
+        if(colisaoEspecial.count(tileData[i].first)){
+            if(indices.count(i) && tileData[i].second == false){
+                if(tileData[i].first == MOEDA){
+                    this->_sounds->somMoeda();
+                    this->contagemMoeda++;
+                }
+                tileData[i].second = true;
                 break;
             }
-            contagemMoeda++;
         }
     }
 }
 
-void Mapa::aplicarColisaoBlocoMoeda(float x, float y) {
-    int contagemBlocoMoeda = 0;
-
+bool Mapa::getColisaoBlocoMoeda(float x, float y) {
     // Convertendo coordenadas para índices
     unsigned int indiceX = static_cast<unsigned int>(x / tileSize);
     unsigned int indiceY = static_cast<unsigned int>(y / tileSize);
@@ -238,35 +239,13 @@ void Mapa::aplicarColisaoBlocoMoeda(float x, float y) {
     unsigned int indice = indiceY * larguraTileset + indiceX;
 
     for (unsigned int i = 0; i < tileData.size(); i++) {
-        if (tileData[i] == 2) {
+        if (tileData[i].first == SURPRESA) {
             if (i == indice) {
-                colisaoBlocoMoeda[contagemBlocoMoeda] = 1;
-                break;
+                return tileData[i].second;
             }
-            contagemBlocoMoeda++;
         }
     }
-}
-
-int Mapa::getColisaoBlocoMoeda(float x, float y) {
-    int contagemBlocoMoeda = 0;
-
-    // Convertendo coordenadas para índices
-    unsigned int indiceX = static_cast<unsigned int>(x / tileSize);
-    unsigned int indiceY = static_cast<unsigned int>(y / tileSize);
-    
-    // Calculando o índice na matriz
-    unsigned int indice = indiceY * larguraTileset + indiceX;
-
-    for (unsigned int i = 0; i < tileData.size(); i++) {
-        if (tileData[i] == 2) {
-            if (i == indice) {
-                return colisaoBlocoMoeda[contagemBlocoMoeda];
-            }
-            contagemBlocoMoeda++;
-        }
-    }
-    return -1;
+    return false;
 }
 
 void Mapa::setSound(std::shared_ptr<SoundManager> sounds){

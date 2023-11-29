@@ -13,10 +13,19 @@
 
 class Mapa {
 private:
+
+    enum BlocosColisaoEspecial{
+        NULO = 0,
+        SURPRESA = 2,
+        MOEDA = 9,
+    };
+
+    std::set<int> colisaoEspecial = {NULO, SURPRESA, MOEDA};
+
     //Dados utilizados pra desenhar o mapa
     std::unordered_map<int, sf::Texture> texturas;  
     sf::VertexArray vertices;
-    std::vector<int> tileData;
+    std::vector<std::pair<int,bool>> tileData;
 
     //Som
     std::shared_ptr<SoundManager> _sounds;
@@ -40,9 +49,8 @@ public:
     void inicializarColisoes();
     void carregarMapa(const std::string& arquivoMapa);
     void renderizar(sf::RenderWindow& janela, sf::Time tempoAtual);
-    void aplicarColisaoMoeda(float x, float y);
-    void aplicarColisaoBlocoMoeda(float x, float y);
-    int getColisaoBlocoMoeda(float x, float y);
+    void aplicarColisao(std::vector<std::pair<int,int>> posicoes);
+    bool getColisaoBlocoMoeda(float x, float y);
 
     //Getters
     std::vector<std::vector<int>> getDadosMapa();

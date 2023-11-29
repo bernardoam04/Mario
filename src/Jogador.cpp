@@ -193,13 +193,15 @@ void Jogador::setPulando(bool pulo) {
 
 void Jogador::atualizarColisao(Mapa &mapa)
 {
+    std::vector<std::pair<int,int>> posicoes(2);
     int posicaoX = static_cast<int>(getPosicao().x + larguraJogador/2);
     int posicaoY = static_cast<int>(getPosicao().y);
-
-    mapa.aplicarColisaoBlocoMoeda(posicaoX, posicaoY);
 
     int posicaoX2 = static_cast<int>(getPosicao().x + larguraJogador/2);
     int posicaoY2 = static_cast<int>(getPosicao().y + alturaJogador* 0.75);
 
-    mapa.aplicarColisaoMoeda(posicaoX2, posicaoY2);
+    posicoes[0] = std::make_pair(posicaoX, posicaoY);
+    posicoes[1] = std::make_pair(posicaoX2, posicaoY2);
+
+    mapa.aplicarColisao(posicoes);
 }

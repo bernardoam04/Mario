@@ -125,7 +125,7 @@ void GerenciadorGeral::renderizar(sf::Time tempoAtual)
         int x= vetorPoderesEspeciais[i]->getPosicaoInicial().x;
         int y= vetorPoderesEspeciais[i]->getPosicaoInicial().y + tileSize;
 
-        if(mapa.getColisaoBlocoMoeda(x,y) == 1){
+        if(mapa.getColisaoBlocoMoeda(x,y) == true){
             if(vetorPoderesEspeciais[i]->getTipo() ==3){
                 contagemMoedasMisteriosas++;
             }
