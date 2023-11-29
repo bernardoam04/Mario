@@ -93,8 +93,9 @@ void Jogador::modificarPosicao(sf::Time deltaTime, int larguraMapa) {
     bool estaNoArAtual = getEstaNoAr();
     sf::Vector2f posicaoAtual = getPosicao();
 
-    /* verificações 
+    /*
     std::cout<< getMovDireita()<< " mov Direita"<<std::endl;
+    std::cout<< getMovEsquerda()<< " mov Esquerda"<<std::endl;
     std::cout<< estaNoArAtual << " esta no ar"<<std::endl;
     std::cout<< posicaoAtual.y + alturaJogador << " y chao"<<std::endl;
     */
@@ -103,22 +104,22 @@ void Jogador::modificarPosicao(sf::Time deltaTime, int larguraMapa) {
     setVelocidadeHorizontal(180.0f);
 
     // Movimentação horizontal
-    if (estaMovendoEsquerda() && !verificarColisaoDistanciaY(posicaoAtual.x, posicaoAtual.y, alturaJogador-3) 
+    if (estaMovendoEsquerda() && !verificarColisaoDistanciaY(posicaoAtual.x-2, posicaoAtual.y, alturaJogador-5) 
         && (posicaoAtual.x > 0))//Verifica se o jogador esta nos limites do mapa
     {
         posicaoAtual.x -= velocidadeHorizontalAtual * deltaTime.asSeconds();
         setMovEsquerda(true);
     } 
-    else if(estaMovendoEsquerda() && verificarColisaoDistanciaY(posicaoAtual.x, posicaoAtual.y, alturaJogador-3) ){
+    else if(estaMovendoEsquerda() && verificarColisaoDistanciaY(posicaoAtual.x-2, posicaoAtual.y, alturaJogador-5) ){
         setMovEsquerda(false);
     }
-    else if (estaMovendoDireita() && !verificarColisaoDistanciaY(posicaoAtual.x +larguraJogador, posicaoAtual.y, alturaJogador-3) 
+    else if (estaMovendoDireita() && !verificarColisaoDistanciaY(posicaoAtual.x +larguraJogador+2, posicaoAtual.y, alturaJogador-5) 
         && (posicaoAtual.x < larguraMapa)) {//Verifica se o jogador esta nos limites do mapa
 
         posicaoAtual.x += velocidadeHorizontalAtual * deltaTime.asSeconds();
         setMovDireita(true);
     }
-    else if(estaMovendoDireita() && verificarColisaoDistanciaY(posicaoAtual.x +larguraJogador, posicaoAtual.y, alturaJogador-3) ){
+    else if(estaMovendoDireita() && verificarColisaoDistanciaY(posicaoAtual.x +larguraJogador+2, posicaoAtual.y, alturaJogador-5) ){
         setMovDireita(false);
     }
 
