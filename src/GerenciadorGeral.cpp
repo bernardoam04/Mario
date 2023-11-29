@@ -124,7 +124,10 @@ void GerenciadorGeral::renderizar(sf::Time tempoAtual)
                 contagemMoedasMisteriosas++;
             }
             if(contagemDesenhoPoderes[i] ==0){
-                    vetorPoderesEspeciais[i]->inicializar(vetorPoderesEspeciais[i]->getPosicaoInicial().x, vetorPoderesEspeciais[i]->getPosicaoInicial().y);
+                vetorPoderesEspeciais[i]->inicializar(vetorPoderesEspeciais[i]->getPosicaoInicial().x, vetorPoderesEspeciais[i]->getPosicaoInicial().y);
+                if(vetorPoderesEspeciais[i]->getTipo() ==3){
+                    _sounds->somMoeda();
+                }
             }
             sf::Vector2f posicaoAtualMario = mario->getPosicao();
 

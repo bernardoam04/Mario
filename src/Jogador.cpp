@@ -90,7 +90,6 @@ void Jogador::modificarPosicao(sf::Time deltaTime, int larguraMapa) {
 
     // Obtendo valores atuais
     float velocidadeHorizontalAtual = getVelocidadeHorizontal();
-    float velocidadeVerticalAtual = getVelocidadeVertical();
     bool estaNoArAtual = getEstaNoAr();
     sf::Vector2f posicaoAtual = getPosicao();
 
@@ -127,18 +126,26 @@ void Jogador::modificarPosicao(sf::Time deltaTime, int larguraMapa) {
     // Verificação para pulo
     if (estaPulando() && !estaNoArAtual  && verificarColisaoDistanciaX(posicaoAtual.x, posicaoAtual.y+alturaJogador+1, larguraJogador) 
         ) {
-        setVelocidadeVertical(-350.0f);
+        setVelocidadeVertical(-400.0f);
         setEstaNoAr(true);
     }
     // Aplicação da gravidade se estiver no ar
     if (estaNoArAtual) {
-        if(getVelocidadeVertical()< 200 || getVelocidadeVertical()<0){
-            setVelocidadeVertical(velocidadeVerticalAtual + getAceleracaoGravidade());
+        if (!verificarColisaoDistanciaX(posicaoAtual.x +3, posicaoAtual.y+alturaJogador + (getVelocidadeVertical()* deltaTime.asSeconds()), larguraJogador-6) && getVelocidadeVertical()>0){
+            setVelocidadeVertical(getVelocidadeVertical() + getAceleracaoGravidade());
+            posicaoAtual.y += getVelocidadeVertical() * deltaTime.asSeconds();
         }
-        posicaoAtual.y += velocidadeVerticalAtual * deltaTime.asSeconds();
-
+        if(getVelocidadeVertical()<0 || getVelocidadeVertical() ==0){
+            setVelocidadeVertical(getVelocidadeVertical() + getAceleracaoGravidade());
+            posicaoAtual.y += getVelocidadeVertical() * deltaTime.asSeconds();
+        }
+        if (verificarColisaoDistanciaX(posicaoAtual.x +3, posicaoAtual.y+alturaJogador + (getVelocidadeVertical()* deltaTime.asSeconds()), larguraJogador-6) && getVelocidadeVertical()>0){
+            setVelocidadeVertical(100);
+            posicaoAtual.y += getVelocidadeVertical() * deltaTime.asSeconds();
+        }
         // Verifica se a posição é maior ou igual à altura do chão
         if (verificarColisaoDistanciaX(posicaoAtual.x +3, posicaoAtual.y+alturaJogador, larguraJogador-6)) {
+                        std::cout<<posicaoAtual.y+larguraJogador<<std::endl;
             setVelocidadeVertical(0);
             setEstaNoAr(false);
         }
@@ -154,9 +161,13 @@ void Jogador::modificarPosicao(sf::Time deltaTime, int larguraMapa) {
     }
     
     if (colisaoCabeca) {
-        if(getVelocidadeVertical()<200){
+        if (!verificarColisaoDistanciaX(posicaoAtual.x +3, posicaoAtual.y+alturaJogador + getVelocidadeVertical(), larguraJogador-6)){
             setVelocidadeVertical(getVelocidadeVertical() + getAceleracaoGravidade());
-            posicaoAtual.y += velocidadeVerticalAtual * deltaTime.asSeconds();
+            posicaoAtual.y += getVelocidadeVertical() * deltaTime.asSeconds();
+        }
+        if(getVelocidadeVertical()<0 ||getVelocidadeVertical()==0 ){
+            setVelocidadeVertical(getVelocidadeVertical() + getAceleracaoGravidade());
+            posicaoAtual.y += getVelocidadeVertical() * deltaTime.asSeconds();
         }
         if (!verificarColisaoDistanciaX(posicaoAtual.x + 3, posicaoAtual.y, larguraJogador - 6)) {
             colisaoCabeca = false;
