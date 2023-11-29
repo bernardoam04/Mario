@@ -1,5 +1,4 @@
 #include "../include/Mapa.hpp"
-#include "Mapa.hpp"
 #include <iostream>
 #include <cmath>
 
@@ -218,8 +217,9 @@ void Mapa::aplicarColisaoMoeda(float x, float y) {
 
     for (unsigned int i = 0; i < tileData.size(); i++) {
         if (tileData[i] == 9) {
-            if (i == indice) {
+            if (i == indice && colisaoMoeda[contagemMoeda] != 1) {
                 colisaoMoeda[contagemMoeda] = 1;
+                this->_sounds->somMoeda();
                 break;
             }
             contagemMoeda++;
@@ -267,4 +267,8 @@ int Mapa::getColisaoBlocoMoeda(float x, float y) {
         }
     }
     return -1;
+}
+
+void Mapa::setSound(std::shared_ptr<SoundManager> sounds){
+    this->_sounds = sounds;
 }

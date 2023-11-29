@@ -4,6 +4,7 @@ GerenciadorGeral::GerenciadorGeral(std::shared_ptr <sf::RenderWindow> janela1, s
 camera(nullptr), colisao(nullptr), _sounds(sounds), mario(nullptr), puloHabilitado(true)
 {
     this->janela = janela1;
+    this->mapa.setSound(this->_sounds);
     this->mapa.carregarMapa("../imagens/cenario.tmx");
     this->_sounds->reiniciarMusica();
     this->mapa.inicializarColisoes();

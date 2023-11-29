@@ -1,5 +1,4 @@
 #include "../include/Jogador.hpp"
-#include "Jogador.hpp"
 
 /*TODO:
 Melhorar os condicionais da funcao de movimentacao
@@ -11,7 +10,7 @@ Arrumar os spirtes*/
 Jogador::Jogador(Colisao &colisao) : Personagem(colisao){
 
     setPosicaoPersonagem(sf::Vector2f(0.0,getAlturaChao())); 
-    personagemTexture.loadFromFile("../imagens/MarioDir1.png");
+    personagemTexture.loadFromFile("../imagens/MarioDir1.PNG");
     personagemSprite.setTexture(personagemTexture);
     personagemSprite.setOrigin(sf::Vector2f(8.5, 8.5));
     personagemSprite.setPosition(sf::Vector2f(0.0, 0.0));

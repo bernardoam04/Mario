@@ -1,7 +1,7 @@
 #include "../include/GerenciadorGeral.hpp"
 #include "../include/GameOver.hpp"
 #include "../include/Menu.hpp"
-#include "Jogador.hpp"
+#include "../include/Jogador.hpp"
 
 const float alturaTela = 640;
 const float larguraTela = 640;

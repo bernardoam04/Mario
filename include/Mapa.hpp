@@ -3,11 +3,13 @@
 
 #include <SFML/Graphics.hpp>
 #include "../lib/tinyxml2.hpp"
+#include "../include/SoundManager.hpp"
 
 #include <sstream>
 #include <iostream>
 #include <vector>
 #include <unordered_map>
+#include <memory>
 
 class Mapa {
 private:
@@ -15,6 +17,9 @@ private:
     std::unordered_map<int, sf::Texture> texturas;  
     sf::VertexArray vertices;
     std::vector<int> tileData;
+
+    //Som
+    std::shared_ptr<SoundManager> _sounds;
 
     //Constantes
     const int tileSize= 32;
@@ -49,5 +54,6 @@ public:
 
     //Setters
     void atualizarContagemMoeda(int contagemMoedasMisteriosas);
+    void setSound(std::shared_ptr<SoundManager> sounds);
 };  
 #endif
