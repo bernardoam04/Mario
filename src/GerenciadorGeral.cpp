@@ -9,7 +9,7 @@ camera(nullptr), colisao(nullptr), _sounds(sounds), mario(nullptr), puloHabilita
     this->_sounds->reiniciarMusica();
     this->mapa.inicializarColisoes();
     colisao = std::make_shared<Colisao>(mapa.getDadosMapa(), mapa.getTileSize());
-    mario = std::make_shared<Jogador>(*colisao, larguraTela);
+    mario = std::make_shared<Jogador>(*colisao, larguraTela, janela);
     InicializarPoderesEspeciais();
     camera = std::make_shared<Camera>(larguraTela, alturaTela);
     pontuacao = std::make_shared<Pontuacao>(fonte, camera);
@@ -110,7 +110,7 @@ void GerenciadorGeral::renderizar(sf::Time tempoAtual)
 
     janela->draw(pontuacao->exibirPontuacao());
 
-    desenharJogador(mario->getPosicao()); 
+    mario->desenhar(); 
 
     int contagemMoedasMisteriosas = 0;
 
