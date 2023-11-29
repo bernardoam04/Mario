@@ -41,6 +41,7 @@ private:
 
     //Contagem 
     int contagemMoeda = 0;
+    int contagemPoderEspecial =0;
 
 public:
    //Construtor 
@@ -59,9 +60,11 @@ public:
     int getAlturaTileset();
     int getLarguraMapa();
     int getContagemMoeda();
+    int getContagemPoderEspecial();
 
     //Setters
     void atualizarContagemMoeda(int contagemMoedasMisteriosas);
+    void atualizarContagemPoderes(int contagemPoderes);
     void setSound(std::shared_ptr<SoundManager> sounds);
 };  
 #endif

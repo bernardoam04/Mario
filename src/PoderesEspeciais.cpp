@@ -1,6 +1,7 @@
 #include "../include/PoderesEspeciais.hpp"
 #include <iostream>
 #include <random>
+#include "PoderesEspeciais.hpp"
 
 PoderesEspeciais::PoderesEspeciais(Colisao &colisao) : colisao(colisao)
 {
@@ -63,7 +64,7 @@ int PoderesEspeciais::gerarTipoAleatorio()
     int randomValue = std::rand() % 100;
 
     // 70% de chance de gerar uma moeda
-    if (randomValue < 90) {
+    if (randomValue < 80) {
         return MOEDA;
     }
     else {
@@ -103,6 +104,31 @@ void PoderesEspeciais::inicializar(float x, float y)
 void PoderesEspeciais::voltarPosicaoInicial(){
     posicao = posicaoInicial;
 }
+
+bool PoderesEspeciais::verificarColisao(sf::Vector2f posicaoPersonagem, int alturaPersonagem, int larguraPersonagem)
+{
+    float xPersonagem = posicaoPersonagem.x;
+    float yPersonagem = posicaoPersonagem.y;
+
+    // Coordenadas do retângulo que representa o personagem
+    float xPersonagemEsquerda = xPersonagem;
+    float xPersonagemDireita = xPersonagem + larguraPersonagem;
+    float yPersonagemTopo = yPersonagem;
+    float yPersonagemBase = yPersonagem + alturaPersonagem;
+
+    // Coordenadas do retângulo que representa o poder especial
+    float xPoderEsquerda = posicao.x;
+    float xPoderDireita = posicao.x + tileSize;  // Assumindo que tileSize é a largura do poder
+    float yPoderTopo = posicao.y;
+    float yPoderBase = posicao.y + tileSize;  // Assumindo que tileSize é a altura do poder
+
+    // Verificar colisão
+    bool colisaoHorizontal = xPersonagemDireita >= xPoderEsquerda && xPersonagemEsquerda <= xPoderDireita;
+    bool colisaoVertical = yPersonagemBase >= yPoderTopo && yPersonagemTopo <= yPoderBase;
+
+    return colisaoHorizontal && colisaoVertical;
+}
+
 
 void PoderesEspeciais::desenhar(sf::RenderWindow& janela) 
 {
@@ -218,4 +244,8 @@ sf::Vector2f PoderesEspeciais::getPosicaoInicial()
 int PoderesEspeciais::getTipo()
 {
     return tipo;
+}
+sf::Vector2f PoderesEspeciais::getPosicaoAtual()
+{
+    return posicao;
 }

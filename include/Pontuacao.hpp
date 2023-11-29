@@ -22,7 +22,7 @@ public:
     ~Pontuacao();
 
     //Atualizações e renderização
-    void atualizarPontuacao(int contagemMoeda);
+    void atualizarPontuacao(int contagemMoeda, int contagemPoderesEspeciais);
     sf::Text exibirPontuacao();
 
     //Getter

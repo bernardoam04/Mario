@@ -54,7 +54,7 @@ bool GerenciadorGeral::atualizar(sf::Time tempoAtual, sf::Time deltaTime, sf::Ev
     {
         return false;
     }
-    pontuacao->atualizarPontuacao(mapa.getContagemMoeda());
+    pontuacao->atualizarPontuacao(mapa.getContagemMoeda(), mapa.getContagemPoderEspecial());
     return true;
 }
 
@@ -100,7 +100,6 @@ bool GerenciadorGeral::atualizarEventos(sf::Event ev)
 
 void GerenciadorGeral::renderizar(sf::Time tempoAtual)
 {
-
     mario->atualizarColisao(mapa);
 
     //Ajusta a visão da câmera
@@ -114,12 +113,12 @@ void GerenciadorGeral::renderizar(sf::Time tempoAtual)
     desenharJogador(mario->getPosicao()); 
 
     int contagemMoedasMisteriosas = 0;
+
     //Desenha os Poderes Especiais
     for (unsigned int i = 0; i < vetorPoderesEspeciais.size(); i++) {
         int tileSize = mapa.getTileSize();
         int x= vetorPoderesEspeciais[i]->getPosicaoInicial().x;
         int y= vetorPoderesEspeciais[i]->getPosicaoInicial().y + tileSize;
-
         if(mapa.getColisaoBlocoMoeda(x,y) == true){
             if(vetorPoderesEspeciais[i]->getTipo() ==3){
                 contagemMoedasMisteriosas++;
@@ -127,11 +126,23 @@ void GerenciadorGeral::renderizar(sf::Time tempoAtual)
             if(contagemDesenhoPoderes[i] ==0){
                     vetorPoderesEspeciais[i]->inicializar(vetorPoderesEspeciais[i]->getPosicaoInicial().x, vetorPoderesEspeciais[i]->getPosicaoInicial().y);
             }
-            vetorPoderesEspeciais[i]->desenhar(*this->janela);
-            contagemDesenhoPoderes[i]++;
+            sf::Vector2f posicaoAtualMario = mario->getPosicao();
+
+            if(vetorPoderesEspeciais[i]->verificarColisao(posicaoAtualMario, mario->getAlturaJogador(), mario->getLarguraJogador())){
+                indicesComColisao.insert(i);
+            }
+            bool desenho = indicesComColisao.find(i) == indicesComColisao.end();
+            
+            if(desenho){
+                vetorPoderesEspeciais[i]->desenhar(*this->janela);
+                contagemDesenhoPoderes[i]++;
+            }
         }
     }    
     mapa.atualizarContagemMoeda(contagemMoedasMisteriosas);
+    int contagemPoderesEspeciais = indicesComColisao.size();
+
+    mapa.atualizarContagemPoderes(contagemPoderesEspeciais);
 
     //Mostra a tela
     this->janela->display();

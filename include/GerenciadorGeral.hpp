@@ -8,6 +8,7 @@
 #include "../include/Pontuacao.hpp"
 #include "../include/SoundManager.hpp"
 #include "Jogador.hpp"
+#include <set>
 
 class GerenciadorGeral{
 private:
@@ -25,6 +26,8 @@ private:
     std::vector<std::shared_ptr <PoderesEspeciais>> vetorPoderesEspeciais;
     std::shared_ptr<SoundManager> _sounds;
     std::shared_ptr <Jogador> mario;
+    std::set<unsigned int> indicesComColisao;
+
 
     //Métodos privados
     void inicializarVariaveis();

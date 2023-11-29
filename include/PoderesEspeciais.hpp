@@ -55,10 +55,12 @@ public:
     void ModificacaoPosicaoMoeda(sf::Time deltaTime);
     void atualizar(sf::Time deltaTime, sf::Time tempoAtual);
     void voltarPosicaoInicial();
+    bool verificarColisao(sf::Vector2f posicaoPersonagem, int altura, int largura);
 
     //Getters
     sf::Vector2f getPosicaoInicial();
     int getTipo();
+    sf::Vector2f getPosicaoAtual();
 };
 
 #endif 

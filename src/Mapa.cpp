@@ -1,6 +1,7 @@
 #include "../include/Mapa.hpp"
 #include <iostream>
 #include <cmath>
+#include "Mapa.hpp"
 
 
 Mapa::Mapa() {
@@ -31,6 +32,11 @@ int Mapa::getContagemMoeda()
     return contagemMoeda;
 }
 
+int Mapa::getContagemPoderEspecial()
+{
+    return contagemPoderEspecial;
+}
+
 void Mapa::atualizarContagemMoeda(int contagemMoedasMisteriosas)
 {
     int contagem = 0;
@@ -42,6 +48,10 @@ void Mapa::atualizarContagemMoeda(int contagemMoedasMisteriosas)
     contagemMoeda = contagem + contagemMoedasMisteriosas;
 }
 
+void Mapa::atualizarContagemPoderes(int contagemPoderes)
+{
+    contagemPoderEspecial = contagemPoderes;
+}
 std::vector<std::vector<int>> Mapa::getDadosMapa()
 {
     std::vector<std::vector<int>> matriz;

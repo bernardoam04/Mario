@@ -31,6 +31,7 @@
 
         //Getters
         int getLarguraJogador();
+        int getAlturaJogador();
 
         // Métodos para definir o estado dos movimentos
         void setMovendoDireita(bool movendo);

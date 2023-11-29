@@ -15,12 +15,13 @@ Pontuacao::~Pontuacao()
 {
 }
 
-void Pontuacao::atualizarPontuacao(int contagemMoedas)
+void Pontuacao::atualizarPontuacao(int contagemMoedas, int contagemPoderesEspeciais)
 {
-    int taxa = 100;
+    int taxaMoeda = 100;
+    int taxaPoder = 1000;
 
     // Pontuação aumenta a cada loop
-    contagem = contagemMoedas * taxa;
+    contagem = contagemMoedas * taxaMoeda +  contagemPoderesEspeciais * taxaPoder;
 
     // Converter int para string
     std::ostringstream converter;
