@@ -7,9 +7,9 @@ Implemetar corretamente a colisao e pisar nas plataformas (interacao com os bloc
 Arrumar os spirtes*/
 
 
-Jogador::Jogador(Colisao &colisao) : Personagem(colisao){
+Jogador::Jogador(Colisao &colisao, const float larguraTela) : Personagem(colisao){
 
-    setPosicaoPersonagem(sf::Vector2f(0.0,getAlturaChao())); 
+    setPosicaoPersonagem(sf::Vector2f(larguraTela/2,getAlturaChao())); 
     personagemTexture.loadFromFile("../imagens/MarioDir1.PNG");
     personagemSprite.setTexture(personagemTexture);
     personagemSprite.setOrigin(sf::Vector2f(8.5, 8.5));
@@ -93,6 +93,12 @@ void Jogador::modificarPosicao(sf::Time deltaTime, int larguraMapa) {
     bool estaNoArAtual = getEstaNoAr();
     sf::Vector2f posicaoAtual = getPosicao();
 
+    /* verificações 
+    std::cout<< getMovDireita()<< " mov Direita"<<std::endl;
+    std::cout<< estaNoArAtual << " esta no ar"<<std::endl;
+    std::cout<< posicaoAtual.y + alturaJogador << " y chao"<<std::endl;
+    */
+
     // Configurando nova velocidade horizontal (deve ser sincronizada com a camera ainda)
     setVelocidadeHorizontal(180.0f);
 
@@ -117,7 +123,7 @@ void Jogador::modificarPosicao(sf::Time deltaTime, int larguraMapa) {
     }
 
     // Verificação para pulo
-    if (estaPulando() && !estaNoArAtual  && verificarColisaoDistanciaX(posicaoAtual.x, posicaoAtual.y+alturaJogador, larguraJogador) 
+    if (estaPulando() && !estaNoArAtual  && verificarColisaoDistanciaX(posicaoAtual.x, posicaoAtual.y+alturaJogador+1, larguraJogador) 
         ) {
         setVelocidadeVertical(-350.0f);
         setEstaNoAr(true);

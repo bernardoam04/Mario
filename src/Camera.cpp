@@ -1,4 +1,5 @@
 #include "../include/Camera.hpp"
+#include "Camera.hpp"
 
 Camera::Camera(float largura, float altura) 
 {
@@ -8,6 +9,13 @@ Camera::Camera(float largura, float altura)
 
 void Camera::setCenter(const sf::Vector2f& center) {
     view.setCenter(center);
+}
+
+void Camera::atualizarPosicao(sf::Vector2f posicaoPersonagem)
+{
+    sf::Vector2f novaPosicao = view.getCenter();
+    novaPosicao.x = posicaoPersonagem.x;
+    setCenter(novaPosicao);
 }
 
 float Camera::getVelocidadeCamera()

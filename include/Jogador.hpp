@@ -17,7 +17,7 @@
         bool colisaoCabeca = false;
 
     public:
-        Jogador(Colisao &colisao);
+        Jogador(Colisao &colisao, const float larguraTela);
         Jogador& operator=(const Jogador& other);
         virtual ~Jogador();
         void modificarPosicao(sf::Time deltaTime, int larguraMapa) override;
@@ -31,7 +31,6 @@
 
         //Getters
         int getLarguraJogador();
-
 
         // Métodos para definir o estado dos movimentos
         void setMovendoDireita(bool movendo);

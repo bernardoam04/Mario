@@ -15,6 +15,7 @@ public:
     void movimentarCameraDireita(int larguraMapa, int larguraTela);
     void movimentarCameraEsquerda(int larguraTela);
     void setCenter(const sf::Vector2f& center);
+    void atualizarPosicao(sf::Vector2f posicaoPersonagem);
 
     //Getters
     float getVelocidadeCamera();

@@ -9,7 +9,7 @@ camera(nullptr), colisao(nullptr), _sounds(sounds), mario(nullptr), puloHabilita
     this->_sounds->reiniciarMusica();
     this->mapa.inicializarColisoes();
     colisao = std::make_shared<Colisao>(mapa.getDadosMapa(), mapa.getTileSize());
-    mario = std::make_shared<Jogador>(*colisao);
+    mario = std::make_shared<Jogador>(*colisao, larguraTela);
     InicializarPoderesEspeciais();
     camera = std::make_shared<Camera>(larguraTela, alturaTela);
     pontuacao = std::make_shared<Pontuacao>(fonte, camera);
@@ -62,23 +62,16 @@ bool GerenciadorGeral::atualizar(sf::Time tempoAtual, sf::Time deltaTime, sf::Ev
 bool GerenciadorGeral::atualizarEventos(sf::Event ev)
 {
     while (this->janela->pollEvent(ev)) {
-
             if (ev.type == sf::Event::Closed){
                 return false;
             }
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) { 
-        if(mario->getMovDireita()){
-            camera->movimentarCameraDireita(mapa.getLarguraMapa(), larguraTela);
-        }
         mario->setMovendoDireita(true);
         mario->setMovendoEsquerda(false);
     }
 
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-        if(mario->getMovEsquerda()){
-            camera->movimentarCameraEsquerda(larguraTela);
-        }
         mario->setMovendoDireita(false);
         mario->setMovendoEsquerda(true);
     }
@@ -86,6 +79,8 @@ bool GerenciadorGeral::atualizarEventos(sf::Event ev)
         mario->setMovendoDireita(false);
         mario->setMovendoEsquerda(false);
     }
+
+    camera->atualizarPosicao(mario->getPosicao());
 
     // Verifica o pulo
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && puloHabilitado) {
