@@ -26,16 +26,19 @@ void Menu::ajustarPosicaoMenu() {
 }
 
 void Menu::ajustarPosicaoTextos() {
+    // Ajuste de escala e posição para a opção Iniciar Jogo
     sf::FloatRect iniciarJogoRect = iniciarJogoTexto.getLocalBounds();
     iniciarJogoTexto.setOrigin(iniciarJogoRect.width / 2.0f, iniciarJogoRect.height / 2.0f);
     iniciarJogoTexto.setPosition(janela->getSize().x / 2.0f,
                                  (janela->getSize().y - iniciarJogoRect.height) / 1.7f);
 
+    // Ajuste de escala e posição para a opção Opções
     sf::FloatRect opcoesRect = opcoesTexto.getLocalBounds();
     opcoesTexto.setOrigin(opcoesRect.width / 2.0f, opcoesRect.height / 2.0f);
     opcoesTexto.setPosition(janela->getSize().x / 2.0f,
                             (janela->getSize().y - opcoesRect.height) / 1.7f + 60.0f);
 
+    // Ajuste de escala e posição para a opção Sair
     sf::FloatRect sairRect = sairTexto.getLocalBounds();
     sairTexto.setOrigin(sairRect.width / 2.0f, sairRect.height / 2.0f);
     sairTexto.setPosition(janela->getSize().x / 2.0f,
@@ -74,46 +77,62 @@ bool Menu::sair() {
     janela->close();
     return false;  // Retorna false para indicar que o jogo deve encerrar
 }
+
+void Menu::atualizarPosicaoTextos() {
+    ajustarPosicaoTextos();
+    ajustarPosicaoMenu();
+}
+
+void Menu::atualizarOpcaoSelecionada() {
+    sf::Vector2i mousePosition = sf::Mouse::getPosition(*janela);
+
+    // Verifica se o mouse está sobre uma opção
+    if (iniciarJogoTexto.getGlobalBounds().contains(static_cast<float>(mousePosition.x), static_cast<float>(mousePosition.y))) {
+        opcaoSelecionada = IniciarJogo;
+    } else if (opcoesTexto.getGlobalBounds().contains(static_cast<float>(mousePosition.x), static_cast<float>(mousePosition.y))) {
+        opcaoSelecionada = Opcoes;
+    } else if (sairTexto.getGlobalBounds().contains(static_cast<float>(mousePosition.x), static_cast<float>(mousePosition.y))) {
+        opcaoSelecionada = Sair;
+    } else {
+        opcaoSelecionada = NenhumaSelecao;
+    }
+}
+
+bool Menu::tratarCliqueMouse() {
+    sf::Vector2i mousePosition = sf::Mouse::getPosition(*janela);
+
+    if (iniciarJogoTexto.getGlobalBounds().contains(static_cast<float>(mousePosition.x), static_cast<float>(mousePosition.y))) {
+        return false;  // Iniciar Jogo
+    } else if (opcoesTexto.getGlobalBounds().contains(static_cast<float>(mousePosition.x), static_cast<float>(mousePosition.y))) {
+        // Adicione o tratamento para a opção "Opções" aqui
+    } else if (sairTexto.getGlobalBounds().contains(static_cast<float>(mousePosition.x), static_cast<float>(mousePosition.y))) {
+        return sair();  // Sair
+    }
+
+    return true;  // Nenhuma ação executada
+}
+
 bool Menu::atualizar(sf::Event ev) {
     while (janela->pollEvent(ev)) {
-        if (ev.type == sf::Event::Closed) {
-            janela->close();
-            return false;  // Retorna false para indicar que o jogo deve encerrar
-        } else if (ev.type == sf::Event::MouseMoved) {
-            sf::Vector2i mousePosition = sf::Mouse::getPosition(*janela);
+        switch (ev.type) {
+            case sf::Event::Closed:
+                janela->close();
+                return false;  // Retorna false para indicar que o jogo deve encerrar
 
-            // Verifica se o mouse está sobre uma opção
-            if (iniciarJogoTexto.getGlobalBounds().contains(static_cast<float>(mousePosition.x), static_cast<float>(mousePosition.y))) {
-                opcaoSelecionada = IniciarJogo;
-            } else if (opcoesTexto.getGlobalBounds().contains(static_cast<float>(mousePosition.x), static_cast<float>(mousePosition.y))) {
-                opcaoSelecionada = Opcoes;
-            } else if (sairTexto.getGlobalBounds().contains(static_cast<float>(mousePosition.x), static_cast<float>(mousePosition.y))) {
-                opcaoSelecionada = Sair;
-            } else {
-                opcaoSelecionada = NenhumaSelecao;
-            }
-        } else if (ev.type == sf::Event::MouseButtonPressed) {
-            sf::Vector2i mousePosition = sf::Mouse::getPosition(*janela);
+            case sf::Event::MouseMoved:
+                atualizarOpcaoSelecionada();
+                break;
 
-            if (iniciarJogoTexto.getGlobalBounds().contains(static_cast<float>(mousePosition.x), static_cast<float>(mousePosition.y))) {
-                return false;
-            } else if (opcoesTexto.getGlobalBounds().contains(static_cast<float>(mousePosition.x), static_cast<float>(mousePosition.y))) {
-                // Restante do código para a opção "Opções" omitido para brevidade
-            } else if (sairTexto.getGlobalBounds().contains(static_cast<float>(mousePosition.x), static_cast<float>(mousePosition.y))) {
-                return sair();
-            }
+            case sf::Event::MouseButtonPressed:
+                if (ev.mouseButton.button == sf::Mouse::Left) {
+                    return tratarCliqueMouse();
+                }
+                break;
+
+            default:
+                break;
         }
     }
 
     return true;
 }
-
-
-
-void Menu::atualizarPosicaoTextos() {
-    ajustarPosicaoTextos();
-    ajustarPosicaoMenu();
-};
-
-//     Menu::~Menu() {
-//  };
