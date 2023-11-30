@@ -4,6 +4,9 @@ Personagem::Personagem(Colisao &colisao) : colisao(colisao)
 {
     personagemSprite.setTexture(personagemTexture);
     personagemSprite.setPosition(posicaoPersonagem);
+
+    personagemMorreuSprite.setTexture(personagemMorreuTexture);
+    personagemMorreuSprite.setPosition(posicaoPersonagem);
 }
 
 void Personagem::modificarPosicao(sf::Time deltaTime, int larguraMapa) {

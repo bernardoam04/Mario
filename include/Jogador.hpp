@@ -5,12 +5,13 @@
 
     class Jogador : public Personagem {
     private: 
-        int vida = 1;
+        unsigned int vida = 1;
         int moedas;
         bool ativarPoder;
         unsigned int alturaJogador;
         unsigned int larguraJogador;
         std::shared_ptr <sf::RenderWindow> janela;
+        const float alturaTela;
 
         //Verificações
         bool movendoDireita;
@@ -18,10 +19,11 @@
         bool pulando;
         bool colisaoCabeca = false;
         bool ganhou = false;
+        bool perdeu = false;
 
     public:
         //Construtor
-        Jogador(Colisao &colisao, const float larguraTela,std::shared_ptr <sf::RenderWindow> janela1);
+        Jogador(Colisao &colisao, const float larguraTela, const float alturaTelaJogo, std::shared_ptr <sf::RenderWindow> janela1);
         Jogador& operator=(const Jogador& other);
         
         //Destrutor
@@ -31,6 +33,8 @@
         void dobrarAltura();
         void modificarPosicao(sf::Time deltaTime, int larguraMapa) override;
         void desenhar();
+        void perderVida();
+        void perdeuMudarTextura();
 
         // Métodos de verificação
         bool estaMovendoDireita() const { return movendoDireita; }
@@ -43,6 +47,10 @@
         int getLarguraJogador();
         int getAlturaJogador();
         bool getGanhou();
+        bool getPerdeu();
+
+        //Setters
+        void setPerdeu(bool estado);
 
         // Métodos para definir o estado dos movimentos
         void setMovendoDireita(bool movendo);

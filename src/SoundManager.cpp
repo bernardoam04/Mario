@@ -7,7 +7,11 @@ SoundManager::SoundManager() {
     if(!this->sbMoeda.loadFromFile("../audio/coin.wav")){
         throw std::exception();
     }
+    if(!this->sbGameOver.loadFromFile("../audio/death.wav")){
+        throw std::exception();
+    }
     sMoeda.setBuffer(sbMoeda);
+    sGameOver.setBuffer(sbGameOver);
     this->tocarMusica();
 }
 
@@ -27,4 +31,8 @@ void SoundManager::reiniciarMusica(){
 
 void SoundManager::somMoeda(){
     this->sMoeda.play();
+}
+
+void SoundManager::somGameOver(){
+    this->sGameOver.play();
 }

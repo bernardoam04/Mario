@@ -91,10 +91,8 @@ int main() {
             //Limpa a janela com cor de fundo azul
             janela->clear(sf::Color::Blue);
 
-
             // Atualiza o jogo principal
             bool jogoAtivo = jogo->atualizar(tempoAtual, deltaTime, ev);
-
 
             if(jogoAtivo == false){
                 estadoAtual = EstadoJogo::GAMEOVER;

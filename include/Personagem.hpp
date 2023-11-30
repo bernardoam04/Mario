@@ -27,7 +27,9 @@ class Personagem {
 
     protected:
         sf::Sprite personagemSprite;
+        sf::Sprite personagemMorreuSprite;
         sf::Texture personagemTexture;
+        sf::Texture personagemMorreuTexture;
         Colisao &colisao;
 
     public:

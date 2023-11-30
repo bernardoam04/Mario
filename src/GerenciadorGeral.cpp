@@ -10,11 +10,10 @@ camera(nullptr), colisao(nullptr), _sounds(sounds), mario(nullptr), puloHabilita
     this->_sounds->reiniciarMusica();
     this->mapa.inicializarColisoes();
     colisao = std::make_shared<Colisao>(mapa.getDadosMapa(), mapa.getTileSize());
-    mario = std::make_shared<Jogador>(*colisao, larguraTela, janela);
+    mario = std::make_shared<Jogador>(*colisao, larguraTela, alturaTela, janela);
     InicializarPoderesEspeciais();
     camera = std::make_shared<Camera>(larguraTela, alturaTela);
     pontuacao = std::make_shared<Pontuacao>(fonte, camera);
-
     inicializarTextos(fonte);
 }
 
@@ -60,9 +59,10 @@ void GerenciadorGeral::inicializarTextos(sf::Font &fonte)
 
     textoGanhou.setFont(fonte);
     textoGanhou.setString("YOU WIN!");
-    textoGanhou.setCharacterSize(15);
+    textoGanhou.setCharacterSize(30);
     textoGanhou.setFillColor(sf::Color::White);
 }
+
 
 void GerenciadorGeral::atualizarPosicaoTexto(sf::Text &texto)
 {
@@ -82,6 +82,10 @@ bool GerenciadorGeral::atualizar(sf::Time tempoAtual, sf::Time deltaTime, sf::Ev
 
     for (unsigned int i = 0; i < vetorPoderesEspeciais.size(); i++) {
         vetorPoderesEspeciais[i]->atualizar(tempoAtual, deltaTime);
+    }
+
+    if(mario->getPerdeu()){
+        return false;
     }
     bool jogoAtivo = this->atualizarEventos(ev);
 
@@ -131,11 +135,21 @@ bool GerenciadorGeral::atualizarEventos(sf::Event ev)
         puloHabilitado = true;
         mario->setPulando(false);
     }
+
     return true;
 }
 
 void GerenciadorGeral::renderizar(sf::Time tempoAtual)
 {
+
+    if(mario->getPerdeu()){
+        mario->perdeuMudarTextura();
+        _sounds->pausarMusica();
+        if(contadorPerdeu == 0){
+            _sounds->somGameOver();
+        }
+        contadorPerdeu++;
+    }
     mario->atualizarColisao(mapa);
 
     //Ajusta a visão da câmera
@@ -196,7 +210,7 @@ void GerenciadorGeral::renderizar(sf::Time tempoAtual)
     mapa.atualizarContagemPoderes(contagemPoderesEspeciais);
 
     if(!mario->getGanhou()){
-        mario->desenhar(); 
+        mario->desenhar();
     } 
     else{
         atualizarPosicaoTexto(textoGanhou);

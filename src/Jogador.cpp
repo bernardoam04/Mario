@@ -8,14 +8,21 @@ Implemetar corretamente a colisao e pisar nas plataformas (interacao com os bloc
 Arrumar os spirtes*/
 
 
-Jogador::Jogador(Colisao &colisao, const float larguraTela, std::shared_ptr <sf::RenderWindow> janela1) : Personagem(colisao), janela(janela1){
+Jogador::Jogador(Colisao &colisao, const float larguraTela, const float alturaTelaJogo, std::shared_ptr <sf::RenderWindow> janela1) 
+: Personagem(colisao), janela(janela1) ,alturaTela(alturaTelaJogo)
+{
 
     setPosicaoPersonagem(sf::Vector2f(larguraTela/2,getAlturaChao())); 
     personagemTexture.loadFromFile("../imagens/marioPequeno.png");
     personagemSprite.setTexture(personagemTexture);
     personagemSprite.setOrigin(sf::Vector2f(8.5, 8.5));
     personagemSprite.setPosition(sf::Vector2f(0.0, 0.0));
-    vida = 100;
+
+    personagemMorreuTexture.loadFromFile("../imagens/marioPerdeu.png");
+    personagemMorreuSprite.setTexture(personagemTexture);
+    personagemMorreuSprite.setOrigin(sf::Vector2f(8.5, 8.5));
+    personagemMorreuSprite.setPosition(sf::Vector2f(0.0, 0.0));
+
     moedas = 0;
     ativarPoder = false;
     alturaJogador = personagemTexture.getSize().y;
@@ -205,6 +212,10 @@ void Jogador::modificarPosicao(sf::Time deltaTime, int larguraMapa)
         ganhou = true;
     }
 
+    if(posicaoAtual.y > alturaTela){
+        setPerdeu(true);
+    }
+
     // Configurando a nova posição
     setPosicaoPersonagem(posicaoAtual);
 }
@@ -221,6 +232,23 @@ int Jogador::getAlturaJogador()
 bool Jogador::getGanhou()
 {
     return ganhou;
+}
+bool Jogador::getPerdeu()
+{
+    if(vida == 0){
+        perdeu = true;
+    }
+    else{
+        perdeu = false;
+    }
+    return perdeu;
+}
+void Jogador::setPerdeu(bool estado)
+{
+    if(estado){
+        vida = 0;
+    }
+    perdeu = estado;
 }
 void Jogador::setMovendoDireita(bool movendo)
 {
@@ -250,9 +278,24 @@ void Jogador::atualizarColisao(Mapa &mapa)
     mapa.aplicarColisao(posicoes);
 }
 
+void Jogador::perdeuMudarTextura(){
+    personagemTexture.loadFromFile("../imagens/marioPerdeu.png"); 
+}
 
-void Jogador::desenhar() {//TRANSFERIR ESSA FUNCAO PRA CLASSE PERSONAGEM DEPOIS
-    sf::Sprite sprite(personagemTexture);  // Tamanho do sprite
+void Jogador::desenhar() {
+    sf::Sprite sprite(personagemTexture); 
     sprite.setPosition(getPosicao());
     janela->draw(sprite);
+
+    if(getPerdeu()){
+        sf::sleep(sf::seconds(1.0));
+    }
 }
+
+void Jogador::perderVida()
+{
+    if(vida > 0 ){
+        vida--;
+    }
+}
+

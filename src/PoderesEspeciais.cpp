@@ -64,12 +64,12 @@ int PoderesEspeciais::gerarTipoAleatorio()
     int randomValue = std::rand() % 100;
 
     // 80% de chance de gerar uma moeda
-    if (randomValue < 1) {
+    if (randomValue < 80) {
         return MOEDA;
     }
     else {
         // 50% de chance de gerar uma estrela ou cogumelo entre os poderes especiais
-        if (randomValue < 50) {
+        if (randomValue < 70) {
             return COGUMELO;
         }
         else {

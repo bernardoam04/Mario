@@ -45,6 +45,9 @@ private:
     bool puloHabilitado;
     std::vector <int> contagemDesenhoPoderes;
 
+    //Contador
+    int contadorPerdeu = 0;
+
 public:
     //Construtor e Destrutor
     GerenciadorGeral(std::shared_ptr <sf::RenderWindow> janela1, sf::Font &fonte, std::shared_ptr<SoundManager> sounds);
