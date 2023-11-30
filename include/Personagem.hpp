@@ -14,6 +14,9 @@ class Personagem {
         sf::Vector2f posicaoPersonagem; 
         float velocidadeVertical;
         float velocidadeHorizontal;
+        unsigned int alturaPersonagem;
+        unsigned int larguraPersonagem;
+
         //Verificacoes
         bool vivo = true;
         bool estaNoAr;
@@ -38,7 +41,6 @@ class Personagem {
         //virtual void desenharPersonagem(sf::Vector2f posicao, sf::RenderWindow janela);
         virtual void modificarPosicao(sf::Time deltaTime, int larguraMapa);
         
-
         // Métodos get
         sf::Vector2f getPosicao() const;
         float getVelocidadeHorizontal() const;
@@ -51,6 +53,8 @@ class Personagem {
         float getTileSize() const;
         bool getVivo() const;
         sf::Texture getTexture() const;
+        unsigned int getAlturaPersonagem() const;
+        unsigned int getLarguraPersonagem() const;
 
         // Métodos set
         void setPosicaoPersonagem(const sf::Vector2f& posicao);
@@ -60,6 +64,8 @@ class Personagem {
         void setMovDireita(bool movimento);
         void setEstaNoAr(bool estado);
         void setVivo(bool vivoAtual);
+        void setAlturaPersonagem(unsigned int altura);
+        void setLarguraPersonagem(unsigned int largura);
 
 };
 #endif

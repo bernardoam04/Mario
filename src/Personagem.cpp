@@ -58,6 +58,14 @@ bool Personagem::getVivo() const {
     return vivo;
 }
 
+unsigned int Personagem::getLarguraPersonagem() const {
+    return larguraPersonagem;
+}
+
+unsigned int Personagem::getAlturaPersonagem() const {
+    return alturaPersonagem;
+}
+
 void Personagem::setVivo(bool vivoAtual) {
     vivo = vivoAtual;
 }
@@ -84,4 +92,12 @@ void Personagem::setMovEsquerda(bool movimento) {
 
 void Personagem::setMovDireita(bool movimento) {
     movDireita = movimento;
+}
+
+void Personagem::setAlturaPersonagem(unsigned int altura) {
+    alturaPersonagem = altura;
+}
+
+void Personagem::setLarguraPersonagem(unsigned int largura) {
+    larguraPersonagem = largura;
 }

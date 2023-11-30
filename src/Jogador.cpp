@@ -1,13 +1,6 @@
 #include "../include/Jogador.hpp"
 #include "Jogador.hpp"
 
-/*TODO:
-Melhorar os condicionais da funcao de movimentacao
-Implementar corretamente a gravidade
-Implemetar corretamente a colisao e pisar nas plataformas (interacao com os blocos do mapa)
-Arrumar os spirtes*/
-
-
 Jogador::Jogador(Colisao &colisao, const float larguraTela, const float alturaTelaJogo, std::shared_ptr <sf::RenderWindow> janela1) 
 : Personagem(colisao), janela(janela1) ,alturaTela(alturaTelaJogo)
 {
