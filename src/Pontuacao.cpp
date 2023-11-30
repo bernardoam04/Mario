@@ -1,6 +1,7 @@
 #include "../include/Pontuacao.hpp"
 #include <sstream>
 #include <iostream>
+#include "Pontuacao.hpp"
 
 Pontuacao::Pontuacao(sf::Font &fonte, std::shared_ptr <Camera> camera) 
  :  texto("Teste1", fonte, 15), camera(camera)

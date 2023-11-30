@@ -63,8 +63,8 @@ int PoderesEspeciais::gerarTipoAleatorio()
     // Gera um número entre 0 e 99
     int randomValue = std::rand() % 100;
 
-    // 70% de chance de gerar uma moeda
-    if (randomValue < 80) {
+    // 80% de chance de gerar uma moeda
+    if (randomValue < 1) {
         return MOEDA;
     }
     else {

@@ -11,7 +11,7 @@ Arrumar os spirtes*/
 Jogador::Jogador(Colisao &colisao, const float larguraTela, std::shared_ptr <sf::RenderWindow> janela1) : Personagem(colisao), janela(janela1){
 
     setPosicaoPersonagem(sf::Vector2f(larguraTela/2,getAlturaChao())); 
-    personagemTexture.loadFromFile("../imagens/marioDir1.png");
+    personagemTexture.loadFromFile("../imagens/marioPequeno.png");
     personagemSprite.setTexture(personagemTexture);
     personagemSprite.setOrigin(sf::Vector2f(8.5, 8.5));
     personagemSprite.setPosition(sf::Vector2f(0.0, 0.0));
@@ -85,20 +85,32 @@ bool Jogador::verificarColisaoDistanciaY(float x, float y, float altura)
     return false;
 }
 
+void Jogador::dobrarAltura()
+{
+    int alturaJogadorAnterior = alturaJogador;
+    // Atualiza a altura da textura
+    personagemTexture.loadFromFile("../imagens/marioGrande.png"); 
+    alturaJogador = personagemTexture.getSize().y;
 
-void Jogador::modificarPosicao(sf::Time deltaTime, int larguraMapa) {
+    // Ajusta a posição vertical do jogador para compensar a mudança de altura
+    sf::Vector2f posicaoAtual = getPosicao();
+    posicaoAtual.y -= (alturaJogador - alturaJogadorAnterior);  // Ajuste pela metade da nova altura
+    setPosicaoPersonagem(posicaoAtual);
+
+    // Incrementa a vida se for menor que 2
+    if (vida < 2)
+    {
+        vida++;
+    }
+}
+
+void Jogador::modificarPosicao(sf::Time deltaTime, int larguraMapa)
+{
 
     // Obtendo valores atuais
     float velocidadeHorizontalAtual = getVelocidadeHorizontal();
     bool estaNoArAtual = getEstaNoAr();
     sf::Vector2f posicaoAtual = getPosicao();
-
-    /*
-    std::cout<< getMovDireita()<< " mov Direita"<<std::endl;
-    std::cout<< getMovEsquerda()<< " mov Esquerda"<<std::endl;
-    std::cout<< estaNoArAtual << " esta no ar"<<std::endl;
-    std::cout<< posicaoAtual.y + alturaJogador << " y chao"<<std::endl;
-    */
 
     // Configurando nova velocidade horizontal (deve ser sincronizada com a camera ainda)
     setVelocidadeHorizontal(180.0f);
@@ -140,12 +152,11 @@ void Jogador::modificarPosicao(sf::Time deltaTime, int larguraMapa) {
             posicaoAtual.y += getVelocidadeVertical() * deltaTime.asSeconds();
         }
         if (verificarColisaoDistanciaX(posicaoAtual.x +3, posicaoAtual.y+alturaJogador + (getVelocidadeVertical()* deltaTime.asSeconds()), larguraJogador-6) && getVelocidadeVertical()>0){
-            setVelocidadeVertical(100);
+            setVelocidadeVertical(30);
             posicaoAtual.y += getVelocidadeVertical() * deltaTime.asSeconds();
         }
         // Verifica se a posição é maior ou igual à altura do chão
         if (verificarColisaoDistanciaX(posicaoAtual.x +3, posicaoAtual.y+alturaJogador, larguraJogador-6)) {
-                        std::cout<<posicaoAtual.y+larguraJogador<<std::endl;
             setVelocidadeVertical(0);
             setEstaNoAr(false);
         }
@@ -188,6 +199,12 @@ void Jogador::modificarPosicao(sf::Time deltaTime, int larguraMapa) {
         }
 
     }
+
+    if(posicaoAtual.x> 7200){
+        posicaoAtual.x = 7200;
+        ganhou = true;
+    }
+
     // Configurando a nova posição
     setPosicaoPersonagem(posicaoAtual);
 }
@@ -200,6 +217,10 @@ int Jogador::getLarguraJogador()
 int Jogador::getAlturaJogador()
 {
     return alturaJogador;
+}
+bool Jogador::getGanhou()
+{
+    return ganhou;
 }
 void Jogador::setMovendoDireita(bool movendo)
 {

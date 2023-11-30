@@ -1,4 +1,5 @@
 #include "../include/GerenciadorGeral.hpp"
+#include "GerenciadorGeral.hpp"
 
 GerenciadorGeral::GerenciadorGeral(std::shared_ptr <sf::RenderWindow> janela1, sf::Font &fonte, std::shared_ptr<SoundManager> sounds) : pontuacao(nullptr),  
 camera(nullptr), colisao(nullptr), _sounds(sounds), mario(nullptr), puloHabilitado(true)
@@ -13,6 +14,8 @@ camera(nullptr), colisao(nullptr), _sounds(sounds), mario(nullptr), puloHabilita
     InicializarPoderesEspeciais();
     camera = std::make_shared<Camera>(larguraTela, alturaTela);
     pontuacao = std::make_shared<Pontuacao>(fonte, camera);
+
+    inicializarTextos(fonte);
 }
 
 
@@ -37,12 +40,46 @@ void GerenciadorGeral::InicializarPoderesEspeciais(){
     }
 }
 
-GerenciadorGeral::~GerenciadorGeral()
+void GerenciadorGeral::inicializarTextos(sf::Font &fonte)
 {
+    sf::Vector2f posicaoInicialTextos;
+    posicaoInicialTextos.x = -1000;
+    posicaoInicialTextos.y = -1000;
+
+    textoMaisCem.setFont(fonte);
+    textoMaisCem.setString("100");
+    textoMaisCem.setCharacterSize(15);
+    textoMaisCem.setFillColor(sf::Color::White);
+    textoMaisCem.setPosition(posicaoInicialTextos);
+
+    textoMaisMil.setFont(fonte);
+    textoMaisMil.setString("1000");
+    textoMaisMil.setCharacterSize(15);
+    textoMaisMil.setFillColor(sf::Color::White);
+    textoMaisMil.setPosition(posicaoInicialTextos);
+
+    textoGanhou.setFont(fonte);
+    textoGanhou.setString("YOU WIN!");
+    textoGanhou.setCharacterSize(15);
+    textoGanhou.setFillColor(sf::Color::White);
+}
+
+void GerenciadorGeral::atualizarPosicaoTexto(sf::Text &texto)
+{
+    // Calcula a posição centralizada do texto de acordo com a posição do jogador
+    sf::FloatRect textRect = texto.getLocalBounds();
+    float centerX = mario->getPosicao().x- textRect.width/2;
+    float centerY = (alturaTela- textRect.height) / 2;
+    texto.setPosition(centerX, centerY);
 }
 
 bool GerenciadorGeral::atualizar(sf::Time tempoAtual, sf::Time deltaTime, sf::Event ev)
 {
+    if (temporizadorTexto.getElapsedTime() > duracaoTexto){
+        textoMaisCem.setPosition(-1000, -1000);  // Define a posição fora da tela
+        textoMaisMil.setPosition(-1000, -1000);
+    }
+
     for (unsigned int i = 0; i < vetorPoderesEspeciais.size(); i++) {
         vetorPoderesEspeciais[i]->atualizar(tempoAtual, deltaTime);
     }
@@ -57,7 +94,6 @@ bool GerenciadorGeral::atualizar(sf::Time tempoAtual, sf::Time deltaTime, sf::Ev
     pontuacao->atualizarPontuacao(mapa.getContagemMoeda(), mapa.getContagemPoderEspecial());
     return true;
 }
-
 
 bool GerenciadorGeral::atualizarEventos(sf::Event ev)
 {
@@ -110,8 +146,6 @@ void GerenciadorGeral::renderizar(sf::Time tempoAtual)
 
     janela->draw(pontuacao->exibirPontuacao());
 
-    mario->desenhar(); 
-
     int contagemMoedasMisteriosas = 0;
 
     //Desenha os Poderes Especiais
@@ -127,12 +161,26 @@ void GerenciadorGeral::renderizar(sf::Time tempoAtual)
                 vetorPoderesEspeciais[i]->inicializar(vetorPoderesEspeciais[i]->getPosicaoInicial().x, vetorPoderesEspeciais[i]->getPosicaoInicial().y);
                 if(vetorPoderesEspeciais[i]->getTipo() ==3){
                     _sounds->somMoeda();
+                    //Desenha "+100" na tela logo em cima da posição do mario
+                    textoMaisCem.setPosition(mario->getPosicao().x, mario->getPosicao().y - mario->getAlturaJogador());
+                    temporizadorTexto.restart();  // Inicia o temporizador do texto
                 }
             }
             sf::Vector2f posicaoAtualMario = mario->getPosicao();
-
+            
             if(vetorPoderesEspeciais[i]->verificarColisao(posicaoAtualMario, mario->getAlturaJogador(), mario->getLarguraJogador())){
+                unsigned int tamanhoInicial = indicesComColisao.size();
                 indicesComColisao.insert(i);
+                unsigned int tamanhoFinal = indicesComColisao.size();
+
+                if(tamanhoFinal> tamanhoInicial && vetorPoderesEspeciais[i]->getTipo()!=3){ //Verifica se foi um poder especial novo e se não era moeda, que já foi tratado o texto dela
+                    if(vetorPoderesEspeciais[i]->getTipo() == 1){
+                        mario->dobrarAltura();
+                    }
+                    //Desenha "+1000" na tela logo em cima da posição do mario
+                    textoMaisMil.setPosition(mario->getPosicao().x, mario->getPosicao().y - mario->getAlturaJogador());
+                    temporizadorTexto.restart();  // Inicia o temporizador do texto
+                }
             }
             bool desenho = indicesComColisao.find(i) == indicesComColisao.end();
             
@@ -146,6 +194,17 @@ void GerenciadorGeral::renderizar(sf::Time tempoAtual)
     int contagemPoderesEspeciais = indicesComColisao.size();
 
     mapa.atualizarContagemPoderes(contagemPoderesEspeciais);
+
+    if(!mario->getGanhou()){
+        mario->desenhar(); 
+    } 
+    else{
+        atualizarPosicaoTexto(textoGanhou);
+        janela->draw(textoGanhou);    
+    }
+
+    janela->draw(textoMaisCem);
+    janela->draw(textoMaisMil);
 
     //Mostra a tela
     this->janela->display();
@@ -161,10 +220,4 @@ const sf::View& GerenciadorGeral::getViewCamera() const {
 
 void GerenciadorGeral::desenharMapa(sf::Time tempoAtual){
     this->mapa.renderizar(*this->janela, tempoAtual);
-}
-
-void GerenciadorGeral::desenharJogador(sf::Vector2f posicao) {//TRANSFERIR ESSA FUNCAO PRA CLASSE PERSONAGEM DEPOIS
-    sf::Sprite sprite(mario->getTexture());  // Tamanho do sprite
-    sprite.setPosition(posicao);
-    janela->draw(sprite);
 }

@@ -19,6 +19,7 @@ int main() {
     tela.height = alturaTela;
     tela.width = larguraTela;
 
+
     //Inicializa a janela
     std::shared_ptr<sf::RenderWindow> janela = std::make_shared<sf::RenderWindow>(tela, "Mario!",sf::Style::Titlebar | sf::Style::Close);
     std::shared_ptr<SoundManager> sounds = std::make_shared<SoundManager>();

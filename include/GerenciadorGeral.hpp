@@ -28,10 +28,18 @@ private:
     std::shared_ptr <Jogador> mario;
     std::set<unsigned int> indicesComColisao;
 
+    //Textos de pontuacao
+    sf::Text textoMaisCem;
+    sf::Text textoMaisMil;
+    sf::Text textoGanhou;
+    sf::Clock temporizadorTexto;
+    sf::Time duracaoTexto = sf::seconds(0.5f);
 
     //Métodos privados
     void inicializarVariaveis();
     void InicializarPoderesEspeciais();
+    void inicializarTextos(sf::Font &fonte);
+    void atualizarPosicaoTexto(sf::Text &texto);
 
     //Verificações
     bool puloHabilitado;
@@ -40,7 +48,6 @@ private:
 public:
     //Construtor e Destrutor
     GerenciadorGeral(std::shared_ptr <sf::RenderWindow> janela1, sf::Font &fonte, std::shared_ptr<SoundManager> sounds);
-    virtual ~GerenciadorGeral();
 
     //Métodos de Verificação
     int verificarColisao(float x, float y) const;
@@ -51,7 +58,6 @@ public:
     bool atualizarEventos(sf::Event ev);
     void renderizar(sf::Time tempoAtual);
     void desenharMapa(sf::Time tempoAtual);
-    void desenharJogador(sf::Vector2f posicao);
 
     //Getters
     float getAlturaTela() const;
