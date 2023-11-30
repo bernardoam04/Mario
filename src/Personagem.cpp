@@ -54,6 +54,14 @@ bool Personagem::getMovDireita() const {
     return movDireita;
 }
 
+bool Personagem::getVivo() const {
+    return vivo;
+}
+
+void Personagem::setVivo(bool vivoAtual) {
+    vivo = vivoAtual;
+}
+
 void Personagem::setPosicaoPersonagem(const sf::Vector2f& posicao) {
     posicaoPersonagem = posicao;
 }

@@ -106,6 +106,9 @@ bool GerenciadorGeral::atualizarEventos(sf::Event ev)
                 return false;
             }
     }
+    if(mario->getVivo()==false){
+        return false;
+    }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) { 
         mario->setMovendoDireita(true);
         mario->setMovendoEsquerda(false);
