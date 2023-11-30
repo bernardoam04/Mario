@@ -21,7 +21,19 @@ Jogador::Jogador(Colisao &colisao, const float larguraTela, const float alturaTe
     ativarPoder = false;
     alturaJogador = personagemTexture.getSize().y;
     larguraJogador = personagemTexture.getSize().x;
+    contadorAndadaDir = 0;
+    contadorAndadaEsq = 0;
+
+    mariosDireita.push_back(loadTexture("../imagens/marioDir1.png"));
+    mariosDireita.push_back(loadTexture("../imagens/marioDir2.png"));
+    mariosDireita.push_back(loadTexture("../imagens/marioDir3.png"));
+    mariosDireita.push_back(loadTexture("../imagens/marioDir4.png"));
+    mariosEsquerda.push_back(loadTexture("../imagens/marioEsq1.png"));
+    mariosEsquerda.push_back(loadTexture("../imagens/marioEsq2.png"));
+    mariosEsquerda.push_back(loadTexture("../imagens/marioEsq3.png"));
+    mariosEsquerda.push_back(loadTexture("../imagens/marioEsq4.png"));
 }
+
 
 Jogador::~Jogador() {
     
@@ -112,6 +124,12 @@ void Jogador::modificarPosicao(sf::Time deltaTime, int larguraMapa)
     float velocidadeHorizontalAtual = getVelocidadeHorizontal();
     bool estaNoArAtual = getEstaNoAr();
     sf::Vector2f posicaoAtual = getPosicao();
+    if(!estaMovendoDireita()){
+        contadorAndadaDir = 0;
+    }
+    if(!estaMovendoEsquerda()){
+        contadorAndadaEsq = 0;
+    }
 
     // Configurando nova velocidade horizontal (deve ser sincronizada com a camera ainda)
     setVelocidadeHorizontal(180.0f);
@@ -122,6 +140,7 @@ void Jogador::modificarPosicao(sf::Time deltaTime, int larguraMapa)
     {
         posicaoAtual.x -= velocidadeHorizontalAtual * deltaTime.asSeconds();
         setMovEsquerda(true);
+        contadorAndadaEsq++;
     } 
     else if(estaMovendoEsquerda() && verificarColisaoDistanciaY(posicaoAtual.x-2, posicaoAtual.y, alturaJogador-5) ){
         setMovEsquerda(false);
@@ -131,6 +150,7 @@ void Jogador::modificarPosicao(sf::Time deltaTime, int larguraMapa)
 
         posicaoAtual.x += velocidadeHorizontalAtual * deltaTime.asSeconds();
         setMovDireita(true);
+        contadorAndadaDir++;
     }
     else if(estaMovendoDireita() && verificarColisaoDistanciaY(posicaoAtual.x +larguraJogador+2, posicaoAtual.y, alturaJogador-5) ){
         setMovDireita(false);
@@ -281,7 +301,17 @@ void Jogador::perdeuMudarTextura(){
 }
 
 void Jogador::desenhar() {
-    sf::Sprite sprite(personagemTexture); 
+
+    contadorAndadaDir = contadorAndadaDir % 16;
+    contadorAndadaEsq = contadorAndadaEsq % 16;
+
+    alturaJogador = mariosDireita[0].getSize().y;
+    larguraJogador = mariosDireita[0].getSize().x;
+    sf::Sprite sprite(mariosDireita[contadorAndadaDir/4]); 
+    
+    if(estaMovendoEsquerda()){
+        sprite.setTexture(mariosEsquerda[contadorAndadaEsq/4]);
+    }
     sprite.setPosition(getPosicao());
     janela->draw(sprite);
 

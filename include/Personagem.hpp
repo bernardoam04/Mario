@@ -40,6 +40,7 @@ class Personagem {
         Personagem(Colisao &colisao);
         //virtual void desenharPersonagem(sf::Vector2f posicao, sf::RenderWindow janela);
         virtual void modificarPosicao(sf::Time deltaTime, int larguraMapa);
+        sf::Texture loadTexture(const std::string& filename);
         
         // Métodos get
         sf::Vector2f getPosicao() const;

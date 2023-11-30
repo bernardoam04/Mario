@@ -14,6 +14,12 @@ void Personagem::modificarPosicao(sf::Time deltaTime, int larguraMapa) {
     (void)larguraMapa;
 }
 
+sf::Texture Personagem::loadTexture(const std::string& filename) {
+    sf::Texture texture;
+    texture.loadFromFile(filename);
+    return texture;
+}
+
 sf::Vector2f Personagem::getPosicao() const {
     return posicaoPersonagem;
 }

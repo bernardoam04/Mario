@@ -12,6 +12,10 @@
         unsigned int larguraJogador;
         std::shared_ptr <sf::RenderWindow> janela;
         const float alturaTela;
+        int contadorAndadaDir;
+        int contadorAndadaEsq;
+        std::vector<sf::Texture> mariosDireita;
+        std::vector<sf::Texture> mariosEsquerda;
 
         //Verificações
         bool movendoDireita;

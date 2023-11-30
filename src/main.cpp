@@ -12,6 +12,7 @@ enum EstadoJogo {
     GAMEOVER
 };
 
+
 int main() {
 
     //Inicializa a tela com tamanho constante
