@@ -15,7 +15,7 @@ class Personagem {
         float velocidadeVertical;
         float velocidadeHorizontal;
         //Verificacoes
-        //bool vivo; (Nao esta sendo utilizado ainda)
+        bool vivo = true;
         bool estaNoAr;
         bool movEsquerda;
         bool movDireita;
@@ -47,6 +47,7 @@ class Personagem {
         float getAlturaChao() const;
         bool getEstaNoAr() const;
         float getTileSize() const;
+        bool getVivo() const;
         sf::Texture getTexture() const;
 
         // Métodos set
@@ -56,6 +57,7 @@ class Personagem {
         void setMovEsquerda(bool movimento);
         void setMovDireita(bool movimento);
         void setEstaNoAr(bool estado);
+        void setVivo(bool vivoAtual);
 
 };
 #endif

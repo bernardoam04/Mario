@@ -11,6 +11,7 @@ Arrumar os spirtes*/
 Jogador::Jogador(Colisao &colisao, const float larguraTela, std::shared_ptr <sf::RenderWindow> janela1) : Personagem(colisao), janela(janela1){
 
     setPosicaoPersonagem(sf::Vector2f(larguraTela/2,getAlturaChao())); 
+    setVivo(true);
     personagemTexture.loadFromFile("../imagens/marioPequeno.png");
     personagemSprite.setTexture(personagemTexture);
     personagemSprite.setOrigin(sf::Vector2f(8.5, 8.5));
@@ -198,6 +199,10 @@ void Jogador::modificarPosicao(sf::Time deltaTime, int larguraMapa)
         }
         }
 
+    }
+
+    if(posicaoAtual.y > 900){//Verifica se o jogador caiu do mapa
+        setVivo(false);
     }
 
     if(posicaoAtual.x> 7200){
