@@ -4,7 +4,6 @@
 Jogador::Jogador(Colisao &colisao, const float larguraTela, const float alturaTelaJogo, std::shared_ptr <sf::RenderWindow> janela1) 
 : Personagem(colisao), janela(janela1) ,alturaTela(alturaTelaJogo)
 {
-
     setPosicaoPersonagem(sf::Vector2f(larguraTela/2,getAlturaChao())); 
     setVivo(true);
     personagemTexture.loadFromFile("../imagens/marioPequeno.png");
@@ -22,6 +21,7 @@ Jogador::Jogador(Colisao &colisao, const float larguraTela, const float alturaTe
     larguraJogador = personagemTexture.getSize().x;
     contadorAndadaDir = 0;
     contadorAndadaEsq = 0;
+    setVelocidadeVertical(0);
 
     mariosDireita.push_back(loadTexture("../imagens/marioDir1.png"));
     mariosDireita.push_back(loadTexture("../imagens/marioDir2.png"));
@@ -121,7 +121,7 @@ void Jogador::dobrarAltura()
 
 void Jogador::modificarPosicao(sf::Time deltaTime, int larguraMapa)
 {
-
+    std::cout<<getVelocidadeVertical()<<std::endl;
     // Obtendo valores atuais
     float velocidadeHorizontalAtual = getVelocidadeHorizontal();
     bool estaNoArAtual = getEstaNoAr();
@@ -239,6 +239,7 @@ void Jogador::modificarPosicao(sf::Time deltaTime, int larguraMapa)
 
 void Jogador::inicializarBooleanos()
 {
+    setEstaNoAr(false);
     ativarPoder = false;
     movendoDireita = false;
     movendoEsquerda = false;
