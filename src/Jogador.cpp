@@ -18,7 +18,6 @@ Jogador::Jogador(Colisao &colisao, const float larguraTela, const float alturaTe
     personagemMorreuSprite.setPosition(sf::Vector2f(0.0, 0.0));
 
     moedas = 0;
-    ativarPoder = false;
     alturaJogador = personagemTexture.getSize().y;
     larguraJogador = personagemTexture.getSize().x;
     contadorAndadaDir = 0;
@@ -32,6 +31,8 @@ Jogador::Jogador(Colisao &colisao, const float larguraTela, const float alturaTe
     mariosEsquerda.push_back(loadTexture("../imagens/marioEsq2.png"));
     mariosEsquerda.push_back(loadTexture("../imagens/marioEsq3.png"));
     mariosEsquerda.push_back(loadTexture("../imagens/marioEsq4.png"));
+
+    inicializarBooleanos();
 }
 
 Jogador::~Jogador() {
@@ -217,21 +218,28 @@ void Jogador::modificarPosicao(sf::Time deltaTime, int larguraMapa)
 
     }
 
-    if(posicaoAtual.y > 900){//Verifica se o jogador caiu do mapa
-        setVivo(false);
-    }
-
     if(posicaoAtual.x> 7200){
         posicaoAtual.x = 7200;
         ganhou = true;
     }
 
     if(posicaoAtual.y > alturaTela){
-        setPerdeu(true);
+        vida = 0;
     }
 
     // Configurando a nova posição
     setPosicaoPersonagem(posicaoAtual);
+}
+
+void Jogador::inicializarBooleanos()
+{
+    ativarPoder = false;
+    movendoDireita = false;
+    movendoEsquerda = false;
+    pulando = false;
+    colisaoCabeca = false;
+    ganhou = false;
+    perdeu = false;
 }
 
 int Jogador::getLarguraJogador()

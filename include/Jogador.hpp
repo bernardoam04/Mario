@@ -21,14 +21,17 @@
         bool movendoDireita;
         bool movendoEsquerda;
         bool pulando;
-        bool colisaoCabeca = false;
-        bool ganhou = false;
-        bool perdeu = false;
-        
+        bool colisaoCabeca;
+        bool ganhou;
+        bool perdeu;
+
     public:
         //Construtor
         Jogador(Colisao &colisao, const float larguraTela, const float alturaTelaJogo, std::shared_ptr <sf::RenderWindow> janela1);
         Jogador& operator=(const Jogador& other);
+
+        //Inicialização
+        void inicializarBooleanos();
         
         //Destrutor
         virtual ~Jogador();
