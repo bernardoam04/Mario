@@ -24,7 +24,7 @@
         bool colisaoCabeca = false;
         bool ganhou = false;
         bool perdeu = false;
-
+        
     public:
         //Construtor
         Jogador(Colisao &colisao, const float larguraTela, const float alturaTelaJogo, std::shared_ptr <sf::RenderWindow> janela1);

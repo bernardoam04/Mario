@@ -34,7 +34,6 @@ Jogador::Jogador(Colisao &colisao, const float larguraTela, const float alturaTe
     mariosEsquerda.push_back(loadTexture("../imagens/marioEsq4.png"));
 }
 
-
 Jogador::~Jogador() {
     
 }
@@ -100,19 +99,16 @@ bool Jogador::verificarColisaoDistanciaY(float x, float y, float altura)
 
 void Jogador::dobrarAltura()
 {
-    int alturaJogadorAnterior = alturaJogador;
-    // Atualiza a altura da textura
-    personagemTexture.loadFromFile("../imagens/marioGrande.png"); 
-    alturaJogador = personagemTexture.getSize().y;
+    if(vida == 1){
+        int alturaJogadorAnterior = alturaJogador;
+        // Atualiza a altura da textura
+        personagemTexture.loadFromFile("../imagens/marioGrande.png"); 
+        alturaJogador = mariosDireita[0].getSize().y;
 
-    // Ajusta a posição vertical do jogador para compensar a mudança de altura
-    sf::Vector2f posicaoAtual = getPosicao();
-    posicaoAtual.y -= (alturaJogador - alturaJogadorAnterior);  // Ajuste pela metade da nova altura
-    setPosicaoPersonagem(posicaoAtual);
-
-    // Incrementa a vida se for menor que 2
-    if (vida < 2)
-    {
+        // Ajusta a posição vertical do jogador para compensar a mudança de altura
+        sf::Vector2f posicaoAtual = getPosicao();
+        posicaoAtual.y -= (alturaJogador - alturaJogadorAnterior);  // Ajuste pela metade da nova altura
+        setPosicaoPersonagem(posicaoAtual);
         vida++;
     }
 }
@@ -302,19 +298,64 @@ void Jogador::perdeuMudarTextura(){
 
 void Jogador::desenhar() {
 
-    contadorAndadaDir = contadorAndadaDir % 16;
-    contadorAndadaEsq = contadorAndadaEsq % 16;
+    if(!getEstaNoAr()&& vida > 1){
+        contadorAndadaDir = contadorAndadaDir % 16;
+        contadorAndadaEsq = contadorAndadaEsq % 16;
 
-    alturaJogador = mariosDireita[0].getSize().y;
-    larguraJogador = mariosDireita[0].getSize().x;
-    sf::Sprite sprite(mariosDireita[contadorAndadaDir/4]); 
-    
-    if(estaMovendoEsquerda()){
-        sprite.setTexture(mariosEsquerda[contadorAndadaEsq/4]);
+        alturaJogador = mariosDireita[0].getSize().y;
+        larguraJogador = mariosDireita[0].getSize().x;
+        sf::Sprite sprite(mariosDireita[contadorAndadaDir/4]); 
+
+        if(estaMovendoEsquerda()){
+            sprite.setTexture(mariosEsquerda[contadorAndadaEsq/4]);
+        }
+        sprite.setPosition(getPosicao());
+        
+        janela->draw(sprite);
     }
-    sprite.setPosition(getPosicao());
-    janela->draw(sprite);
+    else if(getEstaNoAr() && vida > 1){
+        alturaJogador = mariosDireita[0].getSize().y;
+        larguraJogador = mariosDireita[0].getSize().x;
 
+        sf::Sprite sprite(mariosDireita[0]); 
+
+        if(estaMovendoEsquerda()){
+            sprite.setTexture(mariosEsquerda[0]);
+        }
+        sprite.setPosition(getPosicao());
+        
+        janela->draw(sprite);
+    }
+
+    //Lógica pra desenhar marios pequenos andando
+    else if(!getEstaNoAr() && vida == 1){
+        alturaJogador =personagemTexture.getSize().y;
+        larguraJogador = personagemTexture.getSize().x;
+
+        sf::Sprite sprite(personagemTexture); 
+
+        if(estaMovendoEsquerda()){
+            sprite.setTexture(personagemTexture);
+        }
+        sprite.setPosition(getPosicao());
+        
+        janela->draw(sprite);
+    }
+
+    //Lógica pra desenhar marios pequenos no ar (só usa um sprite à esquerda e um a direita com a mão pra cima)
+    else if(getEstaNoAr() && vida == 1){
+        alturaJogador = personagemTexture.getSize().y;
+        larguraJogador = personagemTexture.getSize().x;
+
+        sf::Sprite sprite(personagemTexture); 
+
+        if(estaMovendoEsquerda()){
+            sprite.setTexture(personagemTexture);
+        }
+        sprite.setPosition(getPosicao());
+        
+        janela->draw(sprite);
+    }
     if(getPerdeu()){
         sf::sleep(sf::seconds(1.0));
     }
