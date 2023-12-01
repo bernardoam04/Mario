@@ -153,7 +153,7 @@ void GerenciadorGeral::renderizar(sf::Time tempoAtual)
     }
 
     mario->atualizarColisao(mapa);
-
+    
     //Ajusta a visão da câmera
     janela->setView(this->camera->getView());
     
