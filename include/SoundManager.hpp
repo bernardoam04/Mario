@@ -7,6 +7,8 @@ class SoundManager{
         sf::Music musicaFundo;
         sf::SoundBuffer sbMoeda;
         sf::Sound sMoeda;
+        sf::SoundBuffer sbPulo;
+        sf::Sound sPulo;
         sf::Sound sGameOver;
         sf::SoundBuffer sbGameOver;
 
@@ -18,6 +20,7 @@ class SoundManager{
 
         void somMoeda();
         void somGameOver();
+        void somPulo();
 };
 
 #endif
