@@ -15,12 +15,8 @@ camera(nullptr), colisao(nullptr), _sounds(sounds), mario(nullptr), puloHabilita
     camera = std::make_shared<Camera>(larguraTela, alturaTela);
     pontuacao = std::make_shared<Pontuacao>(fonte, camera);
     inicializarTextos(fonte);
-    std::cout<<mario->getPerdeu()<<std::endl;
-    std::cout<<mario->getPosicao().y<<std::endl;
     gameOver = false;
 }
-
-
 
 void GerenciadorGeral::InicializarPoderesEspeciais(){
     int tileSize = mapa.getTileSize();
@@ -155,7 +151,6 @@ void GerenciadorGeral::renderizar(sf::Time tempoAtual)
     contadorPerdeu++;
     gameOver = true;
     }
-
 
     mario->atualizarColisao(mapa);
 

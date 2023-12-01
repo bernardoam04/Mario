@@ -16,6 +16,8 @@
         int contadorAndadaEsq;
         std::vector<sf::Texture> mariosDireita;
         std::vector<sf::Texture> mariosEsquerda;
+        std::vector<sf::Texture> mariosPequenosEsquerda;
+        std::vector<sf::Texture> mariosPequenosDireita;
 
         //Verificações
         bool movendoDireita;
