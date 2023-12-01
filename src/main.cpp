@@ -95,7 +95,7 @@ int main() {
             // Atualiza o jogo principal
             bool jogoAtivo = jogo->atualizar(tempoAtual, deltaTime, ev);
 
-            if(jogoAtivo == false){
+            if(jogoAtivo == false || jogo->getGamerOver() == true){
                 estadoAtual = EstadoJogo::GAMEOVER;
             }
 

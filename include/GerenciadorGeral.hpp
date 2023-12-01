@@ -43,6 +43,7 @@ private:
 
     //Verificações
     bool puloHabilitado;
+    bool gameOver;
     std::vector <int> contagemDesenhoPoderes;
 
     //Contador
@@ -67,6 +68,7 @@ public:
     float getLarguraTela() const;
     int getPontuacaoTotal() const;
     const sf::View& getViewCamera() const;
+    bool getGamerOver();
 
 
 };

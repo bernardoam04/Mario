@@ -17,6 +17,7 @@ camera(nullptr), colisao(nullptr), _sounds(sounds), mario(nullptr), puloHabilita
     inicializarTextos(fonte);
     std::cout<<mario->getPerdeu()<<std::endl;
     std::cout<<mario->getPosicao().y<<std::endl;
+    gameOver = false;
 }
 
 
@@ -87,9 +88,6 @@ bool GerenciadorGeral::atualizar(sf::Time tempoAtual, sf::Time deltaTime, sf::Ev
         vetorPoderesEspeciais[i]->atualizar(tempoAtual, deltaTime);
     }
 
-    if(mario->getPerdeu() == true){
-        return false;
-    }
     bool jogoAtivo = this->atualizarEventos(ev);
 
     mario->modificarPosicao(deltaTime, mapa.getLarguraMapa());
@@ -145,14 +143,17 @@ bool GerenciadorGeral::atualizarEventos(sf::Event ev)
 void GerenciadorGeral::renderizar(sf::Time tempoAtual)
 {
 
-    if(mario->getPerdeu()){
+    if(mario->getPerdeu() == true){
         mario->perdeuMudarTextura();
         _sounds->pausarMusica();
         if(contadorPerdeu == 0){
             _sounds->somGameOver();
         }
-        contadorPerdeu++;
+    contadorPerdeu++;
+    gameOver = true;
     }
+
+
     mario->atualizarColisao(mapa);
 
     //Ajusta a visão da câmera
@@ -233,6 +234,11 @@ int GerenciadorGeral::getPontuacaoTotal() const
 
 const sf::View& GerenciadorGeral::getViewCamera() const {
     return this->camera->getView();
+}
+
+bool GerenciadorGeral::getGamerOver()
+{
+    return gameOver;
 }
 
 void GerenciadorGeral::desenharMapa(sf::Time tempoAtual){

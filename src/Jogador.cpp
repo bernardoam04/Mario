@@ -225,6 +225,7 @@ void Jogador::modificarPosicao(sf::Time deltaTime, int larguraMapa)
 
     if(posicaoAtual.y > alturaTela){
         vida = 0;
+        perdeu = true;
     }
 
     // Configurando a nova posição
@@ -257,21 +258,10 @@ bool Jogador::getGanhou()
 }
 bool Jogador::getPerdeu()
 {
-    if(vida == 0){
-        perdeu = true;
-    }
-    else{
-        perdeu = false;
-    }
     return perdeu;
 }
-void Jogador::setPerdeu(bool estado)
-{
-    if(estado){
-        vida = 0;
-    }
-    perdeu = estado;
-}
+
+
 void Jogador::setMovendoDireita(bool movendo)
 {
     movendoDireita = movendo;

@@ -56,9 +56,6 @@
         bool getGanhou();
         bool getPerdeu();
 
-        //Setters
-        void setPerdeu(bool estado);
-
         // Métodos para definir o estado dos movimentos
         void setMovendoDireita(bool movendo);
         void setMovendoEsquerda(bool movendo);
