@@ -27,7 +27,6 @@ Jogador::Jogador(Colisao &colisao, const float larguraTela, const float alturaTe
     mariosDireita.push_back(loadTexture("../imagens/marioDir2.png"));
     mariosDireita.push_back(loadTexture("../imagens/marioDir3.png"));
     mariosDireita.push_back(loadTexture("../imagens/marioDir4.png"));
-    mariosDireita.push_back(loadTexture("../imagens/marioPequeno.png"));
     mariosEsquerda.push_back(loadTexture("../imagens/marioEsq1.png"));
     mariosEsquerda.push_back(loadTexture("../imagens/marioEsq2.png"));
     mariosEsquerda.push_back(loadTexture("../imagens/marioEsq3.png"));
@@ -36,6 +35,7 @@ Jogador::Jogador(Colisao &colisao, const float larguraTela, const float alturaTe
     mariosPequenosDireita.push_back(loadTexture("../imagens/marioPequenoPulandoDir.png"));
     mariosPequenosEsquerda.push_back(loadTexture("../imagens/marioPequenoPulandoEsq.png"));
     mariosPequenosEsquerda.push_back(loadTexture("../imagens/marioPequenoEsq1.png"));
+    mariosPequenosDireita.push_back(loadTexture("../imagens/marioPequeno.png"));
 
     inicializarBooleanos();
 }
@@ -340,7 +340,7 @@ void Jogador::desenhar() {
         alturaJogador = mariosPequenosEsquerda[0].getSize().y;
         larguraJogador = mariosPequenosEsquerda[0].getSize().x;
 
-        sf::Sprite sprite(mariosDireita[4]); 
+        sf::Sprite sprite(mariosPequenosDireita[1]); 
 
         if(estaMovendoEsquerda()){
             sprite.setTexture(mariosPequenosEsquerda[1]);

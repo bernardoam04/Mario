@@ -2,7 +2,7 @@
 #include "GerenciadorGeral.hpp"
 
 GerenciadorGeral::GerenciadorGeral(std::shared_ptr <sf::RenderWindow> janela1, sf::Font &fonte, std::shared_ptr<SoundManager> sounds) : pontuacao(nullptr),  
-camera(nullptr), colisao(nullptr), _sounds(sounds), mario(nullptr), puloHabilitado(true)
+camera(nullptr), colisao(nullptr), _sounds(sounds), mario(nullptr), tartaruga(nullptr), puloHabilitado(true)
 {
     this->janela = janela1;
     this->mapa.setSound(this->_sounds);
@@ -14,8 +14,11 @@ camera(nullptr), colisao(nullptr), _sounds(sounds), mario(nullptr), puloHabilita
     InicializarPoderesEspeciais();
     camera = std::make_shared<Camera>(larguraTela, alturaTela);
     pontuacao = std::make_shared<Pontuacao>(fonte, camera);
+    tartaruga = std::make_shared<Tartaruga>(*colisao, janela);
+    tartaruga->setMovDireita(true);
     inicializarTextos(fonte);
     gameOver = false;
+    
 }
 
 void GerenciadorGeral::InicializarPoderesEspeciais(){
@@ -87,6 +90,7 @@ bool GerenciadorGeral::atualizar(sf::Time tempoAtual, sf::Time deltaTime, sf::Ev
     bool jogoAtivo = this->atualizarEventos(ev);
 
     mario->modificarPosicao(deltaTime, mapa.getLarguraMapa());
+    tartaruga->modificarPosicao(deltaTime, mapa.getLarguraMapa());
 
     if (jogoAtivo == false)
     {
@@ -162,13 +166,18 @@ void GerenciadorGeral::renderizar(sf::Time tempoAtual)
 
     janela->draw(pontuacao->exibirPontuacao());
 
+    //Desenha as tartarugas
+    tartaruga->desenharTartaruga();
+
     int contagemMoedasMisteriosas = 0;
 
     //Desenha os Poderes Especiais
     for (unsigned int i = 0; i < vetorPoderesEspeciais.size(); i++) {
+
         int tileSize = mapa.getTileSize();
         int x= vetorPoderesEspeciais[i]->getPosicaoInicial().x;
         int y= vetorPoderesEspeciais[i]->getPosicaoInicial().y + tileSize;
+
         if(mapa.getColisaoBlocoMoeda(x,y) == true){
             if(vetorPoderesEspeciais[i]->getTipo() ==3){
                 contagemMoedasMisteriosas++;

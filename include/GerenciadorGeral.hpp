@@ -8,6 +8,7 @@
 #include "../include/Pontuacao.hpp"
 #include "../include/SoundManager.hpp"
 #include "Jogador.hpp"
+#include "Tartaruga.hpp"
 #include <set>
 
 class GerenciadorGeral{
@@ -27,6 +28,7 @@ private:
     std::shared_ptr<SoundManager> _sounds;
     std::shared_ptr <Jogador> mario;
     std::set<unsigned int> indicesComColisao;
+    std::shared_ptr <Tartaruga> tartaruga;
 
     //Textos de pontuacao
     sf::Text textoMaisCem;
