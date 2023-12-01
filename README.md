@@ -18,6 +18,7 @@ e rapidamente se tornou um marco na história dos videogames.
 
 
 - Biblioteca Gráfica SFML
+- Biblioteca TinyXML2 para a leitura do Mapa
 
 ## Controles
 - Setas para se movimentar
