@@ -128,7 +128,10 @@ bool GerenciadorGeral::atualizarEventos(sf::Event ev)
     // Verifica o pulo
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && puloHabilitado) {
         mario->setPulando(true);
-        puloHabilitado = false; 
+        puloHabilitado = false;
+       if(!mario->getEstaNoAr()){//Verificacao para o som sair somente quando mario sai do chao
+            _sounds->somPulo();
+        }
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && !puloHabilitado) {
         mario->setPulando(false);
