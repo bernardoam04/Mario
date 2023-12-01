@@ -11,6 +11,9 @@ class Tartaruga : public Personagem {
         //Construtor
         Tartaruga(Colisao &colisao, std::shared_ptr <sf::RenderWindow> janela1);
 
+        //Destrutor virtual
+        virtual ~Tartaruga();
+
         //Métodos de uso direto
         void inicializarTartarugas();//Controlar o aparecimento de tartarugas
         void atacar();
@@ -18,8 +21,11 @@ class Tartaruga : public Personagem {
         void morrer();
         void desenharTartaruga();
 
+
         //Métodos de verificacao
         bool verificarColisao();
+        bool verificarColisaoDistanciaX(float x, float y, float altura);
+        
 };
 
 #endif

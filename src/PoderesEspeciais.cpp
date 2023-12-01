@@ -166,7 +166,7 @@ void PoderesEspeciais::ModificacaoPosicaoPoderes(sf::Time deltaTime)
     }
 
     //Verificação de colisão com as laterais direita e esquerda
-    if ( (movDireita && colisao.verificarColisao(posicao.x + tileSize, posicao.y+tileSize/2) != 0 && colisao.verificarColisao(posicao.x + tileSize, posicao.y+tileSize/2)!=9) ) {
+    if ((movDireita && colisao.verificarColisao(posicao.x + tileSize, posicao.y+tileSize/2) != 0 && colisao.verificarColisao(posicao.x + tileSize, posicao.y+tileSize/2)!=9) ) {
 
         // Colisão à direita, ajusta posição
         posicao.x -= velocidadeHorizontal * deltaTime.asSeconds();
