@@ -11,6 +11,8 @@ class SoundManager{
         sf::Sound sPulo;
         sf::Sound sGameOver;
         sf::SoundBuffer sbGameOver;
+        sf::SoundBuffer sbGameoverScream;  // Renomeado para evitar conflito
+        sf::Sound sGameoverScream;         // Novo objeto de som
 
     public:
         SoundManager();
@@ -21,6 +23,7 @@ class SoundManager{
         void somMoeda();
         void somGameOver();
         void somPulo();
+        void somgameovertela();
 };
 
 #endif

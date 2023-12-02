@@ -13,10 +13,15 @@ SoundManager::SoundManager() {
     if(!this->sbPulo.loadFromFile("../audio/jump.wav")){
         throw std::exception();
     }
+
+    if (!this->sbGameoverScream.loadFromFile("../audio/gameOver.wav")) {
+        throw std::exception();
+    }
+
     sMoeda.setBuffer(sbMoeda);
     sGameOver.setBuffer(sbGameOver);
     sPulo.setBuffer(sbPulo);
-    this->tocarMusica();
+   sGameoverScream.setBuffer(sbGameoverScream);
 }
 
 void SoundManager::tocarMusica() {
@@ -44,3 +49,5 @@ void SoundManager::somGameOver(){
 void SoundManager::somPulo(){
     this->sPulo.play();
 }
+void SoundManager::somgameovertela() {
+ this->sGameoverScream.play();}
