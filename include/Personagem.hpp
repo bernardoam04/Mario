@@ -26,7 +26,7 @@ private:
     //Constantes
     const float tileSize=32;
     const float aceleracaoGravidade = 10.0f;
-    const float alturaChao = 640.0 - 156.0;
+    const float alturaChao = 640.0 - 64.0;
 
 protected:
     sf::Sprite personagemSprite;

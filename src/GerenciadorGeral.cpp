@@ -11,20 +11,17 @@ camera(nullptr), colisao(nullptr), _sounds(sounds), mario(nullptr), goomba(nullp
     this->_sounds->reiniciarMusica();
     this->mapa.inicializarColisoes();
     gameOver = false;
-
     //Inicialização dos smart pointers
     colisao = std::make_shared<Colisao>(mapa.getDadosMapa(), mapa.getTileSize());
     mario = std::make_shared<Jogador>(*colisao, larguraTela, alturaTela, janela);
     camera = std::make_shared<Camera>(larguraTela, alturaTela);
     pontuacao = std::make_shared<Pontuacao>(fonte, camera);
-    goomba = std::make_shared<Goomba>(*colisao, janela);
 
     //Métodos de inicialização
-    goomba->setMovDireita(true);
     inicializarTextos(fonte);
     InicializarPoderesEspeciais();
+    InicializarGoombas();
 }
-
 void GerenciadorGeral::InicializarPoderesEspeciais(){
     int tileSize = mapa.getTileSize();
     auto dadosMapa = mapa.getDadosMapa();
@@ -43,6 +40,30 @@ void GerenciadorGeral::InicializarPoderesEspeciais(){
             }
         }
     }
+}
+
+void GerenciadorGeral::InicializarGoombas()
+{
+    goomba = std::make_shared<Goomba>(*colisao, janela, 1000, 544);
+    goombas.push_back(goomba);
+
+    goomba = std::make_shared<Goomba>(*colisao, janela, 1400, 544);
+    goombas.push_back(goomba);
+
+    goomba = std::make_shared<Goomba>(*colisao, janela, 3456, 544);
+    goombas.push_back(goomba);
+
+    goomba = std::make_shared<Goomba>(*colisao, janela, 3490, 544);
+    goombas.push_back(goomba);
+
+    goomba = std::make_shared<Goomba>(*colisao, janela, 3510, 544);
+    goombas.push_back(goomba);
+
+    goomba = std::make_shared<Goomba>(*colisao, janela, 6144, 544);
+    goombas.push_back(goomba);
+
+    goomba = std::make_shared<Goomba>(*colisao, janela, 6170, 544);
+    goombas.push_back(goomba);
 }
 
 void GerenciadorGeral::inicializarTextos(sf::Font &fonte)
@@ -93,7 +114,10 @@ bool GerenciadorGeral::atualizar(sf::Time tempoAtual, sf::Time deltaTime, sf::Ev
     bool jogoAtivo = this->atualizarEventos(ev);
 
     mario->modificarPosicao(deltaTime, mapa.getLarguraMapa());
-    goomba->modificarPosicao(deltaTime, mapa.getLarguraMapa());
+
+    for (unsigned int i = 0; i < goombas.size(); i++) {
+        goombas[i]->modificarPosicao(deltaTime, mapa.getLarguraMapa());
+    }
 
     if (jogoAtivo == false)
     {
@@ -159,7 +183,6 @@ void GerenciadorGeral::renderizar(sf::Time tempoAtual)
     contadorPerdeu++;
     gameOver = true;
     }
-
     mario->atualizarColisao(mapa);
     
     //Ajusta a visão da câmera
@@ -171,7 +194,10 @@ void GerenciadorGeral::renderizar(sf::Time tempoAtual)
     janela->draw(pontuacao->exibirPontuacao());
 
     //Desenha as goombas
-    goomba->desenharGoomba();
+    for (unsigned int i = 0; i < goombas.size(); i++) {
+    goombas[i]->desenharGoomba();
+    }
+
 
     int contagemMoedasMisteriosas = 0;
 

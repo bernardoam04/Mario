@@ -13,12 +13,10 @@ enum EstadoJogo {
 };
 
 int main() {
-
     //Inicializa a tela com tamanho constante
     sf::VideoMode tela;
     tela.height = alturaTela;
     tela.width = larguraTela;
-
 
     //Inicializa a janela e os sons do jogo
     std::shared_ptr<sf::RenderWindow> janela = std::make_shared<sf::RenderWindow>(tela, "Mario!",sf::Style::Titlebar | sf::Style::Close);
@@ -32,7 +30,6 @@ int main() {
     sf::Time deltaTime;
 
     EstadoJogo estadoAtual = EstadoJogo::MENU; 
-
 
     //Carregamento da fonte principal
     sf::Font fonte;
@@ -69,7 +66,6 @@ int main() {
                 timer.restart();
                 estadoAtual = EstadoJogo::JOGO;
             }
-
             // Desenho do menu completo
             menu.desenharTela();
 

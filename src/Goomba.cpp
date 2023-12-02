@@ -1,13 +1,19 @@
 #include "Goomba.hpp"
 #include <iostream>
 
-Goomba::Goomba(Colisao &colisao, std::shared_ptr <sf::RenderWindow> janela1) : Personagem(colisao), janela(janela1)
+Goomba::Goomba(Colisao &colisao, std::shared_ptr <sf::RenderWindow> janela1, float x, float y) : Personagem(colisao), janela(janela1)
 {
     setVivo(true);
+    setMovDireita(false);
+    setMovEsquerda(true);
+    setVelocidadeVertical(0);
+    setEstaNoAr(false);
+    personagemTexture.loadFromFile("../imagens/TartarugaEsq.png");
     setAlturaPersonagem(personagemTexture.getSize().y);
     setLarguraPersonagem(personagemTexture.getSize().x);
-    setPosicaoPersonagem(sf::Vector2f(1000, getAlturaChao() + 50));
-    personagemTexture.loadFromFile("../imagens/TartarugaEsq.png");
+    larguraGoomba = personagemTexture.getSize().x;
+    alturaGoomba = personagemTexture.getSize().y;
+    setPosicaoPersonagem(sf::Vector2f(x, y));
     janela->draw(personagemSprite);
 }
 
@@ -43,28 +49,69 @@ bool Goomba::verificarColisaoDistanciaX(float x, float y, float largura){
     return false;
 }
 
-void Goomba::modificarPosicao(sf::Time deltaTime, int larguraMapa) {
-    // AINDA FALTA IMPLEMENTAR A QUEDA
+bool Goomba::verificarColisaoDistanciaY(float x, float y, float altura)
+{
+    // Número de pontos a serem verificados entre x e x + largura
+    int numeroDePontos = 10;  // Ajustar conforme necessário
 
-    sf::Vector2f posicaoAtual = getPosicao();
-    float velocidadeHorizontalAtual = getVelocidadeHorizontal();
-    setVelocidadeHorizontal(30.0f);
+    // Calcula a distância entre cada ponto
+    float distanciaEntrePontos = altura / static_cast<float>(numeroDePontos - 1);
 
-    // Configurar para quando bater em alguma coisa rebater
-    if (!getMovDireita()) {
-        posicaoAtual.x -= velocidadeHorizontalAtual * deltaTime.asSeconds();
+    // Loop para verificar colisão em cada ponto
+    for (int i = 0; i < numeroDePontos; ++i) {
+        // Calcula as coordenadas do ponto atual
+        float pontoX = x;
+        float pontoY = y + i * distanciaEntrePontos;
+
+        // Verifica a colisão para o ponto atual
+        if (colisao.verificarColisao(pontoX, pontoY) != 0 && colisao.verificarColisao(pontoX, pontoY) != 9) {
+            // Retorna verdadeiro se houver colisão em algum ponto
+            return true;
+        }
     }
 
-    // Inverter a direção se houver colisão
-    if (verificarColisaoDistanciaX(posicaoAtual.x + 35, posicaoAtual.y, getAlturaPersonagem() - 5)) {
-        setMovDireita(!getMovDireita());
+    // Retorna falso se não houver colisão em nenhum ponto
+    return false;
+}
+
+void Goomba::modificarPosicao(sf::Time deltaTime, int larguraMapa) {
+
+    sf::Vector2f posicaoAtual = getPosicao();
+    setVelocidadeHorizontal(30.0f);
+    float velocidadeHorizontalAtual = getVelocidadeHorizontal();
+
+    // Configurar para quando bater em alguma coisa rebater
+    if (getMovEsquerda()) {
+       posicaoAtual.x -= velocidadeHorizontalAtual * deltaTime.asSeconds();
+    }
+
+    // Inverter a direção da direita pra esquerda se houver colisão
+    if (verificarColisaoDistanciaY(posicaoAtual.x + larguraGoomba , posicaoAtual.y, alturaGoomba -3) && getMovDireita()) {
+        setMovDireita(false);
+        setMovEsquerda(true);
+    }
+
+    // Inverter a direção da esquerda pra direita se houver colisão
+    if (verificarColisaoDistanciaY(posicaoAtual.x , posicaoAtual.y, alturaGoomba -3) && getMovEsquerda()) {
+        setMovEsquerda(false);
+        setMovDireita(true);
     }
 
     // Limitar a posição dentro dos limites do mapa
-    if (posicaoAtual.x + 35 <= 0) {
+    if (posicaoAtual.x + larguraGoomba <= 0) {
         setMovDireita(true);
     } else if (posicaoAtual.x + 35 >= larguraMapa) {
         setMovDireita(false);
+    }
+
+    if (!verificarColisaoDistanciaX(posicaoAtual.x , posicaoAtual.y + alturaGoomba, larguraGoomba -3) && getMovDireita()) {
+        setEstaNoAr(true);
+        setVelocidadeVertical(getVelocidadeVertical()+ getAceleracaoGravidade());
+        posicaoAtual.y += getVelocidadeVertical() * deltaTime.asSeconds();
+    }
+    else{
+        setEstaNoAr(false);
+        setVelocidadeVertical(0);
     }
 
     // Mover para a direita se a direção for positiva
@@ -72,10 +119,13 @@ void Goomba::modificarPosicao(sf::Time deltaTime, int larguraMapa) {
         posicaoAtual.x += velocidadeHorizontalAtual * deltaTime.asSeconds();
     }
 
+    //Morre se cair do mapa
+    if(posicaoAtual.y > 640){
+        morrer();
+    }
+
     setPosicaoPersonagem(posicaoAtual);
 }
-
-
 
 void Goomba::morrer() {
     setVivo(false);
