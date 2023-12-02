@@ -2,7 +2,7 @@
 #include "GerenciadorGeral.hpp"
 
 GerenciadorGeral::GerenciadorGeral(std::shared_ptr <sf::RenderWindow> janela1, sf::Font &fonte, std::shared_ptr<SoundManager> sounds) : pontuacao(nullptr),  
-camera(nullptr), colisao(nullptr), _sounds(sounds), mario(nullptr), tartaruga(nullptr), puloHabilitado(true)
+camera(nullptr), colisao(nullptr), _sounds(sounds), mario(nullptr), goomba(nullptr), puloHabilitado(true)
 {
     //Inicialização de atributos
     this->janela = janela1;
@@ -17,10 +17,10 @@ camera(nullptr), colisao(nullptr), _sounds(sounds), mario(nullptr), tartaruga(nu
     mario = std::make_shared<Jogador>(*colisao, larguraTela, alturaTela, janela);
     camera = std::make_shared<Camera>(larguraTela, alturaTela);
     pontuacao = std::make_shared<Pontuacao>(fonte, camera);
-    tartaruga = std::make_shared<Tartaruga>(*colisao, janela);
+    goomba = std::make_shared<Goomba>(*colisao, janela);
 
     //Métodos de inicialização
-    tartaruga->setMovDireita(true);
+    goomba->setMovDireita(true);
     inicializarTextos(fonte);
     InicializarPoderesEspeciais();
 }
@@ -93,7 +93,7 @@ bool GerenciadorGeral::atualizar(sf::Time tempoAtual, sf::Time deltaTime, sf::Ev
     bool jogoAtivo = this->atualizarEventos(ev);
 
     mario->modificarPosicao(deltaTime, mapa.getLarguraMapa());
-    tartaruga->modificarPosicao(deltaTime, mapa.getLarguraMapa());
+    goomba->modificarPosicao(deltaTime, mapa.getLarguraMapa());
 
     if (jogoAtivo == false)
     {
@@ -170,8 +170,8 @@ void GerenciadorGeral::renderizar(sf::Time tempoAtual)
 
     janela->draw(pontuacao->exibirPontuacao());
 
-    //Desenha as tartarugas
-    tartaruga->desenharTartaruga();
+    //Desenha as goombas
+    goomba->desenharGoomba();
 
     int contagemMoedasMisteriosas = 0;
 

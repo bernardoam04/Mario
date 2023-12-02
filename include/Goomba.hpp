@@ -1,25 +1,25 @@
-#ifndef TARTARUGA_HPP
-#define TARTARUGA_HPP
+#ifndef GOOMBA_HPP
+#define GOOMBA_HPP
 #include <SFML/Graphics.hpp>
 #include "Personagem.hpp"
 
-class Tartaruga : public Personagem {
+class Goomba : public Personagem {
     private:
         std::shared_ptr <sf::RenderWindow> janela;//Talvez colocar como protected em personagem para evitar repeticao
 
     public:
         //Construtor
-        Tartaruga(Colisao &colisao, std::shared_ptr <sf::RenderWindow> janela1);
+        Goomba(Colisao &colisao, std::shared_ptr <sf::RenderWindow> janela1);
 
         //Destrutor virtual
-        virtual ~Tartaruga();
+        virtual ~Goomba();
 
         //Métodos de uso direto
-        void inicializarTartarugas();//Controlar o aparecimento de tartarugas
+        void inicializarGoombas();//Controlar o aparecimento de Goombas
         void atacar();
         void modificarPosicao(sf::Time deltaTime, int larguraMapa) override;
         void morrer();
-        void desenharTartaruga();
+        void desenharGoomba();
 
 
         //Métodos de verificacao
