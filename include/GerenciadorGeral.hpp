@@ -8,7 +8,7 @@
 #include "../include/Pontuacao.hpp"
 #include "../include/SoundManager.hpp"
 #include "Jogador.hpp"
-#include "Tartaruga.hpp"
+#include "Goomba.hpp"
 #include <set>
 
 class GerenciadorGeral{
@@ -29,7 +29,7 @@ private:
     std::shared_ptr <Jogador> mario;
     std::set<unsigned int> indicesComColisao;
     std::set<unsigned int> indicesPoderesEspeciais;
-    std::shared_ptr <Tartaruga> tartaruga;
+    std::shared_ptr <Goomba> goomba;
 
     //Textos da pontuacao
     sf::Text textoMaisCem;

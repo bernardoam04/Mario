@@ -1,7 +1,7 @@
-#include "Tartaruga.hpp"
+#include "Goomba.hpp"
 #include <iostream>
 
-Tartaruga::Tartaruga(Colisao &colisao, std::shared_ptr <sf::RenderWindow> janela1) : Personagem(colisao), janela(janela1)
+Goomba::Goomba(Colisao &colisao, std::shared_ptr <sf::RenderWindow> janela1) : Personagem(colisao), janela(janela1)
 {
     setVivo(true);
     setAlturaPersonagem(personagemTexture.getSize().y);
@@ -11,14 +11,14 @@ Tartaruga::Tartaruga(Colisao &colisao, std::shared_ptr <sf::RenderWindow> janela
     janela->draw(personagemSprite);
 }
 
-void Tartaruga::atacar() {
+void Goomba::atacar() {
 }
 
-void Tartaruga::inicializarTartarugas() {
+void Goomba::inicializarGoombas() {
 
 }
 
-bool Tartaruga::verificarColisaoDistanciaX(float x, float y, float largura){
+bool Goomba::verificarColisaoDistanciaX(float x, float y, float largura){
 
     // Número de pontos a serem verificados entre x e x + largura
     int numeroDePontos = 10;  // Ajustar conforme necessário
@@ -43,7 +43,7 @@ bool Tartaruga::verificarColisaoDistanciaX(float x, float y, float largura){
     return false;
 }
 
-void Tartaruga::modificarPosicao(sf::Time deltaTime, int larguraMapa) {
+void Goomba::modificarPosicao(sf::Time deltaTime, int larguraMapa) {
     // AINDA FALTA IMPLEMENTAR A QUEDA
 
     sf::Vector2f posicaoAtual = getPosicao();
@@ -77,11 +77,11 @@ void Tartaruga::modificarPosicao(sf::Time deltaTime, int larguraMapa) {
 
 
 
-void Tartaruga::morrer() {
+void Goomba::morrer() {
     setVivo(false);
 }
 
-void Tartaruga::desenharTartaruga() {
+void Goomba::desenharGoomba() {
 
     sf::Sprite sprite(personagemTexture); 
     sprite.setPosition(getPosicao());
@@ -90,6 +90,6 @@ void Tartaruga::desenharTartaruga() {
 
 }
 
-Tartaruga::~Tartaruga(){
+Goomba::~Goomba(){
 
 }
