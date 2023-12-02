@@ -157,6 +157,7 @@ void Mapa::renderizar(sf::RenderWindow& janela, sf::Time tempoAtual) {
     int contagemBlocoMoeda = 0;
     (void)contagemMoedas;  // Evita o aviso de parâmetro não utilizado
     (void)contagemBlocoMoeda;
+    
     // Renderiza os vértices na janela
     for (size_t i = 0; i < tileData.size(); ++i) {
         int tileNumber = tileData[i].first;

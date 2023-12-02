@@ -9,34 +9,50 @@
 
 #include <memory>
 
+
 class Menu {
-private:
+public:
     enum OpcaoSelecionada {
         NenhumaSelecao,
         IniciarJogo,
         Opcoes,
         Sair
     };
-
-    std::shared_ptr<sf::RenderWindow> janela;
+private:
+    //Textos
     sf::Text iniciarJogoTexto;
     sf::Text opcoesTexto;
     sf::Text sairTexto;
+
+    //Atributos de desenho
     sf::Texture menuTexture;
     sf::Sprite menuSprite;
+    
     OpcaoSelecionada opcaoSelecionada;
 
+    //Atributos privados
     void ajustarPosicaoMenu();
     void ajustarPosicaoTextos();
 
+protected:
+    std::shared_ptr<sf::RenderWindow> janela;
+
+
 public:
+    //Construtor
     Menu(std::shared_ptr<sf::RenderWindow> janela1, sf::Font &fonte);
-    void desenharTela();
-    bool atualizar(sf::Event ev);
-    void atualizarPosicaoTextos();
+
+    //Métodos usados diretamente
+    virtual void desenharTela();
+    virtual bool atualizar(sf::Event ev);
+    virtual void atualizarPosicaoTextos();
+    virtual void atualizarOpcaoSelecionada();
+    virtual bool tratarCliqueMouse();
+    void resetarSelecao(); 
     bool sair();
-    void atualizarOpcaoSelecionada();
-    bool tratarCliqueMouse();
+
+    //Getters
+    OpcaoSelecionada getOpcaoSelecionada() const;
 };
 
 #endif

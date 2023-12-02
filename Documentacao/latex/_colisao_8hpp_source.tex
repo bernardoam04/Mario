@@ -1,0 +1,37 @@
+\doxysection{Colisao.\+hpp}
+\hypertarget{_colisao_8hpp_source}{}\label{_colisao_8hpp_source}\index{include/Colisao.hpp@{include/Colisao.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ COLISAO\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ COLISAO\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}../include/Mapa.hpp"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_colisao}{Colisao}}\ \{}
+\DoxyCodeLine{00008\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{comment}{//Dados\ do\ mapa}}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<std::vector<int>>\ dadosMapa;}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ tileSize;}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{comment}{//Tipos\ de\ bloco}}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ BLOCO\_CHAO\ =\ 1;\ }
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ BLOCO\_MOEDA\ =\ 2;\ }
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ BLOCO\_NORMAL\ =\ 3;\ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ CANO\_INFERIOR\_ESQUERDO\ =\ 4;\ }
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ CANO\_INFERIOR\_DIREITO\ =\ 5;\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ CANO\_SUPERIOR\_DIREITO\ =\ 6;\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ CANO\_SUPERIOR\_ESQUERDO\ =\ 7;\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ BLOCO\_ESCADA\ =\ 8;\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ MOEDA\ =\ 9;\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{comment}{//Construtor}}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{class_colisao}{Colisao}}(\textcolor{keyword}{const}\ std::vector<std::vector<int>>\ dadosMapa,\ \textcolor{keywordtype}{int}\ tileSize);}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{comment}{//Método\ de\ verificação}}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{int}\ verificarColisao(\textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y);}
+\DoxyCodeLine{00029\ \};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#endif\ }}
+
+\end{DoxyCode}

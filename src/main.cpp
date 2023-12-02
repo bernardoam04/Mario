@@ -12,16 +12,13 @@ enum EstadoJogo {
     GAMEOVER
 };
 
-
 int main() {
-
     //Inicializa a tela com tamanho constante
     sf::VideoMode tela;
     tela.height = alturaTela;
     tela.width = larguraTela;
 
-
-    //Inicializa a janela
+    //Inicializa a janela e os sons do jogo
     std::shared_ptr<sf::RenderWindow> janela = std::make_shared<sf::RenderWindow>(tela, "Mario!",sf::Style::Titlebar | sf::Style::Close);
     std::shared_ptr<SoundManager> sounds = std::make_shared<SoundManager>();
     janela->setFramerateLimit(60);
@@ -34,24 +31,15 @@ int main() {
 
     EstadoJogo estadoAtual = EstadoJogo::MENU; 
 
-
-    //Carregamento da fonte do MENU(provavelmente vai ser trocada por imagens)
+    //Carregamento da fonte principal
     sf::Font fonte;
     if (!fonte.loadFromFile("../imagens/font.ttf")) {
         exit(1);
     }
-    // Inicializa o gerenciador do jogo    
+    // Inicializa as classes dos estados de jogo
     std::shared_ptr <GerenciadorGeral> jogo = std::make_shared <GerenciadorGeral> (janela, fonte, sounds);
     GameOver gameOver(janela, fonte);
     Menu menu(janela, fonte);
-    
-
-    sf::Text textoMenu("Aperte qualquer tecla para ir para o jogo", fonte, 15);
-    textoMenu.setFillColor(sf::Color::White);
-    textoMenu.setPosition(30, 300);
-
-    //Fim do texto do carregamento do texto do
-
 
     while (janela->isOpen()) {
 
@@ -60,41 +48,42 @@ int main() {
         // Calcula o tempo passado entre cada iteração
         sf::Time deltaTime = timer2.restart(); 
         
-        //IMPLEMENTAR MENU NESSE IF
+        //Menu de inicio de jogo
         if (estadoAtual == EstadoJogo::MENU) {
-
 
             // Calcula o tempo que passou desde o início do jogo
             sf::Time tempoAtual = timer.getElapsedTime();
 
            janela->clear(sf::Color(132, 112, 255));
+
+           //Desenha o mapa de fundo
            jogo->desenharMapa(tempoAtual);
 
             bool menuAtivo = menu.atualizar(ev);  
 
+            //Ida para o jogo
             if (menuAtivo == false) {
                 timer.restart();
                 estadoAtual = EstadoJogo::JOGO;
             }
-
-            // Desenho do Game Over
+            // Desenho do menu completo
             menu.desenharTela();
 
             janela->display();
         }
-        //MENU ACABA AQUI
 
         else if (estadoAtual == EstadoJogo::JOGO) {
 
             // Calcula o tempo que passou desde o início do jogo
             sf::Time tempoAtual = timer.getElapsedTime();
 
-            //Limpa a janela com cor de fundo azul
-            janela->clear(sf::Color::Blue);
+            //Limpa a janela
+            janela->clear(sf::Color(132, 112, 255));
 
             // Atualiza o jogo principal
             bool jogoAtivo = jogo->atualizar(tempoAtual, deltaTime, ev);
 
+            //Ida para o game over
             if(jogoAtivo == false || jogo->getGamerOver() == true){
                 estadoAtual = EstadoJogo::GAMEOVER;
             }
@@ -105,10 +94,12 @@ int main() {
 
         else if (estadoAtual == EstadoJogo::GAMEOVER) {
             
+            //Limpa a tela preta
             janela->clear(sf::Color::Black);
 
             bool jogoEmGameOver = gameOver.atualizar(ev, jogo->getViewCamera());  
 
+            //Reinicio do jogo
             if (jogoEmGameOver == false) {
                 jogo = std::make_shared <GerenciadorGeral>(janela, fonte, sounds);
                 timer.restart();

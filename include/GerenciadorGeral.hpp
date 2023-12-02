@@ -8,6 +8,7 @@
 #include "../include/Pontuacao.hpp"
 #include "../include/SoundManager.hpp"
 #include "Jogador.hpp"
+#include "Goomba.hpp"
 #include <set>
 
 class GerenciadorGeral{
@@ -24,11 +25,14 @@ private:
     std::shared_ptr <Camera> camera;
     std::shared_ptr <Colisao> colisao;
     std::vector<std::shared_ptr <PoderesEspeciais>> vetorPoderesEspeciais;
+    std::vector<std::shared_ptr <Goomba>> goombas;
     std::shared_ptr<SoundManager> _sounds;
     std::shared_ptr <Jogador> mario;
     std::set<unsigned int> indicesComColisao;
+    std::set<unsigned int> indicesPoderesEspeciais;
+    std::shared_ptr <Goomba> goomba;
 
-    //Textos de pontuacao
+    //Textos da pontuacao
     sf::Text textoMaisCem;
     sf::Text textoMaisMil;
     sf::Text textoGanhou;
@@ -38,6 +42,7 @@ private:
     //Métodos privados
     void inicializarVariaveis();
     void InicializarPoderesEspeciais();
+    void InicializarGoombas();
     void inicializarTextos(sf::Font &fonte);
     void atualizarPosicaoTexto(sf::Text &texto);
 

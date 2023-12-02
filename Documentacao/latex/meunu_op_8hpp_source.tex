@@ -1,0 +1,45 @@
+\doxysection{meunu\+Op.\+hpp}
+\hypertarget{meunu_op_8hpp_source}{}\label{meunu_op_8hpp_source}\index{include/meunuOp.hpp@{include/meunuOp.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MENUOP\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MENUOP\_HPP}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}Menu.hpp"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classmenu_op}{menuOp}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_menu}{Menu}}\ \{}
+\DoxyCodeLine{00007\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keyword}{enum}\ opselect\{}
+\DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ volumemusic,}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ volumeefect}
+\DoxyCodeLine{00011\ \ \ \ \ \};}
+\DoxyCodeLine{00012\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{comment}{//Textos}}
+\DoxyCodeLine{00014\ \ \ \ \ sf::Text\ volumemuTexto;}
+\DoxyCodeLine{00015\ \ \ \ \ sf::Text\ volumefTexto;}
+\DoxyCodeLine{00016\ \ \ \ \ sf::Text\ volumeMusicText;}
+\DoxyCodeLine{00017\ \ \ \ \ sf::Text\ volumeeffectText;\ \ \ \ }
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{comment}{//Atributos\ de\ desenho}}
+\DoxyCodeLine{00020\ \ \ \ \ sf::Texture\ menuTexture;}
+\DoxyCodeLine{00021\ \ \ \ \ sf::Sprite\ menuSprite;}
+\DoxyCodeLine{00022\ \ \ \ \ opselect\ opcaoSelecionada;}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{comment}{//Construtor}}
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{classmenu_op}{menuOp}}(sf::Font\&\ fonte1,\ std::shared\_ptr<sf::RenderWindow>\ janela1);}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//Métodos\ usados\ diretamente}}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ desenharTela()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{bool}\ atualizar(sf::Event\ ev)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ atualizarPosicaoTextos()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ atualizarOpcaoSelecionada()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{bool}\ tratarCliqueMouse()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

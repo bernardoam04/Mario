@@ -64,14 +64,15 @@ int PoderesEspeciais::gerarTipoAleatorio()
     int randomValue = std::rand() % 100;
 
     // 80% de chance de gerar uma moeda
-    if (randomValue < 1) {
+    if (randomValue < 80) {
         return MOEDA;
     }
     else {
-        // 50% de chance de gerar uma estrela ou cogumelo entre os poderes especiais
-        if (randomValue < 70) {
+        // 15% de chance de gerar um cogumelo
+        if (randomValue > 79 && randomValue < 95) {
             return COGUMELO;
         }
+        //5% de chance de gerar uma estrela
         else {
             return ESTRELA;
         }
@@ -118,9 +119,9 @@ bool PoderesEspeciais::verificarColisao(sf::Vector2f posicaoPersonagem, int altu
 
     // Coordenadas do retângulo que representa o poder especial
     float xPoderEsquerda = posicao.x;
-    float xPoderDireita = posicao.x + tileSize;  // Assumindo que tileSize é a largura do poder
+    float xPoderDireita = posicao.x + tileSize;  
     float yPoderTopo = posicao.y;
-    float yPoderBase = posicao.y + tileSize;  // Assumindo que tileSize é a altura do poder
+    float yPoderBase = posicao.y + tileSize;
 
     // Verificar colisão
     bool colisaoHorizontal = xPersonagemDireita >= xPoderEsquerda && xPersonagemEsquerda <= xPoderDireita;
@@ -166,7 +167,7 @@ void PoderesEspeciais::ModificacaoPosicaoPoderes(sf::Time deltaTime)
     }
 
     //Verificação de colisão com as laterais direita e esquerda
-    if ( (movDireita && colisao.verificarColisao(posicao.x + tileSize, posicao.y+tileSize/2) != 0 && colisao.verificarColisao(posicao.x + tileSize, posicao.y+tileSize/2)!=9) ) {
+    if ((movDireita && colisao.verificarColisao(posicao.x + tileSize, posicao.y+tileSize/2) != 0 && colisao.verificarColisao(posicao.x + tileSize, posicao.y+tileSize/2)!=9) ) {
 
         // Colisão à direita, ajusta posição
         posicao.x -= velocidadeHorizontal * deltaTime.asSeconds();

@@ -2,28 +2,31 @@
 #include "GerenciadorGeral.hpp"
 
 GerenciadorGeral::GerenciadorGeral(std::shared_ptr <sf::RenderWindow> janela1, sf::Font &fonte, std::shared_ptr<SoundManager> sounds) : pontuacao(nullptr),  
-camera(nullptr), colisao(nullptr), _sounds(sounds), mario(nullptr), puloHabilitado(true)
+camera(nullptr), colisao(nullptr), _sounds(sounds), mario(nullptr), goomba(nullptr), puloHabilitado(true)
 {
+    //Inicialização de atributos
     this->janela = janela1;
     this->mapa.setSound(this->_sounds);
     this->mapa.carregarMapa("../imagens/cenario.tmx");
     this->_sounds->reiniciarMusica();
     this->mapa.inicializarColisoes();
+    gameOver = false;
+    //Inicialização dos smart pointers
     colisao = std::make_shared<Colisao>(mapa.getDadosMapa(), mapa.getTileSize());
     mario = std::make_shared<Jogador>(*colisao, larguraTela, alturaTela, janela);
-    InicializarPoderesEspeciais();
     camera = std::make_shared<Camera>(larguraTela, alturaTela);
     pontuacao = std::make_shared<Pontuacao>(fonte, camera);
-    inicializarTextos(fonte);
-    gameOver = false;
-}
 
+    //Métodos de inicialização
+    inicializarTextos(fonte);
+    InicializarPoderesEspeciais();
+    InicializarGoombas();
+}
 void GerenciadorGeral::InicializarPoderesEspeciais(){
     int tileSize = mapa.getTileSize();
     auto dadosMapa = mapa.getDadosMapa();
     for (unsigned int i = 0; i < dadosMapa.size(); ++i) {
         for (unsigned int j = 0; j < dadosMapa[i].size(); ++j) {
-
             // Verifica se o bloco é do tipo desejado (nesse caso, tipo 2)
             if (dadosMapa[i][j] == 2) {
                 // Calcula a posição do bloco acima
@@ -37,6 +40,30 @@ void GerenciadorGeral::InicializarPoderesEspeciais(){
             }
         }
     }
+}
+
+void GerenciadorGeral::InicializarGoombas()
+{
+    goomba = std::make_shared<Goomba>(*colisao, janela, 1000, 544);
+    goombas.push_back(goomba);
+
+    goomba = std::make_shared<Goomba>(*colisao, janela, 1400, 544);
+    goombas.push_back(goomba);
+
+    goomba = std::make_shared<Goomba>(*colisao, janela, 3456, 544);
+    goombas.push_back(goomba);
+
+    goomba = std::make_shared<Goomba>(*colisao, janela, 3490, 544);
+    goombas.push_back(goomba);
+
+    goomba = std::make_shared<Goomba>(*colisao, janela, 3510, 544);
+    goombas.push_back(goomba);
+
+    goomba = std::make_shared<Goomba>(*colisao, janela, 6144, 544);
+    goombas.push_back(goomba);
+
+    goomba = std::make_shared<Goomba>(*colisao, janela, 6170, 544);
+    goombas.push_back(goomba);
 }
 
 void GerenciadorGeral::inicializarTextos(sf::Font &fonte)
@@ -88,6 +115,10 @@ bool GerenciadorGeral::atualizar(sf::Time tempoAtual, sf::Time deltaTime, sf::Ev
 
     mario->modificarPosicao(deltaTime, mapa.getLarguraMapa());
 
+    for (unsigned int i = 0; i < goombas.size(); i++) {
+        goombas[i]->modificarPosicao(deltaTime, mapa.getLarguraMapa());
+    }
+
     if (jogoAtivo == false)
     {
         return false;
@@ -123,7 +154,9 @@ bool GerenciadorGeral::atualizarEventos(sf::Event ev)
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && puloHabilitado) {
         mario->setPulando(true);
         puloHabilitado = false;
-       if(!mario->getEstaNoAr()){//Verificacao para o som sair somente quando mario sai do chao
+
+        //Verificacao para o som sair somente quando mario sai do chao
+       if(!mario->getEstaNoAr()){
             _sounds->somPulo();
         }
     }
@@ -135,13 +168,12 @@ bool GerenciadorGeral::atualizarEventos(sf::Event ev)
         puloHabilitado = true;
         mario->setPulando(false);
     }
-
     return true;
 }
 
 void GerenciadorGeral::renderizar(sf::Time tempoAtual)
 {
-
+    //Atualizações caso o mario tenha morrido
     if(mario->getPerdeu() == true){
         mario->perdeuMudarTextura();
         _sounds->pausarMusica();
@@ -151,9 +183,8 @@ void GerenciadorGeral::renderizar(sf::Time tempoAtual)
     contadorPerdeu++;
     gameOver = true;
     }
-
     mario->atualizarColisao(mapa);
-
+    
     //Ajusta a visão da câmera
     janela->setView(this->camera->getView());
     
@@ -162,13 +193,21 @@ void GerenciadorGeral::renderizar(sf::Time tempoAtual)
 
     janela->draw(pontuacao->exibirPontuacao());
 
+    //Desenha as goombas
+    for (unsigned int i = 0; i < goombas.size(); i++) {
+    goombas[i]->desenharGoomba();
+    }
+
+
     int contagemMoedasMisteriosas = 0;
 
     //Desenha os Poderes Especiais
     for (unsigned int i = 0; i < vetorPoderesEspeciais.size(); i++) {
+
         int tileSize = mapa.getTileSize();
         int x= vetorPoderesEspeciais[i]->getPosicaoInicial().x;
         int y= vetorPoderesEspeciais[i]->getPosicaoInicial().y + tileSize;
+
         if(mapa.getColisaoBlocoMoeda(x,y) == true){
             if(vetorPoderesEspeciais[i]->getTipo() ==3){
                 contagemMoedasMisteriosas++;
@@ -187,6 +226,9 @@ void GerenciadorGeral::renderizar(sf::Time tempoAtual)
             if(vetorPoderesEspeciais[i]->verificarColisao(posicaoAtualMario, mario->getAlturaJogador(), mario->getLarguraJogador())){
                 unsigned int tamanhoInicial = indicesComColisao.size();
                 indicesComColisao.insert(i);
+                if(vetorPoderesEspeciais[i]->getTipo()!=3){
+                    indicesPoderesEspeciais.insert(i);
+                }
                 unsigned int tamanhoFinal = indicesComColisao.size();
 
                 if(tamanhoFinal> tamanhoInicial && vetorPoderesEspeciais[i]->getTipo()!=3){ //Verifica se foi um poder especial novo e se não era moeda, que já foi tratado o texto dela
@@ -207,13 +249,15 @@ void GerenciadorGeral::renderizar(sf::Time tempoAtual)
         }
     }    
     mapa.atualizarContagemMoeda(contagemMoedasMisteriosas);
-    int contagemPoderesEspeciais = indicesComColisao.size();
+    int contagemPoderesEspeciais = indicesPoderesEspeciais.size();
 
     mapa.atualizarContagemPoderes(contagemPoderesEspeciais);
 
+    //Desenhar o mario apenas se ele ainda não ganhou
     if(!mario->getGanhou()){
         mario->desenhar();
     } 
+    //Desenha texto de vitória caso tenha ganhado
     else{
         atualizarPosicaoTexto(textoGanhou);
         janela->draw(textoGanhou);    

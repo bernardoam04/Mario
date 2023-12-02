@@ -1,0 +1,64 @@
+\doxysection{Menu.\+hpp}
+\hypertarget{_menu_8hpp_source}{}\label{_menu_8hpp_source}\index{include/Menu.hpp@{include/Menu.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MENU\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MENU\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <SFML/System.hpp>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <SFML/Window.hpp>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <SFML/Audio.hpp>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <SFML/Network.hpp>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_menu}{Menu}}\ \{}
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{enum}\ OpcaoSelecionada\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ NenhumaSelecao,}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ IniciarJogo,}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ Opcoes,}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ Sair}
+\DoxyCodeLine{00020\ \ \ \ \ \};}
+\DoxyCodeLine{00021\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{comment}{//Textos}}
+\DoxyCodeLine{00023\ \ \ \ \ sf::Text\ iniciarJogoTexto;}
+\DoxyCodeLine{00024\ \ \ \ \ sf::Text\ opcoesTexto;}
+\DoxyCodeLine{00025\ \ \ \ \ sf::Text\ sairTexto;}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{comment}{//Atributos\ de\ desenho}}
+\DoxyCodeLine{00028\ \ \ \ \ sf::Texture\ menuTexture;}
+\DoxyCodeLine{00029\ \ \ \ \ sf::Sprite\ menuSprite;}
+\DoxyCodeLine{00030\ \ \ \ \ }
+\DoxyCodeLine{00031\ \ \ \ \ OpcaoSelecionada\ opcaoSelecionada;}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{comment}{//Atributos\ privados}}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ ajustarPosicaoMenu();}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ ajustarPosicaoTextos();}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00038\ \ \ \ \ std::shared\_ptr<sf::RenderWindow>\ janela;}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{comment}{//Construtor}}
+\DoxyCodeLine{00043\ \ \ \ \ \mbox{\hyperlink{class_menu}{Menu}}(std::shared\_ptr<sf::RenderWindow>\ janela1,\ sf::Font\ \&fonte);}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{comment}{//Métodos\ usados\ diretamente}}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ desenharTela();}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ atualizar(sf::Event\ ev);}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ atualizarPosicaoTextos();}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ atualizarOpcaoSelecionada();}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ tratarCliqueMouse();}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ resetarSelecao();\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{bool}\ sair();}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{comment}{//Getters}}
+\DoxyCodeLine{00055\ \ \ \ \ OpcaoSelecionada\ getOpcaoSelecionada()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00056\ \};}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
