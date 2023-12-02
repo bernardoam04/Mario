@@ -9,8 +9,8 @@ class SoundManager{
         sf::Sound sMoeda;
         sf::SoundBuffer sbPulo;
         sf::Sound sPulo;
-        sf::Sound sGameOver;
         sf::SoundBuffer sbGameOver;
+        sf::Sound sGameOver;
 
     public:
         SoundManager();
@@ -21,6 +21,16 @@ class SoundManager{
         void somMoeda();
         void somGameOver();
         void somPulo();
+
+        sf::Music& getMusicaFundo();
+        sf::SoundBuffer& getSbMoeda();
+        sf::SoundBuffer& getSbPulo();
+        sf::SoundBuffer& getSbGameover();
+
+        bool isSoundPlaying(std::string som);
+        bool musicaPausada();
+
+        void carregarSomPadrao(sf::SoundBuffer& soundBuffer);
 };
 
 #endif
