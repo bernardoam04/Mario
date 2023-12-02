@@ -1,0 +1,53 @@
+\doxysection{Referência à classe Menu}
+\hypertarget{class_menu}{}\label{class_menu}\index{Menu@{Menu}}
+\doxysubsubsection*{Tipos Públicos}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_menu_a559be38c08d318ac4bfea45a6d8f9575}\label{class_menu_a559be38c08d318ac4bfea45a6d8f9575} 
+enum {\bfseries Opcao\+Selecionada} \{ {\bfseries Nenhuma\+Selecao}
+, {\bfseries Iniciar\+Jogo}
+, {\bfseries Opcoes}
+, {\bfseries Sair}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Membros públicos}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_menu_afdb3eb41cfadc1b99bbdbae3edba48bd}\label{class_menu_afdb3eb41cfadc1b99bbdbae3edba48bd} 
+{\bfseries Menu} (std\+::shared\+\_\+ptr$<$ sf\+::\+Render\+Window $>$ janela1, sf\+::\+Font \&fonte)
+\item 
+\Hypertarget{class_menu_a4395fccd9fa4a692d201cc7a80dd7a57}\label{class_menu_a4395fccd9fa4a692d201cc7a80dd7a57} 
+virtual void {\bfseries desenhar\+Tela} ()
+\item 
+\Hypertarget{class_menu_a188996af5cbfee632c6f3938eac07085}\label{class_menu_a188996af5cbfee632c6f3938eac07085} 
+virtual bool {\bfseries atualizar} (sf\+::\+Event ev)
+\item 
+\Hypertarget{class_menu_a640c927b03984df9007148a629b4d369}\label{class_menu_a640c927b03984df9007148a629b4d369} 
+virtual void {\bfseries atualizar\+Posicao\+Textos} ()
+\item 
+\Hypertarget{class_menu_acce3d6a5205db7e1001af869a48c192f}\label{class_menu_acce3d6a5205db7e1001af869a48c192f} 
+virtual void {\bfseries atualizar\+Opcao\+Selecionada} ()
+\item 
+\Hypertarget{class_menu_afda3388e25b3e8dd94c1152088e75f28}\label{class_menu_afda3388e25b3e8dd94c1152088e75f28} 
+virtual bool {\bfseries tratar\+Clique\+Mouse} ()
+\item 
+\Hypertarget{class_menu_a4ef84f1b29c9d7850e02e2c67c4b8a90}\label{class_menu_a4ef84f1b29c9d7850e02e2c67c4b8a90} 
+void {\bfseries resetar\+Selecao} ()
+\item 
+\Hypertarget{class_menu_a1cffab73f0a3df3a6d27280de15333d3}\label{class_menu_a1cffab73f0a3df3a6d27280de15333d3} 
+bool {\bfseries sair} ()
+\item 
+\Hypertarget{class_menu_a4f426f95fddd76c551d95718fd771993}\label{class_menu_a4f426f95fddd76c551d95718fd771993} 
+Opcao\+Selecionada {\bfseries get\+Opcao\+Selecionada} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Atributos Protegidos}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_menu_ad75dc44fdc5c40e42e1550795c647228}\label{class_menu_ad75dc44fdc5c40e42e1550795c647228} 
+std\+::shared\+\_\+ptr$<$ sf\+::\+Render\+Window $>$ {\bfseries janela}
+\end{DoxyCompactItemize}
+
+
+A documentação para esta classe foi gerada a partir do seguinte ficheiro\+:\begin{DoxyCompactItemize}
+\item 
+include/Menu.\+hpp\end{DoxyCompactItemize}

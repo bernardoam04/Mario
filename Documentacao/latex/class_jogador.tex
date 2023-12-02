@@ -1,0 +1,150 @@
+\doxysection{Referência à classe Jogador}
+\hypertarget{class_jogador}{}\label{class_jogador}\index{Jogador@{Jogador}}
+\doxysubsubsection*{Membros públicos}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_jogador_aed41f8e1bddfc8ce5ebf531d7784b4bd}\label{class_jogador_aed41f8e1bddfc8ce5ebf531d7784b4bd} 
+{\bfseries Jogador} (\mbox{\hyperlink{class_colisao}{Colisao}} \&colisao, const float largura\+Tela, const float altura\+Tela\+Jogo, std\+::shared\+\_\+ptr$<$ sf\+::\+Render\+Window $>$ janela1)
+\item 
+\Hypertarget{class_jogador_a458294f0c293e2fffbc8c0fa34e3eed0}\label{class_jogador_a458294f0c293e2fffbc8c0fa34e3eed0} 
+\mbox{\hyperlink{class_jogador}{Jogador}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_jogador}{Jogador}} \&other)
+\item 
+\Hypertarget{class_jogador_a690c1ee0aa789e450a2d4dca1adb1736}\label{class_jogador_a690c1ee0aa789e450a2d4dca1adb1736} 
+void {\bfseries inicializar\+Booleanos} ()
+\item 
+\Hypertarget{class_jogador_ae73db6b042fb67fe3c89e01a35598bd0}\label{class_jogador_ae73db6b042fb67fe3c89e01a35598bd0} 
+void {\bfseries dobrar\+Altura} ()
+\item 
+void \mbox{\hyperlink{class_jogador_a453e4ce824fb4388742b918ca1608cee}{modificar\+Posicao}} (sf\+::\+Time delta\+Time, int largura\+Mapa) override
+\item 
+\Hypertarget{class_jogador_a7a682a6e955b61c76d89a3af6a2c6b0d}\label{class_jogador_a7a682a6e955b61c76d89a3af6a2c6b0d} 
+void {\bfseries desenhar} ()
+\item 
+\Hypertarget{class_jogador_a3441165b951c51d3146cee6f66f2214f}\label{class_jogador_a3441165b951c51d3146cee6f66f2214f} 
+void {\bfseries perder\+Vida} ()
+\item 
+\Hypertarget{class_jogador_a1ed2befc236d5baf4cad8aa319ff10c5}\label{class_jogador_a1ed2befc236d5baf4cad8aa319ff10c5} 
+void {\bfseries perdeu\+Mudar\+Textura} ()
+\item 
+\Hypertarget{class_jogador_a7e1d3b50f87e53fd6ab4911539af9363}\label{class_jogador_a7e1d3b50f87e53fd6ab4911539af9363} 
+bool {\bfseries esta\+Movendo\+Direita} () const
+\item 
+\Hypertarget{class_jogador_ad234789dead35082774c2a8d1ba2d5e8}\label{class_jogador_ad234789dead35082774c2a8d1ba2d5e8} 
+bool {\bfseries esta\+Movendo\+Esquerda} () const
+\item 
+\Hypertarget{class_jogador_ae4ca21d62477062522dc4eefcb99f124}\label{class_jogador_ae4ca21d62477062522dc4eefcb99f124} 
+bool {\bfseries esta\+Pulando} () const
+\item 
+\Hypertarget{class_jogador_a51f776f7a148c3e0e18074d38daf5dee}\label{class_jogador_a51f776f7a148c3e0e18074d38daf5dee} 
+bool {\bfseries verificar\+Colisao\+DistanciaX} (float x, float y, float largura)
+\item 
+\Hypertarget{class_jogador_ada209f8d0156bf16fd6cd08840b657dd}\label{class_jogador_ada209f8d0156bf16fd6cd08840b657dd} 
+bool {\bfseries verificar\+Colisao\+DistanciaY} (float x, float y, float altura)
+\item 
+\Hypertarget{class_jogador_aef5c0e141062a07daa7e32ccd7bf3551}\label{class_jogador_aef5c0e141062a07daa7e32ccd7bf3551} 
+int {\bfseries get\+Largura\+Jogador} ()
+\item 
+\Hypertarget{class_jogador_a01f6e0af4a08a7ccb06cfbf76b611e54}\label{class_jogador_a01f6e0af4a08a7ccb06cfbf76b611e54} 
+int {\bfseries get\+Altura\+Jogador} ()
+\item 
+\Hypertarget{class_jogador_a60b072f8182adaaa9837c23b50939dd5}\label{class_jogador_a60b072f8182adaaa9837c23b50939dd5} 
+bool {\bfseries get\+Ganhou} ()
+\item 
+\Hypertarget{class_jogador_ab5fe99a014e06804bf20eb79da672d59}\label{class_jogador_ab5fe99a014e06804bf20eb79da672d59} 
+bool {\bfseries get\+Perdeu} ()
+\item 
+\Hypertarget{class_jogador_a2c47e6f2df76849c27b420a351944bba}\label{class_jogador_a2c47e6f2df76849c27b420a351944bba} 
+void {\bfseries set\+Movendo\+Direita} (bool movendo)
+\item 
+\Hypertarget{class_jogador_a7e2f177bcd49ad33b8e5dfa03fe67ce4}\label{class_jogador_a7e2f177bcd49ad33b8e5dfa03fe67ce4} 
+void {\bfseries set\+Movendo\+Esquerda} (bool movendo)
+\item 
+\Hypertarget{class_jogador_af5233aca4ce6bbd36ad8d97e538c2c50}\label{class_jogador_af5233aca4ce6bbd36ad8d97e538c2c50} 
+void {\bfseries set\+Pulando} (bool pulo)
+\item 
+\Hypertarget{class_jogador_a3bff28283a4e55f3c5df5d56a4f38d3b}\label{class_jogador_a3bff28283a4e55f3c5df5d56a4f38d3b} 
+void {\bfseries atualizar\+Colisao} (\mbox{\hyperlink{class_mapa}{Mapa}} \&mapa)
+\end{DoxyCompactItemize}
+\doxysubsection*{Membros públicos herdados de \mbox{\hyperlink{class_personagem}{Personagem}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Personagem} (\mbox{\hyperlink{class_colisao}{Colisao}} \&colisao)
+\item 
+sf\+::\+Texture {\bfseries load\+Texture} (const std\+::string \&filename)
+\item 
+sf\+::\+Vector2f {\bfseries get\+Posicao} () const
+\item 
+float {\bfseries get\+Velocidade\+Horizontal} () const
+\item 
+float {\bfseries get\+Velocidade\+Vertical} () const
+\item 
+float {\bfseries get\+Aceleracao\+Gravidade} () const
+\item 
+bool {\bfseries get\+Mov\+Esquerda} () const
+\item 
+bool {\bfseries get\+Mov\+Direita} () const
+\item 
+float {\bfseries get\+Altura\+Chao} () const
+\item 
+bool {\bfseries get\+Esta\+No\+Ar} () const
+\item 
+float {\bfseries get\+Tile\+Size} () const
+\item 
+bool {\bfseries get\+Vivo} () const
+\item 
+sf\+::\+Texture {\bfseries get\+Texture} () const
+\item 
+unsigned int {\bfseries get\+Altura\+Personagem} () const
+\item 
+unsigned int {\bfseries get\+Largura\+Personagem} () const
+\item 
+void {\bfseries set\+Posicao\+Personagem} (const sf\+::\+Vector2f \&posicao)
+\item 
+void {\bfseries set\+Velocidade\+Horizontal} (float velocidade)
+\item 
+void {\bfseries set\+Velocidade\+Vertical} (float velocidade)
+\item 
+void {\bfseries set\+Mov\+Esquerda} (bool movimento)
+\item 
+void {\bfseries set\+Mov\+Direita} (bool movimento)
+\item 
+void {\bfseries set\+Esta\+No\+Ar} (bool estado)
+\item 
+void {\bfseries set\+Vivo} (bool vivo\+Atual)
+\item 
+void {\bfseries set\+Altura\+Personagem} (unsigned int altura)
+\item 
+void {\bfseries set\+Largura\+Personagem} (unsigned int largura)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Outros membros herdados}
+\doxysubsection*{Atributos Protegidos herdados de \mbox{\hyperlink{class_personagem}{Personagem}}}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Sprite {\bfseries personagem\+Sprite}
+\item 
+sf\+::\+Sprite {\bfseries personagem\+Morreu\+Sprite}
+\item 
+sf\+::\+Texture {\bfseries personagem\+Texture}
+\item 
+sf\+::\+Texture {\bfseries personagem\+Morreu\+Texture}
+\item 
+\mbox{\hyperlink{class_colisao}{Colisao}} \& {\bfseries colisao}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Documentação das funções}
+\Hypertarget{class_jogador_a453e4ce824fb4388742b918ca1608cee}\label{class_jogador_a453e4ce824fb4388742b918ca1608cee} 
+\index{Jogador@{Jogador}!modificarPosicao@{modificarPosicao}}
+\index{modificarPosicao@{modificarPosicao}!Jogador@{Jogador}}
+\doxysubsubsection{\texorpdfstring{modificarPosicao()}{modificarPosicao()}}
+{\footnotesize\ttfamily void Jogador\+::modificar\+Posicao (\begin{DoxyParamCaption}\item[{sf\+::\+Time}]{delta\+Time,  }\item[{int}]{largura\+Mapa }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplementado de \mbox{\hyperlink{class_personagem}{Personagem}}.
+
+
+
+A documentação para esta classe foi gerada a partir do seguinte ficheiro\+:\begin{DoxyCompactItemize}
+\item 
+include/Jogador.\+hpp\end{DoxyCompactItemize}

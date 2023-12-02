@@ -1,0 +1,38 @@
+\doxysection{Pontuacao.\+hpp}
+\hypertarget{_pontuacao_8hpp_source}{}\label{_pontuacao_8hpp_source}\index{include/Pontuacao.hpp@{include/Pontuacao.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ PONTUACAO\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ PONTUACAO\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <SFML/System.hpp>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <SFML/Window.hpp>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <SFML/Audio.hpp>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <SFML/Network.hpp>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}../include/Camera.hpp"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_pontuacao}{Pontuacao}}\ \{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{int}\ contagem;}
+\DoxyCodeLine{00017\ \ \ \ \ sf::Text\ texto;}
+\DoxyCodeLine{00018\ \ \ \ \ std::shared\_ptr\ <Camera>\ camera;}
+\DoxyCodeLine{00019\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{comment}{//Construtor\ e\ Destrutor}}
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{class_pontuacao}{Pontuacao}}(sf::Font\ \&fonte,\ std::shared\_ptr\ <Camera>\ camera);}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{class_pontuacao}{\string~Pontuacao}}();}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{comment}{//Atualizações\ e\ renderização}}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ atualizarPontuacao(\textcolor{keywordtype}{int}\ contagemMoeda,\ \textcolor{keywordtype}{int}\ contagemPoderesEspeciais);}
+\DoxyCodeLine{00026\ \ \ \ \ sf::Text\ exibirPontuacao();}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{comment}{//Getters}}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{int}\ getPontuacaoTotal();}
+\DoxyCodeLine{00030\ \};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#endif\ }}
+
+\end{DoxyCode}

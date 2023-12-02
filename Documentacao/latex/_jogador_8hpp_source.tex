@@ -1,0 +1,77 @@
+\doxysection{Jogador.\+hpp}
+\hypertarget{_jogador_8hpp_source}{}\label{_jogador_8hpp_source}\index{include/Jogador.hpp@{include/Jogador.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\ \ \ \ \#ifndef\ JOGADOR\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\ \ \ \ \#define\ JOGADOR\_HPP}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}../include/Personagem.hpp"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\ \ \ \ \#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_jogador}{Jogador}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_personagem}{Personagem}}\ \{}
+\DoxyCodeLine{00007\ \ \ \ \ \textcolor{keyword}{private}:\ }
+\DoxyCodeLine{00008\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Atributos}}
+\DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ alturaTela;}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ contadorAndadaDir;}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ contadorAndadaEsq;}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ vida\ =\ 1;}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ alturaJogador;}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ larguraJogador;}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ moedas;}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ std::shared\_ptr\ <sf::RenderWindow>\ janela;}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Texturas}}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ std::vector<sf::Texture>\ mariosDireita;}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ std::vector<sf::Texture>\ mariosEsquerda;}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ std::vector<sf::Texture>\ mariosPequenosEsquerda;}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ std::vector<sf::Texture>\ mariosPequenosDireita;}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Verificações}}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ movendoDireita;}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ movendoEsquerda;}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ pulando;}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ colisaoCabeca;}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ ganhou;}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ perdeu;}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ ativarPoder;}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Construtor}}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_jogador}{Jogador}}(\mbox{\hyperlink{class_colisao}{Colisao}}\ \&colisao,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ larguraTela,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ alturaTelaJogo,\ std::shared\_ptr\ <sf::RenderWindow>\ janela1);}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_jogador}{Jogador}}\&\ operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_jogador}{Jogador}}\&\ other);}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Inicialização}}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ inicializarBooleanos();}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Destrutor}}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_jogador}{\string~Jogador}}();}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Métodos\ diretamente\ aplicados}}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ dobrarAltura();}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ modificarPosicao(sf::Time\ deltaTime,\ \textcolor{keywordtype}{int}\ larguraMapa)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ desenhar();}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ perderVida();}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ perdeuMudarTextura();}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Métodos\ de\ verificação}}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ estaMovendoDireita()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ movendoDireita;\ \}}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ estaMovendoEsquerda()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ movendoEsquerda;\ \}}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ estaPulando()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ pulando;\ \}}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ verificarColisaoDistanciaX(\textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y,\ \textcolor{keywordtype}{float}\ largura);}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ verificarColisaoDistanciaY(\textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y,\ \textcolor{keywordtype}{float}\ altura);}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Getters}}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ getLarguraJogador();}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ getAlturaJogador();}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ getGanhou();}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ getPerdeu();}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Métodos\ para\ definir\ o\ estado\ dos\ movimentos}}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setMovendoDireita(\textcolor{keywordtype}{bool}\ movendo);}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setMovendoEsquerda(\textcolor{keywordtype}{bool}\ movendo);}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setPulando(\textcolor{keywordtype}{bool}\ pulo);}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ atualizarColisao(\mbox{\hyperlink{class_mapa}{Mapa}}\ \&mapa);}
+\DoxyCodeLine{00070\ \ \ \ \ \};}
+\DoxyCodeLine{00071\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+
+\end{DoxyCode}

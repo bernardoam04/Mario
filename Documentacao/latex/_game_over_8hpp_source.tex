@@ -1,0 +1,33 @@
+\doxysection{Game\+Over.\+hpp}
+\hypertarget{_game_over_8hpp_source}{}\label{_game_over_8hpp_source}\index{include/GameOver.hpp@{include/GameOver.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ GAMEOVER\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ GAMEOVER\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <SFML/System.hpp>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <SFML/Window.hpp>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <SFML/Audio.hpp>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <SFML/Network.hpp>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_game_over}{GameOver}}\{}
+\DoxyCodeLine{00013\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00014\ \ \ \ \ std::shared\_ptr\ <sf::RenderWindow>\ janela;}
+\DoxyCodeLine{00015\ \ \ \ \ sf::Text\ texto,\ texto2,texto3;}
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{comment}{//Construtor}}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{class_game_over}{GameOver}}(std::shared\_ptr\ <sf::RenderWindow>\ janela1,\ sf::Font\ \&fonte);}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{comment}{//Métodos\ diretamente\ usados}}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{void}\ desenharTela(\textcolor{keywordtype}{int}\ pontuacaoTotal,\ \textcolor{keyword}{const}\ sf::View\&\ view);}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{bool}\ atualizar(sf::Event\ ev,\ \textcolor{keyword}{const}\ sf::View\ \&view);}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ atualizarPosicaoTextos(\textcolor{keyword}{const}\ sf::View\&\ view);}
+\DoxyCodeLine{00025\ \};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

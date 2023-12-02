@@ -1,0 +1,120 @@
+\doxysection{Referência à classe Goomba}
+\hypertarget{class_goomba}{}\label{class_goomba}\index{Goomba@{Goomba}}
+
+
+Diagrama de heranças da classe Goomba
+% FIG 0
+
+
+Diagrama de colaboração para Goomba\+:
+% FIG 1
+\doxysubsubsection*{Membros públicos}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_goomba_ac873650acdf2a5eb4bb23bc83050a2ca}\label{class_goomba_ac873650acdf2a5eb4bb23bc83050a2ca} 
+{\bfseries Goomba} (\mbox{\hyperlink{class_colisao}{Colisao}} \&colisao, std\+::shared\+\_\+ptr$<$ sf\+::\+Render\+Window $>$ janela1)
+\item 
+\Hypertarget{class_goomba_a910307aecea4f08221d98251e8199c33}\label{class_goomba_a910307aecea4f08221d98251e8199c33} 
+void {\bfseries inicializar\+Goombas} ()
+\item 
+\Hypertarget{class_goomba_a6dae3eb702d7b7a5231a689277aa31f6}\label{class_goomba_a6dae3eb702d7b7a5231a689277aa31f6} 
+void {\bfseries atacar} ()
+\item 
+void \mbox{\hyperlink{class_goomba_a61093bd89d7d40d5f8a7802e91febf3c}{modificar\+Posicao}} (sf\+::\+Time delta\+Time, int largura\+Mapa) override
+\item 
+\Hypertarget{class_goomba_a8a86996227e2f2c5a1d03956c15eb3de}\label{class_goomba_a8a86996227e2f2c5a1d03956c15eb3de} 
+void {\bfseries morrer} ()
+\item 
+\Hypertarget{class_goomba_adec62effc2c279fc6fa337b839ef1def}\label{class_goomba_adec62effc2c279fc6fa337b839ef1def} 
+void {\bfseries desenhar\+Goomba} ()
+\item 
+\Hypertarget{class_goomba_a6f406314c09dfa0eabcfa57f87c75910}\label{class_goomba_a6f406314c09dfa0eabcfa57f87c75910} 
+bool {\bfseries verificar\+Colisao} ()
+\item 
+\Hypertarget{class_goomba_a5bbb3a80e8912d59206029898184080c}\label{class_goomba_a5bbb3a80e8912d59206029898184080c} 
+bool {\bfseries verificar\+Colisao\+DistanciaX} (float x, float y, float altura)
+\end{DoxyCompactItemize}
+\doxysubsection*{Membros públicos herdados de \mbox{\hyperlink{class_personagem}{Personagem}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Personagem} (\mbox{\hyperlink{class_colisao}{Colisao}} \&colisao)
+\item 
+sf\+::\+Texture {\bfseries load\+Texture} (const std\+::string \&filename)
+\item 
+sf\+::\+Vector2f {\bfseries get\+Posicao} () const
+\item 
+float {\bfseries get\+Velocidade\+Horizontal} () const
+\item 
+float {\bfseries get\+Velocidade\+Vertical} () const
+\item 
+float {\bfseries get\+Aceleracao\+Gravidade} () const
+\item 
+bool {\bfseries get\+Mov\+Esquerda} () const
+\item 
+bool {\bfseries get\+Mov\+Direita} () const
+\item 
+float {\bfseries get\+Altura\+Chao} () const
+\item 
+bool {\bfseries get\+Esta\+No\+Ar} () const
+\item 
+float {\bfseries get\+Tile\+Size} () const
+\item 
+bool {\bfseries get\+Vivo} () const
+\item 
+sf\+::\+Texture {\bfseries get\+Texture} () const
+\item 
+unsigned int {\bfseries get\+Altura\+Personagem} () const
+\item 
+unsigned int {\bfseries get\+Largura\+Personagem} () const
+\item 
+void {\bfseries set\+Posicao\+Personagem} (const sf\+::\+Vector2f \&posicao)
+\item 
+void {\bfseries set\+Velocidade\+Horizontal} (float velocidade)
+\item 
+void {\bfseries set\+Velocidade\+Vertical} (float velocidade)
+\item 
+void {\bfseries set\+Mov\+Esquerda} (bool movimento)
+\item 
+void {\bfseries set\+Mov\+Direita} (bool movimento)
+\item 
+void {\bfseries set\+Esta\+No\+Ar} (bool estado)
+\item 
+void {\bfseries set\+Vivo} (bool vivo\+Atual)
+\item 
+void {\bfseries set\+Altura\+Personagem} (unsigned int altura)
+\item 
+void {\bfseries set\+Largura\+Personagem} (unsigned int largura)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Outros membros herdados}
+\doxysubsection*{Atributos Protegidos herdados de \mbox{\hyperlink{class_personagem}{Personagem}}}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Sprite {\bfseries personagem\+Sprite}
+\item 
+sf\+::\+Sprite {\bfseries personagem\+Morreu\+Sprite}
+\item 
+sf\+::\+Texture {\bfseries personagem\+Texture}
+\item 
+sf\+::\+Texture {\bfseries personagem\+Morreu\+Texture}
+\item 
+\mbox{\hyperlink{class_colisao}{Colisao}} \& {\bfseries colisao}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Documentação das funções}
+\Hypertarget{class_goomba_a61093bd89d7d40d5f8a7802e91febf3c}\label{class_goomba_a61093bd89d7d40d5f8a7802e91febf3c} 
+\index{Goomba@{Goomba}!modificarPosicao@{modificarPosicao}}
+\index{modificarPosicao@{modificarPosicao}!Goomba@{Goomba}}
+\doxysubsubsection{\texorpdfstring{modificarPosicao()}{modificarPosicao()}}
+{\footnotesize\ttfamily void Goomba\+::modificar\+Posicao (\begin{DoxyParamCaption}\item[{sf\+::\+Time}]{delta\+Time,  }\item[{int}]{largura\+Mapa }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplementado de \mbox{\hyperlink{class_personagem}{Personagem}}.
+
+
+
+A documentação para esta classe foi gerada a partir dos seguintes ficheiros\+:\begin{DoxyCompactItemize}
+\item 
+include/Goomba.\+hpp\item 
+src/Goomba.\+cpp\end{DoxyCompactItemize}
