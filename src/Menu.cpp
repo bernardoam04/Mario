@@ -135,4 +135,14 @@ bool Menu::atualizar(sf::Event ev) {
     }
 
     return true;
+};
+
+    Menu::OpcaoSelecionada Menu::getOpcaoSelecionada() const {
+    return opcaoSelecionada;
 }
+
+void Menu::resetarSelecao() {
+    opcaoSelecionada = NenhumaSelecao;
+}
+
+
