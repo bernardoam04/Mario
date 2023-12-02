@@ -25,7 +25,7 @@ public:
     void atualizarPontuacao(int contagemMoeda, int contagemPoderesEspeciais);
     sf::Text exibirPontuacao();
 
-    //Getter
+    //Getters
     int getPontuacaoTotal();
 };
 

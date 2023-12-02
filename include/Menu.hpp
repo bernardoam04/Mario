@@ -19,13 +19,18 @@ public:
         Sair
     };
 private:
+    //Textos
     sf::Text iniciarJogoTexto;
     sf::Text opcoesTexto;
     sf::Text sairTexto;
+
+    //Atributos de desenho
     sf::Texture menuTexture;
     sf::Sprite menuSprite;
+    
     OpcaoSelecionada opcaoSelecionada;
 
+    //Atributos privados
     void ajustarPosicaoMenu();
     void ajustarPosicaoTextos();
 
@@ -34,16 +39,20 @@ protected:
 
 
 public:
+    //Construtor
     Menu(std::shared_ptr<sf::RenderWindow> janela1, sf::Font &fonte);
+
+    //Métodos usados diretamente
     virtual void desenharTela();
-   virtual bool atualizar(sf::Event ev);
+    virtual bool atualizar(sf::Event ev);
     virtual void atualizarPosicaoTextos();
-    bool sair();
     virtual void atualizarOpcaoSelecionada();
     virtual bool tratarCliqueMouse();
-    OpcaoSelecionada getOpcaoSelecionada() const;
     void resetarSelecao(); 
-   
+    bool sair();
+
+    //Getters
+    OpcaoSelecionada getOpcaoSelecionada() const;
 };
 
 #endif

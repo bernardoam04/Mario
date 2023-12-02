@@ -47,6 +47,7 @@ public:
     void carregarMoedas();
     void carregarPoderes();
 
+    //Métodos usados diretamente
     int gerarTipoAleatorio();
     bool inicializarNoMapa(Mapa& mapa);
     void inicializar(float x, float y);
@@ -55,6 +56,8 @@ public:
     void ModificacaoPosicaoMoeda(sf::Time deltaTime);
     void atualizar(sf::Time deltaTime, sf::Time tempoAtual);
     void voltarPosicaoInicial();
+
+    //Verificação
     bool verificarColisao(sf::Vector2f posicaoPersonagem, int altura, int largura);
 
     //Getters

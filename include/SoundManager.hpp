@@ -4,6 +4,7 @@
 
 class SoundManager{
     private:
+        //Sons e músicas
         sf::Music musicaFundo;
         sf::SoundBuffer sbMoeda;
         sf::Sound sMoeda;
@@ -11,15 +12,19 @@ class SoundManager{
         sf::Sound sPulo;
         sf::Sound sGameOver;
         sf::SoundBuffer sbGameOver;
-        sf::SoundBuffer sbGameoverScream;  // Renomeado para evitar conflito
-        sf::Sound sGameoverScream;         // Novo objeto de som
+        sf::SoundBuffer sbGameoverScream;  
+        sf::Sound sGameoverScream;    
 
     public:
+        //Construtor
         SoundManager();
+
+        //Música principal
         void tocarMusica();
         void pausarMusica();
         void reiniciarMusica();
 
+        //Sons
         void somMoeda();
         void somGameOver();
         void somPulo();

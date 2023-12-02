@@ -4,7 +4,8 @@ menuOp::menuOp(sf::Font& font, std::shared_ptr<sf::RenderWindow> window)
     : Menu(window, font),
       volumeMusicText("Volume Música", font, 22),
       volumeeffectText("Volume Efeito", font, 22),
-      opcaoSelecionada(volumemusic) { // Corrigido aqui
+      opcaoSelecionada(volumemusic) { 
+
     // Ajuste de posição específico da classe derivada
     volumeMusicText.setPosition(100, 100);
     volumeeffectText.setPosition(150, 150);
@@ -49,10 +50,8 @@ void menuOp::atualizarOpcaoSelecionada() {
 bool menuOp::tratarCliqueMouse() {
     if (!Menu::tratarCliqueMouse()) {  // Chama o método da classe base e verifica se algo foi clicado no menu principal
         // Adiciona lógica específica da classe derivada para tratamento do clique, se necessário
-        return false;  // Indica que algo específico da classe derivada foi tratado
+        return false; 
     }
 
-    // Adiciona lógica específica da classe derivada para tratamento do clique, se necessário
-
-    return true;  // Indica que nenhum tratamento específico da classe derivada foi feito
+    return true; 
 }

@@ -2,11 +2,11 @@
 #include <iostream>
 
 Menu::Menu(std::shared_ptr<sf::RenderWindow> janela1, sf::Font &fonte)
-    : janela(janela1),
-      iniciarJogoTexto("Iniciar Jogo", fonte, 30),
-      opcoesTexto("options", fonte, 22),
-      sairTexto("Sair", fonte, 22),
-      opcaoSelecionada(NenhumaSelecao) {
+: janela(janela1),
+    iniciarJogoTexto("Iniciar Jogo", fonte, 30),
+    opcoesTexto("options", fonte, 22),
+    sairTexto("Sair", fonte, 22),
+    opcaoSelecionada(NenhumaSelecao) {
     menuTexture.loadFromFile("../imagens/placaMenu.png");
 
     menuSprite.setTexture(menuTexture);

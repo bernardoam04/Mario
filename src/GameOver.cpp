@@ -86,44 +86,42 @@ void GameOver::atualizarPosicaoTextos(const sf::View& view)
 
 bool GameOver::atualizar(sf::Event ev, const sf::View &view)
 {
-    
     while (this->janela->pollEvent(ev)) {
+        if (ev.type == sf::Event::Closed){
+                janela->close();
+                break;
+        }
+        else if (ev.type == sf::Event::MouseMoved) {
+            // Obtém a posição atual do mouse
+            sf::Vector2i mousePosition = sf::Mouse::getPosition(*janela);
 
-            if (ev.type == sf::Event::Closed){
-                    janela->close();
-                    break;
+            // Define a área desejada onde o evento deve ser acionado
+            sf::FloatRect areaDesejada = texto3.getGlobalBounds();
+
+            // Verifica se a posição do mouse está dentro da área desejada
+            if (areaDesejada.contains(static_cast<float>(mousePosition.x + (view.getCenter().x-(janela->getSize().x/2))), static_cast<float>(mousePosition.y))) {
+                texto3.setScale(1.3, 1.3);
+
+                // Obtém a nova posição centralizada do texto3 após a mudança de escala
+                sf::FloatRect textoRect3 = texto3.getLocalBounds();
+                float x3 = (view.getCenter().x - view.getSize().x / 2.0f + (view.getSize().x - textoRect3.width*1.3) / 2.0f) - textoRect3.width * 1.3f;
+                float y3 = (((janela->getSize().y - textoRect3.height * 1.3) / 2.0f) + textoRect3.height * 5.0f);
+
+                // Define a nova posição do texto3
+                texto3.setPosition(x3, y3);
             }
-            else if (ev.type == sf::Event::MouseMoved) {
-                // Obtém a posição atual do mouse
-                sf::Vector2i mousePosition = sf::Mouse::getPosition(*janela);
+            else {
+                // Mouse está fora da área desejada
+                texto3.setScale(1.0, 1.0); // Define a escala de volta para o valor original
 
-                // Define a área desejada onde o evento deve ser acionado
-                sf::FloatRect areaDesejada = texto3.getGlobalBounds();
-
-                // Verifica se a posição do mouse está dentro da área desejada
-                if (areaDesejada.contains(static_cast<float>(mousePosition.x + (view.getCenter().x-(janela->getSize().x/2))), static_cast<float>(mousePosition.y))) {
-                    texto3.setScale(1.3, 1.3);
-
-                    // Obtém a nova posição centralizada do texto3 após a mudança de escala
-                    sf::FloatRect textoRect3 = texto3.getLocalBounds();
-                    float x3 = (view.getCenter().x - view.getSize().x / 2.0f + (view.getSize().x - textoRect3.width*1.3) / 2.0f) - textoRect3.width * 1.3f;
-                    float y3 = (((janela->getSize().y - textoRect3.height * 1.3) / 2.0f) + textoRect3.height * 5.0f);
-
-                    // Define a nova posição do texto3
-                    texto3.setPosition(x3, y3);
-                }
-                else {
-                    // Mouse está fora da área desejada
-                    texto3.setScale(1.0, 1.0); // Define a escala de volta para o valor original
-
-                    // Obtém a nova posição centralizada do texto3 após a mudança de escala
-                    sf::FloatRect textoRect3 = texto3.getLocalBounds();
-                    float x3 = (view.getCenter().x - view.getSize().x / 2.0f + (view.getSize().x - textoRect3.width * 1.3) / 2.0f) ;
-                    float y3 = (((janela->getSize().y - textoRect3.height * 1.3) / 2.0f) + textoRect3.height * 5.0f);
-                    
-                    // Define a nova posição do texto3
-                    texto3.setPosition(x3, y3);
-                }
+                // Obtém a nova posição centralizada do texto3 após a mudança de escala
+                sf::FloatRect textoRect3 = texto3.getLocalBounds();
+                float x3 = (view.getCenter().x - view.getSize().x / 2.0f + (view.getSize().x - textoRect3.width * 1.3) / 2.0f) ;
+                float y3 = (((janela->getSize().y - textoRect3.height * 1.3) / 2.0f) + textoRect3.height * 5.0f);
+                
+                // Define a nova posição do texto3
+                texto3.setPosition(x3, y3);
+            }
         }
         else if (ev.type == sf::Event::MouseButtonPressed) {
             // Verifica se o clique ocorreu dentro da área desejada
@@ -137,10 +135,10 @@ bool GameOver::atualizar(sf::Event ev, const sf::View &view)
             }
         }
 
-        }
+    }
 
-        // Atualiza a posição dos textos de acordo com a view da câmera
-        atualizarPosicaoTextos(view);
+    // Atualiza a posição dos textos de acordo com a view da câmera
+    atualizarPosicaoTextos(view);
 
     return true;
 }

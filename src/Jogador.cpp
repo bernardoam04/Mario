@@ -121,7 +121,6 @@ void Jogador::dobrarAltura()
 
 void Jogador::modificarPosicao(sf::Time deltaTime, int larguraMapa)
 {
-    std::cout<<getVelocidadeVertical()<<std::endl;
     // Obtendo valores atuais
     float velocidadeHorizontalAtual = getVelocidadeHorizontal();
     bool estaNoArAtual = getEstaNoAr();
@@ -133,7 +132,7 @@ void Jogador::modificarPosicao(sf::Time deltaTime, int larguraMapa)
         contadorAndadaEsq = 0;
     }
 
-    // Configurando nova velocidade horizontal (deve ser sincronizada com a camera ainda)
+    // Configurando nova velocidade horizontal 
     setVelocidadeHorizontal(180.0f);
 
     // Movimentação horizontal
@@ -194,6 +193,7 @@ void Jogador::modificarPosicao(sf::Time deltaTime, int larguraMapa)
         }
     }
     
+    //Mudanças de posição caso o mario bata a cabeça em algum bloco
     if (colisaoCabeca) {
         if (!verificarColisaoDistanciaX(posicaoAtual.x +3, posicaoAtual.y+alturaJogador + getVelocidadeVertical(), larguraJogador-6)){
             setVelocidadeVertical(getVelocidadeVertical() + getAceleracaoGravidade());
@@ -223,11 +223,13 @@ void Jogador::modificarPosicao(sf::Time deltaTime, int larguraMapa)
 
     }
 
+    //Se o mario chegar na posição final ele ganha
     if(posicaoAtual.x> 7200){
         posicaoAtual.x = 7200;
         ganhou = true;
     }
 
+    //Se o mario cair ele perde
     if(posicaoAtual.y > alturaTela){
         vida = 0;
         perdeu = true;
@@ -302,6 +304,7 @@ void Jogador::perdeuMudarTextura(){
 
 void Jogador::desenhar() {
 
+    //Lógica pra desenhar marios grandes andando
     if(!getEstaNoAr()&& vida > 1){ //Mario grande
         contadorAndadaDir = contadorAndadaDir % 16;
         contadorAndadaEsq = contadorAndadaEsq % 16;

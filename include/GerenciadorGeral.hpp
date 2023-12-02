@@ -28,9 +28,10 @@ private:
     std::shared_ptr<SoundManager> _sounds;
     std::shared_ptr <Jogador> mario;
     std::set<unsigned int> indicesComColisao;
+    std::set<unsigned int> indicesPoderesEspeciais;
     std::shared_ptr <Tartaruga> tartaruga;
 
-    //Textos de pontuacao
+    //Textos da pontuacao
     sf::Text textoMaisCem;
     sf::Text textoMaisMil;
     sf::Text textoGanhou;

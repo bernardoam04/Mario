@@ -13,7 +13,6 @@
 
 class Mapa {
 private:
-
     enum BlocosColisaoEspecial{
         NULO = 0,
         SURPRESA = 2,
@@ -47,6 +46,7 @@ public:
    //Construtor 
     Mapa();
 
+    //Métodos usados diretamente
     void inicializarColisoes();
     void carregarMapa(const std::string& arquivoMapa);
     void renderizar(sf::RenderWindow& janela, sf::Time tempoAtual);

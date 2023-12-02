@@ -5,15 +5,18 @@
 
     class Jogador : public Personagem {
     private: 
-        unsigned int vida = 1;
-        int moedas;
-        bool ativarPoder;
-        unsigned int alturaJogador;
-        unsigned int larguraJogador;
-        std::shared_ptr <sf::RenderWindow> janela;
+        //Atributos
         const float alturaTela;
         int contadorAndadaDir;
         int contadorAndadaEsq;
+        unsigned int vida = 1;
+        unsigned int alturaJogador;
+        unsigned int larguraJogador;
+        int moedas;
+
+        std::shared_ptr <sf::RenderWindow> janela;
+
+        //Texturas
         std::vector<sf::Texture> mariosDireita;
         std::vector<sf::Texture> mariosEsquerda;
         std::vector<sf::Texture> mariosPequenosEsquerda;
@@ -26,6 +29,7 @@
         bool colisaoCabeca;
         bool ganhou;
         bool perdeu;
+        bool ativarPoder;
 
     public:
         //Construtor
