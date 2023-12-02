@@ -1,0 +1,78 @@
+\doxysection{Personagem.\+hpp}
+\hypertarget{_personagem_8hpp_source}{}\label{_personagem_8hpp_source}\index{include/Personagem.hpp@{include/Personagem.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ PERSONAGEM\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ PERSONAGEM\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}../include/Mapa.hpp"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}../include/Camera.hpp"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}../include/PoderesEspeciais.hpp"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}../include/Colisao.hpp"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_personagem}{Personagem}}\ \{}
+\DoxyCodeLine{00012\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{comment}{//Texturas,\ Posicao\ e\ modificadores}}
+\DoxyCodeLine{00014\ \ \ \ \ sf::Vector2f\ posicaoPersonagem;\ }
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{float}\ velocidadeVertical;}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{float}\ velocidadeHorizontal;}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ alturaPersonagem;}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ larguraPersonagem;}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{comment}{//Verificacoes}}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{bool}\ vivo\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{bool}\ estaNoAr;}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{bool}\ movEsquerda;}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{bool}\ movDireita;}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{comment}{//Constantes}}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ tileSize=32;}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ aceleracaoGravidade\ =\ 10.0f;}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ alturaChao\ =\ 640.0\ -\/\ 156.0;}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00032\ \ \ \ \ sf::Sprite\ personagemSprite;}
+\DoxyCodeLine{00033\ \ \ \ \ sf::Sprite\ personagemMorreuSprite;}
+\DoxyCodeLine{00034\ \ \ \ \ sf::Texture\ personagemTexture;}
+\DoxyCodeLine{00035\ \ \ \ \ sf::Texture\ personagemMorreuTexture;}
+\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{class_colisao}{Colisao}}\ \&colisao;}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{comment}{//Construtor}}
+\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{class_personagem}{Personagem}}(\mbox{\hyperlink{class_colisao}{Colisao}}\ \&colisao);}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ modificarPosicao(sf::Time\ deltaTime,\ \textcolor{keywordtype}{int}\ larguraMapa);}
+\DoxyCodeLine{00043\ \ \ \ \ sf::Texture\ loadTexture(\textcolor{keyword}{const}\ std::string\&\ filename);}
+\DoxyCodeLine{00044\ \ \ \ \ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{comment}{//Getters}}
+\DoxyCodeLine{00046\ \ \ \ \ sf::Vector2f\ getPosicao()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{float}\ getVelocidadeHorizontal()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{float}\ getVelocidadeVertical()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{float}\ getAceleracaoGravidade()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{bool}\ getMovEsquerda()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{bool}\ getMovDireita()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{float}\ getAlturaChao()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{bool}\ getEstaNoAr()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{float}\ getTileSize()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{bool}\ getVivo()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00056\ \ \ \ \ sf::Texture\ getTexture()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ getAlturaPersonagem()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ getLarguraPersonagem()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{comment}{//Setters}}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{void}\ setPosicaoPersonagem(\textcolor{keyword}{const}\ sf::Vector2f\&\ posicao);}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{void}\ setVelocidadeHorizontal(\textcolor{keywordtype}{float}\ velocidade);}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{void}\ setVelocidadeVertical(\textcolor{keywordtype}{float}\ velocidade);}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{void}\ setMovEsquerda(\textcolor{keywordtype}{bool}\ movimento);}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{void}\ setMovDireita(\textcolor{keywordtype}{bool}\ movimento);}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{void}\ setEstaNoAr(\textcolor{keywordtype}{bool}\ estado);}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{void}\ setVivo(\textcolor{keywordtype}{bool}\ vivoAtual);}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{void}\ setAlturaPersonagem(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ altura);}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{void}\ setLarguraPersonagem(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ largura);}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \};}
+\DoxyCodeLine{00072\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

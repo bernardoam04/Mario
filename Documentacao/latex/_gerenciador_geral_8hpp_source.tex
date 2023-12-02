@@ -1,0 +1,85 @@
+\doxysection{Gerenciador\+Geral.\+hpp}
+\hypertarget{_gerenciador_geral_8hpp_source}{}\label{_gerenciador_geral_8hpp_source}\index{include/GerenciadorGeral.hpp@{include/GerenciadorGeral.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ GERENCIADORGERAL\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ GERENCIADORGERAL\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}../include/Mapa.hpp"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}../include/Camera.hpp"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}../include/Colisao.hpp"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}../include/PoderesEspeciais.hpp"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}../include/Pontuacao.hpp"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}../include/SoundManager.hpp"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}Jogador.hpp"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}Goomba.hpp"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <set>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_gerenciador_geral}{GerenciadorGeral}}\{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{comment}{//Informações\ da\ tela(mesma\ do\ main)}}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ alturaTela\ =\ 640;}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ larguraTela\ =\ 640;}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{comment}{//Tipos\ Abstratos}}
+\DoxyCodeLine{00022\ \ \ \ \ std::shared\_ptr\ <sf::RenderWindow>\ janela;}
+\DoxyCodeLine{00023\ \ \ \ \ std::shared\_ptr\ <Pontuacao>\ pontuacao;}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{class_mapa}{Mapa}}\ mapa;\ \ }
+\DoxyCodeLine{00025\ \ \ \ \ std::shared\_ptr\ <Camera>\ camera;}
+\DoxyCodeLine{00026\ \ \ \ \ std::shared\_ptr\ <Colisao>\ colisao;}
+\DoxyCodeLine{00027\ \ \ \ \ std::vector<std::shared\_ptr\ <PoderesEspeciais>>\ vetorPoderesEspeciais;}
+\DoxyCodeLine{00028\ \ \ \ \ std::shared\_ptr<SoundManager>\ \_sounds;}
+\DoxyCodeLine{00029\ \ \ \ \ std::shared\_ptr\ <Jogador>\ mario;}
+\DoxyCodeLine{00030\ \ \ \ \ std::set<unsigned\ int>\ indicesComColisao;}
+\DoxyCodeLine{00031\ \ \ \ \ std::set<unsigned\ int>\ indicesPoderesEspeciais;}
+\DoxyCodeLine{00032\ \ \ \ \ std::shared\_ptr\ <Goomba>\ goomba;}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{comment}{//Textos\ da\ pontuacao}}
+\DoxyCodeLine{00035\ \ \ \ \ sf::Text\ textoMaisCem;}
+\DoxyCodeLine{00036\ \ \ \ \ sf::Text\ textoMaisMil;}
+\DoxyCodeLine{00037\ \ \ \ \ sf::Text\ textoGanhou;}
+\DoxyCodeLine{00038\ \ \ \ \ sf::Clock\ temporizadorTexto;}
+\DoxyCodeLine{00039\ \ \ \ \ sf::Time\ duracaoTexto\ =\ sf::seconds(0.5f);}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{comment}{//Métodos\ privados}}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ inicializarVariaveis();}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{void}\ InicializarPoderesEspeciais();}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ inicializarTextos(sf::Font\ \&fonte);}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ atualizarPosicaoTexto(sf::Text\ \&texto);}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{comment}{//Verificações}}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{bool}\ puloHabilitado;}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{bool}\ gameOver;}
+\DoxyCodeLine{00050\ \ \ \ \ std::vector\ <int>\ contagemDesenhoPoderes;}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{comment}{//Contador}}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{int}\ contadorPerdeu\ =\ 0;}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{comment}{//Construtor\ e\ Destrutor}}
+\DoxyCodeLine{00057\ \ \ \ \ \mbox{\hyperlink{class_gerenciador_geral}{GerenciadorGeral}}(std::shared\_ptr\ <sf::RenderWindow>\ janela1,\ sf::Font\ \&fonte,\ std::shared\_ptr<SoundManager>\ sounds);}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{comment}{//Métodos\ de\ Verificação}}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{int}\ verificarColisao(\textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{bool}\ janelaAberta()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{comment}{//Métodos\ utilizados\ no\ jogo\ diretamente}}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{bool}\ atualizar(sf::Time\ tempoAtual,\ sf::Time\ deltaTime,\ sf::Event\ ev);}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{bool}\ atualizarEventos(sf::Event\ ev);}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{void}\ renderizar(sf::Time\ tempoAtual);}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{void}\ desenharMapa(sf::Time\ tempoAtual);}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{comment}{//Getters}}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{float}\ getAlturaTela()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{float}\ getLarguraTela()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{int}\ getPontuacaoTotal()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keyword}{const}\ sf::View\&\ getViewCamera()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{bool}\ getGamerOver();}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \};}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

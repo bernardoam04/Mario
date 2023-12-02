@@ -1,0 +1,111 @@
+\doxysection{Referência à classe menu\+Op}
+\hypertarget{classmenu_op}{}\label{classmenu_op}\index{menuOp@{menuOp}}
+\doxysubsubsection*{Tipos Públicos}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classmenu_op_a72b90f945bc798e63a9e906198d967b7}\label{classmenu_op_a72b90f945bc798e63a9e906198d967b7} 
+enum {\bfseries opselect} \{ {\bfseries volumemusic}
+, {\bfseries volumeefect}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Tipos Públicos herdados de \mbox{\hyperlink{class_menu}{Menu}}}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_menu_a559be38c08d318ac4bfea45a6d8f9575}\label{class_menu_a559be38c08d318ac4bfea45a6d8f9575} 
+enum {\bfseries Opcao\+Selecionada} \{ {\bfseries Nenhuma\+Selecao}
+, {\bfseries Iniciar\+Jogo}
+, {\bfseries Opcoes}
+, {\bfseries Sair}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Membros públicos}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classmenu_op_ae537ce9433e733b74bdb4c03ae51e18c}\label{classmenu_op_ae537ce9433e733b74bdb4c03ae51e18c} 
+{\bfseries menu\+Op} (sf\+::\+Font \&fonte1, std\+::shared\+\_\+ptr$<$ sf\+::\+Render\+Window $>$ janela1)
+\item 
+void \mbox{\hyperlink{classmenu_op_ac71c5dba9743abc5783def9cdafb9281}{desenhar\+Tela}} () override
+\item 
+bool \mbox{\hyperlink{classmenu_op_a8d9ae594f4e5ac8f0a321c71f27473c4}{atualizar}} (sf\+::\+Event ev) override
+\item 
+void \mbox{\hyperlink{classmenu_op_a49ae3748c598c89d182e0b21a05270c6}{atualizar\+Posicao\+Textos}} () override
+\item 
+void \mbox{\hyperlink{classmenu_op_ac66bab8d5c4b705755e328bbe7f24f5d}{atualizar\+Opcao\+Selecionada}} () override
+\item 
+bool \mbox{\hyperlink{classmenu_op_a11f81d3482e4d83d9a9203ea820ad5a6}{tratar\+Clique\+Mouse}} () override
+\end{DoxyCompactItemize}
+\doxysubsection*{Membros públicos herdados de \mbox{\hyperlink{class_menu}{Menu}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Menu} (std\+::shared\+\_\+ptr$<$ sf\+::\+Render\+Window $>$ janela1, sf\+::\+Font \&fonte)
+\item 
+void {\bfseries resetar\+Selecao} ()
+\item 
+bool {\bfseries sair} ()
+\item 
+Opcao\+Selecionada {\bfseries get\+Opcao\+Selecionada} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Outros membros herdados}
+\doxysubsection*{Atributos Protegidos herdados de \mbox{\hyperlink{class_menu}{Menu}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ sf\+::\+Render\+Window $>$ {\bfseries janela}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Documentação das funções}
+\Hypertarget{classmenu_op_a8d9ae594f4e5ac8f0a321c71f27473c4}\label{classmenu_op_a8d9ae594f4e5ac8f0a321c71f27473c4} 
+\index{menuOp@{menuOp}!atualizar@{atualizar}}
+\index{atualizar@{atualizar}!menuOp@{menuOp}}
+\doxysubsubsection{\texorpdfstring{atualizar()}{atualizar()}}
+{\footnotesize\ttfamily bool menu\+Op\+::atualizar (\begin{DoxyParamCaption}\item[{sf\+::\+Event}]{ev }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplementado de \mbox{\hyperlink{class_menu}{Menu}}.
+
+\Hypertarget{classmenu_op_ac66bab8d5c4b705755e328bbe7f24f5d}\label{classmenu_op_ac66bab8d5c4b705755e328bbe7f24f5d} 
+\index{menuOp@{menuOp}!atualizarOpcaoSelecionada@{atualizarOpcaoSelecionada}}
+\index{atualizarOpcaoSelecionada@{atualizarOpcaoSelecionada}!menuOp@{menuOp}}
+\doxysubsubsection{\texorpdfstring{atualizarOpcaoSelecionada()}{atualizarOpcaoSelecionada()}}
+{\footnotesize\ttfamily void menu\+Op\+::atualizar\+Opcao\+Selecionada (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplementado de \mbox{\hyperlink{class_menu}{Menu}}.
+
+\Hypertarget{classmenu_op_a49ae3748c598c89d182e0b21a05270c6}\label{classmenu_op_a49ae3748c598c89d182e0b21a05270c6} 
+\index{menuOp@{menuOp}!atualizarPosicaoTextos@{atualizarPosicaoTextos}}
+\index{atualizarPosicaoTextos@{atualizarPosicaoTextos}!menuOp@{menuOp}}
+\doxysubsubsection{\texorpdfstring{atualizarPosicaoTextos()}{atualizarPosicaoTextos()}}
+{\footnotesize\ttfamily void menu\+Op\+::atualizar\+Posicao\+Textos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplementado de \mbox{\hyperlink{class_menu}{Menu}}.
+
+\Hypertarget{classmenu_op_ac71c5dba9743abc5783def9cdafb9281}\label{classmenu_op_ac71c5dba9743abc5783def9cdafb9281} 
+\index{menuOp@{menuOp}!desenharTela@{desenharTela}}
+\index{desenharTela@{desenharTela}!menuOp@{menuOp}}
+\doxysubsubsection{\texorpdfstring{desenharTela()}{desenharTela()}}
+{\footnotesize\ttfamily void menu\+Op\+::desenhar\+Tela (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplementado de \mbox{\hyperlink{class_menu}{Menu}}.
+
+\Hypertarget{classmenu_op_a11f81d3482e4d83d9a9203ea820ad5a6}\label{classmenu_op_a11f81d3482e4d83d9a9203ea820ad5a6} 
+\index{menuOp@{menuOp}!tratarCliqueMouse@{tratarCliqueMouse}}
+\index{tratarCliqueMouse@{tratarCliqueMouse}!menuOp@{menuOp}}
+\doxysubsubsection{\texorpdfstring{tratarCliqueMouse()}{tratarCliqueMouse()}}
+{\footnotesize\ttfamily bool menu\+Op\+::tratar\+Clique\+Mouse (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplementado de \mbox{\hyperlink{class_menu}{Menu}}.
+
+
+
+A documentação para esta classe foi gerada a partir do seguinte ficheiro\+:\begin{DoxyCompactItemize}
+\item 
+include/meunu\+Op.\+hpp\end{DoxyCompactItemize}
