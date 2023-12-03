@@ -29,7 +29,7 @@ void Goomba::inicializarGoombas() {
 
 bool Goomba::verificarColisaoComGoomba(std::shared_ptr <Jogador> mario)
 {
-    if(getVivo()){
+    if(getVivo() && !mario->estaSubindo()){
         sf::Vector2f posicaoPersonagem = mario->getPosicao();
         int larguraPersonagem = mario->getLarguraJogador();
         int alturaPersonagem = mario->getAlturaJogador();

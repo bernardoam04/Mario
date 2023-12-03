@@ -258,12 +258,20 @@ void Jogador::modificarPosicao(sf::Time deltaTime, int larguraMapa)
         perdeu = true;
     }
 
+    if(getVelocidadeVertical() < 0){
+        subindo = true;
+    }
+    else{
+        subindo = false;
+    }
+
     // Configurando a nova posição
     setPosicaoPersonagem(posicaoAtual);
 }
 
 void Jogador::inicializarBooleanos()
 {
+    subindo = false;
     pegouEstrela = false;
     invencivel = false;
     puloemGoomba = false;
@@ -298,6 +306,11 @@ bool Jogador::getPerdeu()
 bool Jogador::estaInvencivel()
 {
     return invencivel;
+}
+
+bool Jogador::estaSubindo()
+{
+    return subindo;
 }
 
 void Jogador::setMovendoDireita(bool movendo)

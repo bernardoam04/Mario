@@ -36,7 +36,7 @@ private:
     bool puloemGoomba;
     bool invencivel;
     bool pegouEstrela;
-
+    bool subindo;
 public:
     //Construtor
     Jogador(Colisao &colisao, const float larguraTela, const float alturaTelaJogo, std::shared_ptr <sf::RenderWindow> janela1);
@@ -68,6 +68,7 @@ public:
     bool getGanhou();
     bool getPerdeu();
     bool estaInvencivel();
+    bool estaSubindo();
 
     // Métodos para definir o estado dos movimentos
     void setMovendoDireita(bool movendo);
