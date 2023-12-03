@@ -9,6 +9,9 @@ private:
     std::shared_ptr <sf::RenderWindow> janela;//Talvez colocar como protected em personagem para evitar repeticao
     int alturaGoomba;
     int larguraGoomba;
+
+    //Temporizador
+    sf::Clock temporizadorMorte;
 public:
     //Construtor
     Goomba(Colisao &colisao, std::shared_ptr <sf::RenderWindow> janela1, float x, float y);

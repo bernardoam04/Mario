@@ -209,7 +209,7 @@ void GerenciadorGeral::renderizar(sf::Time tempoAtual)
     for (unsigned int i = 0; i < goombas.size(); i++) {
         goombas[i]->desenharGoomba();
         if(goombas[i]->verificarColisaoComGoomba(mario)){
-            goombas[i]->setVivo(false);
+            goombas[i]->morrer();
             mario->setPuloEmGoomba(true);
         }
         if(goombas[i]->verificarColisaoLateralComGoomba(mario)){

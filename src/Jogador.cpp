@@ -359,7 +359,7 @@ void Jogador::atualizarColisao(Mapa &mapa)
 {
     std::vector<std::pair<int,int>> posicoes(2);
     int posicaoX = static_cast<int>(getPosicao().x + larguraJogador/2);
-    int posicaoY = static_cast<int>(getPosicao().y);
+    int posicaoY = static_cast<int>(getPosicao().y - 2);
 
     int posicaoX2 = static_cast<int>(getPosicao().x + larguraJogador/2);
     int posicaoY2 = static_cast<int>(getPosicao().y + alturaJogador* 0.75);

@@ -222,12 +222,20 @@ void Goomba::modificarPosicao(sf::Time deltaTime, int larguraMapa) {
 }
 
 void Goomba::morrer() {
+    temporizadorMorte.restart();
     setVivo(false);
 }
 
 void Goomba::desenharGoomba() {
 
     if(getVivo()){
+        sf::Sprite sprite(personagemTexture); 
+        sprite.setPosition(getPosicao());
+        sprite.setTexture(personagemTexture);
+        janela->draw(sprite);
+    }
+    else if(temporizadorMorte.getElapsedTime().asSeconds() < 0.3){
+        personagemTexture.loadFromFile("../imagens/goombaMorto.png");
         sf::Sprite sprite(personagemTexture); 
         sprite.setPosition(getPosicao());
         sprite.setTexture(personagemTexture);
