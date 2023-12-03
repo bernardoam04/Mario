@@ -49,6 +49,7 @@ private:
     //Verificações
     bool puloHabilitado;
     bool gameOver;
+    bool somAtivo = true;
     std::vector <int> contagemDesenhoPoderes;
 
     //Contador
@@ -68,6 +69,7 @@ public:
     bool atualizarEventos(sf::Event ev);
     void renderizar(sf::Time tempoAtual);
     void desenharMapa(sf::Time tempoAtual);
+    void desativarSom();
 
     //Getters
     float getAlturaTela() const;

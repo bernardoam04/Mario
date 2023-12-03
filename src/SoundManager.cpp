@@ -1,5 +1,6 @@
 #include "../include/SoundManager.hpp"
 #include <unordered_map>
+#include "SoundManager.hpp"
 
 SoundManager::SoundManager() {
     if (!this->musicaFundo.openFromFile("../audio/1-1.wav")) {
@@ -26,8 +27,10 @@ SoundManager::SoundManager() {
 }
 
 void SoundManager::tocarMusica() {
-    this->musicaFundo.play();
-    this->musicaFundo.setLoop(true);
+    if(somAtivo){
+        this->musicaFundo.play();
+        this->musicaFundo.setLoop(true);
+    }
 }
 
 void SoundManager::pausarMusica() {
@@ -35,23 +38,34 @@ void SoundManager::pausarMusica() {
 }
 
 void SoundManager::reiniciarMusica(){
-    this->musicaFundo.stop();
-    this->musicaFundo.play();
+    if(somAtivo){
+        this->musicaFundo.stop();
+        this->musicaFundo.play();
+    }
 }
 
 void SoundManager::somMoeda(){
-    this->sMoeda.play();
+    if(somAtivo){
+        this->sMoeda.play();
+    }
 }
 
 void SoundManager::somGameOver(){
-    this->sGameOver.play();
+    if(somAtivo){
+        this->sGameOver.play();
+    }
 }
 
 void SoundManager::somPulo(){
-    this->sPulo.play();
+    if(somAtivo){
+        this->sPulo.play();
+    }
 }
 void SoundManager::somgameovertela() {
- this->sGameoverScream.play();}
+    if(somAtivo){
+        this->sGameoverScream.play();
+    }
+ }
 
 sf::Music& SoundManager::getMusicaFundo(){
     return this->musicaFundo;
@@ -98,4 +112,8 @@ void SoundManager::carregarSomPadrao(sf::SoundBuffer& soundBuffer){
 
 bool SoundManager::musicaPausada(){
     return this->musicaFundo.getStatus() == sf::Music::Paused;
+}
+void SoundManager::desativarSom()
+{
+    somAtivo = false;
 }

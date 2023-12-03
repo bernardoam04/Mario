@@ -7,6 +7,7 @@
 #include <SFML/Audio.hpp>
 #include <SFML/Network.hpp>
 
+#include "GerenciadorGeral.hpp"
 #include <memory>
 
 
@@ -27,12 +28,16 @@ private:
     //Atributos de desenho
     sf::Texture menuTexture;
     sf::Sprite menuSprite;
+    sf::Texture semSomTexture;
+    sf::Sprite semSomSprite;
     
     OpcaoSelecionada opcaoSelecionada;
 
     //Atributos privados
     void ajustarPosicaoMenu();
     void ajustarPosicaoTextos();
+
+    bool somAtivo;
 
 protected:
     std::shared_ptr<sf::RenderWindow> janela;
@@ -44,15 +49,16 @@ public:
 
     //Métodos usados diretamente
     virtual void desenharTela();
-    virtual bool atualizar(sf::Event ev);
-    virtual void atualizarPosicaoTextos();
-    virtual void atualizarOpcaoSelecionada();
-    virtual bool tratarCliqueMouse();
+    bool atualizar(sf::Event ev);
+    void atualizarPosicaoTextos();
+    void atualizarOpcaoSelecionada();
+    bool tratarCliqueMouse();
     void resetarSelecao(); 
     bool sair();
 
     //Getters
     OpcaoSelecionada getOpcaoSelecionada() const;
+    bool getSomAtivo();
 };
 
 #endif

@@ -1,15 +1,16 @@
 #include "../include/Menu.hpp"
 #include <iostream>
+#include "Menu.hpp"
 
 Menu::Menu(std::shared_ptr<sf::RenderWindow> janela1, sf::Font &fonte)
-: janela(janela1),
-    iniciarJogoTexto("Iniciar Jogo", fonte, 30),
-    opcoesTexto("options", fonte, 22),
-    sairTexto("Sair", fonte, 22),
-    opcaoSelecionada(NenhumaSelecao) {
+: iniciarJogoTexto("Iniciar Jogo", fonte, 30), sairTexto("Sair", fonte, 22), opcaoSelecionada(NenhumaSelecao), janela(janela1) 
+{
+    somAtivo = true;
     menuTexture.loadFromFile("../imagens/placaMenu.png");
+    semSomTexture.loadFromFile("../imagens/semSom.png");
 
     menuSprite.setTexture(menuTexture);
+    semSomSprite.setTexture(semSomTexture);
     ajustarPosicaoMenu();
 
     iniciarJogoTexto.setFillColor(sf::Color::White);
@@ -23,6 +24,11 @@ void Menu::ajustarPosicaoMenu() {
     menuSprite.setScale(2.5, 2.5);
     menuSprite.setPosition((janela->getSize().x - (menuTexture.getSize().x * menuSprite.getScale().x)) / 2.0f,
                            (janela->getSize().y - (menuTexture.getSize().y * menuSprite.getScale().y)) / 5.0f);
+
+    semSomSprite.setPosition((janela->getSize().x - (semSomTexture.getSize().x * semSomSprite.getScale().x))/2,
+                           (janela->getSize().y - (semSomTexture.getSize().y * semSomSprite.getScale().y)) / 1.5f);
+                               std::cout<< semSomSprite.getScale().x<<std::endl;
+
 }
 
 void Menu::ajustarPosicaoTextos() {
@@ -31,12 +37,6 @@ void Menu::ajustarPosicaoTextos() {
     iniciarJogoTexto.setOrigin(iniciarJogoRect.width / 2.0f, iniciarJogoRect.height / 2.0f);
     iniciarJogoTexto.setPosition(janela->getSize().x / 2.0f,
                                  (janela->getSize().y - iniciarJogoRect.height) / 1.7f);
-
-    // Ajuste de escala e posição para a opção Opções
-    sf::FloatRect opcoesRect = opcoesTexto.getLocalBounds();
-    opcoesTexto.setOrigin(opcoesRect.width / 2.0f, opcoesRect.height / 2.0f);
-    opcoesTexto.setPosition(janela->getSize().x / 2.0f,
-                            (janela->getSize().y - opcoesRect.height) / 1.7f + 60.0f);
 
     // Ajuste de escala e posição para a opção Sair
     sf::FloatRect sairRect = sairTexto.getLocalBounds();
@@ -47,6 +47,7 @@ void Menu::ajustarPosicaoTextos() {
 
 void Menu::desenharTela() {
     janela->draw(menuSprite);
+    janela->draw(semSomSprite);
 
     // Ajuste de escala para a opção Iniciar Jogo
     if (opcaoSelecionada == IniciarJogo) {
@@ -58,9 +59,9 @@ void Menu::desenharTela() {
 
     // Ajuste de escala para a opção Opções
     if (opcaoSelecionada == Opcoes) {
-        opcoesTexto.setScale(1.3, 1.3);
+        semSomSprite.setScale(1.3, 1.3);
     } else {
-        opcoesTexto.setScale(1.0, 1.0);
+        semSomSprite.setScale(1.0, 1.0);
     }
     janela->draw(opcoesTexto);
 
@@ -89,7 +90,7 @@ void Menu::atualizarOpcaoSelecionada() {
     // Verifica se o mouse está sobre uma opção
     if (iniciarJogoTexto.getGlobalBounds().contains(static_cast<float>(mousePosition.x), static_cast<float>(mousePosition.y))) {
         opcaoSelecionada = IniciarJogo;
-    } else if (opcoesTexto.getGlobalBounds().contains(static_cast<float>(mousePosition.x), static_cast<float>(mousePosition.y))) {
+    } else if (semSomSprite.getGlobalBounds().contains(static_cast<float>(mousePosition.x), static_cast<float>(mousePosition.y))) {
         opcaoSelecionada = Opcoes;
     } else if (sairTexto.getGlobalBounds().contains(static_cast<float>(mousePosition.x), static_cast<float>(mousePosition.y))) {
         opcaoSelecionada = Sair;
@@ -102,9 +103,9 @@ bool Menu::tratarCliqueMouse() {
     sf::Vector2i mousePosition = sf::Mouse::getPosition(*janela);
 
     if (iniciarJogoTexto.getGlobalBounds().contains(static_cast<float>(mousePosition.x), static_cast<float>(mousePosition.y))) {
-        return false;  // Iniciar Jogo
-    } else if (opcoesTexto.getGlobalBounds().contains(static_cast<float>(mousePosition.x), static_cast<float>(mousePosition.y))) {
-        // Adicione o tratamento para a opção "Opções" aqui
+        return false;  
+    } else if (semSomSprite.getGlobalBounds().contains(static_cast<float>(mousePosition.x), static_cast<float>(mousePosition.y))) {
+        somAtivo = false;
     } else if (sairTexto.getGlobalBounds().contains(static_cast<float>(mousePosition.x), static_cast<float>(mousePosition.y))) {
         return sair();  // Sair
     }
@@ -121,6 +122,7 @@ bool Menu::atualizar(sf::Event ev) {
 
             case sf::Event::MouseMoved:
                 atualizarOpcaoSelecionada();
+                atualizarPosicaoTextos();
                 break;
 
             case sf::Event::MouseButtonPressed:
@@ -135,12 +137,16 @@ bool Menu::atualizar(sf::Event ev) {
     }
 
     return true;
-};
+}
 
     Menu::OpcaoSelecionada Menu::getOpcaoSelecionada() const {
     return opcaoSelecionada;
 }
 
+bool Menu::getSomAtivo()
+{
+    return somAtivo;
+}
 void Menu::resetarSelecao() {
     opcaoSelecionada = NenhumaSelecao;
 }
