@@ -35,7 +35,15 @@ Jogador::Jogador(Colisao &colisao, const float larguraTela, const float alturaTe
     mariosPequenosDireita.push_back(loadTexture("../imagens/marioPequenoPulandoDir.png"));
     mariosPequenosEsquerda.push_back(loadTexture("../imagens/marioPequenoPulandoEsq.png"));
     mariosPequenosEsquerda.push_back(loadTexture("../imagens/marioPequenoEsq1.png"));
-    mariosPequenosDireita.push_back(loadTexture("../imagens/marioPequeno.png"));
+    mariosPequenosDireita.push_back(loadTexture("../imagens/marioDir1Peq.png"));
+    mariosPequenosDireita.push_back(loadTexture("../imagens/marioDir2Peq.png"));
+    mariosPequenosDireita.push_back(loadTexture("../imagens/marioDir3Peq.png"));
+    mariosPequenosDireita.push_back(loadTexture("../imagens/marioDir4Peq.png"));
+    mariosPequenosEsquerda.push_back(loadTexture("../imagens/marioEsq1Peq.png"));
+    mariosPequenosEsquerda.push_back(loadTexture("../imagens/marioEsq2Peq.png"));
+    mariosPequenosEsquerda.push_back(loadTexture("../imagens/marioEsq3Peq.png"));
+    mariosPequenosEsquerda.push_back(loadTexture("../imagens/marioEsq4Peq.png"));
+    estaGrande = false;
 
     inicializarBooleanos();
 }
@@ -331,6 +339,10 @@ void Jogador::setPuloEmGoomba(bool pulo)
     puloemGoomba = pulo;
 }
 
+void Jogador::setEstaGrande(bool valor){
+    estaGrande = valor;
+}
+
 void Jogador::ficarInvencivel()
 {
     invencivel = true;
@@ -396,18 +408,18 @@ void Jogador::desenhar() {
     }
 
     //Lógica pra desenhar marios pequenos andando
-    else if(!getEstaNoAr() && vida == 1){ // Mario pequeno
+     else if(!getEstaNoAr() && vida == 1){ // Mario pequeno
 
-        contadorAndadaDir = contadorAndadaDir % 4;
-        contadorAndadaEsq = contadorAndadaEsq % 4;
+        contadorAndadaDir = contadorAndadaDir % 16;
+        contadorAndadaEsq = contadorAndadaEsq % 16;
 
-        alturaJogador = mariosPequenosEsquerda[0].getSize().y;
-        larguraJogador = mariosPequenosEsquerda[0].getSize().x;
+        alturaJogador = mariosPequenosDireita[0].getSize().y;
+        larguraJogador = mariosPequenosDireita[0].getSize().x;
 
-        sf::Sprite sprite(mariosPequenosDireita[1]); 
+        sf::Sprite sprite(mariosPequenosDireita[contadorAndadaDir/4]); 
 
         if(estaMovendoEsquerda()){
-            sprite.setTexture(mariosPequenosEsquerda[1]);
+            sprite.setTexture(mariosPequenosEsquerda[contadorAndadaEsq/4]);
         }
         sprite.setPosition(getPosicao());
         
