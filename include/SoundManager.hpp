@@ -15,6 +15,8 @@ class SoundManager{
         sf::Sound sGameoverScream;    
         sf::Sound sGameOver;
 
+        bool somAtivo = true;
+
     public:
         //Construtor
         SoundManager();
@@ -37,6 +39,7 @@ class SoundManager{
 
         bool isSoundPlaying(std::string som);
         bool musicaPausada();
+        void desativarSom();
 
         void carregarSomPadrao(sf::SoundBuffer& soundBuffer);
 };

@@ -2,13 +2,13 @@
 #include "GerenciadorGeral.hpp"
 
 GerenciadorGeral::GerenciadorGeral(std::shared_ptr <sf::RenderWindow> janela1, sf::Font &fonte, std::shared_ptr<SoundManager> sounds) : pontuacao(nullptr),  
-camera(nullptr), colisao(nullptr), _sounds(sounds), mario(nullptr), goomba(nullptr), puloHabilitado(true)
+camera(nullptr), colisao(nullptr), _sounds(nullptr), mario(nullptr), goomba(nullptr), puloHabilitado(true)
 {
     //Inicialização de atributos
+    this-> _sounds = sounds;
     this->janela = janela1;
     this->mapa.setSound(this->_sounds);
     this->mapa.carregarMapa("../imagens/cenario.tmx");
-    this->_sounds->reiniciarMusica();
     this->mapa.inicializarColisoes();
     gameOver = false;
     //Inicialização dos smart pointers
@@ -16,6 +16,10 @@ camera(nullptr), colisao(nullptr), _sounds(sounds), mario(nullptr), goomba(nullp
     mario = std::make_shared<Jogador>(*colisao, larguraTela, alturaTela, janela);
     camera = std::make_shared<Camera>(larguraTela, alturaTela);
     pontuacao = std::make_shared<Pontuacao>(fonte, camera);
+
+    if(somAtivo){
+        this->_sounds->reiniciarMusica();
+    }
 
     //Métodos de inicialização
     inicializarTextos(fonte);
@@ -102,6 +106,9 @@ void GerenciadorGeral::atualizarPosicaoTexto(sf::Text &texto)
 
 bool GerenciadorGeral::atualizar(sf::Time tempoAtual, sf::Time deltaTime, sf::Event ev)
 {
+    if(!somAtivo){
+        this->_sounds->pausarMusica();
+    }
     if (temporizadorTexto.getElapsedTime() > duracaoTexto){
         textoMaisCem.setPosition(-1000, -1000);  // Define a posição fora da tela
         textoMaisMil.setPosition(-1000, -1000);
@@ -309,4 +316,11 @@ bool GerenciadorGeral::getGamerOver()
 
 void GerenciadorGeral::desenharMapa(sf::Time tempoAtual){
     this->mapa.renderizar(*this->janela, tempoAtual);
+}
+
+void GerenciadorGeral::desativarSom()
+{
+    somAtivo = false;
+    _sounds->pausarMusica();
+    _sounds->desativarSom();
 }

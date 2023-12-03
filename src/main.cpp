@@ -61,6 +61,11 @@ int main() {
 
             bool menuAtivo = menu.atualizar(ev);  
 
+            if(!menu.getSomAtivo()){
+                jogo->desativarSom();
+            }
+
+
             //Ida para o jogo
             if (menuAtivo == false) {
                 timer.restart();
