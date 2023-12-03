@@ -254,6 +254,7 @@ void GerenciadorGeral::renderizar(sf::Time tempoAtual)
                     //Dobra altura do jogador se pegou cogumelo
                     if(vetorPoderesEspeciais[i]->getTipo() == 1){
                         mario->dobrarAltura();
+                        mario->setEstaGrande(true);
                     }
                     //Deixa jogador invencivel se pegou estrela
                     else if(vetorPoderesEspeciais[i]->getTipo() == 2){

@@ -37,6 +37,7 @@ private:
     bool invencivel;
     bool pegouEstrela;
     bool subindo;
+    bool estaGrande;
 public:
     //Construtor
     Jogador(Colisao &colisao, const float larguraTela, const float alturaTelaJogo, std::shared_ptr <sf::RenderWindow> janela1);
@@ -78,5 +79,6 @@ public:
     void ficarInvencivel();
     void pegarEstrela();
     void atualizarColisao(Mapa &mapa);
+    void setEstaGrande(bool valor);
 };
 #endif
