@@ -42,6 +42,7 @@ int main() {
     Menu menu(janela, fonte);
 
     while (janela->isOpen()) {
+        
 
         sf::Event ev;
 

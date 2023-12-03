@@ -43,7 +43,6 @@ Jogador::Jogador(Colisao &colisao, const float larguraTela, const float alturaTe
     mariosPequenosEsquerda.push_back(loadTexture("../imagens/marioEsq2Peq.png"));
     mariosPequenosEsquerda.push_back(loadTexture("../imagens/marioEsq3Peq.png"));
     mariosPequenosEsquerda.push_back(loadTexture("../imagens/marioEsq4Peq.png"));
-    estaGrande = false;
 
     inicializarBooleanos();
 }
@@ -339,10 +338,6 @@ void Jogador::setPuloEmGoomba(bool pulo)
     puloemGoomba = pulo;
 }
 
-void Jogador::setEstaGrande(bool valor){
-    estaGrande = valor;
-}
-
 void Jogador::ficarInvencivel()
 {
     invencivel = true;
@@ -375,7 +370,7 @@ void Jogador::perdeuMudarTextura(){
 }
 
 void Jogador::desenhar() {
-
+    
     //Lógica pra desenhar marios grandes andando
     if(!getEstaNoAr()&& vida > 1){ //Mario grande
         contadorAndadaDir = contadorAndadaDir % 16;
