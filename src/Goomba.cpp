@@ -37,18 +37,17 @@ bool Goomba::verificarColisaoComGoomba(std::shared_ptr <Jogador> mario)
         float yPersonagem = posicaoPersonagem.y;
 
         // Coordenadas do retângulo que representa o personagem
-        float xPersonagemEsquerda = xPersonagem;
-        float xPersonagemDireita = xPersonagem + larguraPersonagem;
+        float xPersonagemDireita = xPersonagem + larguraPersonagem/2;
         float yPersonagemBase = yPersonagem + alturaPersonagem;
 
         // Coordenadas do retângulo que representa o goomba
         float xGoombaEsquerda = getPosicao().x;
         float xGoombaDireita = getPosicao().x + larguraGoomba;  
         float yGoombaTopo = getPosicao().y;
-        float yGoombaBase = getPosicao().y + 5;
+        float yGoombaBase = getPosicao().y + alturaGoomba;
 
         // Verificar colisão
-        bool colisaoHorizontal = xPersonagemDireita >= xGoombaEsquerda && xPersonagemEsquerda <= xGoombaDireita;
+        bool colisaoHorizontal = xPersonagemDireita >= xGoombaEsquerda && xPersonagemDireita <= xGoombaDireita;
         bool colisaoVertical = yPersonagemBase >= yGoombaTopo && yPersonagemBase <= yGoombaBase;
 
         return colisaoHorizontal && colisaoVertical;

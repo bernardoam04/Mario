@@ -14,6 +14,10 @@ class SoundManager{
         sf::SoundBuffer sbGameoverScream;  
         sf::Sound sGameoverScream;    
         sf::Sound sGameOver;
+        sf::SoundBuffer sbWin;  
+        sf::Sound sWin;  
+        sf::SoundBuffer sbCogumelo;  
+        sf::Sound sCogumelo;      
 
         bool somAtivo = true;
 
@@ -31,6 +35,8 @@ class SoundManager{
         void somGameOver();
         void somPulo();
         void somgameovertela();
+        void somCogumelo();
+        void somWin();
 
         sf::Music& getMusicaFundo();
         sf::SoundBuffer& getSbMoeda();

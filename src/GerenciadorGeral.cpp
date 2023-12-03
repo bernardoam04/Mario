@@ -54,13 +54,13 @@ void GerenciadorGeral::InicializarGoombas()
     goomba = std::make_shared<Goomba>(*colisao, janela, 1400, 544);
     goombas.push_back(goomba);
 
-    goomba = std::make_shared<Goomba>(*colisao, janela, 3456, 544);
-    goombas.push_back(goomba);
-
     goomba = std::make_shared<Goomba>(*colisao, janela, 3490, 544);
     goombas.push_back(goomba);
 
-    goomba = std::make_shared<Goomba>(*colisao, janela, 5000, 544);
+    goomba = std::make_shared<Goomba>(*colisao, janela, 3530, 544);
+    goombas.push_back(goomba);
+
+    goomba = std::make_shared<Goomba>(*colisao, janela, 3570, 544);
     goombas.push_back(goomba);
 
     goomba = std::make_shared<Goomba>(*colisao, janela, 6144, 544);
@@ -254,7 +254,7 @@ void GerenciadorGeral::renderizar(sf::Time tempoAtual)
                     //Dobra altura do jogador se pegou cogumelo
                     if(vetorPoderesEspeciais[i]->getTipo() == 1){
                         mario->dobrarAltura();
-
+                        _sounds->somCogumelo();
                     }
                     //Deixa jogador invencivel se pegou estrela
                     else if(vetorPoderesEspeciais[i]->getTipo() == 2){

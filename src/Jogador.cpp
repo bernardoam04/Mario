@@ -4,7 +4,6 @@
 Jogador::Jogador(Colisao &colisao, const float larguraTela, const float alturaTelaJogo, std::shared_ptr <sf::RenderWindow> janela1) 
 : Personagem(colisao) ,alturaTela(alturaTelaJogo), janela(janela1)
 {
-    setPosicaoPersonagem(sf::Vector2f(larguraTela/2,getAlturaChao())); 
     setVivo(true);
     personagemTexture.loadFromFile("../imagens/marioPequeno.png");
     personagemSprite.setTexture(personagemTexture);
@@ -32,6 +31,8 @@ Jogador::Jogador(Colisao &colisao, const float larguraTela, const float alturaTe
     mariosEsquerda.push_back(loadTexture("../imagens/marioEsq2.png"));
     mariosEsquerda.push_back(loadTexture("../imagens/marioEsq3.png"));
     mariosEsquerda.push_back(loadTexture("../imagens/marioEsq4.png"));
+    mariosDireita.push_back(loadTexture("../imagens/marioGrandePulandoDir.png"));
+    mariosEsquerda.push_back(loadTexture("../imagens/marioGrandePulandoEsq.png"));
 
     mariosPequenosDireita.push_back(loadTexture("../imagens/marioPequenoPulandoDir.png"));
     mariosPequenosEsquerda.push_back(loadTexture("../imagens/marioPequenoPulandoEsq.png"));
@@ -392,10 +393,10 @@ void Jogador::desenhar() {
         alturaJogador = mariosDireita[0].getSize().y;
         larguraJogador = mariosDireita[0].getSize().x;
 
-        sf::Sprite sprite(mariosDireita[0]); 
+        sf::Sprite sprite(mariosDireita[4]); 
 
         if(estaMovendoEsquerda()){
-            sprite.setTexture(mariosEsquerda[0]);
+            sprite.setTexture(mariosEsquerda[4]);
         }
         sprite.setPosition(getPosicao());
         

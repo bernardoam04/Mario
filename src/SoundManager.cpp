@@ -20,10 +20,22 @@ SoundManager::SoundManager() {
         throw std::exception();
     }
 
+
+    if (!this->sbCogumelo.loadFromFile("../audio/mushroom.wav")) {
+        throw std::exception();
+    }
+
+
+    if (!this->sbWin.loadFromFile("../audio/win.wav")) {
+        throw std::exception();
+    }
+
     sMoeda.setBuffer(sbMoeda);
     sGameOver.setBuffer(sbGameOver);
     sPulo.setBuffer(sbPulo);
-   sGameoverScream.setBuffer(sbGameoverScream);
+    sGameoverScream.setBuffer(sbGameoverScream);
+    sCogumelo.setBuffer(sbCogumelo);
+    sWin.setBuffer(sbWin);
 }
 
 void SoundManager::tocarMusica() {
@@ -64,6 +76,20 @@ void SoundManager::somPulo(){
 void SoundManager::somgameovertela() {
     if(somAtivo){
         this->sGameoverScream.play();
+    }
+ }
+
+ void SoundManager::somCogumelo()
+ {
+    if(somAtivo){
+        this->sCogumelo.play();
+    }
+ }
+
+ void SoundManager::somWin()
+ {
+    if(somAtivo){
+        this->sWin.play();
     }
  }
 

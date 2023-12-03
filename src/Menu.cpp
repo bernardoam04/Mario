@@ -26,8 +26,7 @@ void Menu::ajustarPosicaoMenu() {
                            (janela->getSize().y - (menuTexture.getSize().y * menuSprite.getScale().y)) / 5.0f);
 
     semSomSprite.setPosition((janela->getSize().x - (semSomTexture.getSize().x * semSomSprite.getScale().x))/2,
-                           (janela->getSize().y - (semSomTexture.getSize().y * semSomSprite.getScale().y)) / 1.5f);
-                               std::cout<< semSomSprite.getScale().x<<std::endl;
+                           (janela->getSize().y - (semSomTexture.getSize().y * semSomSprite.getScale().y)) / 1.47f);
 
 }
 
