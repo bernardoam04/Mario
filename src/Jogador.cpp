@@ -2,7 +2,7 @@
 #include "Jogador.hpp"
 
 Jogador::Jogador(Colisao &colisao, const float larguraTela, const float alturaTelaJogo, std::shared_ptr <sf::RenderWindow> janela1) 
-: Personagem(colisao), janela(janela1) ,alturaTela(alturaTelaJogo)
+: Personagem(colisao) ,alturaTela(alturaTelaJogo), janela(janela1)
 {
     setPosicaoPersonagem(sf::Vector2f(larguraTela/2,getAlturaChao())); 
     setVivo(true);
