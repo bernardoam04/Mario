@@ -2,6 +2,7 @@
 #define GOOMBA_HPP
 #include <SFML/Graphics.hpp>
 #include "Personagem.hpp"
+#include "Jogador.hpp"
 
 class Goomba : public Personagem {
 private:
@@ -17,7 +18,7 @@ public:
 
     //Métodos de uso direto
     void inicializarGoombas();//Controlar o aparecimento de Goombas
-    void atacar();
+    void atacar(std::shared_ptr <Jogador> mario);
     void modificarPosicao(sf::Time deltaTime, int larguraMapa) override;
     void morrer();
     void desenharGoomba();
@@ -26,6 +27,10 @@ public:
     bool verificarColisao();
     bool verificarColisaoDistanciaX(float x, float y, float largura);
     bool verificarColisaoDistanciaY(float x, float y, float altura);
+    bool verificarColisaoComGoomba(std::shared_ptr <Jogador> mario);
+    bool verificarColisaoLateralComGoomba(std::shared_ptr <Jogador> mario);
+    bool verificarColisaoLateralComGoombaDireita(std::shared_ptr <Jogador> mario);
+    bool verificarColisaoLateralComGoombaEsquerda(std::shared_ptr <Jogador> mario);
         
 };
 

@@ -53,6 +53,7 @@ private:
 
     //Contador
     int contadorPerdeu = 0;
+    int contadorInvencivel;
 
 public:
     //Construtor e Destrutor

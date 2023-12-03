@@ -131,6 +131,7 @@ bool GerenciadorGeral::atualizarEventos(sf::Event ev)
 {
     while (this->janela->pollEvent(ev)) {
             if (ev.type == sf::Event::Closed){
+                _sounds->pausarMusica();
                 return false;
             }
     }
@@ -173,13 +174,17 @@ bool GerenciadorGeral::atualizarEventos(sf::Event ev)
 
 void GerenciadorGeral::renderizar(sf::Time tempoAtual)
 {
+    contadorInvencivel = tempoAtual.asMilliseconds();
     //Atualizações caso o mario tenha morrido
-    if(mario->getPerdeu() == true){
-        mario->perdeuMudarTextura();
+    if(mario->getPerdeu()){
         _sounds->pausarMusica();
         if(contadorPerdeu == 0){
             _sounds->somGameOver();
         }
+        else{
+            sf::sleep(sf::seconds(2.0));
+        }
+        mario->desenhar();
     contadorPerdeu++;
     gameOver = true;
     }
@@ -195,9 +200,16 @@ void GerenciadorGeral::renderizar(sf::Time tempoAtual)
 
     //Desenha as goombas
     for (unsigned int i = 0; i < goombas.size(); i++) {
-    goombas[i]->desenharGoomba();
+        goombas[i]->desenharGoomba();
+        if(goombas[i]->verificarColisaoComGoomba(mario)){
+            goombas[i]->setVivo(false);
+            mario->setPuloEmGoomba(true);
+        }
+        if(goombas[i]->verificarColisaoLateralComGoomba(mario)){
+            goombas[i]->atacar(mario);
+            mario->ficarInvencivel();
+        }
     }
-
 
     int contagemMoedasMisteriosas = 0;
 
@@ -232,8 +244,13 @@ void GerenciadorGeral::renderizar(sf::Time tempoAtual)
                 unsigned int tamanhoFinal = indicesComColisao.size();
 
                 if(tamanhoFinal> tamanhoInicial && vetorPoderesEspeciais[i]->getTipo()!=3){ //Verifica se foi um poder especial novo e se não era moeda, que já foi tratado o texto dela
+                    //Dobra altura do jogador se pegou cogumelo
                     if(vetorPoderesEspeciais[i]->getTipo() == 1){
                         mario->dobrarAltura();
+                    }
+                    //Deixa jogador invencivel se pegou estrela
+                    else if(vetorPoderesEspeciais[i]->getTipo() == 2){
+                        mario->pegarEstrela();
                     }
                     //Desenha "+1000" na tela logo em cima da posição do mario
                     textoMaisMil.setPosition(mario->getPosicao().x, mario->getPosicao().y - mario->getAlturaJogador());
@@ -255,7 +272,14 @@ void GerenciadorGeral::renderizar(sf::Time tempoAtual)
 
     //Desenhar o mario apenas se ele ainda não ganhou
     if(!mario->getGanhou()){
-        mario->desenhar();
+        if(mario->estaInvencivel()){
+            if(contadorInvencivel % 2 == 0){
+                mario->desenhar();
+            }
+        }
+        else{
+            mario->desenhar();
+        }
     } 
     //Desenha texto de vitória caso tenha ganhado
     else{

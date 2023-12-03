@@ -132,6 +132,17 @@ void Jogador::modificarPosicao(sf::Time deltaTime, int larguraMapa)
         contadorAndadaEsq = 0;
     }
 
+    // Verificar e desativar invencibilidade após 2.5 segundos se jogador foi atingido
+    if (invencivel && temporizadorInvencivel.getElapsedTime().asSeconds() >= 2.5f && !pegouEstrela) {
+        invencivel = false;
+    }
+
+    // Verificar e desativar invencibilidade após 10 segundos se jogador pegou estrela
+    else if (invencivel && temporizadorInvencivel.getElapsedTime().asSeconds() >= 10.0f && pegouEstrela) {
+        invencivel = false;
+        pegouEstrela = false;
+    }
+
     // Configurando nova velocidade horizontal 
     setVelocidadeHorizontal(180.0f);
 
@@ -163,6 +174,14 @@ void Jogador::modificarPosicao(sf::Time deltaTime, int larguraMapa)
         setVelocidadeVertical(-400.0f);
         setEstaNoAr(true);
     }
+
+    //Caso o mario pule em um Goomba
+    if (puloemGoomba){
+        setVelocidadeVertical(-100.0f);
+        puloemGoomba = false;
+        setEstaNoAr(true);
+    }
+
     // Aplicação da gravidade se estiver no ar
     if (estaNoArAtual) {
         if (!verificarColisaoDistanciaX(posicaoAtual.x +3, posicaoAtual.y+alturaJogador + (getVelocidadeVertical()* deltaTime.asSeconds()), larguraJogador-6) && getVelocidadeVertical()>0){
@@ -235,12 +254,19 @@ void Jogador::modificarPosicao(sf::Time deltaTime, int larguraMapa)
         perdeu = true;
     }
 
+    if(vida==0){
+        perdeu = true;
+    }
+
     // Configurando a nova posição
     setPosicaoPersonagem(posicaoAtual);
 }
 
 void Jogador::inicializarBooleanos()
 {
+    pegouEstrela = false;
+    invencivel = false;
+    puloemGoomba = false;
     setEstaNoAr(false);
     ativarPoder = false;
     movendoDireita = false;
@@ -269,6 +295,10 @@ bool Jogador::getPerdeu()
     return perdeu;
 }
 
+bool Jogador::estaInvencivel()
+{
+    return invencivel;
+}
 
 void Jogador::setMovendoDireita(bool movendo)
 {
@@ -281,6 +311,23 @@ void Jogador::setMovendoEsquerda(bool movendo) {
 
 void Jogador::setPulando(bool pulo) {
     pulando = pulo;
+}
+
+void Jogador::setPuloEmGoomba(bool pulo)
+{
+    puloemGoomba = pulo;
+}
+
+void Jogador::ficarInvencivel()
+{
+    invencivel = true;
+    temporizadorInvencivel.restart();
+}
+
+void Jogador::pegarEstrela()
+{
+    pegouEstrela = true;
+    ficarInvencivel();
 }
 
 void Jogador::atualizarColisao(Mapa &mapa)
@@ -369,14 +416,32 @@ void Jogador::desenhar() {
         janela->draw(sprite);
     }
     if(getPerdeu()){
-        sf::sleep(sf::seconds(1.0));
+        alturaJogador = personagemTexture.getSize().y;
+        larguraJogador = personagemTexture.getSize().x;
+
+        sf::Sprite sprite(mariosPequenosDireita[0]); 
+
+        sprite.setTexture(personagemMorreuTexture);
+        sprite.setPosition(getPosicao());
+        
+        janela->draw(sprite);        
     }
 }
 
 void Jogador::perderVida()
 {
-    if(vida > 0 ){
+    if(vida > 0 && !invencivel){
         vida--;
+        int alturaJogadorAnterior = alturaJogador;
+        // Atualiza a altura da textura
+        personagemTexture.loadFromFile("../imagens/marioPequeno.png"); 
+        alturaJogador = mariosPequenosDireita[0].getSize().y;
+        larguraJogador = mariosPequenosDireita[0].getSize().x;
+
+        // Ajusta a posição vertical do jogador para compensar a mudança de altura
+        sf::Vector2f posicaoAtual = getPosicao();
+        posicaoAtual.y += (alturaJogadorAnterior - alturaJogador);  // Ajuste pela metade da nova altura
+        setPosicaoPersonagem(posicaoAtual);
     }
 }
 

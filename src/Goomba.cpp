@@ -17,12 +17,106 @@ Goomba::Goomba(Colisao &colisao, std::shared_ptr <sf::RenderWindow> janela1, flo
     janela->draw(personagemSprite);
 }
 
-void Goomba::atacar() {
+void Goomba::atacar(std::shared_ptr <Jogador> mario){
+    if(getVivo()){
+        mario->perderVida();
+    }
 }
 
 void Goomba::inicializarGoombas() {
 
 }
+
+bool Goomba::verificarColisaoComGoomba(std::shared_ptr <Jogador> mario)
+{
+    if(getVivo()){
+        sf::Vector2f posicaoPersonagem = mario->getPosicao();
+        int larguraPersonagem = mario->getLarguraJogador();
+        int alturaPersonagem = mario->getAlturaJogador();
+        float xPersonagem = posicaoPersonagem.x;
+        float yPersonagem = posicaoPersonagem.y;
+
+        // Coordenadas do retângulo que representa o personagem
+        float xPersonagemEsquerda = xPersonagem;
+        float xPersonagemDireita = xPersonagem + larguraPersonagem;
+        float yPersonagemBase = yPersonagem + alturaPersonagem;
+
+        // Coordenadas do retângulo que representa o goomba
+        float xGoombaEsquerda = getPosicao().x;
+        float xGoombaDireita = getPosicao().x + larguraGoomba;  
+        float yGoombaTopo = getPosicao().y;
+        float yGoombaBase = getPosicao().y + 5;
+
+        // Verificar colisão
+        bool colisaoHorizontal = xPersonagemDireita >= xGoombaEsquerda && xPersonagemEsquerda <= xGoombaDireita;
+        bool colisaoVertical = yPersonagemBase >= yGoombaTopo && yPersonagemBase <= yGoombaBase;
+
+        return colisaoHorizontal && colisaoVertical;
+    }
+    return false;
+}
+
+bool Goomba::verificarColisaoLateralComGoomba(std::shared_ptr <Jogador> mario)
+{
+    bool colisaoDireita = verificarColisaoLateralComGoombaDireita(mario);
+    bool colisaoEsquerda = verificarColisaoLateralComGoombaEsquerda(mario);
+
+    return colisaoDireita || colisaoEsquerda;
+}
+
+bool Goomba::verificarColisaoLateralComGoombaDireita(std::shared_ptr<Jogador> mario)
+{
+    if(getVivo()){
+        sf::Vector2f posicaoPersonagem = mario->getPosicao();
+        int larguraPersonagem = mario->getLarguraJogador();
+        int alturaPersonagem = mario->getAlturaJogador();
+        float xPersonagem = posicaoPersonagem.x;
+        float yPersonagem = posicaoPersonagem.y;
+
+        // Coordenadas que representam o personagem
+        float xPersonagemDireita = xPersonagem + larguraPersonagem;
+        float yPersonagemBase = yPersonagem + alturaPersonagem - getTileSize()/2;
+
+        // Coordenadas do retângulo que representa o goomba
+        float xGoombaEsquerda = getPosicao().x;
+        float xGoombaDireita = getPosicao().x + 5 ;  
+        float yGoombaTopo = getPosicao().y;
+        float yGoombaBase = getPosicao().y + alturaGoomba;
+
+        // Verificar colisão
+        bool colisaoHorizontal = xPersonagemDireita >= xGoombaEsquerda && xPersonagemDireita <= xGoombaDireita;
+        bool colisaoVertical = yPersonagemBase >= yGoombaTopo && yPersonagemBase <= yGoombaBase;
+
+        return colisaoHorizontal && colisaoVertical;
+    }
+    return false;
+}
+
+bool Goomba::verificarColisaoLateralComGoombaEsquerda(std::shared_ptr<Jogador> mario)
+{
+    if(getVivo()){
+        sf::Vector2f posicaoPersonagem = mario->getPosicao();
+        int alturaPersonagem = mario->getAlturaJogador();
+        float xPersonagem = posicaoPersonagem.x;
+        float yPersonagem = posicaoPersonagem.y;
+
+        // Coordenadas que representam o personagem
+        float xPersonagemDireita = xPersonagem;
+        float yPersonagemBase = yPersonagem + alturaPersonagem - getTileSize()/2;
+
+        // Coordenadas do retângulo que representa o goomba
+        float xGoombaDireita = getPosicao().x + larguraGoomba;
+        float xGoombaEsquerda = getPosicao().x + larguraGoomba - 5 ;  
+        float yGoombaTopo = getPosicao().y;
+        float yGoombaBase = getPosicao().y + alturaGoomba;
+
+        // Verificar colisão
+        bool colisaoHorizontal = xPersonagemDireita >= xGoombaEsquerda && xPersonagemDireita <= xGoombaDireita;
+        bool colisaoVertical = yPersonagemBase >= yGoombaTopo && yPersonagemBase <= yGoombaBase;
+
+        return colisaoHorizontal && colisaoVertical;
+    }
+    return false;}
 
 bool Goomba::verificarColisaoDistanciaX(float x, float y, float largura){
 
@@ -104,7 +198,7 @@ void Goomba::modificarPosicao(sf::Time deltaTime, int larguraMapa) {
         setMovDireita(false);
     }
 
-    if (!verificarColisaoDistanciaX(posicaoAtual.x , posicaoAtual.y + alturaGoomba, larguraGoomba -3) && getMovDireita()) {
+    if (!verificarColisaoDistanciaX(posicaoAtual.x , posicaoAtual.y + alturaGoomba, larguraGoomba -3)) {
         setEstaNoAr(true);
         setVelocidadeVertical(getVelocidadeVertical()+ getAceleracaoGravidade());
         posicaoAtual.y += getVelocidadeVertical() * deltaTime.asSeconds();
@@ -133,11 +227,12 @@ void Goomba::morrer() {
 
 void Goomba::desenharGoomba() {
 
-    sf::Sprite sprite(personagemTexture); 
-    sprite.setPosition(getPosicao());
-    sprite.setTexture(personagemTexture);
-    janela->draw(sprite);
-
+    if(getVivo()){
+        sf::Sprite sprite(personagemTexture); 
+        sprite.setPosition(getPosicao());
+        sprite.setTexture(personagemTexture);
+        janela->draw(sprite);
+    }
 }
 
 Goomba::~Goomba(){
