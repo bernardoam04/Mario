@@ -60,7 +60,7 @@ void GerenciadorGeral::InicializarGoombas()
     goomba = std::make_shared<Goomba>(*colisao, janela, 3490, 544);
     goombas.push_back(goomba);
 
-    goomba = std::make_shared<Goomba>(*colisao, janela, 3510, 544);
+    goomba = std::make_shared<Goomba>(*colisao, janela, 5000, 544);
     goombas.push_back(goomba);
 
     goomba = std::make_shared<Goomba>(*colisao, janela, 6144, 544);
