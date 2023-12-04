@@ -41,7 +41,6 @@ private:
 
     //Métodos privados
     void inicializarVariaveis();
-    void InicializarPoderesEspeciais();
     void InicializarGoombas();
     void inicializarTextos(sf::Font &fonte);
     void atualizarPosicaoTexto(sf::Text &texto);
@@ -56,7 +55,8 @@ private:
     int contadorPerdeu = 0;
     int contadorInvencivel;
 
-public:
+public:    
+
     //Construtor e Destrutor
     GerenciadorGeral(std::shared_ptr <sf::RenderWindow> janela1, sf::Font &fonte, std::shared_ptr<SoundManager> sounds);
 
@@ -65,6 +65,7 @@ public:
     bool janelaAberta() const;
 
     //Métodos utilizados no jogo diretamente
+    void InicializarPoderesEspeciais();
     bool atualizar(sf::Time tempoAtual, sf::Time deltaTime, sf::Event ev);
     bool atualizarEventos(sf::Event ev);
     void renderizar(sf::Time tempoAtual);
@@ -77,7 +78,8 @@ public:
     int getPontuacaoTotal() const;
     const sf::View& getViewCamera() const;
     bool getGamerOver();
-
+    std::shared_ptr<Jogador> getMario() const;
+    int getContagemPoderesEspeciais() const;
 
 };
 

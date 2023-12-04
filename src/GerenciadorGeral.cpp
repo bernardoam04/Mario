@@ -54,13 +54,13 @@ void GerenciadorGeral::InicializarGoombas()
     goomba = std::make_shared<Goomba>(*colisao, janela, 1400, 544);
     goombas.push_back(goomba);
 
-    goomba = std::make_shared<Goomba>(*colisao, janela, 3490, 544);
+    goomba = std::make_shared<Goomba>(*colisao, janela, 4300, 544);
     goombas.push_back(goomba);
 
-    goomba = std::make_shared<Goomba>(*colisao, janela, 3530, 544);
+    goomba = std::make_shared<Goomba>(*colisao, janela, 4352, 544);
     goombas.push_back(goomba);
 
-    goomba = std::make_shared<Goomba>(*colisao, janela, 3570, 544);
+    goomba = std::make_shared<Goomba>(*colisao, janela, 4390, 544);
     goombas.push_back(goomba);
 
     goomba = std::make_shared<Goomba>(*colisao, janela, 6144, 544);
@@ -324,4 +324,12 @@ void GerenciadorGeral::desativarSom()
     somAtivo = false;
     _sounds->pausarMusica();
     _sounds->desativarSom();
+}
+
+std::shared_ptr<Jogador> GerenciadorGeral::getMario() const {
+    return mario;
+}
+
+int GerenciadorGeral::getContagemPoderesEspeciais() const {
+    return vetorPoderesEspeciais.size();
 }

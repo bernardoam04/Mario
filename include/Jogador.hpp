@@ -70,6 +70,7 @@ public:
     bool getPerdeu();
     bool estaInvencivel();
     bool estaSubindo();
+    int getVida();
 
     // Métodos para definir o estado dos movimentos
     void setMovendoDireita(bool movendo);
@@ -79,5 +80,6 @@ public:
     void ficarInvencivel();
     void pegarEstrela();
     void atualizarColisao(Mapa &mapa);
+    void setPosicao(float x, float y);
 };
 #endif

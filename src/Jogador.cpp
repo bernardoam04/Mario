@@ -321,6 +321,11 @@ bool Jogador::estaSubindo()
     return subindo;
 }
 
+int Jogador::getVida()
+{
+    return vida;
+}
+
 void Jogador::setMovendoDireita(bool movendo)
 {
     movendoDireita = movendo;
@@ -364,6 +369,12 @@ void Jogador::atualizarColisao(Mapa &mapa)
     posicoes[1] = std::make_pair(posicaoX2, posicaoY2);
 
     mapa.aplicarColisao(posicoes);
+}
+
+void Jogador::setPosicao(float x, float y)
+{
+    sf::Vector2f posicao(x,y);
+    setPosicaoPersonagem(posicao);
 }
 
 void Jogador::perdeuMudarTextura(){
