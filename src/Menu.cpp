@@ -102,15 +102,16 @@ bool Menu::tratarCliqueMouse() {
     sf::Vector2i mousePosition = sf::Mouse::getPosition(*janela);
 
     if (iniciarJogoTexto.getGlobalBounds().contains(static_cast<float>(mousePosition.x), static_cast<float>(mousePosition.y))) {
-        return false;  
+        return false;  // Iniciar Jogo
     } else if (semSomSprite.getGlobalBounds().contains(static_cast<float>(mousePosition.x), static_cast<float>(mousePosition.y))) {
-        somAtivo = false;
+        somAtivo = !somAtivo;  // Alternar entre ativar e desativar som
     } else if (sairTexto.getGlobalBounds().contains(static_cast<float>(mousePosition.x), static_cast<float>(mousePosition.y))) {
         return sair();  // Sair
     }
 
     return true;  // Nenhuma ação executada
 }
+
 
 bool Menu::atualizar(sf::Event ev) {
     while (janela->pollEvent(ev)) {
@@ -142,10 +143,15 @@ bool Menu::atualizar(sf::Event ev) {
     return opcaoSelecionada;
 }
 
+//retorna opção de ativar e desativar som
+
+
+
 bool Menu::getSomAtivo()
 {
     return somAtivo;
 }
+
 void Menu::resetarSelecao() {
     opcaoSelecionada = NenhumaSelecao;
 }
