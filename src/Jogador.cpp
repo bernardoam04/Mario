@@ -1,51 +1,67 @@
 #include "../include/Jogador.hpp"
-#include "Jogador.hpp"
 
 Jogador::Jogador(Colisao &colisao, const float larguraTela, const float alturaTelaJogo, std::shared_ptr <sf::RenderWindow> janela1) 
 : Personagem(colisao) ,alturaTela(alturaTelaJogo), janela(janela1)
 {
-    setVivo(true);
-    personagemTexture.loadFromFile("../imagens/marioPequeno.png");
-    personagemSprite.setTexture(personagemTexture);
-    personagemSprite.setOrigin(sf::Vector2f(8.5, 8.5));
-    personagemSprite.setPosition(sf::Vector2f(0.0, 0.0));
-    setPosicaoPersonagem(sf::Vector2f(larguraTela/2,getAlturaChao() - personagemTexture.getSize().y)); 
+    try
+    {
+        setVivo(true);
 
-    personagemMorreuTexture.loadFromFile("../imagens/marioPerdeu.png");
-    personagemMorreuSprite.setTexture(personagemTexture);
-    personagemMorreuSprite.setOrigin(sf::Vector2f(8.5, 8.5));
-    personagemMorreuSprite.setPosition(sf::Vector2f(0.0, 0.0));
+        // Carrega a textura inicial
+        if (!personagemTexture.loadFromFile("../imagens/marioPequeno.png"))
+        {
+            throw std::runtime_error("Erro ao carregar a textura principal");
+        }
+        personagemSprite.setTexture(personagemTexture);
+        personagemSprite.setOrigin(sf::Vector2f(8.5, 8.5));
+        personagemSprite.setPosition(sf::Vector2f(0.0, 0.0));
+        setPosicaoPersonagem(sf::Vector2f(larguraTela/2,getAlturaChao() - personagemTexture.getSize().y)); 
 
-    moedas = 0;
-    alturaJogador = personagemTexture.getSize().y;
-    larguraJogador = personagemTexture.getSize().x;
-    contadorAndadaDir = 0;
-    contadorAndadaEsq = 0;
-    setVelocidadeVertical(0);
+        // Carrega a textura de morte
+        if (!personagemMorreuTexture.loadFromFile("../imagens/marioPerdeu.png"))
+        {
+            throw std::runtime_error("Erro ao carregar a textura de morte");
+        }
 
-    mariosDireita.push_back(loadTexture("../imagens/marioDir1.png"));
-    mariosDireita.push_back(loadTexture("../imagens/marioDir2.png"));
-    mariosDireita.push_back(loadTexture("../imagens/marioDir3.png"));
-    mariosDireita.push_back(loadTexture("../imagens/marioDir4.png"));
-    mariosEsquerda.push_back(loadTexture("../imagens/marioEsq1.png"));
-    mariosEsquerda.push_back(loadTexture("../imagens/marioEsq2.png"));
-    mariosEsquerda.push_back(loadTexture("../imagens/marioEsq3.png"));
-    mariosEsquerda.push_back(loadTexture("../imagens/marioEsq4.png"));
-    mariosDireita.push_back(loadTexture("../imagens/marioGrandePulandoDir.png"));
-    mariosEsquerda.push_back(loadTexture("../imagens/marioGrandePulandoEsq.png"));
+        personagemMorreuSprite.setTexture(personagemTexture);
+        personagemMorreuSprite.setOrigin(sf::Vector2f(8.5, 8.5));
+        personagemMorreuSprite.setPosition(sf::Vector2f(0.0, 0.0));
 
-    mariosPequenosDireita.push_back(loadTexture("../imagens/marioPequenoPulandoDir.png"));
-    mariosPequenosEsquerda.push_back(loadTexture("../imagens/marioPequenoPulandoEsq.png"));
-    mariosPequenosDireita.push_back(loadTexture("../imagens/marioDir1Peq.png"));
-    mariosPequenosDireita.push_back(loadTexture("../imagens/marioDir2Peq.png"));
-    mariosPequenosDireita.push_back(loadTexture("../imagens/marioDir3Peq.png"));
-    mariosPequenosDireita.push_back(loadTexture("../imagens/marioDir4Peq.png"));
-    mariosPequenosEsquerda.push_back(loadTexture("../imagens/marioEsq1Peq.png"));
-    mariosPequenosEsquerda.push_back(loadTexture("../imagens/marioEsq2Peq.png"));
-    mariosPequenosEsquerda.push_back(loadTexture("../imagens/marioEsq3Peq.png"));
-    mariosPequenosEsquerda.push_back(loadTexture("../imagens/marioEsq4Peq.png"));
+        moedas = 0;
+        alturaJogador = personagemTexture.getSize().y;
+        larguraJogador = personagemTexture.getSize().x;
+        contadorAndadaDir = 0;
+        contadorAndadaEsq = 0;
+        setVelocidadeVertical(0);
 
-    inicializarBooleanos();
+        mariosDireita.push_back(loadTexture("../imagens/marioDir1.png"));
+        mariosDireita.push_back(loadTexture("../imagens/marioDir2.png"));
+        mariosDireita.push_back(loadTexture("../imagens/marioDir3.png"));
+        mariosDireita.push_back(loadTexture("../imagens/marioDir4.png"));
+        mariosEsquerda.push_back(loadTexture("../imagens/marioEsq1.png"));
+        mariosEsquerda.push_back(loadTexture("../imagens/marioEsq2.png"));
+        mariosEsquerda.push_back(loadTexture("../imagens/marioEsq3.png"));
+        mariosEsquerda.push_back(loadTexture("../imagens/marioEsq4.png"));
+        mariosDireita.push_back(loadTexture("../imagens/marioGrandePulandoDir.png"));
+        mariosEsquerda.push_back(loadTexture("../imagens/marioGrandePulandoEsq.png"));
+
+        mariosPequenosDireita.push_back(loadTexture("../imagens/marioPequenoPulandoDir.png"));
+        mariosPequenosEsquerda.push_back(loadTexture("../imagens/marioPequenoPulandoEsq.png"));
+        mariosPequenosDireita.push_back(loadTexture("../imagens/marioDir1Peq.png"));
+        mariosPequenosDireita.push_back(loadTexture("../imagens/marioDir2Peq.png"));
+        mariosPequenosDireita.push_back(loadTexture("../imagens/marioDir3Peq.png"));
+        mariosPequenosDireita.push_back(loadTexture("../imagens/marioDir4Peq.png"));
+        mariosPequenosEsquerda.push_back(loadTexture("../imagens/marioEsq1Peq.png"));
+        mariosPequenosEsquerda.push_back(loadTexture("../imagens/marioEsq2Peq.png"));
+        mariosPequenosEsquerda.push_back(loadTexture("../imagens/marioEsq3Peq.png"));
+        mariosPequenosEsquerda.push_back(loadTexture("../imagens/marioEsq4Peq.png"));
+
+        inicializarBooleanos();
+    }
+    catch (const std::exception &e)
+    {
+        std::cerr << "Erro ao inicializar Jogador: " << e.what() << std::endl;
+    }
 }
 
 Jogador::~Jogador() {
@@ -346,8 +362,10 @@ void Jogador::setPuloEmGoomba(bool pulo)
 
 void Jogador::ficarInvencivel()
 {
-    invencivel = true;
-    temporizadorInvencivel.restart();
+    if(!invencivel){
+        invencivel = true;
+        temporizadorInvencivel.restart();
+    }
 }
 
 void Jogador::pegarEstrela()

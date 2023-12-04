@@ -2,6 +2,7 @@
 #define CAMERA_HPP
 
 #include <SFML/Graphics.hpp>
+#include <iostream>
 
 class Camera {
 private:

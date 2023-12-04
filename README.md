@@ -22,7 +22,6 @@ e rapidamente se tornou um marco na história dos videogames.
 
 ## Controles
 - Setas para se movimentar
-- X para usar o poder especial
 
 ## Compilação e Execução
 

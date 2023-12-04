@@ -1,31 +1,56 @@
 #include "../include/GerenciadorGeral.hpp"
-#include "GerenciadorGeral.hpp"
+#include <stdexcept>
 
-GerenciadorGeral::GerenciadorGeral(std::shared_ptr <sf::RenderWindow> janela1, sf::Font &fonte, std::shared_ptr<SoundManager> sounds) : pontuacao(nullptr),  
-camera(nullptr), colisao(nullptr), _sounds(nullptr), mario(nullptr), goomba(nullptr), puloHabilitado(true)
+GerenciadorGeral::GerenciadorGeral(std::shared_ptr<sf::RenderWindow> janela1, sf::Font &fonte, std::shared_ptr<SoundManager> sounds)
+    : pontuacao(nullptr),
+      camera(nullptr),
+      colisao(nullptr),
+      _sounds(nullptr),
+      mario(nullptr),
+      goomba(nullptr),
+      puloHabilitado(true)
 {
-    //Inicialização de atributos
-    this-> _sounds = sounds;
-    this->janela = janela1;
-    this->mapa.setSound(this->_sounds);
-    this->mapa.carregarMapa("../imagens/cenario.tmx");
-    this->mapa.inicializarColisoes();
-    gameOver = false;
-    //Inicialização dos smart pointers
-    colisao = std::make_shared<Colisao>(mapa.getDadosMapa(), mapa.getTileSize());
-    mario = std::make_shared<Jogador>(*colisao, larguraTela, alturaTela, janela);
-    camera = std::make_shared<Camera>(larguraTela, alturaTela);
-    pontuacao = std::make_shared<Pontuacao>(fonte, camera);
+    try
+    {
+        // Inicialização de atributos
+        if (!janela1)
+        {
+            throw std::invalid_argument("Janela não inicializada");
+        }
+        if (!sounds)
+        {
+            throw std::invalid_argument("Gerenciador de sons não inicializado");
+        }
 
-    if(somAtivo){
-        this->_sounds->reiniciarMusica();
+        this->_sounds = sounds;
+        this->janela = janela1;
+        this->mapa.setSound(this->_sounds);
+        this->mapa.carregarMapa("../imagens/cenario.tmx");
+        this->mapa.inicializarColisoes();
+        gameOver = false;
+
+        // Inicialização dos smart pointers
+        colisao = std::make_shared<Colisao>(mapa.getDadosMapa(), mapa.getTileSize());
+        mario = std::make_shared<Jogador>(*colisao, larguraTela, alturaTela, janela);
+        camera = std::make_shared<Camera>(larguraTela, alturaTela);
+        pontuacao = std::make_shared<Pontuacao>(fonte, camera);
+
+        if (somAtivo)
+        {
+            this->_sounds->reiniciarMusica();
+        }
+
+        // Métodos de inicialização
+        inicializarTextos(fonte);
+        InicializarPoderesEspeciais();
+        InicializarGoombas();
     }
-
-    //Métodos de inicialização
-    inicializarTextos(fonte);
-    InicializarPoderesEspeciais();
-    InicializarGoombas();
+    catch (const std::exception &e)
+    {
+        std::cerr << "Erro ao inicializar GerenciadorGeral: " << e.what() << std::endl;
+    }
 }
+
 void GerenciadorGeral::InicializarPoderesEspeciais(){
     int tileSize = mapa.getTileSize();
     auto dadosMapa = mapa.getDadosMapa();
@@ -182,19 +207,7 @@ bool GerenciadorGeral::atualizarEventos(sf::Event ev)
 void GerenciadorGeral::renderizar(sf::Time tempoAtual)
 {
     contadorInvencivel = tempoAtual.asMilliseconds();
-    //Atualizações caso o mario tenha morrido
-    if(mario->getPerdeu()){
-        _sounds->pausarMusica();
-        if(contadorPerdeu == 0){
-            _sounds->somGameOver();
-        }
-        else{
-            sf::sleep(sf::seconds(2.0));
-        }
-        mario->desenhar();
-    contadorPerdeu++;
-    gameOver = true;
-    }
+
     mario->atualizarColisao(mapa);
     
     //Ajusta a visão da câmera
@@ -297,6 +310,20 @@ void GerenciadorGeral::renderizar(sf::Time tempoAtual)
 
     janela->draw(textoMaisCem);
     janela->draw(textoMaisMil);
+
+    //Desenho caso o mario tenha morrido
+    if(mario->getPerdeu()){
+        _sounds->pausarMusica();
+        if(contadorPerdeu == 0){
+            _sounds->somGameOver();
+        }
+        else{
+            sf::sleep(sf::seconds(2.0));
+        }
+        mario->desenhar();
+    contadorPerdeu++;
+    gameOver = true;
+    }
 
     //Mostra a tela
     this->janela->display();

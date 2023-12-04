@@ -5,141 +5,165 @@
 GameOver::GameOver(std::shared_ptr<sf::RenderWindow> janela1, sf::Font &fonte)
     : texto("GAME OVER", fonte, 50), texto2("SCORE\n", fonte, 30), texto3("Reiniciar Jogo", fonte, 30)
 {
-    this->janela = janela1;
-    texto.setFillColor(sf::Color::White);
+    try {
+        if (!janela1) {
+            throw std::invalid_argument("Janela não inicializada");
+        }
 
-    // Calcula a posição centralizada do texto
-    sf::FloatRect textoRect = texto.getLocalBounds();
-    float x = (janela->getSize().x - textoRect.width) / 2.0f;
-    float y = (janela->getSize().y - textoRect.height) / 4.0f;
+        this->janela = janela1;
+        texto.setFillColor(sf::Color::White);
 
-    // Define a posição do texto
-    texto.setPosition(x, y);
+        // Calcula a posição centralizada do texto
+        sf::FloatRect textoRect = texto.getLocalBounds();
+        float x = (janela->getSize().x - textoRect.width) / 2.0f;
+        float y = (janela->getSize().y - textoRect.height) / 4.0f;
 
-    texto2.setFillColor(sf::Color::White);
+        // Define a posição do texto
+        texto.setPosition(x, y);
 
-    // Calcula a posição centralizada do texto
-    sf::FloatRect textoRect2 = texto2.getLocalBounds();
-    float x2 = (janela->getSize().x - textoRect2.width) / 2.0f;
-    float y2 = (((janela->getSize().y - textoRect2.height) / 4.0f) + textoRect2.height * 5.0f);
+        texto2.setFillColor(sf::Color::White);
 
-    texto2.setPosition(x2, y2);
+        // Calcula a posição centralizada do texto
+        sf::FloatRect textoRect2 = texto2.getLocalBounds();
+        float x2 = (janela->getSize().x - textoRect2.width) / 2.0f;
+        float y2 = (((janela->getSize().y - textoRect2.height) / 4.0f) + textoRect2.height * 5.0f);
 
-    texto3.setFillColor(sf::Color::White);
+        texto2.setPosition(x2, y2);
 
-   // Calcula a posição centralizada do texto
-    sf::FloatRect textoRect3 = texto3.getLocalBounds();
-    float x3 = (janela->getSize().x - textoRect3.width) / 2.0f;
-    float y3 = (((janela->getSize().y - textoRect3.height) / 2.0f) + textoRect3.height * 5.0f);
+        texto3.setFillColor(sf::Color::White);
 
-    texto3.setPosition(x3, y3);
+        // Calcula a posição centralizada do texto
+        sf::FloatRect textoRect3 = texto3.getLocalBounds();
+        float x3 = (janela->getSize().x - textoRect3.width) / 2.0f;
+        float y3 = (((janela->getSize().y - textoRect3.height) / 2.0f) + textoRect3.height * 5.0f);
 
+        texto3.setPosition(x3, y3);
+    } catch (const std::exception& e) {
+        std::cerr << "Erro ao inicializar GameOver: " << e.what() << std::endl;
+    }
 }
 
-void GameOver::desenharTela(int pontuacaoTotal, const sf::View& view)
-{
-    janela->draw(texto);
+void GameOver::desenharTela(int pontuacaoTotal, const sf::View& view) {
+    try {
+        if (!janela) {
+            throw std::logic_error("Janela não inicializada");
+        }
 
-    // Converter int para string
-    std::ostringstream converter;
-    converter << "SCORE " << pontuacaoTotal;
+        janela->draw(texto);
 
-    // Obtém a posição da câmera e ajusta a posição da pontuação
-    texto2.setString(converter.str());
+        // Converter int para string
+        std::ostringstream converter;
+        converter << "SCORE " << pontuacaoTotal;
 
-    // Calcula a posição centralizada do texto2
-    sf::FloatRect textoRect2 = texto2.getLocalBounds();
-    float x2 = view.getCenter().x - view.getSize().x / 2.0f + (view.getSize().x - textoRect2.width) / 2.0f;
-    float y2 = (((janela->getSize().y - textoRect2.height) / 4.0f) + textoRect2.height * 5.0f);
+        // Obtém a posição da câmera e ajusta a posição da pontuação
+        texto2.setString(converter.str());
 
-    texto2.setPosition(x2, y2);
+        // Calcula a posição centralizada do texto2
+        sf::FloatRect textoRect2 = texto2.getLocalBounds();
+        float x2 = view.getCenter().x - view.getSize().x / 2.0f + (view.getSize().x - textoRect2.width) / 2.0f;
+        float y2 = (((janela->getSize().y - textoRect2.height) / 4.0f) + textoRect2.height * 5.0f);
 
-    janela->draw(texto2);
+        texto2.setPosition(x2, y2);
 
-    janela->draw(texto3);
+        janela->draw(texto2);
+
+        janela->draw(texto3);
+    } catch (const std::exception& e) {
+        std::cerr << "Erro ao desenhar tela de GameOver: " << e.what() << std::endl;
+    }
 }
 
-void GameOver::atualizarPosicaoTextos(const sf::View& view)
-{
-    // Calcula a posição centralizada do texto
-    sf::FloatRect textoRect = texto.getLocalBounds();
-    float x = view.getCenter().x - view.getSize().x / 2.0f + (view.getSize().x - textoRect.width) / 2.0f;
-    float y = (view.getSize().y - textoRect.height) / 4.0f;
+void GameOver::atualizarPosicaoTextos(const sf::View& view) {
+    try {
+        if (!janela) {
+            throw std::logic_error("Janela não inicializada");
+        }
 
-    // Define a posição do texto
-    texto.setPosition(x, y);
+        // Calcula a posição centralizada do texto
+        sf::FloatRect textoRect = texto.getLocalBounds();
+        float x = view.getCenter().x - view.getSize().x / 2.0f + (view.getSize().x - textoRect.width) / 2.0f;
+        float y = (view.getSize().y - textoRect.height) / 4.0f;
 
-    // Calcula a posição centralizada do texto2
-    sf::FloatRect textoRect2 = texto2.getLocalBounds();
-    float x2 = view.getCenter().x - view.getSize().x / 2.0f + (view.getSize().x - textoRect2.width) / 2.0f;
-    float y2 = (((view.getCenter().y - textoRect2.height) / 4.0f) + textoRect2.height * 5.0f);
+        // Define a posição do texto
+        texto.setPosition(x, y);
 
-    texto2.setPosition(x2, y2);
+        // Calcula a posição centralizada do texto2
+        sf::FloatRect textoRect2 = texto2.getLocalBounds();
+        float x2 = view.getCenter().x - view.getSize().x / 2.0f + (view.getSize().x - textoRect2.width) / 2.0f;
+        float y2 = (((view.getCenter().y - textoRect2.height) / 4.0f) + textoRect2.height * 5.0f);
 
-    // Calcula a posição centralizada do texto3
-    sf::FloatRect textoRect3 = texto3.getLocalBounds();
-    float x3 = view.getCenter().x - view.getSize().x / 2.0f + (view.getSize().x - textoRect3.width*texto3.getScale().x) / 2.0f;
-    float y3 = ((view.getCenter().y - textoRect3.height) + textoRect3.height * 5.0f);
+        texto2.setPosition(x2, y2);
 
-    texto3.setPosition(x3, y3);
+        // Calcula a posição centralizada do texto3
+        sf::FloatRect textoRect3 = texto3.getLocalBounds();
+        float x3 = view.getCenter().x - view.getSize().x / 2.0f + (view.getSize().x - textoRect3.width * texto3.getScale().x) / 2.0f;
+        float y3 = ((view.getCenter().y - textoRect3.height) + textoRect3.height * 5.0f);
+
+        texto3.setPosition(x3, y3);
+    } catch (const std::exception& e) {
+        std::cerr << "Erro ao atualizar posição dos textos: " << e.what() << std::endl;
+    }
 }
 
-bool GameOver::atualizar(sf::Event ev, const sf::View &view)
-{
-    while (this->janela->pollEvent(ev)) {
-        if (ev.type == sf::Event::Closed){
+bool GameOver::atualizar(sf::Event ev, const sf::View &view) {
+    try {
+        if (!janela) {
+            throw std::logic_error("Janela não inicializada");
+        }
+
+        while (this->janela->pollEvent(ev)) {
+            if (ev.type == sf::Event::Closed) {
                 janela->close();
                 break;
-        }
-        else if (ev.type == sf::Event::MouseMoved) {
-            // Obtém a posição atual do mouse
-            sf::Vector2i mousePosition = sf::Mouse::getPosition(*janela);
+            } else if (ev.type == sf::Event::MouseMoved) {
+                // Obtém a posição atual do mouse
+                sf::Vector2i mousePosition = sf::Mouse::getPosition(*janela);
 
-            // Define a área desejada onde o evento deve ser acionado
-            sf::FloatRect areaDesejada = texto3.getGlobalBounds();
+                // Define a área desejada onde o evento deve ser acionado
+                sf::FloatRect areaDesejada = texto3.getGlobalBounds();
 
-            // Verifica se a posição do mouse está dentro da área desejada
-            if (areaDesejada.contains(static_cast<float>(mousePosition.x + (view.getCenter().x-(janela->getSize().x/2))), static_cast<float>(mousePosition.y))) {
-                texto3.setScale(1.3, 1.3);
+                // Verifica se a posição do mouse está dentro da área desejada
+                if (areaDesejada.contains(static_cast<float>(mousePosition.x + (view.getCenter().x - (janela->getSize().x / 2))), static_cast<float>(mousePosition.y))) {
+                    texto3.setScale(1.3, 1.3);
 
-                // Obtém a nova posição centralizada do texto3 após a mudança de escala
-                sf::FloatRect textoRect3 = texto3.getLocalBounds();
-                float x3 = (view.getCenter().x - view.getSize().x / 2.0f + (view.getSize().x - textoRect3.width*1.3) / 2.0f) - textoRect3.width * 1.3f;
-                float y3 = (((janela->getSize().y - textoRect3.height * 1.3) / 2.0f) + textoRect3.height * 5.0f);
+                    // Obtém a nova posição centralizada do texto3 após a mudança de escala
+                    sf::FloatRect textoRect3 = texto3.getLocalBounds();
+                    float x3 = (view.getCenter().x - view.getSize().x / 2.0f + (view.getSize().x - textoRect3.width * 1.3) / 2.0f) - textoRect3.width * 1.3f;
+                    float y3 = (((janela->getSize().y - textoRect3.height * 1.3) / 2.0f) + textoRect3.height * 5.0f);
 
-                // Define a nova posição do texto3
-                texto3.setPosition(x3, y3);
-            }
-            else {
-                // Mouse está fora da área desejada
-                texto3.setScale(1.0, 1.0); // Define a escala de volta para o valor original
+                    // Define a nova posição do texto3
+                    texto3.setPosition(x3, y3);
+                } else {
+                    // Mouse está fora da área desejada
+                    texto3.setScale(1.0, 1.0); // Define a escala de volta para o valor original
 
-                // Obtém a nova posição centralizada do texto3 após a mudança de escala
-                sf::FloatRect textoRect3 = texto3.getLocalBounds();
-                float x3 = (view.getCenter().x - view.getSize().x / 2.0f + (view.getSize().x - textoRect3.width * 1.3) / 2.0f) ;
-                float y3 = (((janela->getSize().y - textoRect3.height * 1.3) / 2.0f) + textoRect3.height * 5.0f);
-                
-                // Define a nova posição do texto3
-                texto3.setPosition(x3, y3);
-            }
-        }
-        else if (ev.type == sf::Event::MouseButtonPressed) {
-            // Verifica se o clique ocorreu dentro da área desejada
-            sf::Vector2i mousePosition = sf::Mouse::getPosition(*janela);
+                    // Obtém a nova posição centralizada do texto3 após a mudança de escala
+                    sf::FloatRect textoRect3 = texto3.getLocalBounds();
+                    float x3 = (view.getCenter().x - view.getSize().x / 2.0f + (view.getSize().x - textoRect3.width * 1.3) / 2.0f);
+                    float y3 = (((janela->getSize().y - textoRect3.height * 1.3) / 2.0f) + textoRect3.height * 5.0f);
 
-            // Define a área desejada onde o evento deve ser acionado
-            sf::FloatRect areaDesejada = texto3.getGlobalBounds();
+                    // Define a nova posição do texto3
+                    texto3.setPosition(x3, y3);
+                }
+            } else if (ev.type == sf::Event::MouseButtonPressed) {
+                // Verifica se o clique ocorreu dentro da área desejada
+                sf::Vector2i mousePosition = sf::Mouse::getPosition(*janela);
 
-            if (areaDesejada.contains(static_cast<float>(mousePosition.x + (view.getCenter().x-(janela->getSize().x/2))), static_cast<float>(mousePosition.y))) {
-                return false;
+                // Define a área desejada onde o evento deve ser acionado
+                sf::FloatRect areaDesejada = texto3.getGlobalBounds();
+
+                if (areaDesejada.contains(static_cast<float>(mousePosition.x + (view.getCenter().x - (janela->getSize().x / 2))), static_cast<float>(mousePosition.y))) {
+                    return false;
+                }
             }
         }
 
+        // Atualiza a posição dos textos de acordo com a view da câmera
+        atualizarPosicaoTextos(view);
+
+        return true;
+    } catch (const std::exception& e) {
+        std::cerr << "Erro ao atualizar GameOver: " << e.what() << std::endl;
+        return true; // Retorna true para continuar a execução em caso de erro
     }
-
-    // Atualiza a posição dos textos de acordo com a view da câmera
-    atualizarPosicaoTextos(view);
-
-    return true;
 }
-
