@@ -56,7 +56,7 @@ void Menu::desenharTela() {
     }
     janela->draw(iniciarJogoTexto);
 
-    // Ajuste de escala para a opção Opções
+    // Ajuste de escala para a opção de som
     if (opcaoSelecionada == Opcoes) {
         semSomSprite.setScale(1.3, 1.3);
     } else {
