@@ -145,3 +145,7 @@ void SoundManager::desativarSom()
 {
     somAtivo = false;
 }
+
+void SoundManager::ativarSom(){
+    somAtivo = true;
+}

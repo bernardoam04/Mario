@@ -71,6 +71,7 @@ public:
     void renderizar(sf::Time tempoAtual);
     void desenharMapa(sf::Time tempoAtual);
     void desativarSom();
+    void ativarSom();
 
     //Getters
     float getAlturaTela() const;

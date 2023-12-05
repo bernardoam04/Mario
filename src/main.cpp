@@ -65,6 +65,8 @@ int main() {
 
             if(!menu.getSomAtivo()){
                 jogo->desativarSom();
+            }else{
+                jogo->ativarSom();
             }
 
 

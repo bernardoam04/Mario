@@ -37,7 +37,7 @@ GerenciadorGeral::GerenciadorGeral(std::shared_ptr<sf::RenderWindow> janela1, sf
 
         if (somAtivo)
         {
-            this->_sounds->reiniciarMusica();
+            this->_sounds->tocarMusica();
         }
 
         // Métodos de inicialização
@@ -346,11 +346,18 @@ void GerenciadorGeral::desenharMapa(sf::Time tempoAtual){
     this->mapa.renderizar(*this->janela, tempoAtual);
 }
 
-void GerenciadorGeral::desativarSom()
-{
+void GerenciadorGeral::desativarSom(){
     somAtivo = false;
     _sounds->pausarMusica();
     _sounds->desativarSom();
+}
+
+void GerenciadorGeral::ativarSom(){
+    somAtivo = true;
+    if(_sounds->musicaPausada()){
+        _sounds->tocarMusica();
+    }
+    _sounds->ativarSom();
 }
 
 std::shared_ptr<Jogador> GerenciadorGeral::getMario() const {

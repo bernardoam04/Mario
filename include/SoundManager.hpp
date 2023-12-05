@@ -46,6 +46,7 @@ class SoundManager{
         bool isSoundPlaying(std::string som);
         bool musicaPausada();
         void desativarSom();
+        void ativarSom();
 
         void carregarSomPadrao(sf::SoundBuffer& soundBuffer);
 };
