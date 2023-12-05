@@ -22,4 +22,18 @@
         CHECK(menu.getSomAtivo() == true);  // Certifique-se de que o som foi ativado
     }
 
+    SUBCASE("Verificar opção de iniciar jogo") {
+        CHECK(menu.tratarCliqueMouse() == true);  // Certifique-se de que a opção de iniciar jogo retorna true
+    }
+
+    SUBCASE("Verificar opção de sair") {
+        janela.create(sf::VideoMode(800, 600), "SFML Window");
+        CHECK(menu.tratarCliqueMouse() == false);  // Certifique-se de que a opção de sair retorna false
+    }
+
+    SUBCASE("Verificar reinicialização da seleção") {
+        menu.resetarSelecao();
+        CHECK(menu.getOpcaoSelecionada() == Menu::NenhumaSelecao);  // Certifique-se de que a seleção foi reiniciada
+    }
+
     }
