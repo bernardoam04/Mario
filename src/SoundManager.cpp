@@ -3,6 +3,7 @@
 #include "SoundManager.hpp"
 
 SoundManager::SoundManager() {
+    //Define o som e efeitos sonoros de cada estado do jogo
     if (!this->musicaFundo.openFromFile("../audio/1-1.wav")) {
         throw std::exception();
     }
@@ -110,6 +111,7 @@ sf::SoundBuffer& SoundManager::getSbGameover(){
 }
 
 bool SoundManager::isSoundPlaying(std::string som){
+    //definifno qual som sera usado para cada momento
     std::unordered_map<std::string, int> opcao = {{"moeda", 0}, {"morte", 1}, {"pulo", 2}, {"fundo", 3}};
     switch (opcao[som]){
     case 0:
