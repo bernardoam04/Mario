@@ -9,12 +9,12 @@ SoundManager::SoundManager() {
     }
 
     try{
-        if(!this->sbMoeda.loadFromFile("../audio/coin2.wav")){
+        if(!this->sbMoeda.loadFromFile("../audio/coin.wav")){
             throw std::exception();
         }
     }
     catch(const std::exception& e){
-        carregarSomPadrao(this->sbMoeda);
+        this->carregarSomVazio(this->sbMoeda);
     }
 
     try{
@@ -23,7 +23,7 @@ SoundManager::SoundManager() {
         }
     }
     catch(const std::exception& e){
-        carregarSomPadrao(this->sbGameoverScream);
+        this->carregarSomVazio(this->sbGameoverScream);
     }
 
     try{
@@ -32,7 +32,7 @@ SoundManager::SoundManager() {
         }
     }
     catch(const std::exception& e){
-        carregarSomPadrao(this->sbPulo);
+        this->carregarSomVazio(this->sbPulo);
     }
 
     try{
@@ -41,7 +41,7 @@ SoundManager::SoundManager() {
         }
     }
     catch(const std::exception& e){
-        carregarSomPadrao(this->sbGameOver);
+        this->carregarSomVazio(this->sbGameOver);
     }
 
     try{
@@ -50,7 +50,7 @@ SoundManager::SoundManager() {
         }
     }
     catch(const std::exception& e){
-        carregarSomPadrao(this->sbCogumelo);
+        this->carregarSomVazio(this->sbCogumelo);
     }
 
     try{
@@ -59,7 +59,7 @@ SoundManager::SoundManager() {
         }
     }
     catch(const std::exception& e){
-        carregarSomPadrao(this->sbWin);
+        this->carregarSomVazio(this->sbWin);
     }
 
     sMoeda.setBuffer(sbMoeda);
