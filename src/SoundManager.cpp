@@ -7,28 +7,59 @@ SoundManager::SoundManager() {
     if (!this->musicaFundo.openFromFile("../audio/1-1.wav")) {
         throw std::exception();
     }
-    if(!this->sbMoeda.loadFromFile("../audio/coin.wav")){
-        throw std::exception();
-    }
-    if(!this->sbGameOver.loadFromFile("../audio/death.wav")){
-        throw std::exception();
-    }
-    if(!this->sbPulo.loadFromFile("../audio/jump.wav")){
-        throw std::exception();
-    }
 
-    if (!this->sbGameoverScream.loadFromFile("../audio/gameOver.wav")) {
-        throw std::exception();
+    try{
+        if(!this->sbMoeda.loadFromFile("../audio/coin2.wav")){
+            throw std::exception();
+        }
+    }
+    catch(const std::exception& e){
+        carregarSomPadrao(this->sbMoeda);
     }
 
-
-    if (!this->sbCogumelo.loadFromFile("../audio/mushroom.wav")) {
-        throw std::exception();
+    try{
+        if(!this->sbGameOver.loadFromFile("../audio/death.wav")){
+            throw std::exception();
+        }
+    }
+    catch(const std::exception& e){
+        carregarSomPadrao(this->sbGameoverScream);
     }
 
+    try{
+        if(!this->sbPulo.loadFromFile("../audio/jump.wav")){
+            throw std::exception();
+        }
+    }
+    catch(const std::exception& e){
+        carregarSomPadrao(this->sbPulo);
+    }
 
-    if (!this->sbWin.loadFromFile("../audio/win.wav")) {
-        throw std::exception();
+    try{
+        if (!this->sbGameoverScream.loadFromFile("../audio/gameOver.wav")) {
+            throw std::exception();
+        }
+    }
+    catch(const std::exception& e){
+        carregarSomPadrao(this->sbGameOver);
+    }
+
+    try{
+        if (!this->sbCogumelo.loadFromFile("../audio/mushroom.wav")) {
+            throw std::exception();
+        }
+    }
+    catch(const std::exception& e){
+        carregarSomPadrao(this->sbCogumelo);
+    }
+
+    try{
+        if (!this->sbWin.loadFromFile("../audio/win.wav")) {
+            throw std::exception();
+        }
+    }
+    catch(const std::exception& e){
+        carregarSomPadrao(this->sbWin);
     }
 
     sMoeda.setBuffer(sbMoeda);
@@ -132,7 +163,7 @@ bool SoundManager::isSoundPlaying(std::string som){
     }
 }
 
-void SoundManager::carregarSomPadrao(sf::SoundBuffer& soundBuffer){
+void SoundManager::carregarSomVazio(sf::SoundBuffer& soundBuffer){
     //buffer com som vazio
     sf::Int16 emptySamples[] = { static_cast<sf::Int16>(44100 * 5) };
     soundBuffer.loadFromSamples(emptySamples, 4, 1, 44100);

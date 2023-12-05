@@ -48,7 +48,7 @@ class SoundManager{
         void desativarSom();
         void ativarSom();
 
-        void carregarSomPadrao(sf::SoundBuffer& soundBuffer);
+        void carregarSomVazio(sf::SoundBuffer& soundBuffer);
 };
 
 #endif
