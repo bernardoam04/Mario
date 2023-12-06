@@ -24,7 +24,7 @@ public:
     void atacar(std::shared_ptr <Jogador> mario);
     void modificarPosicao(sf::Time deltaTime, int larguraMapa) override;
     void morrer();
-    void desenharGoomba();
+    void desenharGoomba(float x);
 
     //Métodos de verificacao
     bool verificarColisao();

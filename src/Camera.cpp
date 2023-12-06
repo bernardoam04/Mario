@@ -4,7 +4,11 @@
 Camera::Camera(float largura, float altura) {
     try {
         view.setSize(largura, altura);
-        view.setCenter(largura / 2, altura / 2);
+
+        centro.x = largura/2;
+        centro.y = altura/2;
+
+        view.setCenter(centro.x, centro.y);
     } catch (const std::out_of_range& e) {
         std::cerr << "Erro ao inicializar a câmera: " << e.what() << std::endl;
     } catch (const std::exception& e) {
@@ -14,6 +18,7 @@ Camera::Camera(float largura, float altura) {
 }
 
 void Camera::setCenter(const sf::Vector2f& center) {
+    centro = center;
     try {
         view.setCenter(center);
     } catch (const std::out_of_range& e) {
@@ -41,4 +46,9 @@ float Camera::getVelocidadeCamera() {
 
 const sf::View& Camera::getView() const {
     return view;
+}
+
+sf::Vector2f Camera::getCenter()
+{
+    return centro;
 }

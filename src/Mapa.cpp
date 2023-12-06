@@ -146,21 +146,45 @@ void Mapa::carregarMapa(const std::string &arquivoMapa)
     }
 }
 
-void Mapa::renderizar(sf::RenderWindow& janela, sf::Time tempoAtual) {
+void Mapa::renderizar(sf::RenderWindow& janela, sf::Time tempoAtual, float x) {
     int tempoBloco = static_cast<int> (tempoAtual.asSeconds());
     tempoBloco = tempoBloco % 2;
 
     int tempoMoeda = static_cast<int> (tempoAtual.asMilliseconds()/100);
     tempoMoeda = tempoMoeda % 8;
 
+
+    float larguraTela = janela.getSize().x;
+
+    // Calcula os índices de início e fim da tela visível
+    int indiceInicioTela = static_cast<int>((x - larguraTela / 2) / tileSize);
+    int indiceFimTela = static_cast<int>((x + larguraTela / 2) / tileSize);
+
+    // Garante que os índices estejam dentro dos limites do vetor
+    indiceInicioTela = std::max(0, indiceInicioTela);
+    indiceFimTela = std::min(static_cast<int>(larguraTileset - 1), indiceFimTela);
+
     int contagemMoedas = 0;
     int contagemBlocoMoeda = 0;
+
     (void)contagemMoedas;  // Evita o aviso de parâmetro não utilizado
     (void)contagemBlocoMoeda;
     
     // Renderiza os vértices na janela
     for (size_t i = 0; i < tileData.size(); ++i) {
         int tileNumber = tileData[i].first;
+
+        int indiceVetor = i % larguraTileset; // Índice que representa a coluna atual na grade do jogo
+
+        // Certifica de não ultrapassar os limites do vetor
+        if (indiceVetor < 0 || indiceVetor >= static_cast<int>(larguraTileset)) {
+            continue;
+        }
+        
+        // Verifica se o índice está dentro do intervalo da câmera (só desenha o que aparece na tela)
+        if (indiceVetor < indiceInicioTela || indiceVetor > indiceFimTela) {
+            continue;  // Pula para a próxima iteração se estiver fora do intervalo
+        }
 
         // Somente renderiza se não for um bloco vazio (tipo 0)
         if (colisaoEspecial.count(tileNumber) == 0) {

@@ -295,21 +295,30 @@ void Goomba::morrer() {
     setVivo(false);
 }
 
-void Goomba::desenharGoomba() {
+void Goomba::desenharGoomba(float x) {
 
-    if(getVivo()){
-        sf::Sprite sprite(personagemTexture); 
-        sprite.setPosition(getPosicao());
-        sprite.setTexture(personagemTexture);
-        janela->draw(sprite);
-    }
-    else if(temporizadorMorte.getElapsedTime().asSeconds() < 0.3){
-        personagemTexture.loadFromFile("../imagens/goombaMorto.png");
-        sf::Sprite sprite(personagemTexture); 
-        sprite.setPosition(getPosicao());
-        sprite.setTexture(personagemTexture);
-        janela->draw(sprite);
-    }
+    float larguraTela = janela->getSize().x;
+
+    // Calcula os índices de início e fim da tela visível
+    int xInicioTela = static_cast<int>((x - larguraTela / 2));
+    int xFimTela = static_cast<int>((x + larguraTela / 2));    
+    
+    //Desenha o Goomba apenas se ele estigver dentro da tela visível
+    if(getPosicao().x + larguraGoomba > xInicioTela && getPosicao().x < xFimTela){
+        if(getVivo()){
+            sf::Sprite sprite(personagemTexture); 
+            sprite.setPosition(getPosicao());
+            sprite.setTexture(personagemTexture);
+            janela->draw(sprite);
+        }
+        else if(temporizadorMorte.getElapsedTime().asSeconds() < 0.3){
+            personagemTexture.loadFromFile("../imagens/goombaMorto.png");
+            sf::Sprite sprite(personagemTexture); 
+            sprite.setPosition(getPosicao());
+            sprite.setTexture(personagemTexture);
+            janela->draw(sprite);
+        }
+    } 
 }
 
 Goomba::~Goomba(){

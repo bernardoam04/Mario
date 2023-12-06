@@ -54,6 +54,7 @@ private:
     //Contador
     int contadorPerdeu = 0;
     int contadorInvencivel;
+    int contagemMoedasMisteriosas = 0;
 
 public:    
 
@@ -69,6 +70,7 @@ public:
     bool atualizar(sf::Time tempoAtual, sf::Time deltaTime, sf::Event ev);
     bool atualizarEventos(sf::Event ev);
     void renderizar(sf::Time tempoAtual);
+    void desenharPoderesEspeciais();
     void desenharMapa(sf::Time tempoAtual);
     void desativarSom();
     void ativarSom();

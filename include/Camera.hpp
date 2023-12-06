@@ -7,6 +7,7 @@
 class Camera {
 private:
     sf::View view;
+    sf::Vector2f centro;
     const float velocidadeCamera = 2.3f;
 public:
     //Construtor
@@ -19,6 +20,7 @@ public:
     //Getters
     float getVelocidadeCamera();
     const sf::View& getView() const;
+    sf::Vector2f getCenter();
 };
 
 #endif

@@ -1,5 +1,6 @@
 #include "../include/GerenciadorGeral.hpp"
 #include <stdexcept>
+#include "../include/GerenciadorGeral.hpp"
 
 GerenciadorGeral::GerenciadorGeral(std::shared_ptr<sf::RenderWindow> janela1, sf::Font &fonte, std::shared_ptr<SoundManager> sounds)
     : pontuacao(nullptr),
@@ -214,13 +215,14 @@ void GerenciadorGeral::renderizar(sf::Time tempoAtual)
     janela->setView(this->camera->getView());
     
     //Desenha o mapa
-    this->mapa.renderizar(*this->janela, tempoAtual);
+    this->mapa.renderizar(*this->janela, tempoAtual, camera->getCenter().x);
 
     janela->draw(pontuacao->exibirPontuacao());
 
     //Desenha as goombas
     for (unsigned int i = 0; i < goombas.size(); i++) {
-        goombas[i]->desenharGoomba();
+        goombas[i]->desenharGoomba(camera->getCenter().x);
+
         if(goombas[i]->verificarColisaoComGoomba(mario)){
             goombas[i]->morrer();
             mario->setPuloEmGoomba(true);
@@ -231,61 +233,8 @@ void GerenciadorGeral::renderizar(sf::Time tempoAtual)
         }
     }
 
-    int contagemMoedasMisteriosas = 0;
+    desenharPoderesEspeciais();
 
-    //Desenha os Poderes Especiais
-    for (unsigned int i = 0; i < vetorPoderesEspeciais.size(); i++) {
-
-        int tileSize = mapa.getTileSize();
-        int x= vetorPoderesEspeciais[i]->getPosicaoInicial().x;
-        int y= vetorPoderesEspeciais[i]->getPosicaoInicial().y + tileSize;
-
-        if(mapa.getColisaoBlocoMoeda(x,y) == true){
-            if(vetorPoderesEspeciais[i]->getTipo() ==3){
-                contagemMoedasMisteriosas++;
-            }
-            if(contagemDesenhoPoderes[i] ==0){
-                vetorPoderesEspeciais[i]->inicializar(vetorPoderesEspeciais[i]->getPosicaoInicial().x, vetorPoderesEspeciais[i]->getPosicaoInicial().y);
-                if(vetorPoderesEspeciais[i]->getTipo() ==3){
-                    _sounds->somMoeda();
-                    //Desenha "+100" na tela logo em cima da posição do mario
-                    textoMaisCem.setPosition(mario->getPosicao().x, mario->getPosicao().y - mario->getAlturaJogador());
-                    temporizadorTexto.restart();  // Inicia o temporizador do texto
-                }
-            }
-            sf::Vector2f posicaoAtualMario = mario->getPosicao();
-            
-            if(vetorPoderesEspeciais[i]->verificarColisao(posicaoAtualMario, mario->getAlturaJogador(), mario->getLarguraJogador())){
-                unsigned int tamanhoInicial = indicesComColisao.size();
-                indicesComColisao.insert(i);
-                if(vetorPoderesEspeciais[i]->getTipo()!=3){
-                    indicesPoderesEspeciais.insert(i);
-                }
-                unsigned int tamanhoFinal = indicesComColisao.size();
-
-                if(tamanhoFinal> tamanhoInicial && vetorPoderesEspeciais[i]->getTipo()!=3){ //Verifica se foi um poder especial novo e se não era moeda, que já foi tratado o texto dela
-                    //Dobra altura do jogador se pegou cogumelo
-                    if(vetorPoderesEspeciais[i]->getTipo() == 1){
-                        mario->dobrarAltura();
-                        _sounds->somCogumelo();
-                    }
-                    //Deixa jogador invencivel se pegou estrela
-                    else if(vetorPoderesEspeciais[i]->getTipo() == 2){
-                        mario->pegarEstrela();
-                    }
-                    //Desenha "+1000" na tela logo em cima da posição do mario
-                    textoMaisMil.setPosition(mario->getPosicao().x, mario->getPosicao().y - mario->getAlturaJogador());
-                    temporizadorTexto.restart();  // Inicia o temporizador do texto
-                }
-            }
-            bool desenho = indicesComColisao.find(i) == indicesComColisao.end();
-            
-            if(desenho){
-                vetorPoderesEspeciais[i]->desenhar(*this->janela);
-                contagemDesenhoPoderes[i]++;
-            }
-        }
-    }    
     mapa.atualizarContagemMoeda(contagemMoedasMisteriosas);
     int contagemPoderesEspeciais = indicesPoderesEspeciais.size();
 
@@ -328,6 +277,76 @@ void GerenciadorGeral::renderizar(sf::Time tempoAtual)
     //Mostra a tela
     this->janela->display();
 }
+ void GerenciadorGeral::desenharPoderesEspeciais()
+{
+    //Desenha os Poderes Especiais
+    for (unsigned int i = 0; i < vetorPoderesEspeciais.size(); i++) {
+
+        int tileSize = mapa.getTileSize();
+        int x= vetorPoderesEspeciais[i]->getPosicaoInicial().x;
+        int y= vetorPoderesEspeciais[i]->getPosicaoInicial().y + tileSize;
+
+        //Verifica se o poder foi acionado para aparecer (colisão do mario com o bloco misterioso)
+        if(mapa.getColisaoBlocoMoeda(x,y) == true){
+
+            //Verifica se é a primeira vez que o poder foi selecionado
+            if(contagemDesenhoPoderes[i] ==0){
+                vetorPoderesEspeciais[i]->inicializar(vetorPoderesEspeciais[i]->getPosicaoInicial().x, vetorPoderesEspeciais[i]->getPosicaoInicial().y);
+
+                //Caso o poder selecionado pela primeira vez seja uma moeda
+                if(vetorPoderesEspeciais[i]->getTipo() ==3){
+                    contagemMoedasMisteriosas++;
+                    _sounds->somMoeda();
+
+                    //Desenha "+100" na tela logo em cima da posição do mario
+                    textoMaisCem.setPosition(mario->getPosicao().x, mario->getPosicao().y - mario->getAlturaJogador());
+                    temporizadorTexto.restart();  // Inicia o temporizador do texto
+                }
+            }
+            sf::Vector2f posicaoAtualMario = mario->getPosicao();
+            
+            //Verifica se o poder especial foi pego pelo mario
+            if(vetorPoderesEspeciais[i]->verificarColisao(posicaoAtualMario, mario->getAlturaJogador(), mario->getLarguraJogador())){
+
+                //Verificar se foi inserido no vetor, ou seja, se é um poder especial novo
+                unsigned int tamanhoInicial = indicesComColisao.size();
+                indicesComColisao.insert(i);
+
+                unsigned int tamanhoFinal = indicesComColisao.size();
+
+                //Caso não seja moeda, pois ela já é pega pelo jogador logo na colisão
+                if(vetorPoderesEspeciais[i]->getTipo()!=3){
+                    indicesPoderesEspeciais.insert(i);
+                    
+                    //Verifica se foi um poder especial novo e se não era moeda, que já foi tratado o texto dela
+                    if(tamanhoFinal> tamanhoInicial){ 
+
+                        //Dobra altura do jogador se pegou cogumelo
+                        if(vetorPoderesEspeciais[i]->getTipo() == 1){
+                            mario->dobrarAltura();
+                            _sounds->somCogumelo();
+                        }
+                        //Deixa jogador invencivel se pegou estrela
+                        else if(vetorPoderesEspeciais[i]->getTipo() == 2){
+                            mario->pegarEstrela();
+                        }
+                        //Desenha "+1000" na tela logo em cima da posição do mario
+                        textoMaisMil.setPosition(mario->getPosicao().x, mario->getPosicao().y - mario->getAlturaJogador());
+                        temporizadorTexto.restart();  // Inicia o temporizador do texto
+                    }
+                }
+            }
+
+            //Desenha apenas se o poder foi ativado
+            bool desenho = indicesComColisao.find(i) == indicesComColisao.end();
+            
+            if(desenho){
+                vetorPoderesEspeciais[i]->desenhar(*this->janela);
+                contagemDesenhoPoderes[i]++;
+            }
+        }
+    }
+}
 int GerenciadorGeral::getPontuacaoTotal() const
 {
     return pontuacao->getPontuacaoTotal();
@@ -343,7 +362,7 @@ bool GerenciadorGeral::getGamerOver()
 }
 
 void GerenciadorGeral::desenharMapa(sf::Time tempoAtual){
-    this->mapa.renderizar(*this->janela, tempoAtual);
+    this->mapa.renderizar(*this->janela, tempoAtual, camera->getCenter().x);
 }
 
 void GerenciadorGeral::desativarSom(){

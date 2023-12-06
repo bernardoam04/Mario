@@ -49,7 +49,7 @@ public:
     //Métodos usados diretamente
     void inicializarColisoes();
     void carregarMapa(const std::string& arquivoMapa);
-    void renderizar(sf::RenderWindow& janela, sf::Time tempoAtual);
+    void renderizar(sf::RenderWindow& janela, sf::Time tempoAtual, float x);
     void aplicarColisao(std::vector<std::pair<int,int>> posicoes);
     bool getColisaoBlocoMoeda(float x, float y);
 
