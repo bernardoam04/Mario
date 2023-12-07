@@ -2,7 +2,8 @@
 
 ## Índice
 
-- [Sobre o Jogo](#sobre-o-jogo)
+- [Descrição do projeto](#descrição-do-projeto)
+- [Sobre o desenvolvimento](#sobre-o-desenvolvimento)
 - [Recursos](#recursos)
 - [Compilação e Execução](#compilação-e-execução)
 - [Controles](#controles)
@@ -16,6 +17,17 @@ O projeto desenvolvido pelo grupo tinha como objetivo, recriar, do zero, utiliza
 Lançado inicialmente em 1985 para o console Nintendo Entertainment System (NES), o jogo foi criado por Shigeru Miyamoto e Takashi Tezuka,
 e rapidamente se tornou um marco na história dos videogames.
 
+## Sobre o desenvolvimento
+
+Foi utilizado o programa open-source [Tiled Map Editor](https://www.mapeditor.org/) para desenhar o mapa, e exportá-lo em formato .tmx, e por esse motivo precisamos incluir a biblioteca TinyXML2 para fazer um parsing do arquivo exportado e extrair os dados que era de nosso interesse (camadas, tiles...)
+![image](https://github.com/pds2-dcc-ufmg/2023-2-TN-grupo12/assets/78943325/186b136b-432e-4424-ba08-113ed30ad80a)
+Imagem do programa Tiled Map Editor
+
+Para percorrer o arquivo XML gerado, foi bastante semelhante à maneira de percorrer os elementos de uma lista encadeada, neste exemplo a seguir, foi carregado a textura de todos os elementos 
+![code](https://github.com/pds2-dcc-ufmg/2023-2-TN-grupo12/assets/78943325/1b90d2f1-2358-4a9c-a244-edc1da89aac4)
+
+
+Basicamente, com essas informações obtidas nós somos capazes de criar colisão, texturas e sprites, entre outros, para interagir com o código
 
 
 ## Recursos
