@@ -114,6 +114,7 @@ int main() {
                 timer.restart();
                 estadoAtual = EstadoJogo::JOGO;
             }
+            
 
             // Desenho do Game Over
             gameOver.desenharTela(jogo->getPontuacaoTotal(),jogo->getViewCamera());
