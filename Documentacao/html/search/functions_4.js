@@ -1,7 +1,10 @@
 var searchData=
 [
-  ['error_0',['Error',['../classtinyxml2_1_1_x_m_l_document.html#a34e6318e182e40e3cc4f4ba5d59ed9ed',1,'tinyxml2::XMLDocument']]],
-  ['errorid_1',['ErrorID',['../classtinyxml2_1_1_x_m_l_document.html#afa3ed33b3107f920ec2b301f805ac17d',1,'tinyxml2::XMLDocument']]],
-  ['errorlinenum_2',['ErrorLineNum',['../classtinyxml2_1_1_x_m_l_document.html#a57400f816dbe7799ece33615ead9ab76',1,'tinyxml2::XMLDocument']]],
-  ['errorstr_3',['ErrorStr',['../classtinyxml2_1_1_x_m_l_document.html#ae97fff2402a0d01e0509c430b37996b3',1,'tinyxml2::XMLDocument']]]
+  ['getalturajogador_0',['getAlturaJogador',['../class_jogador.html#a01f6e0af4a08a7ccb06cfbf76b611e54',1,'Jogador']]],
+  ['getcenter_1',['getCenter',['../class_camera.html#a6aa324249dd53699f38ef35c9fd6d918',1,'Camera']]],
+  ['getganhou_2',['getGanhou',['../class_jogador.html#a60b072f8182adaaa9837c23b50939dd5',1,'Jogador']]],
+  ['getlargurajogador_3',['getLarguraJogador',['../class_jogador.html#aef5c0e141062a07daa7e32ccd7bf3551',1,'Jogador']]],
+  ['getperdeu_4',['getPerdeu',['../class_jogador.html#ab5fe99a014e06804bf20eb79da672d59',1,'Jogador']]],
+  ['getvelocidadecamera_5',['getVelocidadeCamera',['../class_camera.html#a5ed5b75ec3424572ee57e440df3cc624',1,'Camera']]],
+  ['getview_6',['getView',['../class_camera.html#a917ea4f367d0752f7c220bc26fe755a4',1,'Camera']]]
 ];

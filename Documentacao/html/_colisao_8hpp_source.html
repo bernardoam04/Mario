@@ -88,34 +88,35 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;../include/Mapa.hpp&quot;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="foldopen" id="foldopen00007" data-start="{" data-end="};">
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="class_colisao.html">    7</a></span><span class="keyword">class </span><a class="code hl_class" href="class_colisao.html">Colisao</a> {</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    <span class="comment">//Dados do mapa</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <span class="keyword">const</span> std::vector&lt;std::vector&lt;int&gt;&gt; dadosMapa;</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="keyword">const</span> <span class="keywordtype">int</span> tileSize;</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="comment">//Tipos de bloco</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> BLOCO_CHAO = 1; </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> BLOCO_MOEDA = 2; </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> BLOCO_NORMAL = 3; </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> CANO_INFERIOR_ESQUERDO = 4; </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> CANO_INFERIOR_DIREITO = 5; </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> CANO_SUPERIOR_DIREITO = 6; </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> CANO_SUPERIOR_ESQUERDO = 7; </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> BLOCO_ESCADA = 8; </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> MOEDA = 9; </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="comment">//Construtor</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <a class="code hl_class" href="class_colisao.html">Colisao</a>(<span class="keyword">const</span> std::vector&lt;std::vector&lt;int&gt;&gt; dadosMapa, <span class="keywordtype">int</span> tileSize);</div>
+<div class="foldopen" id="foldopen00010" data-start="{" data-end="};">
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="class_colisao.html">   10</a></span><span class="keyword">class </span><a class="code hl_class" href="class_colisao.html">Colisao</a> {</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <span class="comment">// Dados do mapa</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="keyword">const</span> std::vector&lt;std::vector&lt;int&gt;&gt; dadosMapa; </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keyword">const</span> <span class="keywordtype">int</span> tileSize; </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="comment">// Tipos de bloco</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> BLOCO_CHAO = 1; </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> BLOCO_MOEDA = 2; </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> BLOCO_NORMAL = 3; </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> CANO_INFERIOR_ESQUERDO = 4; </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> CANO_INFERIOR_DIREITO = 5; </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> CANO_SUPERIOR_DIREITO = 6; </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> CANO_SUPERIOR_ESQUERDO = 7; </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> BLOCO_ESCADA = 8; </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> MOEDA = 9; </div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="comment">//Método de verificação</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keywordtype">int</span> verificarColisao(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y);</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>};</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="class_colisao.html#a1f573be335703afb3b132d26a17ae2d0">   33</a></span>    <a class="code hl_function" href="class_colisao.html#a1f573be335703afb3b132d26a17ae2d0">Colisao</a>(<span class="keyword">const</span> std::vector&lt;std::vector&lt;int&gt;&gt; dadosMapa, <span class="keywordtype">int</span> tileSize);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="class_colisao.html#a5b9cc0144a59c3f0899c066804d08ba0">   41</a></span>    <span class="keywordtype">int</span> <a class="code hl_function" href="class_colisao.html#a5b9cc0144a59c3f0899c066804d08ba0">verificarColisao</a>(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y);</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>};</div>
 </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#endif </span></div>
-<div class="ttc" id="aclass_colisao_html"><div class="ttname"><a href="class_colisao.html">Colisao</a></div><div class="ttdef"><b>Definição</b> Colisao.hpp:7</div></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">#endif </span></div>
+<div class="ttc" id="aclass_colisao_html"><div class="ttname"><a href="class_colisao.html">Colisao</a></div><div class="ttdoc">Classe que lida com detecção de colisão em um mapa.</div><div class="ttdef"><b>Definição</b> Colisao.hpp:10</div></div>
+<div class="ttc" id="aclass_colisao_html_a1f573be335703afb3b132d26a17ae2d0"><div class="ttname"><a href="class_colisao.html#a1f573be335703afb3b132d26a17ae2d0">Colisao::Colisao</a></div><div class="ttdeci">Colisao(const std::vector&lt; std::vector&lt; int &gt; &gt; dadosMapa, int tileSize)</div><div class="ttdoc">Construtor da classe Colisao.</div></div>
+<div class="ttc" id="aclass_colisao_html_a5b9cc0144a59c3f0899c066804d08ba0"><div class="ttname"><a href="class_colisao.html#a5b9cc0144a59c3f0899c066804d08ba0">Colisao::verificarColisao</a></div><div class="ttdeci">int verificarColisao(float x, float y)</div><div class="ttdoc">Verifica a colisão em uma posição específica no mapa.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

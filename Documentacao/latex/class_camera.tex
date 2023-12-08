@@ -1,23 +1,124 @@
 \doxysection{Referência à classe Camera}
 \hypertarget{class_camera}{}\label{class_camera}\index{Camera@{Camera}}
+
+
+Classe que representa a Câmera visualizada pelo jogador.  
+
+
+
+
+{\ttfamily \#include $<$Camera.\+hpp$>$}
+
 \doxysubsubsection*{Membros públicos}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\hyperlink{class_camera_a8c3367ec7dcd66f93ae7d295655a6420}{Camera}} (float largura, float altura)
+\begin{DoxyCompactList}\small\item\em Construtor da classe Câmera. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_camera_a492690cc33179e5f18ff2cfcedf755e6}{set\+Center}} (const sf\+::\+Vector2f \&center)
+\begin{DoxyCompactList}\small\item\em Define o centro da câmera. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_camera_aaad23bcffbf5ab72156f5f8baf9a3e18}{atualizar\+Posicao}} (sf\+::\+Vector2f posicao\+Personagem)
+\begin{DoxyCompactList}\small\item\em Atualiza a posição da câmera com base na posição do personagem. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_camera_a5ed5b75ec3424572ee57e440df3cc624}{get\+Velocidade\+Camera}} ()
+\begin{DoxyCompactList}\small\item\em Obtém a velocidade da câmera. \end{DoxyCompactList}\item 
+const sf\+::\+View \& \mbox{\hyperlink{class_camera_a917ea4f367d0752f7c220bc26fe755a4}{get\+View}} () const
+\begin{DoxyCompactList}\small\item\em Obtém a visualização da câmera. \end{DoxyCompactList}\item 
+sf\+::\+Vector2f \mbox{\hyperlink{class_camera_a6aa324249dd53699f38ef35c9fd6d918}{get\+Center}} ()
+\begin{DoxyCompactList}\small\item\em Obtém o centro da câmera. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrição detalhada}
+Classe que representa a Câmera visualizada pelo jogador. 
+
+\doxysubsection{Documentação dos Construtores \& Destrutor}
 \Hypertarget{class_camera_a8c3367ec7dcd66f93ae7d295655a6420}\label{class_camera_a8c3367ec7dcd66f93ae7d295655a6420} 
-{\bfseries Camera} (float largura, float altura)
-\item 
-\Hypertarget{class_camera_a492690cc33179e5f18ff2cfcedf755e6}\label{class_camera_a492690cc33179e5f18ff2cfcedf755e6} 
-void {\bfseries set\+Center} (const sf\+::\+Vector2f \&center)
-\item 
+\index{Camera@{Camera}!Camera@{Camera}}
+\index{Camera@{Camera}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{Camera()}{Camera()}}
+{\footnotesize\ttfamily Camera\+::\+Camera (\begin{DoxyParamCaption}\item[{float}]{largura,  }\item[{float}]{altura }\end{DoxyParamCaption})}
+
+
+
+Construtor da classe Câmera. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em largura} & Largura da câmera da janela de visualização \\
+\hline
+{\em altura} & Altura da câmera da janela de visualização \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Documentação das funções}
 \Hypertarget{class_camera_aaad23bcffbf5ab72156f5f8baf9a3e18}\label{class_camera_aaad23bcffbf5ab72156f5f8baf9a3e18} 
-void {\bfseries atualizar\+Posicao} (sf\+::\+Vector2f posicao\+Personagem)
-\item 
+\index{Camera@{Camera}!atualizarPosicao@{atualizarPosicao}}
+\index{atualizarPosicao@{atualizarPosicao}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{atualizarPosicao()}{atualizarPosicao()}}
+{\footnotesize\ttfamily void Camera\+::atualizar\+Posicao (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{posicao\+Personagem }\end{DoxyParamCaption})}
+
+
+
+Atualiza a posição da câmera com base na posição do personagem. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em posicao\+Personagem} & Vetor com a posição que o personagem se encontra \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_camera_a6aa324249dd53699f38ef35c9fd6d918}\label{class_camera_a6aa324249dd53699f38ef35c9fd6d918} 
+\index{Camera@{Camera}!getCenter@{getCenter}}
+\index{getCenter@{getCenter}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{getCenter()}{getCenter()}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Camera\+::get\+Center (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtém o centro da câmera. 
+
+\begin{DoxyReturn}{Retorna}
+Vetor bidimensional contendo a posição central da câmera 
+\end{DoxyReturn}
 \Hypertarget{class_camera_a5ed5b75ec3424572ee57e440df3cc624}\label{class_camera_a5ed5b75ec3424572ee57e440df3cc624} 
-float {\bfseries get\+Velocidade\+Camera} ()
-\item 
+\index{Camera@{Camera}!getVelocidadeCamera@{getVelocidadeCamera}}
+\index{getVelocidadeCamera@{getVelocidadeCamera}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{getVelocidadeCamera()}{getVelocidadeCamera()}}
+{\footnotesize\ttfamily float Camera\+::get\+Velocidade\+Camera (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtém a velocidade da câmera. 
+
+\begin{DoxyReturn}{Retorna}
+Velocidade atual da câmera 
+\end{DoxyReturn}
 \Hypertarget{class_camera_a917ea4f367d0752f7c220bc26fe755a4}\label{class_camera_a917ea4f367d0752f7c220bc26fe755a4} 
-const sf\+::\+View \& {\bfseries get\+View} () const
-\end{DoxyCompactItemize}
+\index{Camera@{Camera}!getView@{getView}}
+\index{getView@{getView}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{getView()}{getView()}}
+{\footnotesize\ttfamily const sf\+::\+View \& Camera\+::get\+View (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Obtém a visualização da câmera. 
+
+\begin{DoxyReturn}{Retorna}
+Objeto do SFML contendo a view da câmera 
+\end{DoxyReturn}
+\Hypertarget{class_camera_a492690cc33179e5f18ff2cfcedf755e6}\label{class_camera_a492690cc33179e5f18ff2cfcedf755e6} 
+\index{Camera@{Camera}!setCenter@{setCenter}}
+\index{setCenter@{setCenter}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{setCenter()}{setCenter()}}
+{\footnotesize\ttfamily void Camera\+::set\+Center (\begin{DoxyParamCaption}\item[{const sf\+::\+Vector2f \&}]{center }\end{DoxyParamCaption})}
+
+
+
+Define o centro da câmera. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em center} & Vetor que representará a posição central \\
+\hline
+\end{DoxyParams}
 
 
 A documentação para esta classe foi gerada a partir do seguinte ficheiro\+:\begin{DoxyCompactItemize}

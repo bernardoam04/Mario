@@ -1,18 +1,21 @@
 var indexSectionsWithContent =
 {
-  0: "cgjmps",
-  1: "cgjmps"
+  0: "acdegijmopsv~",
+  1: "cgjmps",
+  2: "acdegijmopsv~"
 };
 
 var indexSectionNames =
 {
   0: "all",
-  1: "classes"
+  1: "classes",
+  2: "functions"
 };
 
 var indexSectionLabels =
 {
   0: "Tudo",
-  1: "Classes"
+  1: "Classes",
+  2: "Funções"
 };
 

@@ -82,81 +82,130 @@ $(document).ready(function() { init_codefold(0); });
   <div class="headertitle"><div class="title">Jogador.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">    #ifndef JOGADOR_HPP</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">    #define JOGADOR_HPP</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">    #include &quot;../include/Personagem.hpp&quot;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">    #include &lt;SFML/Graphics.hpp&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
-<div class="foldopen" id="foldopen00006" data-start="{" data-end="};">
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno"><a class="line" href="class_jogador.html">    6</a></span>    <span class="keyword">class </span><a class="code hl_class" href="class_jogador.html">Jogador</a> : <span class="keyword">public</span> <a class="code hl_class" href="class_personagem.html">Personagem</a> {</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>    <span class="keyword">private</span>: </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>        <span class="comment">//Atributos</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> alturaTela;</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>        <span class="keywordtype">int</span> contadorAndadaDir;</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>        <span class="keywordtype">int</span> contadorAndadaEsq;</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> vida = 1;</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> alturaJogador;</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> larguraJogador;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        <span class="keywordtype">int</span> moedas;</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        std::shared_ptr &lt;sf::RenderWindow&gt; janela;</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <span class="comment">//Texturas</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        std::vector&lt;sf::Texture&gt; mariosDireita;</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        std::vector&lt;sf::Texture&gt; mariosEsquerda;</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        std::vector&lt;sf::Texture&gt; mariosPequenosEsquerda;</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        std::vector&lt;sf::Texture&gt; mariosPequenosDireita;</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <span class="comment">//Verificações</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        <span class="keywordtype">bool</span> movendoDireita;</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        <span class="keywordtype">bool</span> movendoEsquerda;</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <span class="keywordtype">bool</span> pulando;</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <span class="keywordtype">bool</span> colisaoCabeca;</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <span class="keywordtype">bool</span> ganhou;</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <span class="keywordtype">bool</span> perdeu;</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <span class="keywordtype">bool</span> ativarPoder;</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        <span class="comment">//Construtor</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <a class="code hl_class" href="class_jogador.html">Jogador</a>(<a class="code hl_class" href="class_colisao.html">Colisao</a> &amp;colisao, <span class="keyword">const</span> <span class="keywordtype">float</span> larguraTela, <span class="keyword">const</span> <span class="keywordtype">float</span> alturaTelaJogo, std::shared_ptr &lt;sf::RenderWindow&gt; janela1);</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <a class="code hl_class" href="class_jogador.html">Jogador</a>&amp; operator=(<span class="keyword">const</span> <a class="code hl_class" href="class_jogador.html">Jogador</a>&amp; other);</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="comment">//Inicialização</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="keywordtype">void</span> inicializarBooleanos();</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <span class="comment">//Destrutor</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="keyword">virtual</span> <a class="code hl_class" href="class_jogador.html">~Jogador</a>();</div>
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef JOGADOR_HPP</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define JOGADOR_HPP</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;../include/Personagem.hpp&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;SFML/Graphics.hpp&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="foldopen" id="foldopen00010" data-start="{" data-end="};">
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="class_jogador.html">   10</a></span><span class="keyword">class </span><a class="code hl_class" href="class_jogador.html">Jogador</a> : <span class="keyword">public</span> <a class="code hl_class" href="class_personagem.html">Personagem</a> {</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <span class="comment">// Atributos</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="keyword">const</span> <span class="keywordtype">float</span> alturaTela; </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keywordtype">int</span> contadorAndadaDir;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keywordtype">int</span> contadorAndadaEsq;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> vida = 1; </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> alturaJogador;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> larguraJogador;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keywordtype">int</span> moedas;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    std::shared_ptr&lt;sf::RenderWindow&gt; janela; </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="comment">// Texturas</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    std::vector&lt;sf::Texture&gt; mariosDireita;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    std::vector&lt;sf::Texture&gt; mariosEsquerda;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    std::vector&lt;sf::Texture&gt; mariosPequenosEsquerda;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    std::vector&lt;sf::Texture&gt; mariosPequenosDireita;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="comment">// Temporizador</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    sf::Clock temporizadorInvencivel;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="comment">// Verificações</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keywordtype">bool</span> movendoDireita;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keywordtype">bool</span> movendoEsquerda;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordtype">bool</span> pulando;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keywordtype">bool</span> colisaoCabeca;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordtype">bool</span> ganhou;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordtype">bool</span> perdeu;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordtype">bool</span> ativarPoder;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordtype">bool</span> puloemGoomba;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordtype">bool</span> invencivel;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keywordtype">bool</span> pegouEstrela;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordtype">bool</span> subindo;</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <span class="comment">//Métodos diretamente aplicados</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="keywordtype">void</span> dobrarAltura();</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <span class="keywordtype">void</span> modificarPosicao(sf::Time deltaTime, <span class="keywordtype">int</span> larguraMapa) <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <span class="keywordtype">void</span> desenhar();</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <span class="keywordtype">void</span> perderVida();</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <span class="keywordtype">void</span> perdeuMudarTextura();</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        <span class="comment">// Métodos de verificação</span></div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <span class="keywordtype">bool</span> estaMovendoDireita()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> movendoDireita; }</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        <span class="keywordtype">bool</span> estaMovendoEsquerda()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> movendoEsquerda; }</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        <span class="keywordtype">bool</span> estaPulando()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> pulando; }</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="keywordtype">bool</span> verificarColisaoDistanciaX(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y, <span class="keywordtype">float</span> largura);</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="keywordtype">bool</span> verificarColisaoDistanciaY(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y, <span class="keywordtype">float</span> altura);</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="comment">//Getters</span></div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        <span class="keywordtype">int</span> getLarguraJogador();</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        <span class="keywordtype">int</span> getAlturaJogador();</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <span class="keywordtype">bool</span> getGanhou();</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        <span class="keywordtype">bool</span> getPerdeu();</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        <span class="comment">// Métodos para definir o estado dos movimentos</span></div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        <span class="keywordtype">void</span> setMovendoDireita(<span class="keywordtype">bool</span> movendo);</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <span class="keywordtype">void</span> setMovendoEsquerda(<span class="keywordtype">bool</span> movendo);</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <span class="keywordtype">void</span> setPulando(<span class="keywordtype">bool</span> pulo);</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        <span class="keywordtype">void</span> atualizarColisao(<a class="code hl_class" href="class_mapa.html">Mapa</a> &amp;mapa);</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    };</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="comment">// Construtor</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="class_jogador.html#aed41f8e1bddfc8ce5ebf531d7784b4bd">   54</a></span>    <a class="code hl_function" href="class_jogador.html#aed41f8e1bddfc8ce5ebf531d7784b4bd">Jogador</a>(<a class="code hl_class" href="class_colisao.html">Colisao</a>&amp; colisao, <span class="keyword">const</span> <span class="keywordtype">float</span> larguraTela, <span class="keyword">const</span> <span class="keywordtype">float</span> alturaTelaJogo, std::shared_ptr&lt;sf::RenderWindow&gt; janela1);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="class_jogador.html#a458294f0c293e2fffbc8c0fa34e3eed0">   61</a></span>    <a class="code hl_class" href="class_jogador.html">Jogador</a>&amp; <a class="code hl_function" href="class_jogador.html#a458294f0c293e2fffbc8c0fa34e3eed0">operator=</a>(<span class="keyword">const</span> <a class="code hl_class" href="class_jogador.html">Jogador</a>&amp; other);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="comment">// Inicialização</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="class_jogador.html#a690c1ee0aa789e450a2d4dca1adb1736">   67</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_jogador.html#a690c1ee0aa789e450a2d4dca1adb1736">inicializarBooleanos</a>();</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="comment">// Destrutor</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="class_jogador.html#a7d0fe5690b70027fcdb8c63946382fca">   73</a></span>    <span class="keyword">virtual</span> <a class="code hl_function" href="class_jogador.html#a7d0fe5690b70027fcdb8c63946382fca">~Jogador</a>();</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="comment">// Métodos Aplicados Diretamente</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="class_jogador.html#ae73db6b042fb67fe3c89e01a35598bd0">   79</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_jogador.html#ae73db6b042fb67fe3c89e01a35598bd0">dobrarAltura</a>();</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="class_jogador.html#a453e4ce824fb4388742b918ca1608cee">   86</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_jogador.html#a453e4ce824fb4388742b918ca1608cee">modificarPosicao</a>(sf::Time deltaTime, <span class="keywordtype">int</span> larguraMapa) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="class_jogador.html#a7a682a6e955b61c76d89a3af6a2c6b0d">   91</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_jogador.html#a7a682a6e955b61c76d89a3af6a2c6b0d">desenhar</a>();</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno"><a class="line" href="class_jogador.html#a3441165b951c51d3146cee6f66f2214f">   96</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_jogador.html#a3441165b951c51d3146cee6f66f2214f">perderVida</a>();</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno"><a class="line" href="class_jogador.html#a1ed2befc236d5baf4cad8aa319ff10c5">  101</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_jogador.html#a1ed2befc236d5baf4cad8aa319ff10c5">perdeuMudarTextura</a>();</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    <span class="comment">// Métodos de Verificação</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno"><a class="line" href="class_jogador.html#a7e1d3b50f87e53fd6ab4911539af9363">  108</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_jogador.html#a7e1d3b50f87e53fd6ab4911539af9363">estaMovendoDireita</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> movendoDireita; }</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno"><a class="line" href="class_jogador.html#ad234789dead35082774c2a8d1ba2d5e8">  114</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_jogador.html#ad234789dead35082774c2a8d1ba2d5e8">estaMovendoEsquerda</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> movendoEsquerda; }</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno"><a class="line" href="class_jogador.html#ae4ca21d62477062522dc4eefcb99f124">  120</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_jogador.html#ae4ca21d62477062522dc4eefcb99f124">estaPulando</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> pulando; }</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno"><a class="line" href="class_jogador.html#a51f776f7a148c3e0e18074d38daf5dee">  129</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_jogador.html#a51f776f7a148c3e0e18074d38daf5dee">verificarColisaoDistanciaX</a>(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y, <span class="keywordtype">float</span> largura);</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno"><a class="line" href="class_jogador.html#ada209f8d0156bf16fd6cd08840b657dd">  138</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_jogador.html#ada209f8d0156bf16fd6cd08840b657dd">verificarColisaoDistanciaY</a>(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y, <span class="keywordtype">float</span> altura);</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span> </div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    <span class="comment">// Getters</span></div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno"><a class="line" href="class_jogador.html#aef5c0e141062a07daa7e32ccd7bf3551">  145</a></span>    <span class="keywordtype">int</span> <a class="code hl_function" href="class_jogador.html#aef5c0e141062a07daa7e32ccd7bf3551">getLarguraJogador</a>();</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno"><a class="line" href="class_jogador.html#a01f6e0af4a08a7ccb06cfbf76b611e54">  151</a></span>    <span class="keywordtype">int</span> <a class="code hl_function" href="class_jogador.html#a01f6e0af4a08a7ccb06cfbf76b611e54">getAlturaJogador</a>();</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span> </div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno"><a class="line" href="class_jogador.html#a60b072f8182adaaa9837c23b50939dd5">  157</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_jogador.html#a60b072f8182adaaa9837c23b50939dd5">getGanhou</a>();</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span> </div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno"><a class="line" href="class_jogador.html#ab5fe99a014e06804bf20eb79da672d59">  163</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_jogador.html#ab5fe99a014e06804bf20eb79da672d59">getPerdeu</a>();</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span> </div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno"><a class="line" href="class_jogador.html#ab23adc379075a93202a62e5dc25982a8">  169</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_jogador.html#ab23adc379075a93202a62e5dc25982a8">estaInvencivel</a>();</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span> </div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno"><a class="line" href="class_jogador.html#a07c65f454dee1dafeddceee9dad96923">  175</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_jogador.html#a07c65f454dee1dafeddceee9dad96923">estaSubindo</a>();</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span> </div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>    <span class="comment">// Métodos para definir o estado dos movimentos</span></div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno"><a class="line" href="class_jogador.html#a2c47e6f2df76849c27b420a351944bba">  183</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_jogador.html#a2c47e6f2df76849c27b420a351944bba">setMovendoDireita</a>(<span class="keywordtype">bool</span> movendo);</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>    <span class="keywordtype">void</span> setMovendoEsquerda(<span class="keywordtype">bool</span> movendo);</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>    <span class="keywordtype">void</span> setPulando(<span class="keywordtype">bool</span> pulo);</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    <span class="keywordtype">void</span> setPuloEmGoomba(<span class="keywordtype">bool</span> pulo);</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>    <span class="keywordtype">void</span> ficarInvencivel();</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>    <span class="keywordtype">void</span> pegarEstrela();</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>    <span class="keywordtype">void</span> atualizarColisao(<a class="code hl_class" href="class_mapa.html">Mapa</a> &amp;mapa);</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>    <span class="keywordtype">void</span> setPosicao(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y);</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>};</div>
 </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="preprocessor">    #endif</span></div>
-<div class="ttc" id="aclass_colisao_html"><div class="ttname"><a href="class_colisao.html">Colisao</a></div><div class="ttdef"><b>Definição</b> Colisao.hpp:7</div></div>
-<div class="ttc" id="aclass_jogador_html"><div class="ttname"><a href="class_jogador.html">Jogador</a></div><div class="ttdef"><b>Definição</b> Jogador.hpp:6</div></div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclass_colisao_html"><div class="ttname"><a href="class_colisao.html">Colisao</a></div><div class="ttdoc">Classe que lida com detecção de colisão em um mapa.</div><div class="ttdef"><b>Definição</b> Colisao.hpp:10</div></div>
+<div class="ttc" id="aclass_jogador_html"><div class="ttname"><a href="class_jogador.html">Jogador</a></div><div class="ttdoc">Representa o personagem jogador no jogo.</div><div class="ttdef"><b>Definição</b> Jogador.hpp:10</div></div>
+<div class="ttc" id="aclass_jogador_html_a01f6e0af4a08a7ccb06cfbf76b611e54"><div class="ttname"><a href="class_jogador.html#a01f6e0af4a08a7ccb06cfbf76b611e54">Jogador::getAlturaJogador</a></div><div class="ttdeci">int getAlturaJogador()</div><div class="ttdoc">Obtém a altura do personagem jogador.</div></div>
+<div class="ttc" id="aclass_jogador_html_a07c65f454dee1dafeddceee9dad96923"><div class="ttname"><a href="class_jogador.html#a07c65f454dee1dafeddceee9dad96923">Jogador::estaSubindo</a></div><div class="ttdeci">bool estaSubindo()</div><div class="ttdoc">Verifica se o personagem jogador está se movendo para cima.</div></div>
+<div class="ttc" id="aclass_jogador_html_a1ed2befc236d5baf4cad8aa319ff10c5"><div class="ttname"><a href="class_jogador.html#a1ed2befc236d5baf4cad8aa319ff10c5">Jogador::perdeuMudarTextura</a></div><div class="ttdeci">void perdeuMudarTextura()</div><div class="ttdoc">Altera a textura do personagem jogador ao perder o jogo.</div></div>
+<div class="ttc" id="aclass_jogador_html_a2c47e6f2df76849c27b420a351944bba"><div class="ttname"><a href="class_jogador.html#a2c47e6f2df76849c27b420a351944bba">Jogador::setMovendoDireita</a></div><div class="ttdeci">void setMovendoDireita(bool movendo)</div><div class="ttdoc">Obtém a contagem atual de vidas do personagem jogador.</div></div>
+<div class="ttc" id="aclass_jogador_html_a3441165b951c51d3146cee6f66f2214f"><div class="ttname"><a href="class_jogador.html#a3441165b951c51d3146cee6f66f2214f">Jogador::perderVida</a></div><div class="ttdeci">void perderVida()</div><div class="ttdoc">Diminui a contagem de vidas do jogador.</div></div>
+<div class="ttc" id="aclass_jogador_html_a453e4ce824fb4388742b918ca1608cee"><div class="ttname"><a href="class_jogador.html#a453e4ce824fb4388742b918ca1608cee">Jogador::modificarPosicao</a></div><div class="ttdeci">void modificarPosicao(sf::Time deltaTime, int larguraMapa) override</div><div class="ttdoc">Modifica a posição do personagem jogador com base no tempo delta e na largura do mapa.</div></div>
+<div class="ttc" id="aclass_jogador_html_a458294f0c293e2fffbc8c0fa34e3eed0"><div class="ttname"><a href="class_jogador.html#a458294f0c293e2fffbc8c0fa34e3eed0">Jogador::operator=</a></div><div class="ttdeci">Jogador &amp; operator=(const Jogador &amp;other)</div><div class="ttdoc">Operador de atribuição por cópia.</div></div>
+<div class="ttc" id="aclass_jogador_html_a51f776f7a148c3e0e18074d38daf5dee"><div class="ttname"><a href="class_jogador.html#a51f776f7a148c3e0e18074d38daf5dee">Jogador::verificarColisaoDistanciaX</a></div><div class="ttdeci">bool verificarColisaoDistanciaX(float x, float y, float largura)</div><div class="ttdoc">Verifica colisão no eixo X dentro de uma distância especificada.</div></div>
+<div class="ttc" id="aclass_jogador_html_a60b072f8182adaaa9837c23b50939dd5"><div class="ttname"><a href="class_jogador.html#a60b072f8182adaaa9837c23b50939dd5">Jogador::getGanhou</a></div><div class="ttdeci">bool getGanhou()</div><div class="ttdoc">Verifica se o personagem jogador venceu o jogo.</div></div>
+<div class="ttc" id="aclass_jogador_html_a690c1ee0aa789e450a2d4dca1adb1736"><div class="ttname"><a href="class_jogador.html#a690c1ee0aa789e450a2d4dca1adb1736">Jogador::inicializarBooleanos</a></div><div class="ttdeci">void inicializarBooleanos()</div><div class="ttdoc">Inicializa atributos booleanos.</div></div>
+<div class="ttc" id="aclass_jogador_html_a7a682a6e955b61c76d89a3af6a2c6b0d"><div class="ttname"><a href="class_jogador.html#a7a682a6e955b61c76d89a3af6a2c6b0d">Jogador::desenhar</a></div><div class="ttdeci">void desenhar()</div><div class="ttdoc">Desenha o personagem jogador na tela.</div></div>
+<div class="ttc" id="aclass_jogador_html_a7d0fe5690b70027fcdb8c63946382fca"><div class="ttname"><a href="class_jogador.html#a7d0fe5690b70027fcdb8c63946382fca">Jogador::~Jogador</a></div><div class="ttdeci">virtual ~Jogador()</div><div class="ttdoc">Destrói o objeto Jogador.</div></div>
+<div class="ttc" id="aclass_jogador_html_a7e1d3b50f87e53fd6ab4911539af9363"><div class="ttname"><a href="class_jogador.html#a7e1d3b50f87e53fd6ab4911539af9363">Jogador::estaMovendoDireita</a></div><div class="ttdeci">bool estaMovendoDireita() const</div><div class="ttdoc">Verifica se o personagem jogador está se movendo para a direita.</div><div class="ttdef"><b>Definição</b> Jogador.hpp:108</div></div>
+<div class="ttc" id="aclass_jogador_html_ab23adc379075a93202a62e5dc25982a8"><div class="ttname"><a href="class_jogador.html#ab23adc379075a93202a62e5dc25982a8">Jogador::estaInvencivel</a></div><div class="ttdeci">bool estaInvencivel()</div><div class="ttdoc">Verifica se o personagem jogador está invencível.</div></div>
+<div class="ttc" id="aclass_jogador_html_ab5fe99a014e06804bf20eb79da672d59"><div class="ttname"><a href="class_jogador.html#ab5fe99a014e06804bf20eb79da672d59">Jogador::getPerdeu</a></div><div class="ttdeci">bool getPerdeu()</div><div class="ttdoc">Verifica se o personagem jogador perdeu o jogo.</div></div>
+<div class="ttc" id="aclass_jogador_html_ad234789dead35082774c2a8d1ba2d5e8"><div class="ttname"><a href="class_jogador.html#ad234789dead35082774c2a8d1ba2d5e8">Jogador::estaMovendoEsquerda</a></div><div class="ttdeci">bool estaMovendoEsquerda() const</div><div class="ttdoc">Verifica se o personagem jogador está se movendo para a esquerda.</div><div class="ttdef"><b>Definição</b> Jogador.hpp:114</div></div>
+<div class="ttc" id="aclass_jogador_html_ada209f8d0156bf16fd6cd08840b657dd"><div class="ttname"><a href="class_jogador.html#ada209f8d0156bf16fd6cd08840b657dd">Jogador::verificarColisaoDistanciaY</a></div><div class="ttdeci">bool verificarColisaoDistanciaY(float x, float y, float altura)</div><div class="ttdoc">Verifica colisão no eixo Y dentro de uma distância especificada.</div></div>
+<div class="ttc" id="aclass_jogador_html_ae4ca21d62477062522dc4eefcb99f124"><div class="ttname"><a href="class_jogador.html#ae4ca21d62477062522dc4eefcb99f124">Jogador::estaPulando</a></div><div class="ttdeci">bool estaPulando() const</div><div class="ttdoc">Verifica se o personagem jogador está pulando.</div><div class="ttdef"><b>Definição</b> Jogador.hpp:120</div></div>
+<div class="ttc" id="aclass_jogador_html_ae73db6b042fb67fe3c89e01a35598bd0"><div class="ttname"><a href="class_jogador.html#ae73db6b042fb67fe3c89e01a35598bd0">Jogador::dobrarAltura</a></div><div class="ttdeci">void dobrarAltura()</div><div class="ttdoc">Dobra a altura do personagem jogador.</div></div>
+<div class="ttc" id="aclass_jogador_html_aed41f8e1bddfc8ce5ebf531d7784b4bd"><div class="ttname"><a href="class_jogador.html#aed41f8e1bddfc8ce5ebf531d7784b4bd">Jogador::Jogador</a></div><div class="ttdeci">Jogador(Colisao &amp;colisao, const float larguraTela, const float alturaTelaJogo, std::shared_ptr&lt; sf::RenderWindow &gt; janela1)</div><div class="ttdoc">Constrói um objeto Jogador.</div></div>
+<div class="ttc" id="aclass_jogador_html_aef5c0e141062a07daa7e32ccd7bf3551"><div class="ttname"><a href="class_jogador.html#aef5c0e141062a07daa7e32ccd7bf3551">Jogador::getLarguraJogador</a></div><div class="ttdeci">int getLarguraJogador()</div><div class="ttdoc">Obtém a largura do personagem jogador.</div></div>
 <div class="ttc" id="aclass_mapa_html"><div class="ttname"><a href="class_mapa.html">Mapa</a></div><div class="ttdef"><b>Definição</b> Mapa.hpp:14</div></div>
 <div class="ttc" id="aclass_personagem_html"><div class="ttname"><a href="class_personagem.html">Personagem</a></div><div class="ttdef"><b>Definição</b> Personagem.hpp:11</div></div>
 </div><!-- fragment --></div><!-- contents -->

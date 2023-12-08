@@ -76,16 +76,100 @@ $(function() {
   <div class="headertitle"><div class="title">Referência à classe Colisao</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Classe que lida com detecção de colisão em um mapa.  
+ <a href="class_colisao.html#details">Mais...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_colisao_8hpp_source.html">Colisao.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Membros públicos</h2></td></tr>
-<tr class="memitem:a1f573be335703afb3b132d26a17ae2d0" id="r_a1f573be335703afb3b132d26a17ae2d0"><td class="memItemLeft" align="right" valign="top"><a id="a1f573be335703afb3b132d26a17ae2d0" name="a1f573be335703afb3b132d26a17ae2d0"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Colisao</b> (const std::vector&lt; std::vector&lt; int &gt; &gt; dadosMapa, int tileSize)</td></tr>
+<tr class="memitem:a1f573be335703afb3b132d26a17ae2d0" id="r_a1f573be335703afb3b132d26a17ae2d0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_colisao.html#a1f573be335703afb3b132d26a17ae2d0">Colisao</a> (const std::vector&lt; std::vector&lt; int &gt; &gt; dadosMapa, int tileSize)</td></tr>
+<tr class="memdesc:a1f573be335703afb3b132d26a17ae2d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construtor da classe <a class="el" href="class_colisao.html" title="Classe que lida com detecção de colisão em um mapa.">Colisao</a>.  <br /></td></tr>
 <tr class="separator:a1f573be335703afb3b132d26a17ae2d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b9cc0144a59c3f0899c066804d08ba0" id="r_a5b9cc0144a59c3f0899c066804d08ba0"><td class="memItemLeft" align="right" valign="top"><a id="a5b9cc0144a59c3f0899c066804d08ba0" name="a5b9cc0144a59c3f0899c066804d08ba0"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>verificarColisao</b> (float x, float y)</td></tr>
+<tr class="memitem:a5b9cc0144a59c3f0899c066804d08ba0" id="r_a5b9cc0144a59c3f0899c066804d08ba0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_colisao.html#a5b9cc0144a59c3f0899c066804d08ba0">verificarColisao</a> (float x, float y)</td></tr>
+<tr class="memdesc:a5b9cc0144a59c3f0899c066804d08ba0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verifica a colisão em uma posição específica no mapa.  <br /></td></tr>
 <tr class="separator:a5b9cc0144a59c3f0899c066804d08ba0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Descrição detalhada</h2>
+<div class="textblock"><p>Classe que lida com detecção de colisão em um mapa. </p>
+</div><h2 class="groupheader">Documentação dos Construtores &amp; Destrutor</h2>
+<a id="a1f573be335703afb3b132d26a17ae2d0" name="a1f573be335703afb3b132d26a17ae2d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f573be335703afb3b132d26a17ae2d0">&#9670;&#160;</a></span>Colisao()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Colisao::Colisao </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; std::vector&lt; int &gt; &gt;&#160;</td>
+          <td class="paramname"><em>dadosMapa</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>tileSize</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Construtor da classe <a class="el" href="class_colisao.html" title="Classe que lida com detecção de colisão em um mapa.">Colisao</a>. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dadosMapa</td><td>Dados do mapa representados por uma matriz de inteiros. </td></tr>
+    <tr><td class="paramname">tileSize</td><td>Tamanho do bloco no mapa. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Documentação das funções</h2>
+<a id="a5b9cc0144a59c3f0899c066804d08ba0" name="a5b9cc0144a59c3f0899c066804d08ba0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b9cc0144a59c3f0899c066804d08ba0">&#9670;&#160;</a></span>verificarColisao()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Colisao::verificarColisao </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Verifica a colisão em uma posição específica no mapa. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>Posição horizontal. </td></tr>
+    <tr><td class="paramname">y</td><td>Posição vertical. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>Identificador do tipo de bloco com o qual ocorreu a colisão. </dd></dl>
+
+</div>
+</div>
 <hr/>A documentação para esta classe foi gerada a partir do seguinte ficheiro:<ul>
 <li>include/<a class="el" href="_colisao_8hpp_source.html">Colisao.hpp</a></li>
 </ul>

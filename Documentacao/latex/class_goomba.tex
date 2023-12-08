@@ -3,28 +3,43 @@
 \doxysubsubsection*{Membros públicos}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{class_goomba_ac873650acdf2a5eb4bb23bc83050a2ca}\label{class_goomba_ac873650acdf2a5eb4bb23bc83050a2ca} 
-{\bfseries Goomba} (\mbox{\hyperlink{class_colisao}{Colisao}} \&colisao, std\+::shared\+\_\+ptr$<$ sf\+::\+Render\+Window $>$ janela1)
+\Hypertarget{class_goomba_aaa70dc7621bf9ec8fa1fe64cbafe7952}\label{class_goomba_aaa70dc7621bf9ec8fa1fe64cbafe7952} 
+{\bfseries Goomba} (\mbox{\hyperlink{class_colisao}{Colisao}} \&colisao, std\+::shared\+\_\+ptr$<$ sf\+::\+Render\+Window $>$ janela1, float x, float y)
 \item 
 \Hypertarget{class_goomba_a910307aecea4f08221d98251e8199c33}\label{class_goomba_a910307aecea4f08221d98251e8199c33} 
 void {\bfseries inicializar\+Goombas} ()
 \item 
-\Hypertarget{class_goomba_a6dae3eb702d7b7a5231a689277aa31f6}\label{class_goomba_a6dae3eb702d7b7a5231a689277aa31f6} 
-void {\bfseries atacar} ()
+\Hypertarget{class_goomba_ac60b707c19cc45455822ab5ffd4ea178}\label{class_goomba_ac60b707c19cc45455822ab5ffd4ea178} 
+void {\bfseries atacar} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_jogador}{Jogador}} $>$ mario)
 \item 
 void \mbox{\hyperlink{class_goomba_a61093bd89d7d40d5f8a7802e91febf3c}{modificar\+Posicao}} (sf\+::\+Time delta\+Time, int largura\+Mapa) override
 \item 
 \Hypertarget{class_goomba_a8a86996227e2f2c5a1d03956c15eb3de}\label{class_goomba_a8a86996227e2f2c5a1d03956c15eb3de} 
 void {\bfseries morrer} ()
 \item 
-\Hypertarget{class_goomba_adec62effc2c279fc6fa337b839ef1def}\label{class_goomba_adec62effc2c279fc6fa337b839ef1def} 
-void {\bfseries desenhar\+Goomba} ()
+\Hypertarget{class_goomba_aeef8a04059ef83845ef5c0e4859fd659}\label{class_goomba_aeef8a04059ef83845ef5c0e4859fd659} 
+void {\bfseries desenhar\+Goomba} (float x)
 \item 
 \Hypertarget{class_goomba_a6f406314c09dfa0eabcfa57f87c75910}\label{class_goomba_a6f406314c09dfa0eabcfa57f87c75910} 
 bool {\bfseries verificar\+Colisao} ()
 \item 
-\Hypertarget{class_goomba_a5bbb3a80e8912d59206029898184080c}\label{class_goomba_a5bbb3a80e8912d59206029898184080c} 
-bool {\bfseries verificar\+Colisao\+DistanciaX} (float x, float y, float altura)
+\Hypertarget{class_goomba_af62ae8d17c813ed7e1941f14a49d10b2}\label{class_goomba_af62ae8d17c813ed7e1941f14a49d10b2} 
+bool {\bfseries verificar\+Colisao\+DistanciaX} (float x, float y, float largura)
+\item 
+\Hypertarget{class_goomba_a9e07183a9df7e532055598cfb7ef5ce2}\label{class_goomba_a9e07183a9df7e532055598cfb7ef5ce2} 
+bool {\bfseries verificar\+Colisao\+DistanciaY} (float x, float y, float altura)
+\item 
+\Hypertarget{class_goomba_ad8fea39a6b8dd00464d84e793eac23c4}\label{class_goomba_ad8fea39a6b8dd00464d84e793eac23c4} 
+bool {\bfseries verificar\+Colisao\+Com\+Goomba} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_jogador}{Jogador}} $>$ mario)
+\item 
+\Hypertarget{class_goomba_a064c2c68069b740ae58dbd37eee8cfc0}\label{class_goomba_a064c2c68069b740ae58dbd37eee8cfc0} 
+bool {\bfseries verificar\+Colisao\+Lateral\+Com\+Goomba} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_jogador}{Jogador}} $>$ mario)
+\item 
+\Hypertarget{class_goomba_a643f804faab017d3029a56bd26db385b}\label{class_goomba_a643f804faab017d3029a56bd26db385b} 
+bool {\bfseries verificar\+Colisao\+Lateral\+Com\+Goomba\+Direita} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_jogador}{Jogador}} $>$ mario)
+\item 
+\Hypertarget{class_goomba_a07c724d9d0623da55f813f6bb1787704}\label{class_goomba_a07c724d9d0623da55f813f6bb1787704} 
+bool {\bfseries verificar\+Colisao\+Lateral\+Com\+Goomba\+Esquerda} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_jogador}{Jogador}} $>$ mario)
 \end{DoxyCompactItemize}
 \doxysubsection*{Membros públicos herdados de \mbox{\hyperlink{class_personagem}{Personagem}}}
 \begin{DoxyCompactItemize}

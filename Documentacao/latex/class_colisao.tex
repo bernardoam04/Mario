@@ -1,14 +1,67 @@
 \doxysection{Referência à classe Colisao}
 \hypertarget{class_colisao}{}\label{class_colisao}\index{Colisao@{Colisao}}
+
+
+Classe que lida com detecção de colisão em um mapa.  
+
+
+
+
+{\ttfamily \#include $<$Colisao.\+hpp$>$}
+
 \doxysubsubsection*{Membros públicos}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\hyperlink{class_colisao_a1f573be335703afb3b132d26a17ae2d0}{Colisao}} (const std\+::vector$<$ std\+::vector$<$ int $>$ $>$ dados\+Mapa, int tile\+Size)
+\begin{DoxyCompactList}\small\item\em Construtor da classe \doxylink{class_colisao}{Colisao}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_colisao_a5b9cc0144a59c3f0899c066804d08ba0}{verificar\+Colisao}} (float x, float y)
+\begin{DoxyCompactList}\small\item\em Verifica a colisão em uma posição específica no mapa. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrição detalhada}
+Classe que lida com detecção de colisão em um mapa. 
+
+\doxysubsection{Documentação dos Construtores \& Destrutor}
 \Hypertarget{class_colisao_a1f573be335703afb3b132d26a17ae2d0}\label{class_colisao_a1f573be335703afb3b132d26a17ae2d0} 
-{\bfseries Colisao} (const std\+::vector$<$ std\+::vector$<$ int $>$ $>$ dados\+Mapa, int tile\+Size)
-\item 
+\index{Colisao@{Colisao}!Colisao@{Colisao}}
+\index{Colisao@{Colisao}!Colisao@{Colisao}}
+\doxysubsubsection{\texorpdfstring{Colisao()}{Colisao()}}
+{\footnotesize\ttfamily Colisao\+::\+Colisao (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::vector$<$ int $>$ $>$}]{dados\+Mapa,  }\item[{int}]{tile\+Size }\end{DoxyParamCaption})}
+
+
+
+Construtor da classe \doxylink{class_colisao}{Colisao}. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em dados\+Mapa} & Dados do mapa representados por uma matriz de inteiros. \\
+\hline
+{\em tile\+Size} & Tamanho do bloco no mapa. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Documentação das funções}
 \Hypertarget{class_colisao_a5b9cc0144a59c3f0899c066804d08ba0}\label{class_colisao_a5b9cc0144a59c3f0899c066804d08ba0} 
-int {\bfseries verificar\+Colisao} (float x, float y)
-\end{DoxyCompactItemize}
+\index{Colisao@{Colisao}!verificarColisao@{verificarColisao}}
+\index{verificarColisao@{verificarColisao}!Colisao@{Colisao}}
+\doxysubsubsection{\texorpdfstring{verificarColisao()}{verificarColisao()}}
+{\footnotesize\ttfamily int Colisao\+::verificar\+Colisao (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y }\end{DoxyParamCaption})}
+
+
+
+Verifica a colisão em uma posição específica no mapa. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em x} & Posição horizontal. \\
+\hline
+{\em y} & Posição vertical. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Identificador do tipo de bloco com o qual ocorreu a colisão. 
+\end{DoxyReturn}
 
 
 A documentação para esta classe foi gerada a partir do seguinte ficheiro\+:\begin{DoxyCompactItemize}
