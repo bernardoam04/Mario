@@ -1,69 +1,85 @@
 \doxysection{Referência à classe Jogador}
 \hypertarget{class_jogador}{}\label{class_jogador}\index{Jogador@{Jogador}}
+
+
+Representa o personagem jogador no jogo.  
+
+
+
+
+{\ttfamily \#include $<$Jogador.\+hpp$>$}
+
 \doxysubsubsection*{Membros públicos}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{class_jogador_aed41f8e1bddfc8ce5ebf531d7784b4bd}\label{class_jogador_aed41f8e1bddfc8ce5ebf531d7784b4bd} 
-{\bfseries Jogador} (\mbox{\hyperlink{class_colisao}{Colisao}} \&colisao, const float largura\+Tela, const float altura\+Tela\+Jogo, std\+::shared\+\_\+ptr$<$ sf\+::\+Render\+Window $>$ janela1)
-\item 
-\Hypertarget{class_jogador_a458294f0c293e2fffbc8c0fa34e3eed0}\label{class_jogador_a458294f0c293e2fffbc8c0fa34e3eed0} 
-\mbox{\hyperlink{class_jogador}{Jogador}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_jogador}{Jogador}} \&other)
-\item 
+\mbox{\hyperlink{class_jogador_aed41f8e1bddfc8ce5ebf531d7784b4bd}{Jogador}} (\mbox{\hyperlink{class_colisao}{Colisao}} \&colisao, const float largura\+Tela, const float altura\+Tela\+Jogo, std\+::shared\+\_\+ptr$<$ sf\+::\+Render\+Window $>$ janela1)
+\begin{DoxyCompactList}\small\item\em Constrói um objeto \doxylink{class_jogador}{Jogador}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_jogador}{Jogador}} \& \mbox{\hyperlink{class_jogador_a458294f0c293e2fffbc8c0fa34e3eed0}{operator=}} (const \mbox{\hyperlink{class_jogador}{Jogador}} \&other)
+\begin{DoxyCompactList}\small\item\em Operador de atribuição por cópia. \end{DoxyCompactList}\item 
 \Hypertarget{class_jogador_a690c1ee0aa789e450a2d4dca1adb1736}\label{class_jogador_a690c1ee0aa789e450a2d4dca1adb1736} 
 void {\bfseries inicializar\+Booleanos} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Inicializa atributos booleanos. \end{DoxyCompactList}\item 
+\Hypertarget{class_jogador_a7d0fe5690b70027fcdb8c63946382fca}\label{class_jogador_a7d0fe5690b70027fcdb8c63946382fca} 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Jogador} ()
+\begin{DoxyCompactList}\small\item\em Destrói o objeto \doxylink{class_jogador}{Jogador}. \end{DoxyCompactList}\item 
 \Hypertarget{class_jogador_ae73db6b042fb67fe3c89e01a35598bd0}\label{class_jogador_ae73db6b042fb67fe3c89e01a35598bd0} 
 void {\bfseries dobrar\+Altura} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Dobra a altura do personagem jogador. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_jogador_a453e4ce824fb4388742b918ca1608cee}{modificar\+Posicao}} (sf\+::\+Time delta\+Time, int largura\+Mapa) override
-\item 
+\begin{DoxyCompactList}\small\item\em Modifica a posição do personagem jogador com base no tempo delta e na largura do mapa. \end{DoxyCompactList}\item 
 \Hypertarget{class_jogador_a7a682a6e955b61c76d89a3af6a2c6b0d}\label{class_jogador_a7a682a6e955b61c76d89a3af6a2c6b0d} 
 void {\bfseries desenhar} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Desenha o personagem jogador na tela. \end{DoxyCompactList}\item 
 \Hypertarget{class_jogador_a3441165b951c51d3146cee6f66f2214f}\label{class_jogador_a3441165b951c51d3146cee6f66f2214f} 
 void {\bfseries perder\+Vida} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Diminui a contagem de vidas do jogador. \end{DoxyCompactList}\item 
 \Hypertarget{class_jogador_a1ed2befc236d5baf4cad8aa319ff10c5}\label{class_jogador_a1ed2befc236d5baf4cad8aa319ff10c5} 
 void {\bfseries perdeu\+Mudar\+Textura} ()
-\item 
-\Hypertarget{class_jogador_a7e1d3b50f87e53fd6ab4911539af9363}\label{class_jogador_a7e1d3b50f87e53fd6ab4911539af9363} 
-bool {\bfseries esta\+Movendo\+Direita} () const
-\item 
-\Hypertarget{class_jogador_ad234789dead35082774c2a8d1ba2d5e8}\label{class_jogador_ad234789dead35082774c2a8d1ba2d5e8} 
-bool {\bfseries esta\+Movendo\+Esquerda} () const
-\item 
-\Hypertarget{class_jogador_ae4ca21d62477062522dc4eefcb99f124}\label{class_jogador_ae4ca21d62477062522dc4eefcb99f124} 
-bool {\bfseries esta\+Pulando} () const
-\item 
-\Hypertarget{class_jogador_a51f776f7a148c3e0e18074d38daf5dee}\label{class_jogador_a51f776f7a148c3e0e18074d38daf5dee} 
-bool {\bfseries verificar\+Colisao\+DistanciaX} (float x, float y, float largura)
-\item 
-\Hypertarget{class_jogador_ada209f8d0156bf16fd6cd08840b657dd}\label{class_jogador_ada209f8d0156bf16fd6cd08840b657dd} 
-bool {\bfseries verificar\+Colisao\+DistanciaY} (float x, float y, float altura)
-\item 
-\Hypertarget{class_jogador_aef5c0e141062a07daa7e32ccd7bf3551}\label{class_jogador_aef5c0e141062a07daa7e32ccd7bf3551} 
-int {\bfseries get\+Largura\+Jogador} ()
-\item 
-\Hypertarget{class_jogador_a01f6e0af4a08a7ccb06cfbf76b611e54}\label{class_jogador_a01f6e0af4a08a7ccb06cfbf76b611e54} 
-int {\bfseries get\+Altura\+Jogador} ()
-\item 
-\Hypertarget{class_jogador_a60b072f8182adaaa9837c23b50939dd5}\label{class_jogador_a60b072f8182adaaa9837c23b50939dd5} 
-bool {\bfseries get\+Ganhou} ()
-\item 
-\Hypertarget{class_jogador_ab5fe99a014e06804bf20eb79da672d59}\label{class_jogador_ab5fe99a014e06804bf20eb79da672d59} 
-bool {\bfseries get\+Perdeu} ()
-\item 
-\Hypertarget{class_jogador_a2c47e6f2df76849c27b420a351944bba}\label{class_jogador_a2c47e6f2df76849c27b420a351944bba} 
-void {\bfseries set\+Movendo\+Direita} (bool movendo)
-\item 
+\begin{DoxyCompactList}\small\item\em Altera a textura do personagem jogador ao perder o jogo. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_jogador_a7e1d3b50f87e53fd6ab4911539af9363}{esta\+Movendo\+Direita}} () const
+\begin{DoxyCompactList}\small\item\em Verifica se o personagem jogador está se movendo para a direita. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_jogador_ad234789dead35082774c2a8d1ba2d5e8}{esta\+Movendo\+Esquerda}} () const
+\begin{DoxyCompactList}\small\item\em Verifica se o personagem jogador está se movendo para a esquerda. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_jogador_ae4ca21d62477062522dc4eefcb99f124}{esta\+Pulando}} () const
+\begin{DoxyCompactList}\small\item\em Verifica se o personagem jogador está pulando. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_jogador_a51f776f7a148c3e0e18074d38daf5dee}{verificar\+Colisao\+DistanciaX}} (float x, float y, float largura)
+\begin{DoxyCompactList}\small\item\em Verifica colisão no eixo X dentro de uma distância especificada. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_jogador_ada209f8d0156bf16fd6cd08840b657dd}{verificar\+Colisao\+DistanciaY}} (float x, float y, float altura)
+\begin{DoxyCompactList}\small\item\em Verifica colisão no eixo Y dentro de uma distância especificada. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_jogador_aef5c0e141062a07daa7e32ccd7bf3551}{get\+Largura\+Jogador}} ()
+\begin{DoxyCompactList}\small\item\em Obtém a largura do personagem jogador. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_jogador_a01f6e0af4a08a7ccb06cfbf76b611e54}{get\+Altura\+Jogador}} ()
+\begin{DoxyCompactList}\small\item\em Obtém a altura do personagem jogador. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_jogador_a60b072f8182adaaa9837c23b50939dd5}{get\+Ganhou}} ()
+\begin{DoxyCompactList}\small\item\em Verifica se o personagem jogador venceu o jogo. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_jogador_ab5fe99a014e06804bf20eb79da672d59}{get\+Perdeu}} ()
+\begin{DoxyCompactList}\small\item\em Verifica se o personagem jogador perdeu o jogo. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_jogador_ab23adc379075a93202a62e5dc25982a8}{esta\+Invencivel}} ()
+\begin{DoxyCompactList}\small\item\em Verifica se o personagem jogador está invencível. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_jogador_a07c65f454dee1dafeddceee9dad96923}{esta\+Subindo}} ()
+\begin{DoxyCompactList}\small\item\em Verifica se o personagem jogador está se movendo para cima. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_jogador_a2c47e6f2df76849c27b420a351944bba}{set\+Movendo\+Direita}} (bool movendo)
+\begin{DoxyCompactList}\small\item\em Obtém a contagem atual de vidas do personagem jogador. \end{DoxyCompactList}\item 
 \Hypertarget{class_jogador_a7e2f177bcd49ad33b8e5dfa03fe67ce4}\label{class_jogador_a7e2f177bcd49ad33b8e5dfa03fe67ce4} 
 void {\bfseries set\+Movendo\+Esquerda} (bool movendo)
 \item 
 \Hypertarget{class_jogador_af5233aca4ce6bbd36ad8d97e538c2c50}\label{class_jogador_af5233aca4ce6bbd36ad8d97e538c2c50} 
 void {\bfseries set\+Pulando} (bool pulo)
 \item 
+\Hypertarget{class_jogador_a650ae079de846fbcd3236a6e92c5d7b1}\label{class_jogador_a650ae079de846fbcd3236a6e92c5d7b1} 
+void {\bfseries set\+Pulo\+Em\+Goomba} (bool pulo)
+\item 
+\Hypertarget{class_jogador_a2a750cbc85e28bc53f936dc68b0a45d5}\label{class_jogador_a2a750cbc85e28bc53f936dc68b0a45d5} 
+void {\bfseries ficar\+Invencivel} ()
+\item 
+\Hypertarget{class_jogador_af63f1285506cd38367a73f2af27833d7}\label{class_jogador_af63f1285506cd38367a73f2af27833d7} 
+void {\bfseries pegar\+Estrela} ()
+\item 
 \Hypertarget{class_jogador_a3bff28283a4e55f3c5df5d56a4f38d3b}\label{class_jogador_a3bff28283a4e55f3c5df5d56a4f38d3b} 
 void {\bfseries atualizar\+Colisao} (\mbox{\hyperlink{class_mapa}{Mapa}} \&mapa)
+\item 
+\Hypertarget{class_jogador_ac46baa944776976bbf4ecf8401d0cd29}\label{class_jogador_ac46baa944776976bbf4ecf8401d0cd29} 
+void {\bfseries set\+Posicao} (float x, float y)
 \end{DoxyCompactItemize}
 \doxysubsection*{Membros públicos herdados de \mbox{\hyperlink{class_personagem}{Personagem}}}
 \begin{DoxyCompactItemize}
@@ -132,7 +148,151 @@ sf\+::\+Texture {\bfseries personagem\+Morreu\+Texture}
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{Descrição detalhada}
+Representa o personagem jogador no jogo. 
+
+\doxysubsection{Documentação dos Construtores \& Destrutor}
+\Hypertarget{class_jogador_aed41f8e1bddfc8ce5ebf531d7784b4bd}\label{class_jogador_aed41f8e1bddfc8ce5ebf531d7784b4bd} 
+\index{Jogador@{Jogador}!Jogador@{Jogador}}
+\index{Jogador@{Jogador}!Jogador@{Jogador}}
+\doxysubsubsection{\texorpdfstring{Jogador()}{Jogador()}}
+{\footnotesize\ttfamily Jogador\+::\+Jogador (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_colisao}{Colisao}} \&}]{colisao,  }\item[{const float}]{largura\+Tela,  }\item[{const float}]{altura\+Tela\+Jogo,  }\item[{std\+::shared\+\_\+ptr$<$ sf\+::\+Render\+Window $>$}]{janela1 }\end{DoxyParamCaption})}
+
+
+
+Constrói um objeto \doxylink{class_jogador}{Jogador}. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em colisao} & Referência para o objeto de colisão. \\
+\hline
+{\em largura\+Tela} & Largura da tela. \\
+\hline
+{\em altura\+Tela\+Jogo} & Altura da tela do jogo. \\
+\hline
+{\em janela1} & Ponteiro compartilhado para a janela do jogo. \\
+\hline
+\end{DoxyParams}
+
+
 \doxysubsection{Documentação das funções}
+\Hypertarget{class_jogador_ab23adc379075a93202a62e5dc25982a8}\label{class_jogador_ab23adc379075a93202a62e5dc25982a8} 
+\index{Jogador@{Jogador}!estaInvencivel@{estaInvencivel}}
+\index{estaInvencivel@{estaInvencivel}!Jogador@{Jogador}}
+\doxysubsubsection{\texorpdfstring{estaInvencivel()}{estaInvencivel()}}
+{\footnotesize\ttfamily bool Jogador\+::esta\+Invencivel (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Verifica se o personagem jogador está invencível. 
+
+\begin{DoxyReturn}{Retorna}
+True se estiver invencível, caso contrário, false. 
+\end{DoxyReturn}
+\Hypertarget{class_jogador_a7e1d3b50f87e53fd6ab4911539af9363}\label{class_jogador_a7e1d3b50f87e53fd6ab4911539af9363} 
+\index{Jogador@{Jogador}!estaMovendoDireita@{estaMovendoDireita}}
+\index{estaMovendoDireita@{estaMovendoDireita}!Jogador@{Jogador}}
+\doxysubsubsection{\texorpdfstring{estaMovendoDireita()}{estaMovendoDireita()}}
+{\footnotesize\ttfamily bool Jogador\+::esta\+Movendo\+Direita (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Verifica se o personagem jogador está se movendo para a direita. 
+
+\begin{DoxyReturn}{Retorna}
+True se estiver se movendo para a direita, caso contrário, false. 
+\end{DoxyReturn}
+\Hypertarget{class_jogador_ad234789dead35082774c2a8d1ba2d5e8}\label{class_jogador_ad234789dead35082774c2a8d1ba2d5e8} 
+\index{Jogador@{Jogador}!estaMovendoEsquerda@{estaMovendoEsquerda}}
+\index{estaMovendoEsquerda@{estaMovendoEsquerda}!Jogador@{Jogador}}
+\doxysubsubsection{\texorpdfstring{estaMovendoEsquerda()}{estaMovendoEsquerda()}}
+{\footnotesize\ttfamily bool Jogador\+::esta\+Movendo\+Esquerda (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Verifica se o personagem jogador está se movendo para a esquerda. 
+
+\begin{DoxyReturn}{Retorna}
+True se estiver se movendo para a esquerda, caso contrário, false. 
+\end{DoxyReturn}
+\Hypertarget{class_jogador_ae4ca21d62477062522dc4eefcb99f124}\label{class_jogador_ae4ca21d62477062522dc4eefcb99f124} 
+\index{Jogador@{Jogador}!estaPulando@{estaPulando}}
+\index{estaPulando@{estaPulando}!Jogador@{Jogador}}
+\doxysubsubsection{\texorpdfstring{estaPulando()}{estaPulando()}}
+{\footnotesize\ttfamily bool Jogador\+::esta\+Pulando (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Verifica se o personagem jogador está pulando. 
+
+\begin{DoxyReturn}{Retorna}
+True se estiver pulando, caso contrário, false. 
+\end{DoxyReturn}
+\Hypertarget{class_jogador_a07c65f454dee1dafeddceee9dad96923}\label{class_jogador_a07c65f454dee1dafeddceee9dad96923} 
+\index{Jogador@{Jogador}!estaSubindo@{estaSubindo}}
+\index{estaSubindo@{estaSubindo}!Jogador@{Jogador}}
+\doxysubsubsection{\texorpdfstring{estaSubindo()}{estaSubindo()}}
+{\footnotesize\ttfamily bool Jogador\+::esta\+Subindo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Verifica se o personagem jogador está se movendo para cima. 
+
+\begin{DoxyReturn}{Retorna}
+True se estiver se movendo para cima, caso contrário, false. 
+\end{DoxyReturn}
+\Hypertarget{class_jogador_a01f6e0af4a08a7ccb06cfbf76b611e54}\label{class_jogador_a01f6e0af4a08a7ccb06cfbf76b611e54} 
+\index{Jogador@{Jogador}!getAlturaJogador@{getAlturaJogador}}
+\index{getAlturaJogador@{getAlturaJogador}!Jogador@{Jogador}}
+\doxysubsubsection{\texorpdfstring{getAlturaJogador()}{getAlturaJogador()}}
+{\footnotesize\ttfamily int Jogador\+::get\+Altura\+Jogador (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtém a altura do personagem jogador. 
+
+\begin{DoxyReturn}{Retorna}
+Altura do personagem jogador. 
+\end{DoxyReturn}
+\Hypertarget{class_jogador_a60b072f8182adaaa9837c23b50939dd5}\label{class_jogador_a60b072f8182adaaa9837c23b50939dd5} 
+\index{Jogador@{Jogador}!getGanhou@{getGanhou}}
+\index{getGanhou@{getGanhou}!Jogador@{Jogador}}
+\doxysubsubsection{\texorpdfstring{getGanhou()}{getGanhou()}}
+{\footnotesize\ttfamily bool Jogador\+::get\+Ganhou (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Verifica se o personagem jogador venceu o jogo. 
+
+\begin{DoxyReturn}{Retorna}
+True se o personagem jogador venceu, caso contrário, false. 
+\end{DoxyReturn}
+\Hypertarget{class_jogador_aef5c0e141062a07daa7e32ccd7bf3551}\label{class_jogador_aef5c0e141062a07daa7e32ccd7bf3551} 
+\index{Jogador@{Jogador}!getLarguraJogador@{getLarguraJogador}}
+\index{getLarguraJogador@{getLarguraJogador}!Jogador@{Jogador}}
+\doxysubsubsection{\texorpdfstring{getLarguraJogador()}{getLarguraJogador()}}
+{\footnotesize\ttfamily int Jogador\+::get\+Largura\+Jogador (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtém a largura do personagem jogador. 
+
+\begin{DoxyReturn}{Retorna}
+Largura do personagem jogador. 
+\end{DoxyReturn}
+\Hypertarget{class_jogador_ab5fe99a014e06804bf20eb79da672d59}\label{class_jogador_ab5fe99a014e06804bf20eb79da672d59} 
+\index{Jogador@{Jogador}!getPerdeu@{getPerdeu}}
+\index{getPerdeu@{getPerdeu}!Jogador@{Jogador}}
+\doxysubsubsection{\texorpdfstring{getPerdeu()}{getPerdeu()}}
+{\footnotesize\ttfamily bool Jogador\+::get\+Perdeu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Verifica se o personagem jogador perdeu o jogo. 
+
+\begin{DoxyReturn}{Retorna}
+True se o personagem jogador perdeu, caso contrário, false. 
+\end{DoxyReturn}
 \Hypertarget{class_jogador_a453e4ce824fb4388742b918ca1608cee}\label{class_jogador_a453e4ce824fb4388742b918ca1608cee} 
 \index{Jogador@{Jogador}!modificarPosicao@{modificarPosicao}}
 \index{modificarPosicao@{modificarPosicao}!Jogador@{Jogador}}
@@ -141,8 +301,94 @@ sf\+::\+Texture {\bfseries personagem\+Morreu\+Texture}
 
 
 
+Modifica a posição do personagem jogador com base no tempo delta e na largura do mapa. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em delta\+Time} & Tempo decorrido desde a última atualização. \\
+\hline
+{\em largura\+Mapa} & Largura do mapa do jogo. \\
+\hline
+\end{DoxyParams}
+
+
 Reimplementado de \mbox{\hyperlink{class_personagem}{Personagem}}.
 
+\Hypertarget{class_jogador_a458294f0c293e2fffbc8c0fa34e3eed0}\label{class_jogador_a458294f0c293e2fffbc8c0fa34e3eed0} 
+\index{Jogador@{Jogador}!operator=@{operator=}}
+\index{operator=@{operator=}!Jogador@{Jogador}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_jogador}{Jogador}} \& Jogador\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_jogador}{Jogador}} \&}]{other }\end{DoxyParamCaption})}
+
+
+
+Operador de atribuição por cópia. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em other} & Outro objeto \doxylink{class_jogador}{Jogador} para copiar. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Referência para o objeto \doxylink{class_jogador}{Jogador} atribuído. 
+\end{DoxyReturn}
+\Hypertarget{class_jogador_a2c47e6f2df76849c27b420a351944bba}\label{class_jogador_a2c47e6f2df76849c27b420a351944bba} 
+\index{Jogador@{Jogador}!setMovendoDireita@{setMovendoDireita}}
+\index{setMovendoDireita@{setMovendoDireita}!Jogador@{Jogador}}
+\doxysubsubsection{\texorpdfstring{setMovendoDireita()}{setMovendoDireita()}}
+{\footnotesize\ttfamily void Jogador\+::set\+Movendo\+Direita (\begin{DoxyParamCaption}\item[{bool}]{movendo }\end{DoxyParamCaption})}
+
+
+
+Obtém a contagem atual de vidas do personagem jogador. 
+
+\begin{DoxyReturn}{Retorna}
+Contagem atual de vidas. 
+\end{DoxyReturn}
+\Hypertarget{class_jogador_a51f776f7a148c3e0e18074d38daf5dee}\label{class_jogador_a51f776f7a148c3e0e18074d38daf5dee} 
+\index{Jogador@{Jogador}!verificarColisaoDistanciaX@{verificarColisaoDistanciaX}}
+\index{verificarColisaoDistanciaX@{verificarColisaoDistanciaX}!Jogador@{Jogador}}
+\doxysubsubsection{\texorpdfstring{verificarColisaoDistanciaX()}{verificarColisaoDistanciaX()}}
+{\footnotesize\ttfamily bool Jogador\+::verificar\+Colisao\+DistanciaX (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y,  }\item[{float}]{largura }\end{DoxyParamCaption})}
+
+
+
+Verifica colisão no eixo X dentro de uma distância especificada. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em x} & Coordenada X do objeto a ser verificado. \\
+\hline
+{\em y} & Coordenada Y do objeto a ser verificado. \\
+\hline
+{\em largura} & Largura do objeto a ser verificado. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+True se uma colisão for detectada, caso contrário, false. 
+\end{DoxyReturn}
+\Hypertarget{class_jogador_ada209f8d0156bf16fd6cd08840b657dd}\label{class_jogador_ada209f8d0156bf16fd6cd08840b657dd} 
+\index{Jogador@{Jogador}!verificarColisaoDistanciaY@{verificarColisaoDistanciaY}}
+\index{verificarColisaoDistanciaY@{verificarColisaoDistanciaY}!Jogador@{Jogador}}
+\doxysubsubsection{\texorpdfstring{verificarColisaoDistanciaY()}{verificarColisaoDistanciaY()}}
+{\footnotesize\ttfamily bool Jogador\+::verificar\+Colisao\+DistanciaY (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y,  }\item[{float}]{altura }\end{DoxyParamCaption})}
+
+
+
+Verifica colisão no eixo Y dentro de uma distância especificada. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em x} & Coordenada X do objeto a ser verificado. \\
+\hline
+{\em y} & Coordenada Y do objeto a ser verificado. \\
+\hline
+{\em altura} & Altura do objeto a ser verificado. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+True se uma colisão for detectada, caso contrário, false. 
+\end{DoxyReturn}
 
 
 A documentação para esta classe foi gerada a partir do seguinte ficheiro\+:\begin{DoxyCompactItemize}

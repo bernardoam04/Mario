@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['soundmanager_0',['SoundManager',['../class_sound_manager.html',1,'']]]
+  ['inicializarbooleanos_0',['inicializarBooleanos',['../class_jogador.html#a690c1ee0aa789e450a2d4dca1adb1736',1,'Jogador']]]
 ];
