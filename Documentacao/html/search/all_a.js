@@ -5,5 +5,5 @@ var searchData=
   ['perdeumudartextura_2',['perdeuMudarTextura',['../class_jogador.html#a1ed2befc236d5baf4cad8aa319ff10c5',1,'Jogador']]],
   ['personagem_3',['personagem',['../class_personagem.html',1,'Personagem'],['../class_personagem.html#a5db7fd106c2074f92825e403a9d91bcc',1,'Personagem::Personagem()']]],
   ['poderesespeciais_4',['PoderesEspeciais',['../class_poderes_especiais.html',1,'']]],
-  ['pontuacao_5',['Pontuacao',['../class_pontuacao.html',1,'']]]
+  ['pontuacao_5',['pontuacao',['../class_pontuacao.html',1,'Pontuacao'],['../class_pontuacao.html#ad84b6b0a5a99a6680a2315b8f834f1bb',1,'Pontuacao::Pontuacao()']]]
 ];

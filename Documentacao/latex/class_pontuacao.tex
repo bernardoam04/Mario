@@ -1,20 +1,97 @@
 \doxysection{Referência à classe Pontuacao}
 \hypertarget{class_pontuacao}{}\label{class_pontuacao}\index{Pontuacao@{Pontuacao}}
+
+
+Classe responsável por gerenciar e exibir a pontuação do jogador.  
+
+
+
+
+{\ttfamily \#include $<$Pontuacao.\+hpp$>$}
+
 \doxysubsubsection*{Membros públicos}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\hyperlink{class_pontuacao_ad84b6b0a5a99a6680a2315b8f834f1bb}{Pontuacao}} (sf\+::\+Font \&fonte, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_camera}{Camera}} $>$ camera)
+\begin{DoxyCompactList}\small\item\em Construtor da classe \doxylink{class_pontuacao}{Pontuacao}. \end{DoxyCompactList}\item 
+\Hypertarget{class_pontuacao_a0b9e205c0e063818f90c4846f6cfe27d}\label{class_pontuacao_a0b9e205c0e063818f90c4846f6cfe27d} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Pontuacao} ()
+\begin{DoxyCompactList}\small\item\em Destrutor da classe \doxylink{class_pontuacao}{Pontuacao}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_pontuacao_aafb9b32d497b8efa9177ffc9fceb7bb5}{atualizar\+Pontuacao}} (int contagem\+Moeda, int contagem\+Poderes\+Especiais)
+\begin{DoxyCompactList}\small\item\em Atualiza a pontuação com base na contagem de moedas e poderes especiais. \end{DoxyCompactList}\item 
+sf\+::\+Text \mbox{\hyperlink{class_pontuacao_adedd6633150310a83d7d5c60a6e0aaa6}{exibir\+Pontuacao}} ()
+\begin{DoxyCompactList}\small\item\em Exibe a pontuação como um objeto Texto do SFML. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_pontuacao_a8c58428d74bf27a92f5e8027a3533f89}{get\+Pontuacao\+Total}} ()
+\begin{DoxyCompactList}\small\item\em Obtém a pontuação total do jogador. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrição detalhada}
+Classe responsável por gerenciar e exibir a pontuação do jogador. 
+
+\doxysubsection{Documentação dos Construtores \& Destrutor}
 \Hypertarget{class_pontuacao_ad84b6b0a5a99a6680a2315b8f834f1bb}\label{class_pontuacao_ad84b6b0a5a99a6680a2315b8f834f1bb} 
-{\bfseries Pontuacao} (sf\+::\+Font \&fonte, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_camera}{Camera}} $>$ camera)
-\item 
+\index{Pontuacao@{Pontuacao}!Pontuacao@{Pontuacao}}
+\index{Pontuacao@{Pontuacao}!Pontuacao@{Pontuacao}}
+\doxysubsubsection{\texorpdfstring{Pontuacao()}{Pontuacao()}}
+{\footnotesize\ttfamily Pontuacao\+::\+Pontuacao (\begin{DoxyParamCaption}\item[{sf\+::\+Font \&}]{fonte,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_camera}{Camera}} $>$}]{camera }\end{DoxyParamCaption})}
+
+
+
+Construtor da classe \doxylink{class_pontuacao}{Pontuacao}. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em fonte} & Referência para a fonte a ser utilizada no texto da pontuação. \\
+\hline
+{\em camera} & Smart Pointer para a instância da câmera. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Documentação das funções}
 \Hypertarget{class_pontuacao_aafb9b32d497b8efa9177ffc9fceb7bb5}\label{class_pontuacao_aafb9b32d497b8efa9177ffc9fceb7bb5} 
-void {\bfseries atualizar\+Pontuacao} (int contagem\+Moeda, int contagem\+Poderes\+Especiais)
-\item 
+\index{Pontuacao@{Pontuacao}!atualizarPontuacao@{atualizarPontuacao}}
+\index{atualizarPontuacao@{atualizarPontuacao}!Pontuacao@{Pontuacao}}
+\doxysubsubsection{\texorpdfstring{atualizarPontuacao()}{atualizarPontuacao()}}
+{\footnotesize\ttfamily void Pontuacao\+::atualizar\+Pontuacao (\begin{DoxyParamCaption}\item[{int}]{contagem\+Moeda,  }\item[{int}]{contagem\+Poderes\+Especiais }\end{DoxyParamCaption})}
+
+
+
+Atualiza a pontuação com base na contagem de moedas e poderes especiais. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em contagem\+Moeda} & Número de moedas coletadas. \\
+\hline
+{\em contagem\+Poderes\+Especiais} & Número de poderes especiais coletados. \\
+\hline
+\end{DoxyParams}
 \Hypertarget{class_pontuacao_adedd6633150310a83d7d5c60a6e0aaa6}\label{class_pontuacao_adedd6633150310a83d7d5c60a6e0aaa6} 
-sf\+::\+Text {\bfseries exibir\+Pontuacao} ()
-\item 
+\index{Pontuacao@{Pontuacao}!exibirPontuacao@{exibirPontuacao}}
+\index{exibirPontuacao@{exibirPontuacao}!Pontuacao@{Pontuacao}}
+\doxysubsubsection{\texorpdfstring{exibirPontuacao()}{exibirPontuacao()}}
+{\footnotesize\ttfamily sf\+::\+Text Pontuacao\+::exibir\+Pontuacao (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Exibe a pontuação como um objeto Texto do SFML. 
+
+\begin{DoxyReturn}{Retorna}
+Objeto Texto do SFML contendo a pontuação formatada para ser chamada e mostrada na tela. 
+\end{DoxyReturn}
 \Hypertarget{class_pontuacao_a8c58428d74bf27a92f5e8027a3533f89}\label{class_pontuacao_a8c58428d74bf27a92f5e8027a3533f89} 
-int {\bfseries get\+Pontuacao\+Total} ()
-\end{DoxyCompactItemize}
+\index{Pontuacao@{Pontuacao}!getPontuacaoTotal@{getPontuacaoTotal}}
+\index{getPontuacaoTotal@{getPontuacaoTotal}!Pontuacao@{Pontuacao}}
+\doxysubsubsection{\texorpdfstring{getPontuacaoTotal()}{getPontuacaoTotal()}}
+{\footnotesize\ttfamily int Pontuacao\+::get\+Pontuacao\+Total (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtém a pontuação total do jogador. 
+
+\begin{DoxyReturn}{Retorna}
+Valor da pontuação total. 
+\end{DoxyReturn}
 
 
 A documentação para esta classe foi gerada a partir do seguinte ficheiro\+:\begin{DoxyCompactItemize}
