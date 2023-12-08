@@ -7,24 +7,26 @@
 #include "../include/PoderesEspeciais.hpp"
 #include "../include/Colisao.hpp"
 
-
+/**
+ * @brief Classe base que representa um personagem no jogo (interface).
+ */
 class Personagem {
 private:
-    //Texturas, Posicao e modificadores
+    // Texturas, Posição e Modificadores
     sf::Vector2f posicaoPersonagem; 
     float velocidadeVertical;
     float velocidadeHorizontal;
     unsigned int alturaPersonagem;
     unsigned int larguraPersonagem;
 
-    //Verificacoes
+    // Verificações
     bool vivo = true;
     bool estaNoAr;
     bool movEsquerda;
     bool movDireita;
 
-    //Constantes
-    const float tileSize=32;
+    // Constantes
+    const float tileSize = 32;
     const float aceleracaoGravidade = 10.0f;
     const float alturaChao = 640.0 - 64.0;
 
@@ -36,10 +38,25 @@ protected:
     Colisao &colisao;
 
 public:
-    //Construtor
+    // Construtor
+    /**
+     * @brief Constrói um objeto da classe Personagem.
+     * @param colisao Referência para o objeto de colisão.
+     */
     Personagem(Colisao &colisao);
 
+    /**
+     * @brief Modifica a posição do personagem com base no tempo delta e na largura do mapa.
+     * @param deltaTime Tempo decorrido desde a última atualização.
+     * @param larguraMapa Largura do mapa do jogo.
+     */
     virtual void modificarPosicao(sf::Time deltaTime, int larguraMapa);
+
+    /**
+     * @brief Carrega uma textura a partir de um arquivo.
+     * @param filename Nome do arquivo da textura.
+     * @return Textura carregada.
+     */
     sf::Texture loadTexture(const std::string& filename);
     
     //Getters

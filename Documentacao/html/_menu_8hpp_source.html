@@ -94,61 +94,80 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;GerenciadorGeral.hpp&quot;</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="foldopen" id="foldopen00014" data-start="{" data-end="};">
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="class_menu.html">   14</a></span><span class="keyword">class </span><a class="code hl_class" href="class_menu.html">Menu</a> {</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keyword">enum</span> OpcaoSelecionada {</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        NenhumaSelecao,</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        IniciarJogo,</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        Opcoes,</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        Sair</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    };</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="comment">//Textos</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    sf::Text iniciarJogoTexto;</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    sf::Text opcoesTexto;</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    sf::Text sairTexto;</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="comment">//Atributos de desenho</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    sf::Texture menuTexture;</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    sf::Sprite menuSprite;</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    sf::Texture semSomTexture;</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    sf::Sprite semSomSprite;</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    OpcaoSelecionada opcaoSelecionada;</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="comment">//Atributos privados</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordtype">void</span> ajustarPosicaoMenu();</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordtype">void</span> ajustarPosicaoTextos();</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordtype">bool</span> somAtivo;</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    std::shared_ptr&lt;sf::RenderWindow&gt; janela;</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="comment">//Construtor</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <a class="code hl_class" href="class_menu.html">Menu</a>(std::shared_ptr&lt;sf::RenderWindow&gt; janela1, sf::Font &amp;fonte);</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="comment">//Métodos usados diretamente</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> desenharTela();</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordtype">bool</span> atualizar(sf::Event ev);</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keywordtype">void</span> atualizarPosicaoTextos();</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordtype">void</span> atualizarOpcaoSelecionada();</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordtype">bool</span> tratarCliqueMouse();</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keywordtype">void</span> resetarSelecao(); </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keywordtype">bool</span> sair();</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="comment">//Getters</span></div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    OpcaoSelecionada getOpcaoSelecionada() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keywordtype">bool</span> getSomAtivo();</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>};</div>
+<div class="foldopen" id="foldopen00016" data-start="{" data-end="};">
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="class_menu.html">   16</a></span><span class="keyword">class </span><a class="code hl_class" href="class_menu.html">Menu</a> {</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">public</span>:</div>
+<div class="foldopen" id="foldopen00021" data-start="{" data-end="};">
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="class_menu.html#a559be38c08d318ac4bfea45a6d8f9575">   21</a></span>    <span class="keyword">enum</span> <a class="code hl_enumeration" href="class_menu.html#a559be38c08d318ac4bfea45a6d8f9575">OpcaoSelecionada</a> {</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        NenhumaSelecao,</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        IniciarJogo,</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        Opcoes,</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        Sair</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    };</div>
 </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclass_menu_html"><div class="ttname"><a href="class_menu.html">Menu</a></div><div class="ttdef"><b>Definição</b> Menu.hpp:14</div></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="comment">// Textos</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    sf::Text iniciarJogoTexto;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    sf::Text opcoesTexto;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    sf::Text sairTexto;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="comment">// Atributos de desenho</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    sf::Texture menuTexture;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    sf::Sprite menuSprite;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    sf::Texture semSomTexture;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    sf::Sprite semSomSprite;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <a class="code hl_enumeration" href="class_menu.html#a559be38c08d318ac4bfea45a6d8f9575">OpcaoSelecionada</a> opcaoSelecionada;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="comment">// Atributos privados</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordtype">void</span> ajustarPosicaoMenu();</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordtype">void</span> ajustarPosicaoTextos();</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keywordtype">bool</span> somAtivo;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    std::shared_ptr&lt;sf::RenderWindow&gt; janela;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="comment">// Construtor</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="class_menu.html#afdb3eb41cfadc1b99bbdbae3edba48bd">   58</a></span>    <a class="code hl_function" href="class_menu.html#afdb3eb41cfadc1b99bbdbae3edba48bd">Menu</a>(std::shared_ptr&lt;sf::RenderWindow&gt; janela1, sf::Font &amp;fonte);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="comment">// Métodos usados diretamente</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="class_menu.html#a4395fccd9fa4a692d201cc7a80dd7a57">   64</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_menu.html#a4395fccd9fa4a692d201cc7a80dd7a57">desenharTela</a>();</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="class_menu.html#a804e77d73f34e5cb944c53304d5c2879">   71</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_menu.html#a804e77d73f34e5cb944c53304d5c2879">atualizar</a>(sf::Event ev);</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="class_menu.html#aea3cf0b417bb6cd52842705db9385636">   76</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_menu.html#aea3cf0b417bb6cd52842705db9385636">atualizarPosicaoTextos</a>();</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="class_menu.html#a61f589e780f06b94cd43a9103ce54837">   81</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_menu.html#a61f589e780f06b94cd43a9103ce54837">atualizarOpcaoSelecionada</a>();</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="class_menu.html#afadc32e9fbc6eb0068d34cc139f5e6a5">   87</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_menu.html#afadc32e9fbc6eb0068d34cc139f5e6a5">tratarCliqueMouse</a>();</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="class_menu.html#a4ef84f1b29c9d7850e02e2c67c4b8a90">   92</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_menu.html#a4ef84f1b29c9d7850e02e2c67c4b8a90">resetarSelecao</a>(); </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="class_menu.html#a1cffab73f0a3df3a6d27280de15333d3">   98</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_menu.html#a1cffab73f0a3df3a6d27280de15333d3">sair</a>();</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <span class="comment">// Getters</span></div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno"><a class="line" href="class_menu.html#a4f426f95fddd76c551d95718fd771993">  105</a></span>    <a class="code hl_enumeration" href="class_menu.html#a559be38c08d318ac4bfea45a6d8f9575">OpcaoSelecionada</a> <a class="code hl_function" href="class_menu.html#a4f426f95fddd76c551d95718fd771993">getOpcaoSelecionada</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno"><a class="line" href="class_menu.html#a8d6290f297ec0830d26146c9fe6d7c96">  111</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_menu.html#a8d6290f297ec0830d26146c9fe6d7c96">getSomAtivo</a>();</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>};</div>
+</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclass_menu_html"><div class="ttname"><a href="class_menu.html">Menu</a></div><div class="ttdoc">Representa o menu principal do jogo.</div><div class="ttdef"><b>Definição</b> Menu.hpp:16</div></div>
+<div class="ttc" id="aclass_menu_html_a1cffab73f0a3df3a6d27280de15333d3"><div class="ttname"><a href="class_menu.html#a1cffab73f0a3df3a6d27280de15333d3">Menu::sair</a></div><div class="ttdeci">bool sair()</div><div class="ttdoc">Verifica se a opção &quot;Sair&quot; foi selecionada.</div></div>
+<div class="ttc" id="aclass_menu_html_a4395fccd9fa4a692d201cc7a80dd7a57"><div class="ttname"><a href="class_menu.html#a4395fccd9fa4a692d201cc7a80dd7a57">Menu::desenharTela</a></div><div class="ttdeci">virtual void desenharTela()</div><div class="ttdoc">Desenha a tela do menu.</div></div>
+<div class="ttc" id="aclass_menu_html_a4ef84f1b29c9d7850e02e2c67c4b8a90"><div class="ttname"><a href="class_menu.html#a4ef84f1b29c9d7850e02e2c67c4b8a90">Menu::resetarSelecao</a></div><div class="ttdeci">void resetarSelecao()</div><div class="ttdoc">Reseta a seleção do menu para nenhuma.</div></div>
+<div class="ttc" id="aclass_menu_html_a4f426f95fddd76c551d95718fd771993"><div class="ttname"><a href="class_menu.html#a4f426f95fddd76c551d95718fd771993">Menu::getOpcaoSelecionada</a></div><div class="ttdeci">OpcaoSelecionada getOpcaoSelecionada() const</div><div class="ttdoc">Obtém a opção atualmente selecionada no menu.</div></div>
+<div class="ttc" id="aclass_menu_html_a559be38c08d318ac4bfea45a6d8f9575"><div class="ttname"><a href="class_menu.html#a559be38c08d318ac4bfea45a6d8f9575">Menu::OpcaoSelecionada</a></div><div class="ttdeci">OpcaoSelecionada</div><div class="ttdoc">Enumeração para as opções selecionadas no menu.</div><div class="ttdef"><b>Definição</b> Menu.hpp:21</div></div>
+<div class="ttc" id="aclass_menu_html_a61f589e780f06b94cd43a9103ce54837"><div class="ttname"><a href="class_menu.html#a61f589e780f06b94cd43a9103ce54837">Menu::atualizarOpcaoSelecionada</a></div><div class="ttdeci">void atualizarOpcaoSelecionada()</div><div class="ttdoc">Atualiza a opção selecionada no menu.</div></div>
+<div class="ttc" id="aclass_menu_html_a804e77d73f34e5cb944c53304d5c2879"><div class="ttname"><a href="class_menu.html#a804e77d73f34e5cb944c53304d5c2879">Menu::atualizar</a></div><div class="ttdeci">bool atualizar(sf::Event ev)</div><div class="ttdoc">Atualiza o estado do menu.</div></div>
+<div class="ttc" id="aclass_menu_html_a8d6290f297ec0830d26146c9fe6d7c96"><div class="ttname"><a href="class_menu.html#a8d6290f297ec0830d26146c9fe6d7c96">Menu::getSomAtivo</a></div><div class="ttdeci">bool getSomAtivo()</div><div class="ttdoc">Verifica se o som está ativo no menu.</div></div>
+<div class="ttc" id="aclass_menu_html_aea3cf0b417bb6cd52842705db9385636"><div class="ttname"><a href="class_menu.html#aea3cf0b417bb6cd52842705db9385636">Menu::atualizarPosicaoTextos</a></div><div class="ttdeci">void atualizarPosicaoTextos()</div><div class="ttdoc">Atualiza a posição dos textos no menu.</div></div>
+<div class="ttc" id="aclass_menu_html_afadc32e9fbc6eb0068d34cc139f5e6a5"><div class="ttname"><a href="class_menu.html#afadc32e9fbc6eb0068d34cc139f5e6a5">Menu::tratarCliqueMouse</a></div><div class="ttdeci">bool tratarCliqueMouse()</div><div class="ttdoc">Trata o clique do mouse para seleção de opções.</div></div>
+<div class="ttc" id="aclass_menu_html_afdb3eb41cfadc1b99bbdbae3edba48bd"><div class="ttname"><a href="class_menu.html#afdb3eb41cfadc1b99bbdbae3edba48bd">Menu::Menu</a></div><div class="ttdeci">Menu(std::shared_ptr&lt; sf::RenderWindow &gt; janela1, sf::Font &amp;fonte)</div><div class="ttdoc">Constrói um objeto Menu.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

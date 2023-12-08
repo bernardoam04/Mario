@@ -93,25 +93,31 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="foldopen" id="foldopen00012" data-start="{" data-end="};">
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="class_game_over.html">   12</a></span><span class="keyword">class </span><a class="code hl_class" href="class_game_over.html">GameOver</a>{</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    std::shared_ptr &lt;sf::RenderWindow&gt; janela;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    sf::Text texto, texto2,texto3;</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="comment">//Construtor</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <a class="code hl_class" href="class_game_over.html">GameOver</a>(std::shared_ptr &lt;sf::RenderWindow&gt; janela1, sf::Font &amp;fonte);</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="comment">//Métodos diretamente usados</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keywordtype">void</span> desenharTela(<span class="keywordtype">int</span> pontuacaoTotal, <span class="keyword">const</span> sf::View&amp; view);</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keywordtype">bool</span> atualizar(sf::Event ev, <span class="keyword">const</span> sf::View &amp;view);</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keywordtype">void</span> atualizarPosicaoTextos(<span class="keyword">const</span> sf::View&amp; view);</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>};</div>
+<div class="foldopen" id="foldopen00015" data-start="{" data-end="};">
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="class_game_over.html">   15</a></span><span class="keyword">class </span><a class="code hl_class" href="class_game_over.html">GameOver</a> {</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    std::shared_ptr&lt;sf::RenderWindow&gt; janela; </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    sf::Text texto; </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    sf::Text texto2; </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    sf::Text texto3; </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="class_game_over.html#a5768b4b17d324f71b9c4e02976466be6">   28</a></span>    <a class="code hl_function" href="class_game_over.html#a5768b4b17d324f71b9c4e02976466be6">GameOver</a>(std::shared_ptr&lt;sf::RenderWindow&gt; janela1, sf::Font&amp; fonte);</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="class_game_over.html#a031563f59126a4459020723bd5542240">   35</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game_over.html#a031563f59126a4459020723bd5542240">desenharTela</a>(<span class="keywordtype">int</span> pontuacaoTotal, <span class="keyword">const</span> sf::View&amp; view);</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="class_game_over.html#a65a3a968f9c97e0dd6035b2b7393fe0d">   43</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_game_over.html#a65a3a968f9c97e0dd6035b2b7393fe0d">atualizar</a>(sf::Event ev, <span class="keyword">const</span> sf::View&amp; view);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="class_game_over.html#afeaca34dbe248836e670ea0cf7f0072f">   49</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game_over.html#afeaca34dbe248836e670ea0cf7f0072f">atualizarPosicaoTextos</a>(<span class="keyword">const</span> sf::View&amp; view);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>};</div>
 </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclass_game_over_html"><div class="ttname"><a href="class_game_over.html">GameOver</a></div><div class="ttdef"><b>Definição</b> GameOver.hpp:12</div></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclass_game_over_html"><div class="ttname"><a href="class_game_over.html">GameOver</a></div><div class="ttdoc">Classe responsável pela tela de Game Over do jogo.</div><div class="ttdef"><b>Definição</b> GameOver.hpp:15</div></div>
+<div class="ttc" id="aclass_game_over_html_a031563f59126a4459020723bd5542240"><div class="ttname"><a href="class_game_over.html#a031563f59126a4459020723bd5542240">GameOver::desenharTela</a></div><div class="ttdeci">void desenharTela(int pontuacaoTotal, const sf::View &amp;view)</div><div class="ttdoc">Desenha a tela de Game Over na janela.</div></div>
+<div class="ttc" id="aclass_game_over_html_a5768b4b17d324f71b9c4e02976466be6"><div class="ttname"><a href="class_game_over.html#a5768b4b17d324f71b9c4e02976466be6">GameOver::GameOver</a></div><div class="ttdeci">GameOver(std::shared_ptr&lt; sf::RenderWindow &gt; janela1, sf::Font &amp;fonte)</div><div class="ttdoc">Construtor da classe GameOver.</div></div>
+<div class="ttc" id="aclass_game_over_html_a65a3a968f9c97e0dd6035b2b7393fe0d"><div class="ttname"><a href="class_game_over.html#a65a3a968f9c97e0dd6035b2b7393fe0d">GameOver::atualizar</a></div><div class="ttdeci">bool atualizar(sf::Event ev, const sf::View &amp;view)</div><div class="ttdoc">Atualiza a tela de Game Over com base em eventos.</div></div>
+<div class="ttc" id="aclass_game_over_html_afeaca34dbe248836e670ea0cf7f0072f"><div class="ttname"><a href="class_game_over.html#afeaca34dbe248836e670ea0cf7f0072f">GameOver::atualizarPosicaoTextos</a></div><div class="ttdeci">void atualizarPosicaoTextos(const sf::View &amp;view)</div><div class="ttdoc">Atualiza as posições dos textos na tela com base na vista da câmera.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

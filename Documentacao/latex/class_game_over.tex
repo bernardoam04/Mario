@@ -1,20 +1,103 @@
 \doxysection{Referência à classe Game\+Over}
 \hypertarget{class_game_over}{}\label{class_game_over}\index{GameOver@{GameOver}}
+
+
+Classe responsável pela tela de Game Over do jogo.  
+
+
+
+
+{\ttfamily \#include $<$Game\+Over.\+hpp$>$}
+
 \doxysubsubsection*{Membros públicos}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\hyperlink{class_game_over_a5768b4b17d324f71b9c4e02976466be6}{Game\+Over}} (std\+::shared\+\_\+ptr$<$ sf\+::\+Render\+Window $>$ janela1, sf\+::\+Font \&fonte)
+\begin{DoxyCompactList}\small\item\em Construtor da classe \doxylink{class_game_over}{Game\+Over}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_over_a031563f59126a4459020723bd5542240}{desenhar\+Tela}} (int pontuacao\+Total, const sf\+::\+View \&view)
+\begin{DoxyCompactList}\small\item\em Desenha a tela de Game Over na janela. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_game_over_a65a3a968f9c97e0dd6035b2b7393fe0d}{atualizar}} (sf\+::\+Event ev, const sf\+::\+View \&view)
+\begin{DoxyCompactList}\small\item\em Atualiza a tela de Game Over com base em eventos. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_over_afeaca34dbe248836e670ea0cf7f0072f}{atualizar\+Posicao\+Textos}} (const sf\+::\+View \&view)
+\begin{DoxyCompactList}\small\item\em Atualiza as posições dos textos na tela com base na vista da câmera. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrição detalhada}
+Classe responsável pela tela de Game Over do jogo. 
+
+\doxysubsection{Documentação dos Construtores \& Destrutor}
 \Hypertarget{class_game_over_a5768b4b17d324f71b9c4e02976466be6}\label{class_game_over_a5768b4b17d324f71b9c4e02976466be6} 
-{\bfseries Game\+Over} (std\+::shared\+\_\+ptr$<$ sf\+::\+Render\+Window $>$ janela1, sf\+::\+Font \&fonte)
-\item 
-\Hypertarget{class_game_over_a031563f59126a4459020723bd5542240}\label{class_game_over_a031563f59126a4459020723bd5542240} 
-void {\bfseries desenhar\+Tela} (int pontuacao\+Total, const sf\+::\+View \&view)
-\item 
+\index{GameOver@{GameOver}!GameOver@{GameOver}}
+\index{GameOver@{GameOver}!GameOver@{GameOver}}
+\doxysubsubsection{\texorpdfstring{GameOver()}{GameOver()}}
+{\footnotesize\ttfamily Game\+Over\+::\+Game\+Over (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ sf\+::\+Render\+Window $>$}]{janela1,  }\item[{sf\+::\+Font \&}]{fonte }\end{DoxyParamCaption})}
+
+
+
+Construtor da classe \doxylink{class_game_over}{Game\+Over}. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em janela1} & Smart Pointer para a janela do SFML. \\
+\hline
+{\em fonte} & Referência para a fonte a ser utilizada nos textos. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Documentação das funções}
 \Hypertarget{class_game_over_a65a3a968f9c97e0dd6035b2b7393fe0d}\label{class_game_over_a65a3a968f9c97e0dd6035b2b7393fe0d} 
-bool {\bfseries atualizar} (sf\+::\+Event ev, const sf\+::\+View \&view)
-\item 
+\index{GameOver@{GameOver}!atualizar@{atualizar}}
+\index{atualizar@{atualizar}!GameOver@{GameOver}}
+\doxysubsubsection{\texorpdfstring{atualizar()}{atualizar()}}
+{\footnotesize\ttfamily bool Game\+Over\+::atualizar (\begin{DoxyParamCaption}\item[{sf\+::\+Event}]{ev,  }\item[{const sf\+::\+View \&}]{view }\end{DoxyParamCaption})}
+
+
+
+Atualiza a tela de Game Over com base em eventos. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em ev} & Evento do SFML. \\
+\hline
+{\em view} & Referência para a vista da câmera. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Verdadeiro se a tela precisar ser fechada; falso caso contrário. 
+\end{DoxyReturn}
 \Hypertarget{class_game_over_afeaca34dbe248836e670ea0cf7f0072f}\label{class_game_over_afeaca34dbe248836e670ea0cf7f0072f} 
-void {\bfseries atualizar\+Posicao\+Textos} (const sf\+::\+View \&view)
-\end{DoxyCompactItemize}
+\index{GameOver@{GameOver}!atualizarPosicaoTextos@{atualizarPosicaoTextos}}
+\index{atualizarPosicaoTextos@{atualizarPosicaoTextos}!GameOver@{GameOver}}
+\doxysubsubsection{\texorpdfstring{atualizarPosicaoTextos()}{atualizarPosicaoTextos()}}
+{\footnotesize\ttfamily void Game\+Over\+::atualizar\+Posicao\+Textos (\begin{DoxyParamCaption}\item[{const sf\+::\+View \&}]{view }\end{DoxyParamCaption})}
+
+
+
+Atualiza as posições dos textos na tela com base na vista da câmera. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em view} & Referência para a vista da câmera. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_game_over_a031563f59126a4459020723bd5542240}\label{class_game_over_a031563f59126a4459020723bd5542240} 
+\index{GameOver@{GameOver}!desenharTela@{desenharTela}}
+\index{desenharTela@{desenharTela}!GameOver@{GameOver}}
+\doxysubsubsection{\texorpdfstring{desenharTela()}{desenharTela()}}
+{\footnotesize\ttfamily void Game\+Over\+::desenhar\+Tela (\begin{DoxyParamCaption}\item[{int}]{pontuacao\+Total,  }\item[{const sf\+::\+View \&}]{view }\end{DoxyParamCaption})}
+
+
+
+Desenha a tela de Game Over na janela. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em pontuacao\+Total} & Pontuação total do jogador. \\
+\hline
+{\em view} & Referência para a vista da câmera. \\
+\hline
+\end{DoxyParams}
 
 
 A documentação para esta classe foi gerada a partir do seguinte ficheiro\+:\begin{DoxyCompactItemize}
