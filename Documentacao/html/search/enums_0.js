@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['estadojogo_0',['EstadoJogo',['../main_8cpp.html#a2eda472583d7db5737f81296e01a7c9f',1,'main.cpp']]]
+  ['opcaoselecionada_0',['OpcaoSelecionada',['../class_menu.html#a559be38c08d318ac4bfea45a6d8f9575',1,'Menu']]]
 ];
