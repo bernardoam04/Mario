@@ -179,6 +179,8 @@ public:
      * @return Contagem atual de vidas.
      */
 
+    int getVida();
+
     // Métodos para definir o estado dos movimentos
     void setMovendoDireita(bool movendo);
     void setMovendoEsquerda(bool movendo);
