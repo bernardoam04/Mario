@@ -23,54 +23,68 @@
 \DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ MOEDA\ =\ 9,}
 \DoxyCodeLine{00020\ \ \ \ \ \};}
 \DoxyCodeLine{00021\ }
-\DoxyCodeLine{00022\ \ \ \ \ std::set<int>\ colisaoEspecial\ =\ \{NULO,\ SURPRESA,\ MOEDA\};}
+\DoxyCodeLine{00022\ \ \ \ \ std::set<int>\ colisaoEspecial\ =\ \{NULO,\ SURPRESA,\ MOEDA\};\ }
 \DoxyCodeLine{00023\ }
-\DoxyCodeLine{00024\ \ \ \ \ \textcolor{comment}{//Dados\ utilizados\ pra\ desenhar\ o\ mapa}}
-\DoxyCodeLine{00025\ \ \ \ \ std::unordered\_map<int,\ sf::Texture>\ texturas;\ \ }
-\DoxyCodeLine{00026\ \ \ \ \ sf::VertexArray\ vertices;}
-\DoxyCodeLine{00027\ \ \ \ \ std::vector<std::pair<int,bool>>\ tileData;}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{comment}{//\ Dados\ utilizados\ para\ desenhar\ o\ mapa}}
+\DoxyCodeLine{00025\ \ \ \ \ std::unordered\_map<int,\ sf::Texture>\ texturas;\ }
+\DoxyCodeLine{00026\ \ \ \ \ sf::VertexArray\ vertices;\ }
+\DoxyCodeLine{00027\ \ \ \ \ std::vector<std::pair<int,bool>>\ tileData;\ }
 \DoxyCodeLine{00028\ }
-\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//Som}}
-\DoxyCodeLine{00030\ \ \ \ \ std::shared\_ptr<SoundManager>\ \_sounds;}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//\ Som}}
+\DoxyCodeLine{00030\ \ \ \ \ std::shared\_ptr<SoundManager>\ \_sounds;\ }
 \DoxyCodeLine{00031\ }
-\DoxyCodeLine{00032\ \ \ \ \ \textcolor{comment}{//Constantes}}
-\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ tileSize=\ 32;}
-\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ larguraTileset\ =\ 280;}
-\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ alturaTileset\ =\ 20;}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{comment}{//\ Constantes}}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ tileSize\ =\ 32;\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ larguraTileset\ =\ 280;\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ alturaTileset\ =\ 20;\ }
 \DoxyCodeLine{00036\ }
-\DoxyCodeLine{00037\ \ \ \ \ \textcolor{comment}{//Dados\ de\ Verificação}}
-\DoxyCodeLine{00038\ \ \ \ \ std::vector<int>\ colisaoBlocoMoeda;}
-\DoxyCodeLine{00039\ \ \ \ \ std::vector<int>\ colisaoMoeda;}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{comment}{//\ Dados\ de\ Verificação}}
+\DoxyCodeLine{00038\ \ \ \ \ std::vector<int>\ colisaoBlocoMoeda;\ }
+\DoxyCodeLine{00039\ \ \ \ \ std::vector<int>\ colisaoMoeda;\ }
 \DoxyCodeLine{00040\ }
-\DoxyCodeLine{00041\ \ \ \ \ \textcolor{comment}{//Contagem\ }}
-\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{int}\ contagemMoeda\ =\ 0;}
-\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{int}\ contagemPoderEspecial\ =0;}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{comment}{//\ Contagem\ }}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{int}\ contagemMoeda\ =\ 0;\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{int}\ contagemPoderEspecial\ =\ 0;\ }
 \DoxyCodeLine{00044\ }
-\DoxyCodeLine{00045\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00046\ \ \ \ \textcolor{comment}{//Construtor\ }}
-\DoxyCodeLine{00047\ \ \ \ \ \mbox{\hyperlink{class_mapa}{Mapa}}();}
-\DoxyCodeLine{00048\ }
-\DoxyCodeLine{00049\ \ \ \ \ \textcolor{comment}{//Métodos\ usados\ diretamente}}
-\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ inicializarColisoes();}
-\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ carregarMapa(\textcolor{keyword}{const}\ std::string\&\ arquivoMapa);}
-\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{void}\ renderizar(sf::RenderWindow\&\ janela,\ sf::Time\ tempoAtual,\ \textcolor{keywordtype}{float}\ x);}
-\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{void}\ aplicarColisao(std::vector<std::pair<int,int>>\ posicoes);}
-\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{bool}\ getColisaoBlocoMoeda(\textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y);}
-\DoxyCodeLine{00055\ }
-\DoxyCodeLine{00056\ \ \ \ \ \textcolor{comment}{//Getters}}
-\DoxyCodeLine{00057\ \ \ \ \ std::vector<std::vector<int>>\ getDadosMapa();}
-\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{int}\ getTileSize();}
-\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{int}\ getLarguraTileset();}
-\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{int}\ getAlturaTileset();}
-\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{int}\ getLarguraMapa();}
-\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{int}\ getContagemMoeda();}
-\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{int}\ getContagemPoderEspecial();}
-\DoxyCodeLine{00064\ }
-\DoxyCodeLine{00065\ \ \ \ \ \textcolor{comment}{//Setters}}
-\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{void}\ atualizarContagemMoeda(\textcolor{keywordtype}{int}\ contagemMoedasMisteriosas);}
-\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{void}\ atualizarContagemPoderes(\textcolor{keywordtype}{int}\ contagemPoderes);}
-\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{void}\ setSound(std::shared\_ptr<SoundManager>\ sounds);}
-\DoxyCodeLine{00069\ \};\ \ }
-\DoxyCodeLine{00070\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00050\ \ \ \ \ \mbox{\hyperlink{class_mapa_a3dc19f541d32f6e6f29fd86434d9245b}{Mapa}}();}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_mapa_a247dc4aa6e1868561c4ee10b1dc5f9fc}{inicializarColisoes}}();}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_mapa_a47d62a12ea6173feb72a2a6f574d3837}{carregarMapa}}(\textcolor{keyword}{const}\ std::string\&\ arquivoMapa);}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_mapa_ad3cb2e734b86cef8e4b0a1add19a0b3c}{renderizar}}(sf::RenderWindow\&\ janela,\ sf::Time\ tempoAtual,\ \textcolor{keywordtype}{float}\ x);}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_mapa_a403682ff386ca7bc70e468c92405544b}{aplicarColisao}}(std::vector<std::pair<int,int>>\ posicoes);}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_mapa_a52607ea0745f3c999e5998f370d608ce}{getColisaoBlocoMoeda}}(\textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y);}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{comment}{//\ Getters}}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00091\ \ \ \ \ std::vector<std::vector<int>>\ \mbox{\hyperlink{class_mapa_a5dd69b238ef9ec105dc569b07e76cbe8}{getDadosMapa}}();}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_mapa_a5c89bee80fb2713fec73a913f71809aa}{getTileSize}}();}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_mapa_a2d3d764ff67dfe0ddfaa61497f0ffc96}{getLarguraTileset}}();}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_mapa_a42e79bf84b312d7ff1c161e6de014f89}{getAlturaTileset}}();}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_mapa_a96ef55d6e3612e3730deec642d3c17db}{getLarguraMapa}}();}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_mapa_ac94633e21a28401678b2d2e4a9d025e4}{getContagemMoeda}}();}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_mapa_aead255cc8221fa4cf85f0ac6b9f3c4c6}{getContagemPoderEspecial}}();}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{comment}{//\ Setters}}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00135\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_mapa_a82f4311bec2bec05cd43c4fdbd6a1b4f}{atualizarContagemMoeda}}(\textcolor{keywordtype}{int}\ contagemMoedasMisteriosas);}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_mapa_a49211ab957f68bd97efeb750326d57d0}{atualizarContagemPoderes}}(\textcolor{keywordtype}{int}\ contagemPoderes);}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00147\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_mapa_a8916542a2411efd5b081ebfbb36d5aaf}{setSound}}(std::shared\_ptr<SoundManager>\ sounds);}
+\DoxyCodeLine{00148\ }
+\DoxyCodeLine{00149\ \};\ \ }
+\DoxyCodeLine{00150\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}
