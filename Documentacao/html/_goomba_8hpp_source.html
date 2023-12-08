@@ -84,48 +84,74 @@ $(document).ready(function() { init_codefold(0); });
 <div class="contents">
 <div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef GOOMBA_HPP</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define GOOMBA_HPP</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;SFML/Graphics.hpp&gt;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;Personagem.hpp&quot;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;Jogador.hpp&quot;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="foldopen" id="foldopen00007" data-start="{" data-end="};">
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="class_goomba.html">    7</a></span><span class="keyword">class </span><a class="code hl_class" href="class_goomba.html">Goomba</a> : <span class="keyword">public</span> <a class="code hl_class" href="class_personagem.html">Personagem</a> {</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    std::shared_ptr &lt;sf::RenderWindow&gt; janela;<span class="comment">//Talvez colocar como protected em personagem para evitar repeticao</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <span class="keywordtype">int</span> alturaGoomba;</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="keywordtype">int</span> larguraGoomba;</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="comment">//Temporizador</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    sf::Clock temporizadorMorte;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="comment">//Construtor</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <a class="code hl_class" href="class_goomba.html">Goomba</a>(<a class="code hl_class" href="class_colisao.html">Colisao</a> &amp;colisao, std::shared_ptr &lt;sf::RenderWindow&gt; janela1, <span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y);</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="comment">//Destrutor virtual</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keyword">virtual</span> <a class="code hl_class" href="class_goomba.html">~Goomba</a>();</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="comment">//Métodos de uso direto</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keywordtype">void</span> inicializarGoombas();<span class="comment">//Controlar o aparecimento de Goombas</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keywordtype">void</span> atacar(std::shared_ptr &lt;Jogador&gt; mario);</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keywordtype">void</span> modificarPosicao(sf::Time deltaTime, <span class="keywordtype">int</span> larguraMapa) <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keywordtype">void</span> morrer();</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keywordtype">void</span> desenharGoomba(<span class="keywordtype">float</span> x);</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="comment">//Métodos de verificacao</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keywordtype">bool</span> verificarColisao();</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordtype">bool</span> verificarColisaoDistanciaX(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y, <span class="keywordtype">float</span> largura);</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keywordtype">bool</span> verificarColisaoDistanciaY(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y, <span class="keywordtype">float</span> altura);</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keywordtype">bool</span> verificarColisaoComGoomba(std::shared_ptr &lt;Jogador&gt; mario);</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keywordtype">bool</span> verificarColisaoLateralComGoomba(std::shared_ptr &lt;Jogador&gt; mario);</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordtype">bool</span> verificarColisaoLateralComGoombaDireita(std::shared_ptr &lt;Jogador&gt; mario);</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keywordtype">bool</span> verificarColisaoLateralComGoombaEsquerda(std::shared_ptr &lt;Jogador&gt; mario);</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>};</div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;SFML/Graphics.hpp&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;Personagem.hpp&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;Jogador.hpp&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="foldopen" id="foldopen00011" data-start="{" data-end="};">
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="class_goomba.html">   11</a></span><span class="keyword">class </span><a class="code hl_class" href="class_goomba.html">Goomba</a> : <span class="keyword">public</span> <a class="code hl_class" href="class_personagem.html">Personagem</a> {</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    std::shared_ptr&lt;sf::RenderWindow&gt; janela; </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keywordtype">int</span> alturaGoomba;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keywordtype">int</span> larguraGoomba;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="comment">// Temporizador</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    sf::Clock temporizadorMorte;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="comment">// Construtor</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="class_goomba.html#aaa70dc7621bf9ec8fa1fe64cbafe7952">   29</a></span>    <a class="code hl_function" href="class_goomba.html#aaa70dc7621bf9ec8fa1fe64cbafe7952">Goomba</a>(<a class="code hl_class" href="class_colisao.html">Colisao</a>&amp; colisao, std::shared_ptr&lt;sf::RenderWindow&gt; janela1, <span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="comment">// Destrutor virtual</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="class_goomba.html#a441ccc2814f5f640ae11409f75f4aa24">   35</a></span>    <span class="keyword">virtual</span> <a class="code hl_function" href="class_goomba.html#a441ccc2814f5f640ae11409f75f4aa24">~Goomba</a>();</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="comment">// Métodos de Uso Direto</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="class_goomba.html#a910307aecea4f08221d98251e8199c33">   41</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_goomba.html#a910307aecea4f08221d98251e8199c33">inicializarGoombas</a>();</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="class_goomba.html#ac60b707c19cc45455822ab5ffd4ea178">   47</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_goomba.html#ac60b707c19cc45455822ab5ffd4ea178">atacar</a>(std::shared_ptr&lt;Jogador&gt; mario);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="class_goomba.html#a61093bd89d7d40d5f8a7802e91febf3c">   54</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_goomba.html#a61093bd89d7d40d5f8a7802e91febf3c">modificarPosicao</a>(sf::Time deltaTime, <span class="keywordtype">int</span> larguraMapa) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="class_goomba.html#a8a86996227e2f2c5a1d03956c15eb3de">   59</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_goomba.html#a8a86996227e2f2c5a1d03956c15eb3de">morrer</a>();</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="class_goomba.html#aeef8a04059ef83845ef5c0e4859fd659">   65</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_goomba.html#aeef8a04059ef83845ef5c0e4859fd659">desenharGoomba</a>(<span class="keywordtype">float</span> x);</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="comment">// Métodos de Verificação</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="class_goomba.html#a6f406314c09dfa0eabcfa57f87c75910">   72</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_goomba.html#a6f406314c09dfa0eabcfa57f87c75910">verificarColisao</a>();</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="class_goomba.html#af62ae8d17c813ed7e1941f14a49d10b2">   81</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_goomba.html#af62ae8d17c813ed7e1941f14a49d10b2">verificarColisaoDistanciaX</a>(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y, <span class="keywordtype">float</span> largura);</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno"><a class="line" href="class_goomba.html#a9e07183a9df7e532055598cfb7ef5ce2">   90</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_goomba.html#a9e07183a9df7e532055598cfb7ef5ce2">verificarColisaoDistanciaY</a>(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y, <span class="keywordtype">float</span> altura);</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno"><a class="line" href="class_goomba.html#ad8fea39a6b8dd00464d84e793eac23c4">   97</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_goomba.html#ad8fea39a6b8dd00464d84e793eac23c4">verificarColisaoComGoomba</a>(std::shared_ptr&lt;Jogador&gt; mario);</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno"><a class="line" href="class_goomba.html#a064c2c68069b740ae58dbd37eee8cfc0">  104</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_goomba.html#a064c2c68069b740ae58dbd37eee8cfc0">verificarColisaoLateralComGoomba</a>(std::shared_ptr&lt;Jogador&gt; mario);</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno"><a class="line" href="class_goomba.html#a643f804faab017d3029a56bd26db385b">  111</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_goomba.html#a643f804faab017d3029a56bd26db385b">verificarColisaoLateralComGoombaDireita</a>(std::shared_ptr&lt;Jogador&gt; mario);</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno"><a class="line" href="class_goomba.html#a07c724d9d0623da55f813f6bb1787704">  118</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_goomba.html#a07c724d9d0623da55f813f6bb1787704">verificarColisaoLateralComGoombaEsquerda</a>(std::shared_ptr&lt;Jogador&gt; mario);</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>};</div>
 </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclass_colisao_html"><div class="ttname"><a href="class_colisao.html">Colisao</a></div><div class="ttdoc">Classe que lida com detecção de colisão em um mapa.</div><div class="ttdef"><b>Definição</b> Colisao.hpp:10</div></div>
-<div class="ttc" id="aclass_goomba_html"><div class="ttname"><a href="class_goomba.html">Goomba</a></div><div class="ttdef"><b>Definição</b> Goomba.hpp:7</div></div>
+<div class="ttc" id="aclass_goomba_html"><div class="ttname"><a href="class_goomba.html">Goomba</a></div><div class="ttdoc">Representa a classe Goomba, um inimigo no jogo.</div><div class="ttdef"><b>Definição</b> Goomba.hpp:11</div></div>
+<div class="ttc" id="aclass_goomba_html_a064c2c68069b740ae58dbd37eee8cfc0"><div class="ttname"><a href="class_goomba.html#a064c2c68069b740ae58dbd37eee8cfc0">Goomba::verificarColisaoLateralComGoomba</a></div><div class="ttdeci">bool verificarColisaoLateralComGoomba(std::shared_ptr&lt; Jogador &gt; mario)</div><div class="ttdoc">Verifica a colisão lateral do Goomba com o jogador.</div></div>
+<div class="ttc" id="aclass_goomba_html_a07c724d9d0623da55f813f6bb1787704"><div class="ttname"><a href="class_goomba.html#a07c724d9d0623da55f813f6bb1787704">Goomba::verificarColisaoLateralComGoombaEsquerda</a></div><div class="ttdeci">bool verificarColisaoLateralComGoombaEsquerda(std::shared_ptr&lt; Jogador &gt; mario)</div><div class="ttdoc">Verifica a colisão lateral esquerda do Goomba com o jogador.</div></div>
+<div class="ttc" id="aclass_goomba_html_a441ccc2814f5f640ae11409f75f4aa24"><div class="ttname"><a href="class_goomba.html#a441ccc2814f5f640ae11409f75f4aa24">Goomba::~Goomba</a></div><div class="ttdeci">virtual ~Goomba()</div><div class="ttdoc">Destrói o objeto Goomba.</div></div>
+<div class="ttc" id="aclass_goomba_html_a61093bd89d7d40d5f8a7802e91febf3c"><div class="ttname"><a href="class_goomba.html#a61093bd89d7d40d5f8a7802e91febf3c">Goomba::modificarPosicao</a></div><div class="ttdeci">void modificarPosicao(sf::Time deltaTime, int larguraMapa) override</div><div class="ttdoc">Modifica a posição do Goomba com base no tempo delta e na largura do mapa.</div></div>
+<div class="ttc" id="aclass_goomba_html_a643f804faab017d3029a56bd26db385b"><div class="ttname"><a href="class_goomba.html#a643f804faab017d3029a56bd26db385b">Goomba::verificarColisaoLateralComGoombaDireita</a></div><div class="ttdeci">bool verificarColisaoLateralComGoombaDireita(std::shared_ptr&lt; Jogador &gt; mario)</div><div class="ttdoc">Verifica a colisão lateral direita do Goomba com o jogador.</div></div>
+<div class="ttc" id="aclass_goomba_html_a6f406314c09dfa0eabcfa57f87c75910"><div class="ttname"><a href="class_goomba.html#a6f406314c09dfa0eabcfa57f87c75910">Goomba::verificarColisao</a></div><div class="ttdeci">bool verificarColisao()</div><div class="ttdoc">Verifica a colisão do Goomba.</div></div>
+<div class="ttc" id="aclass_goomba_html_a8a86996227e2f2c5a1d03956c15eb3de"><div class="ttname"><a href="class_goomba.html#a8a86996227e2f2c5a1d03956c15eb3de">Goomba::morrer</a></div><div class="ttdeci">void morrer()</div><div class="ttdoc">Faz o Goomba morrer.</div></div>
+<div class="ttc" id="aclass_goomba_html_a910307aecea4f08221d98251e8199c33"><div class="ttname"><a href="class_goomba.html#a910307aecea4f08221d98251e8199c33">Goomba::inicializarGoombas</a></div><div class="ttdeci">void inicializarGoombas()</div><div class="ttdoc">Inicializa os Goombas, controlando o aparecimento.</div></div>
+<div class="ttc" id="aclass_goomba_html_a9e07183a9df7e532055598cfb7ef5ce2"><div class="ttname"><a href="class_goomba.html#a9e07183a9df7e532055598cfb7ef5ce2">Goomba::verificarColisaoDistanciaY</a></div><div class="ttdeci">bool verificarColisaoDistanciaY(float x, float y, float altura)</div><div class="ttdoc">Verifica a colisão no eixo Y dentro de uma distância especificada.</div></div>
+<div class="ttc" id="aclass_goomba_html_aaa70dc7621bf9ec8fa1fe64cbafe7952"><div class="ttname"><a href="class_goomba.html#aaa70dc7621bf9ec8fa1fe64cbafe7952">Goomba::Goomba</a></div><div class="ttdeci">Goomba(Colisao &amp;colisao, std::shared_ptr&lt; sf::RenderWindow &gt; janela1, float x, float y)</div><div class="ttdoc">Constrói um objeto Goomba.</div></div>
+<div class="ttc" id="aclass_goomba_html_ac60b707c19cc45455822ab5ffd4ea178"><div class="ttname"><a href="class_goomba.html#ac60b707c19cc45455822ab5ffd4ea178">Goomba::atacar</a></div><div class="ttdeci">void atacar(std::shared_ptr&lt; Jogador &gt; mario)</div><div class="ttdoc">Ataca o jogador.</div></div>
+<div class="ttc" id="aclass_goomba_html_ad8fea39a6b8dd00464d84e793eac23c4"><div class="ttname"><a href="class_goomba.html#ad8fea39a6b8dd00464d84e793eac23c4">Goomba::verificarColisaoComGoomba</a></div><div class="ttdeci">bool verificarColisaoComGoomba(std::shared_ptr&lt; Jogador &gt; mario)</div><div class="ttdoc">Verifica a colisão do Goomba com o jogador.</div></div>
+<div class="ttc" id="aclass_goomba_html_aeef8a04059ef83845ef5c0e4859fd659"><div class="ttname"><a href="class_goomba.html#aeef8a04059ef83845ef5c0e4859fd659">Goomba::desenharGoomba</a></div><div class="ttdeci">void desenharGoomba(float x)</div><div class="ttdoc">Desenha o Goomba na tela.</div></div>
+<div class="ttc" id="aclass_goomba_html_af62ae8d17c813ed7e1941f14a49d10b2"><div class="ttname"><a href="class_goomba.html#af62ae8d17c813ed7e1941f14a49d10b2">Goomba::verificarColisaoDistanciaX</a></div><div class="ttdeci">bool verificarColisaoDistanciaX(float x, float y, float largura)</div><div class="ttdoc">Verifica a colisão no eixo X dentro de uma distância especificada.</div></div>
 <div class="ttc" id="aclass_personagem_html"><div class="ttname"><a href="class_personagem.html">Personagem</a></div><div class="ttdef"><b>Definição</b> Personagem.hpp:11</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

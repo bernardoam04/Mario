@@ -1,46 +1,48 @@
 \doxysection{Referência à classe Goomba}
 \hypertarget{class_goomba}{}\label{class_goomba}\index{Goomba@{Goomba}}
+
+
+Representa a classe \doxylink{class_goomba}{Goomba}, um inimigo no jogo.  
+
+
+
+
+{\ttfamily \#include $<$Goomba.\+hpp$>$}
+
 \doxysubsubsection*{Membros públicos}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{class_goomba_aaa70dc7621bf9ec8fa1fe64cbafe7952}\label{class_goomba_aaa70dc7621bf9ec8fa1fe64cbafe7952} 
-{\bfseries Goomba} (\mbox{\hyperlink{class_colisao}{Colisao}} \&colisao, std\+::shared\+\_\+ptr$<$ sf\+::\+Render\+Window $>$ janela1, float x, float y)
-\item 
+\mbox{\hyperlink{class_goomba_aaa70dc7621bf9ec8fa1fe64cbafe7952}{Goomba}} (\mbox{\hyperlink{class_colisao}{Colisao}} \&colisao, std\+::shared\+\_\+ptr$<$ sf\+::\+Render\+Window $>$ janela1, float x, float y)
+\begin{DoxyCompactList}\small\item\em Constrói um objeto \doxylink{class_goomba}{Goomba}. \end{DoxyCompactList}\item 
+\Hypertarget{class_goomba_a441ccc2814f5f640ae11409f75f4aa24}\label{class_goomba_a441ccc2814f5f640ae11409f75f4aa24} 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Goomba} ()
+\begin{DoxyCompactList}\small\item\em Destrói o objeto \doxylink{class_goomba}{Goomba}. \end{DoxyCompactList}\item 
 \Hypertarget{class_goomba_a910307aecea4f08221d98251e8199c33}\label{class_goomba_a910307aecea4f08221d98251e8199c33} 
 void {\bfseries inicializar\+Goombas} ()
-\item 
-\Hypertarget{class_goomba_ac60b707c19cc45455822ab5ffd4ea178}\label{class_goomba_ac60b707c19cc45455822ab5ffd4ea178} 
-void {\bfseries atacar} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_jogador}{Jogador}} $>$ mario)
-\item 
+\begin{DoxyCompactList}\small\item\em Inicializa os Goombas, controlando o aparecimento. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_goomba_ac60b707c19cc45455822ab5ffd4ea178}{atacar}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_jogador}{Jogador}} $>$ mario)
+\begin{DoxyCompactList}\small\item\em Ataca o jogador. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_goomba_a61093bd89d7d40d5f8a7802e91febf3c}{modificar\+Posicao}} (sf\+::\+Time delta\+Time, int largura\+Mapa) override
-\item 
+\begin{DoxyCompactList}\small\item\em Modifica a posição do \doxylink{class_goomba}{Goomba} com base no tempo delta e na largura do mapa. \end{DoxyCompactList}\item 
 \Hypertarget{class_goomba_a8a86996227e2f2c5a1d03956c15eb3de}\label{class_goomba_a8a86996227e2f2c5a1d03956c15eb3de} 
 void {\bfseries morrer} ()
-\item 
-\Hypertarget{class_goomba_aeef8a04059ef83845ef5c0e4859fd659}\label{class_goomba_aeef8a04059ef83845ef5c0e4859fd659} 
-void {\bfseries desenhar\+Goomba} (float x)
-\item 
-\Hypertarget{class_goomba_a6f406314c09dfa0eabcfa57f87c75910}\label{class_goomba_a6f406314c09dfa0eabcfa57f87c75910} 
-bool {\bfseries verificar\+Colisao} ()
-\item 
-\Hypertarget{class_goomba_af62ae8d17c813ed7e1941f14a49d10b2}\label{class_goomba_af62ae8d17c813ed7e1941f14a49d10b2} 
-bool {\bfseries verificar\+Colisao\+DistanciaX} (float x, float y, float largura)
-\item 
-\Hypertarget{class_goomba_a9e07183a9df7e532055598cfb7ef5ce2}\label{class_goomba_a9e07183a9df7e532055598cfb7ef5ce2} 
-bool {\bfseries verificar\+Colisao\+DistanciaY} (float x, float y, float altura)
-\item 
-\Hypertarget{class_goomba_ad8fea39a6b8dd00464d84e793eac23c4}\label{class_goomba_ad8fea39a6b8dd00464d84e793eac23c4} 
-bool {\bfseries verificar\+Colisao\+Com\+Goomba} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_jogador}{Jogador}} $>$ mario)
-\item 
-\Hypertarget{class_goomba_a064c2c68069b740ae58dbd37eee8cfc0}\label{class_goomba_a064c2c68069b740ae58dbd37eee8cfc0} 
-bool {\bfseries verificar\+Colisao\+Lateral\+Com\+Goomba} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_jogador}{Jogador}} $>$ mario)
-\item 
-\Hypertarget{class_goomba_a643f804faab017d3029a56bd26db385b}\label{class_goomba_a643f804faab017d3029a56bd26db385b} 
-bool {\bfseries verificar\+Colisao\+Lateral\+Com\+Goomba\+Direita} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_jogador}{Jogador}} $>$ mario)
-\item 
-\Hypertarget{class_goomba_a07c724d9d0623da55f813f6bb1787704}\label{class_goomba_a07c724d9d0623da55f813f6bb1787704} 
-bool {\bfseries verificar\+Colisao\+Lateral\+Com\+Goomba\+Esquerda} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_jogador}{Jogador}} $>$ mario)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Faz o \doxylink{class_goomba}{Goomba} morrer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_goomba_aeef8a04059ef83845ef5c0e4859fd659}{desenhar\+Goomba}} (float x)
+\begin{DoxyCompactList}\small\item\em Desenha o \doxylink{class_goomba}{Goomba} na tela. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_goomba_a6f406314c09dfa0eabcfa57f87c75910}{verificar\+Colisao}} ()
+\begin{DoxyCompactList}\small\item\em Verifica a colisão do \doxylink{class_goomba}{Goomba}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_goomba_af62ae8d17c813ed7e1941f14a49d10b2}{verificar\+Colisao\+DistanciaX}} (float x, float y, float largura)
+\begin{DoxyCompactList}\small\item\em Verifica a colisão no eixo X dentro de uma distância especificada. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_goomba_a9e07183a9df7e532055598cfb7ef5ce2}{verificar\+Colisao\+DistanciaY}} (float x, float y, float altura)
+\begin{DoxyCompactList}\small\item\em Verifica a colisão no eixo Y dentro de uma distância especificada. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_goomba_ad8fea39a6b8dd00464d84e793eac23c4}{verificar\+Colisao\+Com\+Goomba}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_jogador}{Jogador}} $>$ mario)
+\begin{DoxyCompactList}\small\item\em Verifica a colisão do \doxylink{class_goomba}{Goomba} com o jogador. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_goomba_a064c2c68069b740ae58dbd37eee8cfc0}{verificar\+Colisao\+Lateral\+Com\+Goomba}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_jogador}{Jogador}} $>$ mario)
+\begin{DoxyCompactList}\small\item\em Verifica a colisão lateral do \doxylink{class_goomba}{Goomba} com o jogador. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_goomba_a643f804faab017d3029a56bd26db385b}{verificar\+Colisao\+Lateral\+Com\+Goomba\+Direita}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_jogador}{Jogador}} $>$ mario)
+\begin{DoxyCompactList}\small\item\em Verifica a colisão lateral direita do \doxylink{class_goomba}{Goomba} com o jogador. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_goomba_a07c724d9d0623da55f813f6bb1787704}{verificar\+Colisao\+Lateral\+Com\+Goomba\+Esquerda}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_jogador}{Jogador}} $>$ mario)
+\begin{DoxyCompactList}\small\item\em Verifica a colisão lateral esquerda do \doxylink{class_goomba}{Goomba} com o jogador. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Membros públicos herdados de \mbox{\hyperlink{class_personagem}{Personagem}}}
 \begin{DoxyCompactItemize}
 \item 
@@ -108,7 +110,64 @@ sf\+::\+Texture {\bfseries personagem\+Morreu\+Texture}
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{Descrição detalhada}
+Representa a classe \doxylink{class_goomba}{Goomba}, um inimigo no jogo. 
+
+\doxysubsection{Documentação dos Construtores \& Destrutor}
+\Hypertarget{class_goomba_aaa70dc7621bf9ec8fa1fe64cbafe7952}\label{class_goomba_aaa70dc7621bf9ec8fa1fe64cbafe7952} 
+\index{Goomba@{Goomba}!Goomba@{Goomba}}
+\index{Goomba@{Goomba}!Goomba@{Goomba}}
+\doxysubsubsection{\texorpdfstring{Goomba()}{Goomba()}}
+{\footnotesize\ttfamily Goomba\+::\+Goomba (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_colisao}{Colisao}} \&}]{colisao,  }\item[{std\+::shared\+\_\+ptr$<$ sf\+::\+Render\+Window $>$}]{janela1,  }\item[{float}]{x,  }\item[{float}]{y }\end{DoxyParamCaption})}
+
+
+
+Constrói um objeto \doxylink{class_goomba}{Goomba}. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em colisao} & Referência para o objeto de colisão. \\
+\hline
+{\em janela1} & Ponteiro compartilhado para a janela do jogo. \\
+\hline
+{\em x} & Posição inicial X do \doxylink{class_goomba}{Goomba}. \\
+\hline
+{\em y} & Posição inicial Y do \doxylink{class_goomba}{Goomba}. \\
+\hline
+\end{DoxyParams}
+
+
 \doxysubsection{Documentação das funções}
+\Hypertarget{class_goomba_ac60b707c19cc45455822ab5ffd4ea178}\label{class_goomba_ac60b707c19cc45455822ab5ffd4ea178} 
+\index{Goomba@{Goomba}!atacar@{atacar}}
+\index{atacar@{atacar}!Goomba@{Goomba}}
+\doxysubsubsection{\texorpdfstring{atacar()}{atacar()}}
+{\footnotesize\ttfamily void Goomba\+::atacar (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_jogador}{Jogador}} $>$}]{mario }\end{DoxyParamCaption})}
+
+
+
+Ataca o jogador. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em mario} & Ponteiro compartilhado para o jogador. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_goomba_aeef8a04059ef83845ef5c0e4859fd659}\label{class_goomba_aeef8a04059ef83845ef5c0e4859fd659} 
+\index{Goomba@{Goomba}!desenharGoomba@{desenharGoomba}}
+\index{desenharGoomba@{desenharGoomba}!Goomba@{Goomba}}
+\doxysubsubsection{\texorpdfstring{desenharGoomba()}{desenharGoomba()}}
+{\footnotesize\ttfamily void Goomba\+::desenhar\+Goomba (\begin{DoxyParamCaption}\item[{float}]{x }\end{DoxyParamCaption})}
+
+
+
+Desenha o \doxylink{class_goomba}{Goomba} na tela. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em x} & Posição X para desenhar o \doxylink{class_goomba}{Goomba}. \\
+\hline
+\end{DoxyParams}
 \Hypertarget{class_goomba_a61093bd89d7d40d5f8a7802e91febf3c}\label{class_goomba_a61093bd89d7d40d5f8a7802e91febf3c} 
 \index{Goomba@{Goomba}!modificarPosicao@{modificarPosicao}}
 \index{modificarPosicao@{modificarPosicao}!Goomba@{Goomba}}
@@ -117,8 +176,148 @@ sf\+::\+Texture {\bfseries personagem\+Morreu\+Texture}
 
 
 
+Modifica a posição do \doxylink{class_goomba}{Goomba} com base no tempo delta e na largura do mapa. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em delta\+Time} & Tempo decorrido desde a última atualização. \\
+\hline
+{\em largura\+Mapa} & Largura do mapa do jogo. \\
+\hline
+\end{DoxyParams}
+
+
 Reimplementado de \mbox{\hyperlink{class_personagem}{Personagem}}.
 
+\Hypertarget{class_goomba_a6f406314c09dfa0eabcfa57f87c75910}\label{class_goomba_a6f406314c09dfa0eabcfa57f87c75910} 
+\index{Goomba@{Goomba}!verificarColisao@{verificarColisao}}
+\index{verificarColisao@{verificarColisao}!Goomba@{Goomba}}
+\doxysubsubsection{\texorpdfstring{verificarColisao()}{verificarColisao()}}
+{\footnotesize\ttfamily bool Goomba\+::verificar\+Colisao (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Verifica a colisão do \doxylink{class_goomba}{Goomba}. 
+
+\begin{DoxyReturn}{Retorna}
+True se houver colisão, caso contrário, false. 
+\end{DoxyReturn}
+\Hypertarget{class_goomba_ad8fea39a6b8dd00464d84e793eac23c4}\label{class_goomba_ad8fea39a6b8dd00464d84e793eac23c4} 
+\index{Goomba@{Goomba}!verificarColisaoComGoomba@{verificarColisaoComGoomba}}
+\index{verificarColisaoComGoomba@{verificarColisaoComGoomba}!Goomba@{Goomba}}
+\doxysubsubsection{\texorpdfstring{verificarColisaoComGoomba()}{verificarColisaoComGoomba()}}
+{\footnotesize\ttfamily bool Goomba\+::verificar\+Colisao\+Com\+Goomba (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_jogador}{Jogador}} $>$}]{mario }\end{DoxyParamCaption})}
+
+
+
+Verifica a colisão do \doxylink{class_goomba}{Goomba} com o jogador. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em mario} & Ponteiro compartilhado para o jogador. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+True se houver colisão, caso contrário, false. 
+\end{DoxyReturn}
+\Hypertarget{class_goomba_af62ae8d17c813ed7e1941f14a49d10b2}\label{class_goomba_af62ae8d17c813ed7e1941f14a49d10b2} 
+\index{Goomba@{Goomba}!verificarColisaoDistanciaX@{verificarColisaoDistanciaX}}
+\index{verificarColisaoDistanciaX@{verificarColisaoDistanciaX}!Goomba@{Goomba}}
+\doxysubsubsection{\texorpdfstring{verificarColisaoDistanciaX()}{verificarColisaoDistanciaX()}}
+{\footnotesize\ttfamily bool Goomba\+::verificar\+Colisao\+DistanciaX (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y,  }\item[{float}]{largura }\end{DoxyParamCaption})}
+
+
+
+Verifica a colisão no eixo X dentro de uma distância especificada. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em x} & Coordenada X do objeto a ser verificado. \\
+\hline
+{\em y} & Coordenada Y do objeto a ser verificado. \\
+\hline
+{\em largura} & Largura do objeto a ser verificado. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+True se houver colisão, caso contrário, false. 
+\end{DoxyReturn}
+\Hypertarget{class_goomba_a9e07183a9df7e532055598cfb7ef5ce2}\label{class_goomba_a9e07183a9df7e532055598cfb7ef5ce2} 
+\index{Goomba@{Goomba}!verificarColisaoDistanciaY@{verificarColisaoDistanciaY}}
+\index{verificarColisaoDistanciaY@{verificarColisaoDistanciaY}!Goomba@{Goomba}}
+\doxysubsubsection{\texorpdfstring{verificarColisaoDistanciaY()}{verificarColisaoDistanciaY()}}
+{\footnotesize\ttfamily bool Goomba\+::verificar\+Colisao\+DistanciaY (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y,  }\item[{float}]{altura }\end{DoxyParamCaption})}
+
+
+
+Verifica a colisão no eixo Y dentro de uma distância especificada. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em x} & Coordenada X do objeto a ser verificado. \\
+\hline
+{\em y} & Coordenada Y do objeto a ser verificado. \\
+\hline
+{\em altura} & Altura do objeto a ser verificado. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+True se houver colisão, caso contrário, false. 
+\end{DoxyReturn}
+\Hypertarget{class_goomba_a064c2c68069b740ae58dbd37eee8cfc0}\label{class_goomba_a064c2c68069b740ae58dbd37eee8cfc0} 
+\index{Goomba@{Goomba}!verificarColisaoLateralComGoomba@{verificarColisaoLateralComGoomba}}
+\index{verificarColisaoLateralComGoomba@{verificarColisaoLateralComGoomba}!Goomba@{Goomba}}
+\doxysubsubsection{\texorpdfstring{verificarColisaoLateralComGoomba()}{verificarColisaoLateralComGoomba()}}
+{\footnotesize\ttfamily bool Goomba\+::verificar\+Colisao\+Lateral\+Com\+Goomba (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_jogador}{Jogador}} $>$}]{mario }\end{DoxyParamCaption})}
+
+
+
+Verifica a colisão lateral do \doxylink{class_goomba}{Goomba} com o jogador. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em mario} & Ponteiro compartilhado para o jogador. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+True se houver colisão lateral, caso contrário, false. 
+\end{DoxyReturn}
+\Hypertarget{class_goomba_a643f804faab017d3029a56bd26db385b}\label{class_goomba_a643f804faab017d3029a56bd26db385b} 
+\index{Goomba@{Goomba}!verificarColisaoLateralComGoombaDireita@{verificarColisaoLateralComGoombaDireita}}
+\index{verificarColisaoLateralComGoombaDireita@{verificarColisaoLateralComGoombaDireita}!Goomba@{Goomba}}
+\doxysubsubsection{\texorpdfstring{verificarColisaoLateralComGoombaDireita()}{verificarColisaoLateralComGoombaDireita()}}
+{\footnotesize\ttfamily bool Goomba\+::verificar\+Colisao\+Lateral\+Com\+Goomba\+Direita (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_jogador}{Jogador}} $>$}]{mario }\end{DoxyParamCaption})}
+
+
+
+Verifica a colisão lateral direita do \doxylink{class_goomba}{Goomba} com o jogador. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em mario} & Ponteiro compartilhado para o jogador. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+True se houver colisão lateral direita, caso contrário, false. 
+\end{DoxyReturn}
+\Hypertarget{class_goomba_a07c724d9d0623da55f813f6bb1787704}\label{class_goomba_a07c724d9d0623da55f813f6bb1787704} 
+\index{Goomba@{Goomba}!verificarColisaoLateralComGoombaEsquerda@{verificarColisaoLateralComGoombaEsquerda}}
+\index{verificarColisaoLateralComGoombaEsquerda@{verificarColisaoLateralComGoombaEsquerda}!Goomba@{Goomba}}
+\doxysubsubsection{\texorpdfstring{verificarColisaoLateralComGoombaEsquerda()}{verificarColisaoLateralComGoombaEsquerda()}}
+{\footnotesize\ttfamily bool Goomba\+::verificar\+Colisao\+Lateral\+Com\+Goomba\+Esquerda (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_jogador}{Jogador}} $>$}]{mario }\end{DoxyParamCaption})}
+
+
+
+Verifica a colisão lateral esquerda do \doxylink{class_goomba}{Goomba} com o jogador. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em mario} & Ponteiro compartilhado para o jogador. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+True se houver colisão lateral esquerda, caso contrário, false. 
+\end{DoxyReturn}
 
 
 A documentação para esta classe foi gerada a partir do seguinte ficheiro\+:\begin{DoxyCompactItemize}

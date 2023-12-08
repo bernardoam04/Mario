@@ -150,8 +150,11 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>perdeuMudarTextura</b
 <tr class="memitem:a07c65f454dee1dafeddceee9dad96923" id="r_a07c65f454dee1dafeddceee9dad96923"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_jogador.html#a07c65f454dee1dafeddceee9dad96923">estaSubindo</a> ()</td></tr>
 <tr class="memdesc:a07c65f454dee1dafeddceee9dad96923"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verifica se o personagem jogador está se movendo para cima.  <br /></td></tr>
 <tr class="separator:a07c65f454dee1dafeddceee9dad96923"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2c47e6f2df76849c27b420a351944bba" id="r_a2c47e6f2df76849c27b420a351944bba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_jogador.html#a2c47e6f2df76849c27b420a351944bba">setMovendoDireita</a> (bool movendo)</td></tr>
-<tr class="memdesc:a2c47e6f2df76849c27b420a351944bba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtém a contagem atual de vidas do personagem jogador.  <br /></td></tr>
+<tr class="memitem:a827c66480020e8fd60b61933f59d8a0a" id="r_a827c66480020e8fd60b61933f59d8a0a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_jogador.html#a827c66480020e8fd60b61933f59d8a0a">getVida</a> ()</td></tr>
+<tr class="memdesc:a827c66480020e8fd60b61933f59d8a0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtém a contagem atual de vidas do personagem jogador.  <br /></td></tr>
+<tr class="separator:a827c66480020e8fd60b61933f59d8a0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c47e6f2df76849c27b420a351944bba" id="r_a2c47e6f2df76849c27b420a351944bba"><td class="memItemLeft" align="right" valign="top"><a id="a2c47e6f2df76849c27b420a351944bba" name="a2c47e6f2df76849c27b420a351944bba"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setMovendoDireita</b> (bool movendo)</td></tr>
 <tr class="separator:a2c47e6f2df76849c27b420a351944bba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7e2f177bcd49ad33b8e5dfa03fe67ce4" id="r_a7e2f177bcd49ad33b8e5dfa03fe67ce4"><td class="memItemLeft" align="right" valign="top"><a id="a7e2f177bcd49ad33b8e5dfa03fe67ce4" name="a7e2f177bcd49ad33b8e5dfa03fe67ce4"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>setMovendoEsquerda</b> (bool movendo)</td></tr>
@@ -526,6 +529,26 @@ sf::Texture&#160;</td><td class="memItemRight" valign="bottom"><b>personagemMorr
 
 </div>
 </div>
+<a id="a827c66480020e8fd60b61933f59d8a0a" name="a827c66480020e8fd60b61933f59d8a0a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a827c66480020e8fd60b61933f59d8a0a">&#9670;&#160;</a></span>getVida()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Jogador::getVida </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtém a contagem atual de vidas do personagem jogador. </p>
+<dl class="section return"><dt>Retorna</dt><dd>Contagem atual de vidas. </dd></dl>
+
+</div>
+</div>
 <a id="a453e4ce824fb4388742b918ca1608cee" name="a453e4ce824fb4388742b918ca1608cee"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a453e4ce824fb4388742b918ca1608cee">&#9670;&#160;</a></span>modificarPosicao()</h2>
 
@@ -597,27 +620,6 @@ sf::Texture&#160;</td><td class="memItemRight" valign="bottom"><b>personagemMorr
   </dd>
 </dl>
 <dl class="section return"><dt>Retorna</dt><dd>Referência para o objeto <a class="el" href="class_jogador.html" title="Representa o personagem jogador no jogo.">Jogador</a> atribuído. </dd></dl>
-
-</div>
-</div>
-<a id="a2c47e6f2df76849c27b420a351944bba" name="a2c47e6f2df76849c27b420a351944bba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2c47e6f2df76849c27b420a351944bba">&#9670;&#160;</a></span>setMovendoDireita()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Jogador::setMovendoDireita </td>
-          <td>(</td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>movendo</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Obtém a contagem atual de vidas do personagem jogador. </p>
-<dl class="section return"><dt>Retorna</dt><dd>Contagem atual de vidas. </dd></dl>
 
 </div>
 </div>
