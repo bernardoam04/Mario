@@ -4,43 +4,55 @@
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ GOOMBA\_HPP}}
 \DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ GOOMBA\_HPP}}
-\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}Personagem.hpp"{}}}
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}Jogador.hpp"{}}}
-\DoxyCodeLine{00006\ }
-\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_goomba}{Goomba}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_personagem}{Personagem}}\ \{}
-\DoxyCodeLine{00008\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00009\ \ \ \ \ std::shared\_ptr\ <sf::RenderWindow>\ janela;\textcolor{comment}{//Talvez\ colocar\ como\ protected\ em\ personagem\ para\ evitar\ repeticao}}
-\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keywordtype}{int}\ alturaGoomba;}
-\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keywordtype}{int}\ larguraGoomba;}
-\DoxyCodeLine{00012\ }
-\DoxyCodeLine{00013\ \ \ \ \ \textcolor{comment}{//Temporizador}}
-\DoxyCodeLine{00014\ \ \ \ \ sf::Clock\ temporizadorMorte;}
-\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00016\ \ \ \ \ \textcolor{comment}{//Construtor}}
-\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{class_goomba}{Goomba}}(\mbox{\hyperlink{class_colisao}{Colisao}}\ \&colisao,\ std::shared\_ptr\ <sf::RenderWindow>\ janela1,\ \textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y);}
-\DoxyCodeLine{00018\ }
-\DoxyCodeLine{00019\ \ \ \ \ \textcolor{comment}{//Destrutor\ virtual}}
-\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_goomba}{\string~Goomba}}();}
-\DoxyCodeLine{00021\ }
-\DoxyCodeLine{00022\ \ \ \ \ \textcolor{comment}{//Métodos\ de\ uso\ direto}}
-\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{void}\ inicializarGoombas();\textcolor{comment}{//Controlar\ o\ aparecimento\ de\ Goombas}}
-\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ atacar(std::shared\_ptr\ <Jogador>\ mario);}
-\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ modificarPosicao(sf::Time\ deltaTime,\ \textcolor{keywordtype}{int}\ larguraMapa)\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ morrer();}
-\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{void}\ desenharGoomba(\textcolor{keywordtype}{float}\ x);}
-\DoxyCodeLine{00028\ }
-\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//Métodos\ de\ verificacao}}
-\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{bool}\ verificarColisao();}
-\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{bool}\ verificarColisaoDistanciaX(\textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y,\ \textcolor{keywordtype}{float}\ largura);}
-\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{bool}\ verificarColisaoDistanciaY(\textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y,\ \textcolor{keywordtype}{float}\ altura);}
-\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{bool}\ verificarColisaoComGoomba(std::shared\_ptr\ <Jogador>\ mario);}
-\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{bool}\ verificarColisaoLateralComGoomba(std::shared\_ptr\ <Jogador>\ mario);}
-\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{bool}\ verificarColisaoLateralComGoombaDireita(std::shared\_ptr\ <Jogador>\ mario);}
-\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{bool}\ verificarColisaoLateralComGoombaEsquerda(std::shared\_ptr\ <Jogador>\ mario);}
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00038\ \};}
-\DoxyCodeLine{00039\ }
-\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}Personagem.hpp"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}Jogador.hpp"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_goomba}{Goomba}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_personagem}{Personagem}}\ \{}
+\DoxyCodeLine{00012\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00013\ \ \ \ \ std::shared\_ptr<sf::RenderWindow>\ janela;\ }
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{int}\ alturaGoomba;}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{int}\ larguraGoomba;}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{comment}{//\ Temporizador}}
+\DoxyCodeLine{00018\ \ \ \ \ sf::Clock\ temporizadorMorte;}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{comment}{//\ Construtor}}
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{class_goomba_aaa70dc7621bf9ec8fa1fe64cbafe7952}{Goomba}}(\mbox{\hyperlink{class_colisao}{Colisao}}\&\ colisao,\ std::shared\_ptr<sf::RenderWindow>\ janela1,\ \textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y);}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{comment}{//\ Destrutor\ virtual}}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_goomba_a441ccc2814f5f640ae11409f75f4aa24}{\string~Goomba}}();}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{comment}{//\ Métodos\ de\ Uso\ Direto}}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_goomba_a910307aecea4f08221d98251e8199c33}{inicializarGoombas}}();}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_goomba_ac60b707c19cc45455822ab5ffd4ea178}{atacar}}(std::shared\_ptr<Jogador>\ mario);}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_goomba_a61093bd89d7d40d5f8a7802e91febf3c}{modificarPosicao}}(sf::Time\ deltaTime,\ \textcolor{keywordtype}{int}\ larguraMapa)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_goomba_a8a86996227e2f2c5a1d03956c15eb3de}{morrer}}();}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_goomba_aeef8a04059ef83845ef5c0e4859fd659}{desenharGoomba}}(\textcolor{keywordtype}{float}\ x);}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{comment}{//\ Métodos\ de\ Verificação}}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_goomba_a6f406314c09dfa0eabcfa57f87c75910}{verificarColisao}}();}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_goomba_af62ae8d17c813ed7e1941f14a49d10b2}{verificarColisaoDistanciaX}}(\textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y,\ \textcolor{keywordtype}{float}\ largura);}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_goomba_a9e07183a9df7e532055598cfb7ef5ce2}{verificarColisaoDistanciaY}}(\textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y,\ \textcolor{keywordtype}{float}\ altura);}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_goomba_ad8fea39a6b8dd00464d84e793eac23c4}{verificarColisaoComGoomba}}(std::shared\_ptr<Jogador>\ mario);}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_goomba_a064c2c68069b740ae58dbd37eee8cfc0}{verificarColisaoLateralComGoomba}}(std::shared\_ptr<Jogador>\ mario);}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_goomba_a643f804faab017d3029a56bd26db385b}{verificarColisaoLateralComGoombaDireita}}(std::shared\_ptr<Jogador>\ mario);}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_goomba_a07c724d9d0623da55f813f6bb1787704}{verificarColisaoLateralComGoombaEsquerda}}(std::shared\_ptr<Jogador>\ mario);}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \};}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

@@ -8,6 +8,7 @@ var searchData=
   ['getlargurajogador_5',['getLarguraJogador',['../class_jogador.html#aef5c0e141062a07daa7e32ccd7bf3551',1,'Jogador']]],
   ['getperdeu_6',['getPerdeu',['../class_jogador.html#ab5fe99a014e06804bf20eb79da672d59',1,'Jogador']]],
   ['getvelocidadecamera_7',['getVelocidadeCamera',['../class_camera.html#a5ed5b75ec3424572ee57e440df3cc624',1,'Camera']]],
-  ['getview_8',['getView',['../class_camera.html#a917ea4f367d0752f7c220bc26fe755a4',1,'Camera']]],
-  ['goomba_9',['Goomba',['../class_goomba.html',1,'']]]
+  ['getvida_8',['getVida',['../class_jogador.html#a827c66480020e8fd60b61933f59d8a0a',1,'Jogador']]],
+  ['getview_9',['getView',['../class_camera.html#a917ea4f367d0752f7c220bc26fe755a4',1,'Camera']]],
+  ['goomba_10',['goomba',['../class_goomba.html',1,'Goomba'],['../class_goomba.html#aaa70dc7621bf9ec8fa1fe64cbafe7952',1,'Goomba::Goomba()']]]
 ];
