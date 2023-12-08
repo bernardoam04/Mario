@@ -1,62 +1,171 @@
 \doxysection{Referência à classe Sound\+Manager}
 \hypertarget{class_sound_manager}{}\label{class_sound_manager}\index{SoundManager@{SoundManager}}
+
+
+Classe responsável pela gestão de sons e músicas no jogo.  
+
+
+
+
+{\ttfamily \#include $<$Sound\+Manager.\+hpp$>$}
+
 \doxysubsubsection*{Membros públicos}
 \begin{DoxyCompactItemize}
 \item 
+\Hypertarget{class_sound_manager_abcc1fbf3488be5788a42c9a4fe56df35}\label{class_sound_manager_abcc1fbf3488be5788a42c9a4fe56df35} 
+{\bfseries Sound\+Manager} ()
+\begin{DoxyCompactList}\small\item\em Construtor da classe \doxylink{class_sound_manager}{Sound\+Manager}. \end{DoxyCompactList}\item 
 \Hypertarget{class_sound_manager_a19b30d25877e02ba5232463f086cab0f}\label{class_sound_manager_a19b30d25877e02ba5232463f086cab0f} 
 void {\bfseries tocar\+Musica} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Toca a música de fundo. \end{DoxyCompactList}\item 
 \Hypertarget{class_sound_manager_a7f2d940d991194d3aa0835117b116b9d}\label{class_sound_manager_a7f2d940d991194d3aa0835117b116b9d} 
 void {\bfseries pausar\+Musica} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Pausa a música de fundo. \end{DoxyCompactList}\item 
 \Hypertarget{class_sound_manager_adbd32619c647393431ec15c422e40c82}\label{class_sound_manager_adbd32619c647393431ec15c422e40c82} 
 void {\bfseries reiniciar\+Musica} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Reinicia a reprodução da música de fundo. \end{DoxyCompactList}\item 
 \Hypertarget{class_sound_manager_a5451d0d577472a996f6322af1188bd7e}\label{class_sound_manager_a5451d0d577472a996f6322af1188bd7e} 
 void {\bfseries som\+Moeda} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Reproduz o som da moeda. \end{DoxyCompactList}\item 
 \Hypertarget{class_sound_manager_a07f416d41728953cefa99b57135389e9}\label{class_sound_manager_a07f416d41728953cefa99b57135389e9} 
 void {\bfseries som\+Game\+Over} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Reproduz o som de Game Over. \end{DoxyCompactList}\item 
 \Hypertarget{class_sound_manager_ad92fba211d9801885a0dffe8d837577f}\label{class_sound_manager_ad92fba211d9801885a0dffe8d837577f} 
 void {\bfseries som\+Pulo} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Reproduz o som de pulo. \end{DoxyCompactList}\item 
 \Hypertarget{class_sound_manager_a67bc54e2a8d0056ac778215a35210f68}\label{class_sound_manager_a67bc54e2a8d0056ac778215a35210f68} 
 void {\bfseries somgameovertela} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Reproduz o som de Game Over com grito. \end{DoxyCompactList}\item 
 \Hypertarget{class_sound_manager_ad0df44ad1584040ea6b326a2f2122ade}\label{class_sound_manager_ad0df44ad1584040ea6b326a2f2122ade} 
 void {\bfseries som\+Cogumelo} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Reproduz o som do cogumelo. \end{DoxyCompactList}\item 
 \Hypertarget{class_sound_manager_ab58a6804e073f0412c5fb96527e24182}\label{class_sound_manager_ab58a6804e073f0412c5fb96527e24182} 
 void {\bfseries som\+Win} ()
-\item 
-\Hypertarget{class_sound_manager_add4193a90f510647864eac911e0c4b03}\label{class_sound_manager_add4193a90f510647864eac911e0c4b03} 
-sf\+::\+Music \& {\bfseries get\+Musica\+Fundo} ()
-\item 
-\Hypertarget{class_sound_manager_a5fe5941f9b110daa57b20e2ec54a3e6e}\label{class_sound_manager_a5fe5941f9b110daa57b20e2ec54a3e6e} 
-sf\+::\+Sound\+Buffer \& {\bfseries get\+Sb\+Moeda} ()
-\item 
-\Hypertarget{class_sound_manager_a63db67e116f722ca2c602b127bc5f4ac}\label{class_sound_manager_a63db67e116f722ca2c602b127bc5f4ac} 
-sf\+::\+Sound\+Buffer \& {\bfseries get\+Sb\+Pulo} ()
-\item 
-\Hypertarget{class_sound_manager_a75febcafdbfb8e594776a0803a62056f}\label{class_sound_manager_a75febcafdbfb8e594776a0803a62056f} 
-sf\+::\+Sound\+Buffer \& {\bfseries get\+Sb\+Gameover} ()
-\item 
-\Hypertarget{class_sound_manager_aa2c638795165cddd3422565228df8c80}\label{class_sound_manager_aa2c638795165cddd3422565228df8c80} 
-bool {\bfseries is\+Sound\+Playing} (std\+::string som)
-\item 
-\Hypertarget{class_sound_manager_a993d597679bb85b62c5ab49bcf170704}\label{class_sound_manager_a993d597679bb85b62c5ab49bcf170704} 
-bool {\bfseries musica\+Pausada} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Reproduz o som de vitória. \end{DoxyCompactList}\item 
+sf\+::\+Music \& \mbox{\hyperlink{class_sound_manager_add4193a90f510647864eac911e0c4b03}{get\+Musica\+Fundo}} ()
+\begin{DoxyCompactList}\small\item\em Obtém uma referência à música de fundo. \end{DoxyCompactList}\item 
+sf\+::\+Sound\+Buffer \& \mbox{\hyperlink{class_sound_manager_a5fe5941f9b110daa57b20e2ec54a3e6e}{get\+Sb\+Moeda}} ()
+\begin{DoxyCompactList}\small\item\em Obtém o buffer de som da moeda. \end{DoxyCompactList}\item 
+sf\+::\+Sound\+Buffer \& \mbox{\hyperlink{class_sound_manager_a63db67e116f722ca2c602b127bc5f4ac}{get\+Sb\+Pulo}} ()
+\begin{DoxyCompactList}\small\item\em Obtém o buffer de som de pulo. \end{DoxyCompactList}\item 
+sf\+::\+Sound\+Buffer \& \mbox{\hyperlink{class_sound_manager_a75febcafdbfb8e594776a0803a62056f}{get\+Sb\+Gameover}} ()
+\begin{DoxyCompactList}\small\item\em Obtém o buffer de som de Game Over. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_sound_manager_aa2c638795165cddd3422565228df8c80}{is\+Sound\+Playing}} (std\+::string som)
+\begin{DoxyCompactList}\small\item\em Verifica se um determinado som está sendo reproduzido. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_sound_manager_a993d597679bb85b62c5ab49bcf170704}{musica\+Pausada}} ()
+\begin{DoxyCompactList}\small\item\em Verifica se a música está pausada. \end{DoxyCompactList}\item 
 \Hypertarget{class_sound_manager_af41be3e4e3d745dc3374b26f35c3e894}\label{class_sound_manager_af41be3e4e3d745dc3374b26f35c3e894} 
 void {\bfseries desativar\+Som} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Desativa a reprodução de sons. \end{DoxyCompactList}\item 
 \Hypertarget{class_sound_manager_a69f8d19b11ca3b5487ef89f042030adf}\label{class_sound_manager_a69f8d19b11ca3b5487ef89f042030adf} 
 void {\bfseries ativar\+Som} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Ativa a reprodução de sons. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sound_manager_a5eeaa3e6ed255bd78da57ac1aaaddade}{carregar\+Som\+Vazio}} (sf\+::\+Sound\+Buffer \&sound\+Buffer)
+\begin{DoxyCompactList}\small\item\em Carrega um som vazio em um buffer de som. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrição detalhada}
+Classe responsável pela gestão de sons e músicas no jogo. 
+
+\doxysubsection{Documentação das funções}
 \Hypertarget{class_sound_manager_a5eeaa3e6ed255bd78da57ac1aaaddade}\label{class_sound_manager_a5eeaa3e6ed255bd78da57ac1aaaddade} 
-void {\bfseries carregar\+Som\+Vazio} (sf\+::\+Sound\+Buffer \&sound\+Buffer)
-\end{DoxyCompactItemize}
+\index{SoundManager@{SoundManager}!carregarSomVazio@{carregarSomVazio}}
+\index{carregarSomVazio@{carregarSomVazio}!SoundManager@{SoundManager}}
+\doxysubsubsection{\texorpdfstring{carregarSomVazio()}{carregarSomVazio()}}
+{\footnotesize\ttfamily void Sound\+Manager\+::carregar\+Som\+Vazio (\begin{DoxyParamCaption}\item[{sf\+::\+Sound\+Buffer \&}]{sound\+Buffer }\end{DoxyParamCaption})}
+
+
+
+Carrega um som vazio em um buffer de som. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em sound\+Buffer} & Referência ao buffer de som que vai receber o som vazio. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_sound_manager_add4193a90f510647864eac911e0c4b03}\label{class_sound_manager_add4193a90f510647864eac911e0c4b03} 
+\index{SoundManager@{SoundManager}!getMusicaFundo@{getMusicaFundo}}
+\index{getMusicaFundo@{getMusicaFundo}!SoundManager@{SoundManager}}
+\doxysubsubsection{\texorpdfstring{getMusicaFundo()}{getMusicaFundo()}}
+{\footnotesize\ttfamily sf\+::\+Music \& Sound\+Manager\+::get\+Musica\+Fundo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtém uma referência à música de fundo. 
+
+\begin{DoxyReturn}{Retorna}
+Referência à música de fundo. 
+\end{DoxyReturn}
+\Hypertarget{class_sound_manager_a75febcafdbfb8e594776a0803a62056f}\label{class_sound_manager_a75febcafdbfb8e594776a0803a62056f} 
+\index{SoundManager@{SoundManager}!getSbGameover@{getSbGameover}}
+\index{getSbGameover@{getSbGameover}!SoundManager@{SoundManager}}
+\doxysubsubsection{\texorpdfstring{getSbGameover()}{getSbGameover()}}
+{\footnotesize\ttfamily sf\+::\+Sound\+Buffer \& Sound\+Manager\+::get\+Sb\+Gameover (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtém o buffer de som de Game Over. 
+
+\begin{DoxyReturn}{Retorna}
+Referência ao buffer de som de Game Over. 
+\end{DoxyReturn}
+\Hypertarget{class_sound_manager_a5fe5941f9b110daa57b20e2ec54a3e6e}\label{class_sound_manager_a5fe5941f9b110daa57b20e2ec54a3e6e} 
+\index{SoundManager@{SoundManager}!getSbMoeda@{getSbMoeda}}
+\index{getSbMoeda@{getSbMoeda}!SoundManager@{SoundManager}}
+\doxysubsubsection{\texorpdfstring{getSbMoeda()}{getSbMoeda()}}
+{\footnotesize\ttfamily sf\+::\+Sound\+Buffer \& Sound\+Manager\+::get\+Sb\+Moeda (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtém o buffer de som da moeda. 
+
+\begin{DoxyReturn}{Retorna}
+Referência ao buffer de som da moeda. 
+\end{DoxyReturn}
+\Hypertarget{class_sound_manager_a63db67e116f722ca2c602b127bc5f4ac}\label{class_sound_manager_a63db67e116f722ca2c602b127bc5f4ac} 
+\index{SoundManager@{SoundManager}!getSbPulo@{getSbPulo}}
+\index{getSbPulo@{getSbPulo}!SoundManager@{SoundManager}}
+\doxysubsubsection{\texorpdfstring{getSbPulo()}{getSbPulo()}}
+{\footnotesize\ttfamily sf\+::\+Sound\+Buffer \& Sound\+Manager\+::get\+Sb\+Pulo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtém o buffer de som de pulo. 
+
+\begin{DoxyReturn}{Retorna}
+Referência ao buffer de som de pulo. 
+\end{DoxyReturn}
+\Hypertarget{class_sound_manager_aa2c638795165cddd3422565228df8c80}\label{class_sound_manager_aa2c638795165cddd3422565228df8c80} 
+\index{SoundManager@{SoundManager}!isSoundPlaying@{isSoundPlaying}}
+\index{isSoundPlaying@{isSoundPlaying}!SoundManager@{SoundManager}}
+\doxysubsubsection{\texorpdfstring{isSoundPlaying()}{isSoundPlaying()}}
+{\footnotesize\ttfamily bool Sound\+Manager\+::is\+Sound\+Playing (\begin{DoxyParamCaption}\item[{std\+::string}]{som }\end{DoxyParamCaption})}
+
+
+
+Verifica se um determinado som está sendo reproduzido. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em som} & Nome do som a ser verificado. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Verdadeiro se o som estiver sendo reproduzido; falso caso contrário. 
+\end{DoxyReturn}
+\Hypertarget{class_sound_manager_a993d597679bb85b62c5ab49bcf170704}\label{class_sound_manager_a993d597679bb85b62c5ab49bcf170704} 
+\index{SoundManager@{SoundManager}!musicaPausada@{musicaPausada}}
+\index{musicaPausada@{musicaPausada}!SoundManager@{SoundManager}}
+\doxysubsubsection{\texorpdfstring{musicaPausada()}{musicaPausada()}}
+{\footnotesize\ttfamily bool Sound\+Manager\+::musica\+Pausada (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Verifica se a música está pausada. 
+
+\begin{DoxyReturn}{Retorna}
+Verdadeiro se a música estiver pausada; falso caso contrário. 
+\end{DoxyReturn}
 
 
 A documentação para esta classe foi gerada a partir do seguinte ficheiro\+:\begin{DoxyCompactItemize}

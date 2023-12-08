@@ -1,54 +1,153 @@
 \doxysection{Referência à classe Menu}
 \hypertarget{class_menu}{}\label{class_menu}\index{Menu@{Menu}}
+
+
+Representa o menu principal do jogo.  
+
+
+
+
+{\ttfamily \#include $<$Menu.\+hpp$>$}
+
 \doxysubsubsection*{Tipos Públicos}
 \begin{DoxyCompactItemize}
 \item 
 \Hypertarget{class_menu_a559be38c08d318ac4bfea45a6d8f9575}\label{class_menu_a559be38c08d318ac4bfea45a6d8f9575} 
-enum {\bfseries Opcao\+Selecionada} \{ {\bfseries Nenhuma\+Selecao}
+enum \mbox{\hyperlink{class_menu_a559be38c08d318ac4bfea45a6d8f9575}{Opcao\+Selecionada}} \{ {\bfseries Nenhuma\+Selecao}
 , {\bfseries Iniciar\+Jogo}
 , {\bfseries Opcoes}
 , {\bfseries Sair}
  \}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Enumeração para as opções selecionadas no menu. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Membros públicos}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{class_menu_afdb3eb41cfadc1b99bbdbae3edba48bd}\label{class_menu_afdb3eb41cfadc1b99bbdbae3edba48bd} 
-{\bfseries Menu} (std\+::shared\+\_\+ptr$<$ sf\+::\+Render\+Window $>$ janela1, sf\+::\+Font \&fonte)
-\item 
+\mbox{\hyperlink{class_menu_afdb3eb41cfadc1b99bbdbae3edba48bd}{Menu}} (std\+::shared\+\_\+ptr$<$ sf\+::\+Render\+Window $>$ janela1, sf\+::\+Font \&fonte)
+\begin{DoxyCompactList}\small\item\em Constrói um objeto \doxylink{class_menu}{Menu}. \end{DoxyCompactList}\item 
 \Hypertarget{class_menu_a4395fccd9fa4a692d201cc7a80dd7a57}\label{class_menu_a4395fccd9fa4a692d201cc7a80dd7a57} 
 virtual void {\bfseries desenhar\+Tela} ()
-\item 
-\Hypertarget{class_menu_a804e77d73f34e5cb944c53304d5c2879}\label{class_menu_a804e77d73f34e5cb944c53304d5c2879} 
-bool {\bfseries atualizar} (sf\+::\+Event ev)
-\item 
+\begin{DoxyCompactList}\small\item\em Desenha a tela do menu. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_menu_a804e77d73f34e5cb944c53304d5c2879}{atualizar}} (sf\+::\+Event ev)
+\begin{DoxyCompactList}\small\item\em Atualiza o estado do menu. \end{DoxyCompactList}\item 
 \Hypertarget{class_menu_aea3cf0b417bb6cd52842705db9385636}\label{class_menu_aea3cf0b417bb6cd52842705db9385636} 
 void {\bfseries atualizar\+Posicao\+Textos} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Atualiza a posição dos textos no menu. \end{DoxyCompactList}\item 
 \Hypertarget{class_menu_a61f589e780f06b94cd43a9103ce54837}\label{class_menu_a61f589e780f06b94cd43a9103ce54837} 
 void {\bfseries atualizar\+Opcao\+Selecionada} ()
-\item 
-\Hypertarget{class_menu_afadc32e9fbc6eb0068d34cc139f5e6a5}\label{class_menu_afadc32e9fbc6eb0068d34cc139f5e6a5} 
-bool {\bfseries tratar\+Clique\+Mouse} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Atualiza a opção selecionada no menu. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_menu_afadc32e9fbc6eb0068d34cc139f5e6a5}{tratar\+Clique\+Mouse}} ()
+\begin{DoxyCompactList}\small\item\em Trata o clique do mouse para seleção de opções. \end{DoxyCompactList}\item 
 \Hypertarget{class_menu_a4ef84f1b29c9d7850e02e2c67c4b8a90}\label{class_menu_a4ef84f1b29c9d7850e02e2c67c4b8a90} 
 void {\bfseries resetar\+Selecao} ()
-\item 
-\Hypertarget{class_menu_a1cffab73f0a3df3a6d27280de15333d3}\label{class_menu_a1cffab73f0a3df3a6d27280de15333d3} 
-bool {\bfseries sair} ()
-\item 
-\Hypertarget{class_menu_a4f426f95fddd76c551d95718fd771993}\label{class_menu_a4f426f95fddd76c551d95718fd771993} 
-Opcao\+Selecionada {\bfseries get\+Opcao\+Selecionada} () const
-\item 
-\Hypertarget{class_menu_a8d6290f297ec0830d26146c9fe6d7c96}\label{class_menu_a8d6290f297ec0830d26146c9fe6d7c96} 
-bool {\bfseries get\+Som\+Ativo} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Reseta a seleção do menu para nenhuma. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_menu_a1cffab73f0a3df3a6d27280de15333d3}{sair}} ()
+\begin{DoxyCompactList}\small\item\em Verifica se a opção "{}\+Sair"{} foi selecionada. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_menu_a559be38c08d318ac4bfea45a6d8f9575}{Opcao\+Selecionada}} \mbox{\hyperlink{class_menu_a4f426f95fddd76c551d95718fd771993}{get\+Opcao\+Selecionada}} () const
+\begin{DoxyCompactList}\small\item\em Obtém a opção atualmente selecionada no menu. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_menu_a8d6290f297ec0830d26146c9fe6d7c96}{get\+Som\+Ativo}} ()
+\begin{DoxyCompactList}\small\item\em Verifica se o som está ativo no menu. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Atributos Protegidos}
 \begin{DoxyCompactItemize}
 \item 
 \Hypertarget{class_menu_ad75dc44fdc5c40e42e1550795c647228}\label{class_menu_ad75dc44fdc5c40e42e1550795c647228} 
 std\+::shared\+\_\+ptr$<$ sf\+::\+Render\+Window $>$ {\bfseries janela}
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrição detalhada}
+Representa o menu principal do jogo. 
+
+\doxysubsection{Documentação dos Construtores \& Destrutor}
+\Hypertarget{class_menu_afdb3eb41cfadc1b99bbdbae3edba48bd}\label{class_menu_afdb3eb41cfadc1b99bbdbae3edba48bd} 
+\index{Menu@{Menu}!Menu@{Menu}}
+\index{Menu@{Menu}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{Menu()}{Menu()}}
+{\footnotesize\ttfamily Menu\+::\+Menu (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ sf\+::\+Render\+Window $>$}]{janela1,  }\item[{sf\+::\+Font \&}]{fonte }\end{DoxyParamCaption})}
+
+
+
+Constrói um objeto \doxylink{class_menu}{Menu}. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em janela1} & Ponteiro compartilhado para a janela do jogo. \\
+\hline
+{\em fonte} & Fonte utilizada para os textos no menu. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Documentação das funções}
+\Hypertarget{class_menu_a804e77d73f34e5cb944c53304d5c2879}\label{class_menu_a804e77d73f34e5cb944c53304d5c2879} 
+\index{Menu@{Menu}!atualizar@{atualizar}}
+\index{atualizar@{atualizar}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{atualizar()}{atualizar()}}
+{\footnotesize\ttfamily bool Menu\+::atualizar (\begin{DoxyParamCaption}\item[{sf\+::\+Event}]{ev }\end{DoxyParamCaption})}
+
+
+
+Atualiza o estado do menu. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em ev} & Evento do SFML para tratar eventos de entrada. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+True se uma seleção foi feita, caso contrário, false. 
+\end{DoxyReturn}
+\Hypertarget{class_menu_a4f426f95fddd76c551d95718fd771993}\label{class_menu_a4f426f95fddd76c551d95718fd771993} 
+\index{Menu@{Menu}!getOpcaoSelecionada@{getOpcaoSelecionada}}
+\index{getOpcaoSelecionada@{getOpcaoSelecionada}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{getOpcaoSelecionada()}{getOpcaoSelecionada()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_menu_a559be38c08d318ac4bfea45a6d8f9575}{Opcao\+Selecionada}} Menu\+::get\+Opcao\+Selecionada (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Obtém a opção atualmente selecionada no menu. 
+
+\begin{DoxyReturn}{Retorna}
+Opção selecionada no menu. 
+\end{DoxyReturn}
+\Hypertarget{class_menu_a8d6290f297ec0830d26146c9fe6d7c96}\label{class_menu_a8d6290f297ec0830d26146c9fe6d7c96} 
+\index{Menu@{Menu}!getSomAtivo@{getSomAtivo}}
+\index{getSomAtivo@{getSomAtivo}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{getSomAtivo()}{getSomAtivo()}}
+{\footnotesize\ttfamily bool Menu\+::get\+Som\+Ativo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Verifica se o som está ativo no menu. 
+
+\begin{DoxyReturn}{Retorna}
+True se o som estiver ativo, caso contrário, false. 
+\end{DoxyReturn}
+\Hypertarget{class_menu_a1cffab73f0a3df3a6d27280de15333d3}\label{class_menu_a1cffab73f0a3df3a6d27280de15333d3} 
+\index{Menu@{Menu}!sair@{sair}}
+\index{sair@{sair}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{sair()}{sair()}}
+{\footnotesize\ttfamily bool Menu\+::sair (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Verifica se a opção "{}\+Sair"{} foi selecionada. 
+
+\begin{DoxyReturn}{Retorna}
+True se a opção "{}\+Sair"{} foi selecionada, caso contrário, false. 
+\end{DoxyReturn}
+\Hypertarget{class_menu_afadc32e9fbc6eb0068d34cc139f5e6a5}\label{class_menu_afadc32e9fbc6eb0068d34cc139f5e6a5} 
+\index{Menu@{Menu}!tratarCliqueMouse@{tratarCliqueMouse}}
+\index{tratarCliqueMouse@{tratarCliqueMouse}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{tratarCliqueMouse()}{tratarCliqueMouse()}}
+{\footnotesize\ttfamily bool Menu\+::tratar\+Clique\+Mouse (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Trata o clique do mouse para seleção de opções. 
+
+\begin{DoxyReturn}{Retorna}
+True se uma opção foi selecionada, caso contrário, false. 
+\end{DoxyReturn}
 
 
 A documentação para esta classe foi gerada a partir do seguinte ficheiro\+:\begin{DoxyCompactItemize}

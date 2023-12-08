@@ -1,16 +1,23 @@
 \doxysection{Referência à classe Personagem}
 \hypertarget{class_personagem}{}\label{class_personagem}\index{Personagem@{Personagem}}
+
+
+Classe base que representa um personagem no jogo (interface).  
+
+
+
+
+{\ttfamily \#include $<$Personagem.\+hpp$>$}
+
 \doxysubsubsection*{Membros públicos}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{class_personagem_a5db7fd106c2074f92825e403a9d91bcc}\label{class_personagem_a5db7fd106c2074f92825e403a9d91bcc} 
-{\bfseries Personagem} (\mbox{\hyperlink{class_colisao}{Colisao}} \&colisao)
-\item 
+\mbox{\hyperlink{class_personagem_a5db7fd106c2074f92825e403a9d91bcc}{Personagem}} (\mbox{\hyperlink{class_colisao}{Colisao}} \&colisao)
+\begin{DoxyCompactList}\small\item\em Constrói um objeto da classe \doxylink{class_personagem}{Personagem}. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{class_personagem_a1290c9132aa3d3d379c9efbaeb5014e0}{modificar\+Posicao}} (sf\+::\+Time delta\+Time, int largura\+Mapa)
-\item 
-\Hypertarget{class_personagem_a9205aae75d8c88a9b3d464f2b67f17b9}\label{class_personagem_a9205aae75d8c88a9b3d464f2b67f17b9} 
-sf\+::\+Texture {\bfseries load\+Texture} (const std\+::string \&filename)
-\item 
+\begin{DoxyCompactList}\small\item\em Modifica a posição do personagem com base no tempo delta e na largura do mapa. \end{DoxyCompactList}\item 
+sf\+::\+Texture \mbox{\hyperlink{class_personagem_a9205aae75d8c88a9b3d464f2b67f17b9}{load\+Texture}} (const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em Carrega uma textura a partir de um arquivo. \end{DoxyCompactList}\item 
 \Hypertarget{class_personagem_ae1d72472a6af00a40b470d66e2636fc1}\label{class_personagem_ae1d72472a6af00a40b470d66e2636fc1} 
 sf\+::\+Vector2f {\bfseries get\+Posicao} () const
 \item 
@@ -97,13 +104,63 @@ sf\+::\+Texture {\bfseries personagem\+Morreu\+Texture}
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{Descrição detalhada}
+Classe base que representa um personagem no jogo (interface). 
+
+\doxysubsection{Documentação dos Construtores \& Destrutor}
+\Hypertarget{class_personagem_a5db7fd106c2074f92825e403a9d91bcc}\label{class_personagem_a5db7fd106c2074f92825e403a9d91bcc} 
+\index{Personagem@{Personagem}!Personagem@{Personagem}}
+\index{Personagem@{Personagem}!Personagem@{Personagem}}
+\doxysubsubsection{\texorpdfstring{Personagem()}{Personagem()}}
+{\footnotesize\ttfamily Personagem\+::\+Personagem (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_colisao}{Colisao}} \&}]{colisao }\end{DoxyParamCaption})}
+
+
+
+Constrói um objeto da classe \doxylink{class_personagem}{Personagem}. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em colisao} & Referência para o objeto de colisão. \\
+\hline
+\end{DoxyParams}
+
+
 \doxysubsection{Documentação das funções}
+\Hypertarget{class_personagem_a9205aae75d8c88a9b3d464f2b67f17b9}\label{class_personagem_a9205aae75d8c88a9b3d464f2b67f17b9} 
+\index{Personagem@{Personagem}!loadTexture@{loadTexture}}
+\index{loadTexture@{loadTexture}!Personagem@{Personagem}}
+\doxysubsubsection{\texorpdfstring{loadTexture()}{loadTexture()}}
+{\footnotesize\ttfamily sf\+::\+Texture Personagem\+::load\+Texture (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})}
+
+
+
+Carrega uma textura a partir de um arquivo. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em filename} & Nome do arquivo da textura. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Textura carregada. 
+\end{DoxyReturn}
 \Hypertarget{class_personagem_a1290c9132aa3d3d379c9efbaeb5014e0}\label{class_personagem_a1290c9132aa3d3d379c9efbaeb5014e0} 
 \index{Personagem@{Personagem}!modificarPosicao@{modificarPosicao}}
 \index{modificarPosicao@{modificarPosicao}!Personagem@{Personagem}}
 \doxysubsubsection{\texorpdfstring{modificarPosicao()}{modificarPosicao()}}
 {\footnotesize\ttfamily virtual void Personagem\+::modificar\+Posicao (\begin{DoxyParamCaption}\item[{sf\+::\+Time}]{delta\+Time,  }\item[{int}]{largura\+Mapa }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
+
+
+Modifica a posição do personagem com base no tempo delta e na largura do mapa. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em delta\+Time} & Tempo decorrido desde a última atualização. \\
+\hline
+{\em largura\+Mapa} & Largura do mapa do jogo. \\
+\hline
+\end{DoxyParams}
 
 
 Reimplementado em \mbox{\hyperlink{class_goomba_a61093bd89d7d40d5f8a7802e91febf3c}{Goomba}} e \mbox{\hyperlink{class_jogador_a453e4ce824fb4388742b918ca1608cee}{Jogador}}.

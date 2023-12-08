@@ -4,57 +4,68 @@
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ SOUND\_MANAGER\_HPP}}
 \DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ SOUND\_MANAGER\_HPP}}
-\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <SFML/Audio.hpp>}}
-\DoxyCodeLine{00004\ }
-\DoxyCodeLine{00005\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_sound_manager}{SoundManager}}\{}
-\DoxyCodeLine{00006\ \ \ \ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00007\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Sons\ e\ músicas}}
-\DoxyCodeLine{00008\ \ \ \ \ \ \ \ \ sf::Music\ musicaFundo;}
-\DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ sf::SoundBuffer\ sbMoeda;}
-\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ sf::Sound\ sMoeda;}
-\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ sf::SoundBuffer\ sbPulo;}
-\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ sf::Sound\ sPulo;}
-\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ sf::SoundBuffer\ sbGameOver;}
-\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ sf::SoundBuffer\ sbGameoverScream;\ \ }
-\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ sf::Sound\ sGameoverScream;\ \ \ \ }
-\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ sf::Sound\ sGameOver;}
-\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ sf::SoundBuffer\ sbWin;\ \ }
-\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ sf::Sound\ sWin;\ \ }
-\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ sf::SoundBuffer\ sbCogumelo;\ \ }
-\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ sf::Sound\ sCogumelo;\ \ \ \ \ \ }
-\DoxyCodeLine{00021\ }
-\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ somAtivo\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00023\ }
-\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Construtor}}
-\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sound_manager}{SoundManager}}();}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <SFML/Audio.hpp>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_sound_manager}{SoundManager}}\ \{}
+\DoxyCodeLine{00010\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{comment}{//\ Sons\ e\ músicas}}
+\DoxyCodeLine{00012\ \ \ \ \ sf::Music\ musicaFundo;\ }
+\DoxyCodeLine{00013\ \ \ \ \ sf::SoundBuffer\ sbMoeda;\ }
+\DoxyCodeLine{00014\ \ \ \ \ sf::Sound\ sMoeda;\ }
+\DoxyCodeLine{00015\ \ \ \ \ sf::SoundBuffer\ sbPulo;\ }
+\DoxyCodeLine{00016\ \ \ \ \ sf::Sound\ sPulo;\ }
+\DoxyCodeLine{00017\ \ \ \ \ sf::SoundBuffer\ sbGameOver;\ }
+\DoxyCodeLine{00018\ \ \ \ \ sf::SoundBuffer\ sbGameoverScream;\ }
+\DoxyCodeLine{00019\ \ \ \ \ sf::Sound\ sGameoverScream;\ }
+\DoxyCodeLine{00020\ \ \ \ \ sf::Sound\ sGameOver;\ }
+\DoxyCodeLine{00021\ \ \ \ \ sf::SoundBuffer\ sbWin;\ }
+\DoxyCodeLine{00022\ \ \ \ \ sf::Sound\ sWin;\ }
+\DoxyCodeLine{00023\ \ \ \ \ sf::SoundBuffer\ sbCogumelo;\ }
+\DoxyCodeLine{00024\ \ \ \ \ sf::Sound\ sCogumelo;\ }
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{bool}\ somAtivo\ =\ \textcolor{keyword}{true};\ }
 \DoxyCodeLine{00027\ }
-\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Música\ principal}}
-\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ tocarMusica();}
-\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ pausarMusica();}
-\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ reiniciarMusica();}
-\DoxyCodeLine{00032\ }
-\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Sons}}
-\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ somMoeda();}
-\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ somGameOver();}
-\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ somPulo();}
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ somgameovertela();}
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ somCogumelo();}
-\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ somWin();}
-\DoxyCodeLine{00040\ }
-\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ sf::Music\&\ getMusicaFundo();}
-\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ sf::SoundBuffer\&\ getSbMoeda();}
-\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ sf::SoundBuffer\&\ getSbPulo();}
-\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ sf::SoundBuffer\&\ getSbGameover();}
-\DoxyCodeLine{00045\ }
-\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isSoundPlaying(std::string\ som);}
-\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ musicaPausada();}
-\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ desativarSom();}
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ ativarSom();}
-\DoxyCodeLine{00050\ }
-\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ carregarSomVazio(sf::SoundBuffer\&\ soundBuffer);}
-\DoxyCodeLine{00052\ \};}
+\DoxyCodeLine{00028\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{class_sound_manager_abcc1fbf3488be5788a42c9a4fe56df35}{SoundManager}}();}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sound_manager_a19b30d25877e02ba5232463f086cab0f}{tocarMusica}}();}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sound_manager_a7f2d940d991194d3aa0835117b116b9d}{pausarMusica}}();}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sound_manager_adbd32619c647393431ec15c422e40c82}{reiniciarMusica}}();}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sound_manager_a5451d0d577472a996f6322af1188bd7e}{somMoeda}}();}
 \DoxyCodeLine{00053\ }
-\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sound_manager_a07f416d41728953cefa99b57135389e9}{somGameOver}}();}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sound_manager_ad92fba211d9801885a0dffe8d837577f}{somPulo}}();}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sound_manager_a67bc54e2a8d0056ac778215a35210f68}{somgameovertela}}();}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sound_manager_ad0df44ad1584040ea6b326a2f2122ade}{somCogumelo}}();}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sound_manager_ab58a6804e073f0412c5fb96527e24182}{somWin}}();}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00083\ \ \ \ \ sf::Music\&\ \mbox{\hyperlink{class_sound_manager_add4193a90f510647864eac911e0c4b03}{getMusicaFundo}}();}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00089\ \ \ \ \ sf::SoundBuffer\&\ \mbox{\hyperlink{class_sound_manager_a5fe5941f9b110daa57b20e2ec54a3e6e}{getSbMoeda}}();}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00095\ \ \ \ \ sf::SoundBuffer\&\ \mbox{\hyperlink{class_sound_manager_a63db67e116f722ca2c602b127bc5f4ac}{getSbPulo}}();}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00101\ \ \ \ \ sf::SoundBuffer\&\ \mbox{\hyperlink{class_sound_manager_a75febcafdbfb8e594776a0803a62056f}{getSbGameover}}();}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_sound_manager_aa2c638795165cddd3422565228df8c80}{isSoundPlaying}}(std::string\ som);}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_sound_manager_a993d597679bb85b62c5ab49bcf170704}{musicaPausada}}();}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sound_manager_af41be3e4e3d745dc3374b26f35c3e894}{desativarSom}}();}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sound_manager_a69f8d19b11ca3b5487ef89f042030adf}{ativarSom}}();}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sound_manager_a5eeaa3e6ed255bd78da57ac1aaaddade}{carregarSomVazio}}(sf::SoundBuffer\&\ soundBuffer);}
+\DoxyCodeLine{00131\ \};}
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00133\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

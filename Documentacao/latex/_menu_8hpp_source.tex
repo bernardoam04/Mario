@@ -14,57 +14,63 @@
 \DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}GerenciadorGeral.hpp"{}}}
 \DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <memory>}}
 \DoxyCodeLine{00012\ }
-\DoxyCodeLine{00013\ }
-\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_menu}{Menu}}\ \{}
-\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{enum}\ OpcaoSelecionada\ \{}
-\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ NenhumaSelecao,}
-\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ IniciarJogo,}
-\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ Opcoes,}
-\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ Sair}
-\DoxyCodeLine{00021\ \ \ \ \ \};}
-\DoxyCodeLine{00022\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00023\ \ \ \ \ \textcolor{comment}{//Textos}}
-\DoxyCodeLine{00024\ \ \ \ \ sf::Text\ iniciarJogoTexto;}
-\DoxyCodeLine{00025\ \ \ \ \ sf::Text\ opcoesTexto;}
-\DoxyCodeLine{00026\ \ \ \ \ sf::Text\ sairTexto;}
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_menu}{Menu}}\ \{}
+\DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{class_menu_a559be38c08d318ac4bfea45a6d8f9575}{OpcaoSelecionada}}\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ NenhumaSelecao,}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ IniciarJogo,}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ Opcoes,}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ Sair}
+\DoxyCodeLine{00026\ \ \ \ \ \};}
 \DoxyCodeLine{00027\ }
-\DoxyCodeLine{00028\ \ \ \ \ \textcolor{comment}{//Atributos\ de\ desenho}}
-\DoxyCodeLine{00029\ \ \ \ \ sf::Texture\ menuTexture;}
-\DoxyCodeLine{00030\ \ \ \ \ sf::Sprite\ menuSprite;}
-\DoxyCodeLine{00031\ \ \ \ \ sf::Texture\ semSomTexture;}
-\DoxyCodeLine{00032\ \ \ \ \ sf::Sprite\ semSomSprite;}
-\DoxyCodeLine{00033\ \ \ \ \ }
-\DoxyCodeLine{00034\ \ \ \ \ OpcaoSelecionada\ opcaoSelecionada;}
-\DoxyCodeLine{00035\ }
-\DoxyCodeLine{00036\ \ \ \ \ \textcolor{comment}{//Atributos\ privados}}
-\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ ajustarPosicaoMenu();}
-\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ ajustarPosicaoTextos();}
-\DoxyCodeLine{00039\ }
-\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{bool}\ somAtivo;}
+\DoxyCodeLine{00028\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//\ Textos}}
+\DoxyCodeLine{00030\ \ \ \ \ sf::Text\ iniciarJogoTexto;}
+\DoxyCodeLine{00031\ \ \ \ \ sf::Text\ opcoesTexto;}
+\DoxyCodeLine{00032\ \ \ \ \ sf::Text\ sairTexto;}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{comment}{//\ Atributos\ de\ desenho}}
+\DoxyCodeLine{00035\ \ \ \ \ sf::Texture\ menuTexture;}
+\DoxyCodeLine{00036\ \ \ \ \ sf::Sprite\ menuSprite;}
+\DoxyCodeLine{00037\ \ \ \ \ sf::Texture\ semSomTexture;}
+\DoxyCodeLine{00038\ \ \ \ \ sf::Sprite\ semSomSprite;}
+\DoxyCodeLine{00039\ \ \ \ \ }
+\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{class_menu_a559be38c08d318ac4bfea45a6d8f9575}{OpcaoSelecionada}}\ opcaoSelecionada;}
 \DoxyCodeLine{00041\ }
-\DoxyCodeLine{00042\ \textcolor{keyword}{protected}:}
-\DoxyCodeLine{00043\ \ \ \ \ std::shared\_ptr<sf::RenderWindow>\ janela;}
-\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{comment}{//\ Atributos\ privados}}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{void}\ ajustarPosicaoMenu();}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ ajustarPosicaoTextos();}
 \DoxyCodeLine{00045\ }
-\DoxyCodeLine{00046\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00047\ \ \ \ \ \textcolor{comment}{//Construtor}}
-\DoxyCodeLine{00048\ \ \ \ \ \mbox{\hyperlink{class_menu}{Menu}}(std::shared\_ptr<sf::RenderWindow>\ janela1,\ sf::Font\ \&fonte);}
-\DoxyCodeLine{00049\ }
-\DoxyCodeLine{00050\ \ \ \ \ \textcolor{comment}{//Métodos\ usados\ diretamente}}
-\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ desenharTela();}
-\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{bool}\ atualizar(sf::Event\ ev);}
-\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{void}\ atualizarPosicaoTextos();}
-\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ atualizarOpcaoSelecionada();}
-\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{bool}\ tratarCliqueMouse();}
-\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{void}\ resetarSelecao();\ }
-\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{bool}\ sair();}
-\DoxyCodeLine{00058\ }
-\DoxyCodeLine{00059\ \ \ \ \ \textcolor{comment}{//Getters}}
-\DoxyCodeLine{00060\ \ \ \ \ OpcaoSelecionada\ getOpcaoSelecionada()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{bool}\ getSomAtivo();}
-\DoxyCodeLine{00062\ \};}
-\DoxyCodeLine{00063\ }
-\DoxyCodeLine{00064\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{bool}\ somAtivo;}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00049\ \ \ \ \ std::shared\_ptr<sf::RenderWindow>\ janela;}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{comment}{//\ Construtor}}
+\DoxyCodeLine{00058\ \ \ \ \ \mbox{\hyperlink{class_menu_afdb3eb41cfadc1b99bbdbae3edba48bd}{Menu}}(std::shared\_ptr<sf::RenderWindow>\ janela1,\ sf::Font\ \&fonte);}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{comment}{//\ Métodos\ usados\ diretamente}}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_a4395fccd9fa4a692d201cc7a80dd7a57}{desenharTela}}();}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_menu_a804e77d73f34e5cb944c53304d5c2879}{atualizar}}(sf::Event\ ev);}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_aea3cf0b417bb6cd52842705db9385636}{atualizarPosicaoTextos}}();}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_a61f589e780f06b94cd43a9103ce54837}{atualizarOpcaoSelecionada}}();}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_menu_afadc32e9fbc6eb0068d34cc139f5e6a5}{tratarCliqueMouse}}();}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_a4ef84f1b29c9d7850e02e2c67c4b8a90}{resetarSelecao}}();\ }
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_menu_a1cffab73f0a3df3a6d27280de15333d3}{sair}}();}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{comment}{//\ Getters}}
+\DoxyCodeLine{00105\ \ \ \ \ \mbox{\hyperlink{class_menu_a559be38c08d318ac4bfea45a6d8f9575}{OpcaoSelecionada}}\ \mbox{\hyperlink{class_menu_a4f426f95fddd76c551d95718fd771993}{getOpcaoSelecionada}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_menu_a8d6290f297ec0830d26146c9fe6d7c96}{getSomAtivo}}();}
+\DoxyCodeLine{00112\ \};}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}
