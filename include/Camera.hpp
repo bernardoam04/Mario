@@ -10,9 +10,10 @@
 
 class Camera {
 private:
-    sf::View view; /** Objeto view do SFML que representa a vista da câmera*/ 
-    sf::Vector2f centro /** Vetor que armazena a posição central da câmera */;
-    const float velocidadeCamera = 2.3f /** Velocidade que a câmera se movimenta*/;
+    sf::View view; ///< Objeto view do SFML que representa a vista da câmera.
+    sf::Vector2f centro; ///< Vetor que armazena a posição central da câmera.
+    const float velocidadeCamera = 2.3f; ///< Velocidade que a câmera se movimenta.
+
 public:
     /**
      * @brief Construtor da classe Câmera
@@ -42,7 +43,7 @@ public:
     * @return Objeto do SFML contendo a view da câmera
     */ 
     const sf::View& getView() const;
-    
+
     /** @brief Obtém o centro da câmera
      * @return Vetor bidimensional contendo a posição central da câmera
     */
