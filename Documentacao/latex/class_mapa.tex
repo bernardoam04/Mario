@@ -3,51 +3,248 @@
 \doxysubsubsection*{Membros públicos}
 \begin{DoxyCompactItemize}
 \item 
+\Hypertarget{class_mapa_a3dc19f541d32f6e6f29fd86434d9245b}\label{class_mapa_a3dc19f541d32f6e6f29fd86434d9245b} 
+{\bfseries Mapa} ()
+\begin{DoxyCompactList}\small\item\em Construtor padrão da classe \doxylink{class_mapa}{Mapa}. \end{DoxyCompactList}\item 
 \Hypertarget{class_mapa_a247dc4aa6e1868561c4ee10b1dc5f9fc}\label{class_mapa_a247dc4aa6e1868561c4ee10b1dc5f9fc} 
 void {\bfseries inicializar\+Colisoes} ()
-\item 
-\Hypertarget{class_mapa_a47d62a12ea6173feb72a2a6f574d3837}\label{class_mapa_a47d62a12ea6173feb72a2a6f574d3837} 
-void {\bfseries carregar\+Mapa} (const std\+::string \&arquivo\+Mapa)
-\item 
-\Hypertarget{class_mapa_ad3cb2e734b86cef8e4b0a1add19a0b3c}\label{class_mapa_ad3cb2e734b86cef8e4b0a1add19a0b3c} 
-void {\bfseries renderizar} (sf\+::\+Render\+Window \&janela, sf\+::\+Time tempo\+Atual, float x)
-\item 
+\begin{DoxyCompactList}\small\item\em Inicializa as colisões do mapa. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_mapa_a47d62a12ea6173feb72a2a6f574d3837}{carregar\+Mapa}} (const std\+::string \&arquivo\+Mapa)
+\begin{DoxyCompactList}\small\item\em Carrega o mapa a partir de um arquivo tmx. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_mapa_ad3cb2e734b86cef8e4b0a1add19a0b3c}{renderizar}} (sf\+::\+Render\+Window \&janela, sf\+::\+Time tempo\+Atual, float x)
+\begin{DoxyCompactList}\small\item\em Renderiza o mapa na janela. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_mapa_a403682ff386ca7bc70e468c92405544b}{aplicar\+Colisao}} (std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ posicoes)
+\begin{DoxyCompactList}\small\item\em Aplica colisões a partir de posições que o jogador se encontra. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_mapa_a52607ea0745f3c999e5998f370d608ce}{get\+Colisao\+Bloco\+Moeda}} (float x, float y)
+\begin{DoxyCompactList}\small\item\em Obtém a colisão com bloco de moeda (com ?) em uma posição específica. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::vector$<$ int $>$ $>$ \mbox{\hyperlink{class_mapa_a5dd69b238ef9ec105dc569b07e76cbe8}{get\+Dados\+Mapa}} ()
+\begin{DoxyCompactList}\small\item\em Obtém os dados do mapa. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_mapa_a5c89bee80fb2713fec73a913f71809aa}{get\+Tile\+Size}} ()
+\begin{DoxyCompactList}\small\item\em Obtém o tamanho do bloco no mapa. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_mapa_a2d3d764ff67dfe0ddfaa61497f0ffc96}{get\+Largura\+Tileset}} ()
+\begin{DoxyCompactList}\small\item\em Obtém a largura do tileset. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_mapa_a42e79bf84b312d7ff1c161e6de014f89}{get\+Altura\+Tileset}} ()
+\begin{DoxyCompactList}\small\item\em Obtém a altura do tileset. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_mapa_a96ef55d6e3612e3730deec642d3c17db}{get\+Largura\+Mapa}} ()
+\begin{DoxyCompactList}\small\item\em Obtém a largura do mapa. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_mapa_ac94633e21a28401678b2d2e4a9d025e4}{get\+Contagem\+Moeda}} ()
+\begin{DoxyCompactList}\small\item\em Obtém a contagem total de moedas. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_mapa_aead255cc8221fa4cf85f0ac6b9f3c4c6}{get\+Contagem\+Poder\+Especial}} ()
+\begin{DoxyCompactList}\small\item\em Obtém a contagem total de poderes especiais. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_mapa_a82f4311bec2bec05cd43c4fdbd6a1b4f}{atualizar\+Contagem\+Moeda}} (int contagem\+Moedas\+Misteriosas)
+\begin{DoxyCompactList}\small\item\em Atualiza a contagem de moedas. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_mapa_a49211ab957f68bd97efeb750326d57d0}{atualizar\+Contagem\+Poderes}} (int contagem\+Poderes)
+\begin{DoxyCompactList}\small\item\em Atualiza a contagem de poderes especiais. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_mapa_a8916542a2411efd5b081ebfbb36d5aaf}{set\+Sound}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sound_manager}{Sound\+Manager}} $>$ sounds)
+\begin{DoxyCompactList}\small\item\em Define o gerenciador de som para a instância atual. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Documentação das funções}
 \Hypertarget{class_mapa_a403682ff386ca7bc70e468c92405544b}\label{class_mapa_a403682ff386ca7bc70e468c92405544b} 
-void {\bfseries aplicar\+Colisao} (std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ posicoes)
-\item 
-\Hypertarget{class_mapa_a52607ea0745f3c999e5998f370d608ce}\label{class_mapa_a52607ea0745f3c999e5998f370d608ce} 
-bool {\bfseries get\+Colisao\+Bloco\+Moeda} (float x, float y)
-\item 
-\Hypertarget{class_mapa_a5dd69b238ef9ec105dc569b07e76cbe8}\label{class_mapa_a5dd69b238ef9ec105dc569b07e76cbe8} 
-std\+::vector$<$ std\+::vector$<$ int $>$ $>$ {\bfseries get\+Dados\+Mapa} ()
-\item 
-\Hypertarget{class_mapa_a5c89bee80fb2713fec73a913f71809aa}\label{class_mapa_a5c89bee80fb2713fec73a913f71809aa} 
-int {\bfseries get\+Tile\+Size} ()
-\item 
-\Hypertarget{class_mapa_a2d3d764ff67dfe0ddfaa61497f0ffc96}\label{class_mapa_a2d3d764ff67dfe0ddfaa61497f0ffc96} 
-int {\bfseries get\+Largura\+Tileset} ()
-\item 
-\Hypertarget{class_mapa_a42e79bf84b312d7ff1c161e6de014f89}\label{class_mapa_a42e79bf84b312d7ff1c161e6de014f89} 
-int {\bfseries get\+Altura\+Tileset} ()
-\item 
-\Hypertarget{class_mapa_a96ef55d6e3612e3730deec642d3c17db}\label{class_mapa_a96ef55d6e3612e3730deec642d3c17db} 
-int {\bfseries get\+Largura\+Mapa} ()
-\item 
-\Hypertarget{class_mapa_ac94633e21a28401678b2d2e4a9d025e4}\label{class_mapa_ac94633e21a28401678b2d2e4a9d025e4} 
-int {\bfseries get\+Contagem\+Moeda} ()
-\item 
-\Hypertarget{class_mapa_aead255cc8221fa4cf85f0ac6b9f3c4c6}\label{class_mapa_aead255cc8221fa4cf85f0ac6b9f3c4c6} 
-int {\bfseries get\+Contagem\+Poder\+Especial} ()
-\item 
+\index{Mapa@{Mapa}!aplicarColisao@{aplicarColisao}}
+\index{aplicarColisao@{aplicarColisao}!Mapa@{Mapa}}
+\doxysubsubsection{\texorpdfstring{aplicarColisao()}{aplicarColisao()}}
+{\footnotesize\ttfamily void Mapa\+::aplicar\+Colisao (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$}]{posicoes }\end{DoxyParamCaption})}
+
+
+
+Aplica colisões a partir de posições que o jogador se encontra. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em posicoes} & Vetor de pares (x, y) representando as posições de colisão. \\
+\hline
+\end{DoxyParams}
 \Hypertarget{class_mapa_a82f4311bec2bec05cd43c4fdbd6a1b4f}\label{class_mapa_a82f4311bec2bec05cd43c4fdbd6a1b4f} 
-void {\bfseries atualizar\+Contagem\+Moeda} (int contagem\+Moedas\+Misteriosas)
-\item 
+\index{Mapa@{Mapa}!atualizarContagemMoeda@{atualizarContagemMoeda}}
+\index{atualizarContagemMoeda@{atualizarContagemMoeda}!Mapa@{Mapa}}
+\doxysubsubsection{\texorpdfstring{atualizarContagemMoeda()}{atualizarContagemMoeda()}}
+{\footnotesize\ttfamily void Mapa\+::atualizar\+Contagem\+Moeda (\begin{DoxyParamCaption}\item[{int}]{contagem\+Moedas\+Misteriosas }\end{DoxyParamCaption})}
+
+
+
+Atualiza a contagem de moedas. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em contagem\+Moedas\+Misteriosas} & Contagem de moedas misteriosas. \\
+\hline
+\end{DoxyParams}
 \Hypertarget{class_mapa_a49211ab957f68bd97efeb750326d57d0}\label{class_mapa_a49211ab957f68bd97efeb750326d57d0} 
-void {\bfseries atualizar\+Contagem\+Poderes} (int contagem\+Poderes)
-\item 
+\index{Mapa@{Mapa}!atualizarContagemPoderes@{atualizarContagemPoderes}}
+\index{atualizarContagemPoderes@{atualizarContagemPoderes}!Mapa@{Mapa}}
+\doxysubsubsection{\texorpdfstring{atualizarContagemPoderes()}{atualizarContagemPoderes()}}
+{\footnotesize\ttfamily void Mapa\+::atualizar\+Contagem\+Poderes (\begin{DoxyParamCaption}\item[{int}]{contagem\+Poderes }\end{DoxyParamCaption})}
+
+
+
+Atualiza a contagem de poderes especiais. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em contagem\+Poderes} & Contagem de poderes especiais. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_mapa_a47d62a12ea6173feb72a2a6f574d3837}\label{class_mapa_a47d62a12ea6173feb72a2a6f574d3837} 
+\index{Mapa@{Mapa}!carregarMapa@{carregarMapa}}
+\index{carregarMapa@{carregarMapa}!Mapa@{Mapa}}
+\doxysubsubsection{\texorpdfstring{carregarMapa()}{carregarMapa()}}
+{\footnotesize\ttfamily void Mapa\+::carregar\+Mapa (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{arquivo\+Mapa }\end{DoxyParamCaption})}
+
+
+
+Carrega o mapa a partir de um arquivo tmx. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em arquivo\+Mapa} & Caminho do arquivo do mapa (deve ser um arquivo tmx). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_mapa_a42e79bf84b312d7ff1c161e6de014f89}\label{class_mapa_a42e79bf84b312d7ff1c161e6de014f89} 
+\index{Mapa@{Mapa}!getAlturaTileset@{getAlturaTileset}}
+\index{getAlturaTileset@{getAlturaTileset}!Mapa@{Mapa}}
+\doxysubsubsection{\texorpdfstring{getAlturaTileset()}{getAlturaTileset()}}
+{\footnotesize\ttfamily int Mapa\+::get\+Altura\+Tileset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtém a altura do tileset. 
+
+\begin{DoxyReturn}{Retorna}
+Altura do tileset. 
+\end{DoxyReturn}
+\Hypertarget{class_mapa_a52607ea0745f3c999e5998f370d608ce}\label{class_mapa_a52607ea0745f3c999e5998f370d608ce} 
+\index{Mapa@{Mapa}!getColisaoBlocoMoeda@{getColisaoBlocoMoeda}}
+\index{getColisaoBlocoMoeda@{getColisaoBlocoMoeda}!Mapa@{Mapa}}
+\doxysubsubsection{\texorpdfstring{getColisaoBlocoMoeda()}{getColisaoBlocoMoeda()}}
+{\footnotesize\ttfamily bool Mapa\+::get\+Colisao\+Bloco\+Moeda (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y }\end{DoxyParamCaption})}
+
+
+
+Obtém a colisão com bloco de moeda (com ?) em uma posição específica. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em x} & Posição horizontal. \\
+\hline
+{\em y} & Posição vertical. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Verdadeiro se houver colisão com bloco de moeda (com ?); falso caso contrário. 
+\end{DoxyReturn}
+\Hypertarget{class_mapa_ac94633e21a28401678b2d2e4a9d025e4}\label{class_mapa_ac94633e21a28401678b2d2e4a9d025e4} 
+\index{Mapa@{Mapa}!getContagemMoeda@{getContagemMoeda}}
+\index{getContagemMoeda@{getContagemMoeda}!Mapa@{Mapa}}
+\doxysubsubsection{\texorpdfstring{getContagemMoeda()}{getContagemMoeda()}}
+{\footnotesize\ttfamily int Mapa\+::get\+Contagem\+Moeda (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtém a contagem total de moedas. 
+
+\begin{DoxyReturn}{Retorna}
+Contagem total de moedas. 
+\end{DoxyReturn}
+\Hypertarget{class_mapa_aead255cc8221fa4cf85f0ac6b9f3c4c6}\label{class_mapa_aead255cc8221fa4cf85f0ac6b9f3c4c6} 
+\index{Mapa@{Mapa}!getContagemPoderEspecial@{getContagemPoderEspecial}}
+\index{getContagemPoderEspecial@{getContagemPoderEspecial}!Mapa@{Mapa}}
+\doxysubsubsection{\texorpdfstring{getContagemPoderEspecial()}{getContagemPoderEspecial()}}
+{\footnotesize\ttfamily int Mapa\+::get\+Contagem\+Poder\+Especial (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtém a contagem total de poderes especiais. 
+
+\begin{DoxyReturn}{Retorna}
+Contagem total de poderes especiais. 
+\end{DoxyReturn}
+\Hypertarget{class_mapa_a5dd69b238ef9ec105dc569b07e76cbe8}\label{class_mapa_a5dd69b238ef9ec105dc569b07e76cbe8} 
+\index{Mapa@{Mapa}!getDadosMapa@{getDadosMapa}}
+\index{getDadosMapa@{getDadosMapa}!Mapa@{Mapa}}
+\doxysubsubsection{\texorpdfstring{getDadosMapa()}{getDadosMapa()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ int $>$ $>$ Mapa\+::get\+Dados\+Mapa (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtém os dados do mapa. 
+
+\begin{DoxyReturn}{Retorna}
+Vetor bidimensional contendo os dados do mapa. 
+\end{DoxyReturn}
+\Hypertarget{class_mapa_a96ef55d6e3612e3730deec642d3c17db}\label{class_mapa_a96ef55d6e3612e3730deec642d3c17db} 
+\index{Mapa@{Mapa}!getLarguraMapa@{getLarguraMapa}}
+\index{getLarguraMapa@{getLarguraMapa}!Mapa@{Mapa}}
+\doxysubsubsection{\texorpdfstring{getLarguraMapa()}{getLarguraMapa()}}
+{\footnotesize\ttfamily int Mapa\+::get\+Largura\+Mapa (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtém a largura do mapa. 
+
+\begin{DoxyReturn}{Retorna}
+Largura do mapa. 
+\end{DoxyReturn}
+\Hypertarget{class_mapa_a2d3d764ff67dfe0ddfaa61497f0ffc96}\label{class_mapa_a2d3d764ff67dfe0ddfaa61497f0ffc96} 
+\index{Mapa@{Mapa}!getLarguraTileset@{getLarguraTileset}}
+\index{getLarguraTileset@{getLarguraTileset}!Mapa@{Mapa}}
+\doxysubsubsection{\texorpdfstring{getLarguraTileset()}{getLarguraTileset()}}
+{\footnotesize\ttfamily int Mapa\+::get\+Largura\+Tileset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtém a largura do tileset. 
+
+\begin{DoxyReturn}{Retorna}
+Largura do tileset. 
+\end{DoxyReturn}
+\Hypertarget{class_mapa_a5c89bee80fb2713fec73a913f71809aa}\label{class_mapa_a5c89bee80fb2713fec73a913f71809aa} 
+\index{Mapa@{Mapa}!getTileSize@{getTileSize}}
+\index{getTileSize@{getTileSize}!Mapa@{Mapa}}
+\doxysubsubsection{\texorpdfstring{getTileSize()}{getTileSize()}}
+{\footnotesize\ttfamily int Mapa\+::get\+Tile\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtém o tamanho do bloco no mapa. 
+
+\begin{DoxyReturn}{Retorna}
+Tamanho do bloco. 
+\end{DoxyReturn}
+\Hypertarget{class_mapa_ad3cb2e734b86cef8e4b0a1add19a0b3c}\label{class_mapa_ad3cb2e734b86cef8e4b0a1add19a0b3c} 
+\index{Mapa@{Mapa}!renderizar@{renderizar}}
+\index{renderizar@{renderizar}!Mapa@{Mapa}}
+\doxysubsubsection{\texorpdfstring{renderizar()}{renderizar()}}
+{\footnotesize\ttfamily void Mapa\+::renderizar (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{janela,  }\item[{sf\+::\+Time}]{tempo\+Atual,  }\item[{float}]{x }\end{DoxyParamCaption})}
+
+
+
+Renderiza o mapa na janela. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em janela} & Referência para a janela SFML. \\
+\hline
+{\em tempo\+Atual} & Tempo atual do jogo. \\
+\hline
+{\em x} & Posição horizontal da câmera. \\
+\hline
+\end{DoxyParams}
 \Hypertarget{class_mapa_a8916542a2411efd5b081ebfbb36d5aaf}\label{class_mapa_a8916542a2411efd5b081ebfbb36d5aaf} 
-void {\bfseries set\+Sound} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sound_manager}{Sound\+Manager}} $>$ sounds)
-\end{DoxyCompactItemize}
+\index{Mapa@{Mapa}!setSound@{setSound}}
+\index{setSound@{setSound}!Mapa@{Mapa}}
+\doxysubsubsection{\texorpdfstring{setSound()}{setSound()}}
+{\footnotesize\ttfamily void Mapa\+::set\+Sound (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sound_manager}{Sound\+Manager}} $>$}]{sounds }\end{DoxyParamCaption})}
+
+
+
+Define o gerenciador de som para a instância atual. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em sounds} & Smart Pointer para o gerenciador de som. \\
+\hline
+\end{DoxyParams}
 
 
 A documentação para esta classe foi gerada a partir do seguinte ficheiro\+:\begin{DoxyCompactItemize}
