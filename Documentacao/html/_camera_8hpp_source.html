@@ -86,28 +86,40 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define CAMERA_HPP</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;SFML/Graphics.hpp&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
-<div class="foldopen" id="foldopen00006" data-start="{" data-end="};">
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno"><a class="line" href="class_camera.html">    6</a></span><span class="keyword">class </span><a class="code hl_class" href="class_camera.html">Camera</a> {</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    sf::View view;</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    <span class="keyword">const</span> <span class="keywordtype">float</span> velocidadeCamera = 2.3f;</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="comment">//Construtor</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <a class="code hl_class" href="class_camera.html">Camera</a>(<span class="keywordtype">float</span> largura, <span class="keywordtype">float</span> altura);</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="comment">//Métodos de atualização</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keywordtype">void</span> setCenter(<span class="keyword">const</span> sf::Vector2f&amp; center);</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keywordtype">void</span> atualizarPosicao(sf::Vector2f posicaoPersonagem);</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="comment">//Getters</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keywordtype">float</span> getVelocidadeCamera();</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keyword">const</span> sf::View&amp; getView() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>};</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="foldopen" id="foldopen00011" data-start="{" data-end="};">
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="class_camera.html">   11</a></span><span class="keyword">class </span><a class="code hl_class" href="class_camera.html">Camera</a> {</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    sf::View view; </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    sf::Vector2f centro; </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keyword">const</span> <span class="keywordtype">float</span> velocidadeCamera = 2.3f; </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="class_camera.html#a8c3367ec7dcd66f93ae7d295655a6420">   23</a></span>    <a class="code hl_function" href="class_camera.html#a8c3367ec7dcd66f93ae7d295655a6420">Camera</a>(<span class="keywordtype">float</span> largura, <span class="keywordtype">float</span> altura);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="comment">//Métodos de atualização</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="class_camera.html#a492690cc33179e5f18ff2cfcedf755e6">   29</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_camera.html#a492690cc33179e5f18ff2cfcedf755e6">setCenter</a>(<span class="keyword">const</span> sf::Vector2f&amp; center);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="class_camera.html#aaad23bcffbf5ab72156f5f8baf9a3e18">   34</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_camera.html#aaad23bcffbf5ab72156f5f8baf9a3e18">atualizarPosicao</a>(sf::Vector2f posicaoPersonagem);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="comment">//Getters</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="class_camera.html#a5ed5b75ec3424572ee57e440df3cc624">   40</a></span>    <span class="keywordtype">float</span> <a class="code hl_function" href="class_camera.html#a5ed5b75ec3424572ee57e440df3cc624">getVelocidadeCamera</a>();</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="class_camera.html#a917ea4f367d0752f7c220bc26fe755a4">   45</a></span>    <span class="keyword">const</span> sf::View&amp; <a class="code hl_function" href="class_camera.html#a917ea4f367d0752f7c220bc26fe755a4">getView</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="class_camera.html#a6aa324249dd53699f38ef35c9fd6d918">   50</a></span>    sf::Vector2f <a class="code hl_function" href="class_camera.html#a6aa324249dd53699f38ef35c9fd6d918">getCenter</a>();</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>};</div>
 </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclass_camera_html"><div class="ttname"><a href="class_camera.html">Camera</a></div><div class="ttdef"><b>Definição</b> Camera.hpp:6</div></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclass_camera_html"><div class="ttname"><a href="class_camera.html">Camera</a></div><div class="ttdoc">Classe que representa a Câmera visualizada pelo jogador.</div><div class="ttdef"><b>Definição</b> Camera.hpp:11</div></div>
+<div class="ttc" id="aclass_camera_html_a492690cc33179e5f18ff2cfcedf755e6"><div class="ttname"><a href="class_camera.html#a492690cc33179e5f18ff2cfcedf755e6">Camera::setCenter</a></div><div class="ttdeci">void setCenter(const sf::Vector2f &amp;center)</div><div class="ttdoc">Define o centro da câmera.</div></div>
+<div class="ttc" id="aclass_camera_html_a5ed5b75ec3424572ee57e440df3cc624"><div class="ttname"><a href="class_camera.html#a5ed5b75ec3424572ee57e440df3cc624">Camera::getVelocidadeCamera</a></div><div class="ttdeci">float getVelocidadeCamera()</div><div class="ttdoc">Obtém a velocidade da câmera.</div></div>
+<div class="ttc" id="aclass_camera_html_a6aa324249dd53699f38ef35c9fd6d918"><div class="ttname"><a href="class_camera.html#a6aa324249dd53699f38ef35c9fd6d918">Camera::getCenter</a></div><div class="ttdeci">sf::Vector2f getCenter()</div><div class="ttdoc">Obtém o centro da câmera.</div></div>
+<div class="ttc" id="aclass_camera_html_a8c3367ec7dcd66f93ae7d295655a6420"><div class="ttname"><a href="class_camera.html#a8c3367ec7dcd66f93ae7d295655a6420">Camera::Camera</a></div><div class="ttdeci">Camera(float largura, float altura)</div><div class="ttdoc">Construtor da classe Câmera.</div></div>
+<div class="ttc" id="aclass_camera_html_a917ea4f367d0752f7c220bc26fe755a4"><div class="ttname"><a href="class_camera.html#a917ea4f367d0752f7c220bc26fe755a4">Camera::getView</a></div><div class="ttdeci">const sf::View &amp; getView() const</div><div class="ttdoc">Obtém a visualização da câmera.</div></div>
+<div class="ttc" id="aclass_camera_html_aaad23bcffbf5ab72156f5f8baf9a3e18"><div class="ttname"><a href="class_camera.html#aaad23bcffbf5ab72156f5f8baf9a3e18">Camera::atualizarPosicao</a></div><div class="ttdeci">void atualizarPosicao(sf::Vector2f posicaoPersonagem)</div><div class="ttdoc">Atualiza a posição da câmera com base na posição do personagem.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

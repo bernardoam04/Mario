@@ -12,6 +12,9 @@ int {\bfseries verificar\+Colisao} (float x, float y) const
 \Hypertarget{class_gerenciador_geral_ac568dd22c14215e46bdb90bb1f4e1b2d}\label{class_gerenciador_geral_ac568dd22c14215e46bdb90bb1f4e1b2d} 
 bool {\bfseries janela\+Aberta} () const
 \item 
+\Hypertarget{class_gerenciador_geral_a5637b1b339f572998559ba0b8fcbad16}\label{class_gerenciador_geral_a5637b1b339f572998559ba0b8fcbad16} 
+void {\bfseries Inicializar\+Poderes\+Especiais} ()
+\item 
 \Hypertarget{class_gerenciador_geral_a52af3e57fc0893f3baea436a4e76a970}\label{class_gerenciador_geral_a52af3e57fc0893f3baea436a4e76a970} 
 bool {\bfseries atualizar} (sf\+::\+Time tempo\+Atual, sf\+::\+Time delta\+Time, sf\+::\+Event ev)
 \item 
@@ -21,8 +24,17 @@ bool {\bfseries atualizar\+Eventos} (sf\+::\+Event ev)
 \Hypertarget{class_gerenciador_geral_a8c58ba1c8dc9fb09a063b967a6b3c34b}\label{class_gerenciador_geral_a8c58ba1c8dc9fb09a063b967a6b3c34b} 
 void {\bfseries renderizar} (sf\+::\+Time tempo\+Atual)
 \item 
+\Hypertarget{class_gerenciador_geral_a7e4b8fdc7f9a7dec04e1edd5076f9575}\label{class_gerenciador_geral_a7e4b8fdc7f9a7dec04e1edd5076f9575} 
+void {\bfseries desenhar\+Poderes\+Especiais} ()
+\item 
 \Hypertarget{class_gerenciador_geral_a8bca0e03474da629008e107500ad3574}\label{class_gerenciador_geral_a8bca0e03474da629008e107500ad3574} 
 void {\bfseries desenhar\+Mapa} (sf\+::\+Time tempo\+Atual)
+\item 
+\Hypertarget{class_gerenciador_geral_a02836862a7149d5621f1e261a0bf128c}\label{class_gerenciador_geral_a02836862a7149d5621f1e261a0bf128c} 
+void {\bfseries desativar\+Som} ()
+\item 
+\Hypertarget{class_gerenciador_geral_ad68229819d36c51968680dec79dee8ec}\label{class_gerenciador_geral_ad68229819d36c51968680dec79dee8ec} 
+void {\bfseries ativar\+Som} ()
 \item 
 \Hypertarget{class_gerenciador_geral_a1c21501693ce355403e6cc828794dadf}\label{class_gerenciador_geral_a1c21501693ce355403e6cc828794dadf} 
 float {\bfseries get\+Altura\+Tela} () const
@@ -38,6 +50,12 @@ const sf\+::\+View \& {\bfseries get\+View\+Camera} () const
 \item 
 \Hypertarget{class_gerenciador_geral_ab69f91d54b21e2b05e1d30a890713727}\label{class_gerenciador_geral_ab69f91d54b21e2b05e1d30a890713727} 
 bool {\bfseries get\+Gamer\+Over} ()
+\item 
+\Hypertarget{class_gerenciador_geral_a79cfcb33ccf509bf767412872451292d}\label{class_gerenciador_geral_a79cfcb33ccf509bf767412872451292d} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_jogador}{Jogador}} $>$ {\bfseries get\+Mario} () const
+\item 
+\Hypertarget{class_gerenciador_geral_a81ba494051baefdd6a557801448d7d44}\label{class_gerenciador_geral_a81ba494051baefdd6a557801448d7d44} 
+int {\bfseries get\+Contagem\+Poderes\+Especiais} () const
 \end{DoxyCompactItemize}
 
 

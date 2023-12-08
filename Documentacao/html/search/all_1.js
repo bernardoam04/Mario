@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['gameover_0',['GameOver',['../class_game_over.html',1,'']]],
-  ['gerenciadorgeral_1',['GerenciadorGeral',['../class_gerenciador_geral.html',1,'']]],
-  ['goomba_2',['Goomba',['../class_goomba.html',1,'']]]
+  ['camera_0',['camera',['../class_camera.html',1,'Camera'],['../class_camera.html#a8c3367ec7dcd66f93ae7d295655a6420',1,'Camera::Camera()']]],
+  ['colisao_1',['colisao',['../class_colisao.html',1,'Colisao'],['../class_colisao.html#a1f573be335703afb3b132d26a17ae2d0',1,'Colisao::Colisao()']]]
 ];

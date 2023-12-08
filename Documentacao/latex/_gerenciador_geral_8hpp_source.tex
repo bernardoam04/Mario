@@ -29,57 +29,67 @@
 \DoxyCodeLine{00025\ \ \ \ \ std::shared\_ptr\ <Camera>\ camera;}
 \DoxyCodeLine{00026\ \ \ \ \ std::shared\_ptr\ <Colisao>\ colisao;}
 \DoxyCodeLine{00027\ \ \ \ \ std::vector<std::shared\_ptr\ <PoderesEspeciais>>\ vetorPoderesEspeciais;}
-\DoxyCodeLine{00028\ \ \ \ \ std::shared\_ptr<SoundManager>\ \_sounds;}
-\DoxyCodeLine{00029\ \ \ \ \ std::shared\_ptr\ <Jogador>\ mario;}
-\DoxyCodeLine{00030\ \ \ \ \ std::set<unsigned\ int>\ indicesComColisao;}
-\DoxyCodeLine{00031\ \ \ \ \ std::set<unsigned\ int>\ indicesPoderesEspeciais;}
-\DoxyCodeLine{00032\ \ \ \ \ std::shared\_ptr\ <Goomba>\ goomba;}
-\DoxyCodeLine{00033\ }
-\DoxyCodeLine{00034\ \ \ \ \ \textcolor{comment}{//Textos\ da\ pontuacao}}
-\DoxyCodeLine{00035\ \ \ \ \ sf::Text\ textoMaisCem;}
-\DoxyCodeLine{00036\ \ \ \ \ sf::Text\ textoMaisMil;}
-\DoxyCodeLine{00037\ \ \ \ \ sf::Text\ textoGanhou;}
-\DoxyCodeLine{00038\ \ \ \ \ sf::Clock\ temporizadorTexto;}
-\DoxyCodeLine{00039\ \ \ \ \ sf::Time\ duracaoTexto\ =\ sf::seconds(0.5f);}
-\DoxyCodeLine{00040\ }
-\DoxyCodeLine{00041\ \ \ \ \ \textcolor{comment}{//Métodos\ privados}}
-\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ inicializarVariaveis();}
-\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{void}\ InicializarPoderesEspeciais();}
-\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ inicializarTextos(sf::Font\ \&fonte);}
-\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ atualizarPosicaoTexto(sf::Text\ \&texto);}
-\DoxyCodeLine{00046\ }
-\DoxyCodeLine{00047\ \ \ \ \ \textcolor{comment}{//Verificações}}
-\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{bool}\ puloHabilitado;}
-\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{bool}\ gameOver;}
-\DoxyCodeLine{00050\ \ \ \ \ std::vector\ <int>\ contagemDesenhoPoderes;}
-\DoxyCodeLine{00051\ }
-\DoxyCodeLine{00052\ \ \ \ \ \textcolor{comment}{//Contador}}
-\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{int}\ contadorPerdeu\ =\ 0;}
-\DoxyCodeLine{00054\ }
-\DoxyCodeLine{00055\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00056\ \ \ \ \ \textcolor{comment}{//Construtor\ e\ Destrutor}}
-\DoxyCodeLine{00057\ \ \ \ \ \mbox{\hyperlink{class_gerenciador_geral}{GerenciadorGeral}}(std::shared\_ptr\ <sf::RenderWindow>\ janela1,\ sf::Font\ \&fonte,\ std::shared\_ptr<SoundManager>\ sounds);}
+\DoxyCodeLine{00028\ \ \ \ \ std::vector<std::shared\_ptr\ <Goomba>>\ goombas;}
+\DoxyCodeLine{00029\ \ \ \ \ std::shared\_ptr<SoundManager>\ \_sounds;}
+\DoxyCodeLine{00030\ \ \ \ \ std::shared\_ptr\ <Jogador>\ mario;}
+\DoxyCodeLine{00031\ \ \ \ \ std::set<unsigned\ int>\ indicesComColisao;}
+\DoxyCodeLine{00032\ \ \ \ \ std::set<unsigned\ int>\ indicesPoderesEspeciais;}
+\DoxyCodeLine{00033\ \ \ \ \ std::shared\_ptr\ <Goomba>\ goomba;}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{comment}{//Textos\ da\ pontuacao}}
+\DoxyCodeLine{00036\ \ \ \ \ sf::Text\ textoMaisCem;}
+\DoxyCodeLine{00037\ \ \ \ \ sf::Text\ textoMaisMil;}
+\DoxyCodeLine{00038\ \ \ \ \ sf::Text\ textoGanhou;}
+\DoxyCodeLine{00039\ \ \ \ \ sf::Clock\ temporizadorTexto;}
+\DoxyCodeLine{00040\ \ \ \ \ sf::Time\ duracaoTexto\ =\ sf::seconds(0.5f);}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{comment}{//Métodos\ privados}}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{void}\ inicializarVariaveis();}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ InicializarGoombas();}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ inicializarTextos(sf::Font\ \&fonte);}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ atualizarPosicaoTexto(sf::Text\ \&texto);}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{comment}{//Verificações}}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{bool}\ puloHabilitado;}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{bool}\ gameOver;}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{bool}\ somAtivo\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00052\ \ \ \ \ std::vector\ <int>\ contagemDesenhoPoderes;}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{comment}{//Contador}}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{int}\ contadorPerdeu\ =\ 0;}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{int}\ contadorInvencivel;}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{int}\ contagemMoedasMisteriosas\ =\ 0;}
 \DoxyCodeLine{00058\ }
-\DoxyCodeLine{00059\ \ \ \ \ \textcolor{comment}{//Métodos\ de\ Verificação}}
-\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{int}\ verificarColisao(\textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y)\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{bool}\ janelaAberta()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00062\ }
-\DoxyCodeLine{00063\ \ \ \ \ \textcolor{comment}{//Métodos\ utilizados\ no\ jogo\ diretamente}}
-\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{bool}\ atualizar(sf::Time\ tempoAtual,\ sf::Time\ deltaTime,\ sf::Event\ ev);}
-\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{bool}\ atualizarEventos(sf::Event\ ev);}
-\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{void}\ renderizar(sf::Time\ tempoAtual);}
-\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{void}\ desenharMapa(sf::Time\ tempoAtual);}
-\DoxyCodeLine{00068\ }
-\DoxyCodeLine{00069\ \ \ \ \ \textcolor{comment}{//Getters}}
-\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{float}\ getAlturaTela()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{float}\ getLarguraTela()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{int}\ getPontuacaoTotal()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keyword}{const}\ sf::View\&\ getViewCamera()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{bool}\ getGamerOver();}
-\DoxyCodeLine{00075\ }
-\DoxyCodeLine{00076\ }
-\DoxyCodeLine{00077\ \};}
-\DoxyCodeLine{00078\ }
-\DoxyCodeLine{00079\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00059\ \textcolor{keyword}{public}:\ \ \ \ }
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{comment}{//Construtor\ e\ Destrutor}}
+\DoxyCodeLine{00062\ \ \ \ \ \mbox{\hyperlink{class_gerenciador_geral}{GerenciadorGeral}}(std::shared\_ptr\ <sf::RenderWindow>\ janela1,\ sf::Font\ \&fonte,\ std::shared\_ptr<SoundManager>\ sounds);}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{comment}{//Métodos\ de\ Verificação}}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{int}\ verificarColisao(\textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{bool}\ janelaAberta()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{comment}{//Métodos\ utilizados\ no\ jogo\ diretamente}}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{void}\ InicializarPoderesEspeciais();}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{bool}\ atualizar(sf::Time\ tempoAtual,\ sf::Time\ deltaTime,\ sf::Event\ ev);}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{bool}\ atualizarEventos(sf::Event\ ev);}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{void}\ renderizar(sf::Time\ tempoAtual);}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{void}\ desenharPoderesEspeciais();}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{void}\ desenharMapa(sf::Time\ tempoAtual);}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{void}\ desativarSom();}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{void}\ ativarSom();}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{comment}{//Getters}}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{float}\ getAlturaTela()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{float}\ getLarguraTela()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{int}\ getPontuacaoTotal()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keyword}{const}\ sf::View\&\ getViewCamera()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordtype}{bool}\ getGamerOver();}
+\DoxyCodeLine{00084\ \ \ \ \ std::shared\_ptr<Jogador>\ getMario()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{int}\ getContagemPoderesEspeciais()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \};}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

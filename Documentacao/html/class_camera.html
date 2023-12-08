@@ -76,25 +76,186 @@ $(function() {
   <div class="headertitle"><div class="title">Referência à classe Camera</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Classe que representa a Câmera visualizada pelo jogador.  
+ <a href="class_camera.html#details">Mais...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_camera_8hpp_source.html">Camera.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Membros públicos</h2></td></tr>
-<tr class="memitem:a8c3367ec7dcd66f93ae7d295655a6420" id="r_a8c3367ec7dcd66f93ae7d295655a6420"><td class="memItemLeft" align="right" valign="top"><a id="a8c3367ec7dcd66f93ae7d295655a6420" name="a8c3367ec7dcd66f93ae7d295655a6420"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Camera</b> (float largura, float altura)</td></tr>
+<tr class="memitem:a8c3367ec7dcd66f93ae7d295655a6420" id="r_a8c3367ec7dcd66f93ae7d295655a6420"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#a8c3367ec7dcd66f93ae7d295655a6420">Camera</a> (float largura, float altura)</td></tr>
+<tr class="memdesc:a8c3367ec7dcd66f93ae7d295655a6420"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construtor da classe Câmera.  <br /></td></tr>
 <tr class="separator:a8c3367ec7dcd66f93ae7d295655a6420"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a492690cc33179e5f18ff2cfcedf755e6" id="r_a492690cc33179e5f18ff2cfcedf755e6"><td class="memItemLeft" align="right" valign="top"><a id="a492690cc33179e5f18ff2cfcedf755e6" name="a492690cc33179e5f18ff2cfcedf755e6"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setCenter</b> (const sf::Vector2f &amp;center)</td></tr>
+<tr class="memitem:a492690cc33179e5f18ff2cfcedf755e6" id="r_a492690cc33179e5f18ff2cfcedf755e6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#a492690cc33179e5f18ff2cfcedf755e6">setCenter</a> (const sf::Vector2f &amp;center)</td></tr>
+<tr class="memdesc:a492690cc33179e5f18ff2cfcedf755e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Define o centro da câmera.  <br /></td></tr>
 <tr class="separator:a492690cc33179e5f18ff2cfcedf755e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaad23bcffbf5ab72156f5f8baf9a3e18" id="r_aaad23bcffbf5ab72156f5f8baf9a3e18"><td class="memItemLeft" align="right" valign="top"><a id="aaad23bcffbf5ab72156f5f8baf9a3e18" name="aaad23bcffbf5ab72156f5f8baf9a3e18"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>atualizarPosicao</b> (sf::Vector2f posicaoPersonagem)</td></tr>
+<tr class="memitem:aaad23bcffbf5ab72156f5f8baf9a3e18" id="r_aaad23bcffbf5ab72156f5f8baf9a3e18"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#aaad23bcffbf5ab72156f5f8baf9a3e18">atualizarPosicao</a> (sf::Vector2f posicaoPersonagem)</td></tr>
+<tr class="memdesc:aaad23bcffbf5ab72156f5f8baf9a3e18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Atualiza a posição da câmera com base na posição do personagem.  <br /></td></tr>
 <tr class="separator:aaad23bcffbf5ab72156f5f8baf9a3e18"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5ed5b75ec3424572ee57e440df3cc624" id="r_a5ed5b75ec3424572ee57e440df3cc624"><td class="memItemLeft" align="right" valign="top"><a id="a5ed5b75ec3424572ee57e440df3cc624" name="a5ed5b75ec3424572ee57e440df3cc624"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>getVelocidadeCamera</b> ()</td></tr>
+<tr class="memitem:a5ed5b75ec3424572ee57e440df3cc624" id="r_a5ed5b75ec3424572ee57e440df3cc624"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#a5ed5b75ec3424572ee57e440df3cc624">getVelocidadeCamera</a> ()</td></tr>
+<tr class="memdesc:a5ed5b75ec3424572ee57e440df3cc624"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtém a velocidade da câmera.  <br /></td></tr>
 <tr class="separator:a5ed5b75ec3424572ee57e440df3cc624"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a917ea4f367d0752f7c220bc26fe755a4" id="r_a917ea4f367d0752f7c220bc26fe755a4"><td class="memItemLeft" align="right" valign="top"><a id="a917ea4f367d0752f7c220bc26fe755a4" name="a917ea4f367d0752f7c220bc26fe755a4"></a>
-const sf::View &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getView</b> () const</td></tr>
+<tr class="memitem:a917ea4f367d0752f7c220bc26fe755a4" id="r_a917ea4f367d0752f7c220bc26fe755a4"><td class="memItemLeft" align="right" valign="top">const sf::View &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#a917ea4f367d0752f7c220bc26fe755a4">getView</a> () const</td></tr>
+<tr class="memdesc:a917ea4f367d0752f7c220bc26fe755a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtém a visualização da câmera.  <br /></td></tr>
 <tr class="separator:a917ea4f367d0752f7c220bc26fe755a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6aa324249dd53699f38ef35c9fd6d918" id="r_a6aa324249dd53699f38ef35c9fd6d918"><td class="memItemLeft" align="right" valign="top">sf::Vector2f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#a6aa324249dd53699f38ef35c9fd6d918">getCenter</a> ()</td></tr>
+<tr class="memdesc:a6aa324249dd53699f38ef35c9fd6d918"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtém o centro da câmera.  <br /></td></tr>
+<tr class="separator:a6aa324249dd53699f38ef35c9fd6d918"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Descrição detalhada</h2>
+<div class="textblock"><p>Classe que representa a Câmera visualizada pelo jogador. </p>
+</div><h2 class="groupheader">Documentação dos Construtores &amp; Destrutor</h2>
+<a id="a8c3367ec7dcd66f93ae7d295655a6420" name="a8c3367ec7dcd66f93ae7d295655a6420"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c3367ec7dcd66f93ae7d295655a6420">&#9670;&#160;</a></span>Camera()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Camera::Camera </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>largura</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>altura</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Construtor da classe Câmera. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">largura</td><td>Largura da câmera da janela de visualização </td></tr>
+    <tr><td class="paramname">altura</td><td>Altura da câmera da janela de visualização </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Documentação das funções</h2>
+<a id="aaad23bcffbf5ab72156f5f8baf9a3e18" name="aaad23bcffbf5ab72156f5f8baf9a3e18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaad23bcffbf5ab72156f5f8baf9a3e18">&#9670;&#160;</a></span>atualizarPosicao()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Camera::atualizarPosicao </td>
+          <td>(</td>
+          <td class="paramtype">sf::Vector2f&#160;</td>
+          <td class="paramname"><em>posicaoPersonagem</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Atualiza a posição da câmera com base na posição do personagem. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">posicaoPersonagem</td><td>Vetor com a posição que o personagem se encontra </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6aa324249dd53699f38ef35c9fd6d918" name="a6aa324249dd53699f38ef35c9fd6d918"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6aa324249dd53699f38ef35c9fd6d918">&#9670;&#160;</a></span>getCenter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">sf::Vector2f Camera::getCenter </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtém o centro da câmera. </p>
+<dl class="section return"><dt>Retorna</dt><dd>Vetor bidimensional contendo a posição central da câmera </dd></dl>
+
+</div>
+</div>
+<a id="a5ed5b75ec3424572ee57e440df3cc624" name="a5ed5b75ec3424572ee57e440df3cc624"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ed5b75ec3424572ee57e440df3cc624">&#9670;&#160;</a></span>getVelocidadeCamera()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Camera::getVelocidadeCamera </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtém a velocidade da câmera. </p>
+<dl class="section return"><dt>Retorna</dt><dd>Velocidade atual da câmera </dd></dl>
+
+</div>
+</div>
+<a id="a917ea4f367d0752f7c220bc26fe755a4" name="a917ea4f367d0752f7c220bc26fe755a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a917ea4f367d0752f7c220bc26fe755a4">&#9670;&#160;</a></span>getView()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const sf::View &amp; Camera::getView </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtém a visualização da câmera. </p>
+<dl class="section return"><dt>Retorna</dt><dd>Objeto do SFML contendo a view da câmera </dd></dl>
+
+</div>
+</div>
+<a id="a492690cc33179e5f18ff2cfcedf755e6" name="a492690cc33179e5f18ff2cfcedf755e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a492690cc33179e5f18ff2cfcedf755e6">&#9670;&#160;</a></span>setCenter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Camera::setCenter </td>
+          <td>(</td>
+          <td class="paramtype">const sf::Vector2f &amp;&#160;</td>
+          <td class="paramname"><em>center</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Define o centro da câmera. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">center</td><td>Vetor que representará a posição central </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>A documentação para esta classe foi gerada a partir do seguinte ficheiro:<ul>
 <li>include/<a class="el" href="_camera_8hpp_source.html">Camera.hpp</a></li>
 </ul>
