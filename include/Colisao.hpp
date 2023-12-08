@@ -37,6 +37,7 @@ public:
      * @param x Posição horizontal.
      * @param y Posição vertical.
      * @return Identificador do tipo de bloco com o qual ocorreu a colisão.
+     *         retorna 0 nos casos em que não há bloco ou não há colisão 
      */
     int verificarColisao(float x, float y);
 };
