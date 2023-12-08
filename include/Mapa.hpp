@@ -11,6 +11,9 @@
 #include <unordered_map>
 #include <memory>
 
+/**
+ * @brief Classe responsável por gerenciar o mapa do jogo (carregamento, colisões, interações).
+ */
 class Mapa {
 private:
     enum BlocosColisaoEspecial{
