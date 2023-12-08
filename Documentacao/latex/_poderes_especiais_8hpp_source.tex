@@ -9,67 +9,77 @@
 \DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}../include/Colisao.hpp"{}}}
 \DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}../lib/tinyxml2.hpp"{}}}
 \DoxyCodeLine{00007\ }
-\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_poderes_especiais}{PoderesEspeciais}}\ \ \{}
-\DoxyCodeLine{00009\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00010\ \ \ \ \ \textcolor{comment}{//Texturas\ e\ posições}}
-\DoxyCodeLine{00011\ \ \ \ \ std::vector<sf::Texture>\ cogumeloTextures;\ }
-\DoxyCodeLine{00012\ \ \ \ \ std::vector<sf::Texture>\ estrelaTextures;\ }
-\DoxyCodeLine{00013\ \ \ \ \ std::vector<sf::Texture>\ moedaTextures;\ }
-\DoxyCodeLine{00014\ \ \ \ \ sf::Sprite\ poderSprite;\ \ }
-\DoxyCodeLine{00015\ \ \ \ \ sf::Vector2f\ posicaoInicial;\ }
-\DoxyCodeLine{00016\ \ \ \ \ sf::Vector2f\ posicao;\ }
-\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{int}\ tipo;}
-\DoxyCodeLine{00018\ }
-\DoxyCodeLine{00019\ }
-\DoxyCodeLine{00020\ \ \ \ \ \textcolor{comment}{//Constantes}}
-\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ aceleracaoGravidadeMoeda\ =\ 40.8f;;}
-\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ aceleracaoGravidade\ =\ 4.8f;;}
-\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ COGUMELO\ =\ 1;\ }
-\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ ESTRELA\ =\ 2;\ }
-\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ MOEDA\ =\ 3;\ }
-\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ tileSize=32;}
-\DoxyCodeLine{00027\ }
-\DoxyCodeLine{00028\ \ \ \ \ \textcolor{comment}{//Modificáveis}}
-\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{float}\ velocidadeVertical\ =\ 0.0f;;}
-\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{float}\ velocidadeHorizontal\ =\ 50.0f;}
-\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{float}\ velocidadeInicialPulo\ =\ 1000.0f;}
-\DoxyCodeLine{00032\ }
-\DoxyCodeLine{00033\ \ \ \ \ \textcolor{comment}{//Verificações}}
-\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{bool}\ moedaColetada\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{bool}\ puloIniciado\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{bool}\ estaNoAr\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{bool}\ movDireita=\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{bool}\ movEsquerda=\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{bool}\ existe\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00040\ }
-\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{class_colisao}{Colisao}}\ \&colisao;}
-\DoxyCodeLine{00042\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00043\ \ \ \ \ \textcolor{comment}{//Construtor}}
-\DoxyCodeLine{00044\ \ \ \ \ \mbox{\hyperlink{class_poderes_especiais}{PoderesEspeciais}}(\mbox{\hyperlink{class_colisao}{Colisao}}\ \&colisao);\ \ }
-\DoxyCodeLine{00045\ }
-\DoxyCodeLine{00046\ \ \ \ \ \textcolor{comment}{//Carregamento}}
-\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ carregarMoedas();}
-\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{void}\ carregarPoderes();}
-\DoxyCodeLine{00049\ }
-\DoxyCodeLine{00050\ \ \ \ \ \textcolor{comment}{//Métodos\ usados\ diretamente}}
-\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{int}\ gerarTipoAleatorio();}
-\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{bool}\ inicializarNoMapa(\mbox{\hyperlink{class_mapa}{Mapa}}\&\ mapa);}
-\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{void}\ inicializar(\textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y);}
-\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ desenhar(sf::RenderWindow\&\ janela);}
-\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{void}\ ModificacaoPosicaoPoderes(sf::Time\ deltaTime);}
-\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{void}\ ModificacaoPosicaoMoeda(sf::Time\ deltaTime);}
-\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{void}\ atualizar(sf::Time\ deltaTime,\ sf::Time\ tempoAtual);}
-\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{void}\ voltarPosicaoInicial();}
-\DoxyCodeLine{00059\ }
-\DoxyCodeLine{00060\ \ \ \ \ \textcolor{comment}{//Verificação}}
-\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{bool}\ verificarColisao(sf::Vector2f\ posicaoPersonagem,\ \textcolor{keywordtype}{int}\ altura,\ \textcolor{keywordtype}{int}\ largura);}
-\DoxyCodeLine{00062\ }
-\DoxyCodeLine{00063\ \ \ \ \ \textcolor{comment}{//Getters}}
-\DoxyCodeLine{00064\ \ \ \ \ sf::Vector2f\ getPosicaoInicial();}
-\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{int}\ getTipo();}
-\DoxyCodeLine{00066\ \ \ \ \ sf::Vector2f\ getPosicaoAtual();}
-\DoxyCodeLine{00067\ \};}
-\DoxyCodeLine{00068\ }
-\DoxyCodeLine{00069\ \textcolor{preprocessor}{\#endif\ }}
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_poderes_especiais}{PoderesEspeciais}}\ \ \{}
+\DoxyCodeLine{00012\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{comment}{//\ Texturas\ e\ Posições}}
+\DoxyCodeLine{00014\ \ \ \ \ std::vector<sf::Texture>\ cogumeloTextures;\ }
+\DoxyCodeLine{00015\ \ \ \ \ std::vector<sf::Texture>\ estrelaTextures;\ }
+\DoxyCodeLine{00016\ \ \ \ \ std::vector<sf::Texture>\ moedaTextures;\ }
+\DoxyCodeLine{00017\ \ \ \ \ sf::Sprite\ poderSprite;\ \ }
+\DoxyCodeLine{00018\ \ \ \ \ sf::Vector2f\ posicaoInicial;\ }
+\DoxyCodeLine{00019\ \ \ \ \ sf::Vector2f\ posicao;\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{int}\ tipo;}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{comment}{//\ Constantes}}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ aceleracaoGravidadeMoeda\ =\ 40.8f;}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ aceleracaoGravidade\ =\ 4.8f;}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ COGUMELO\ =\ 1;\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ ESTRELA\ =\ 2;\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ MOEDA\ =\ 3;\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ tileSize\ =\ 32;}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{comment}{//\ Modificáveis}}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{float}\ velocidadeVertical\ =\ 0.0f;}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{float}\ velocidadeHorizontal\ =\ 50.0f;}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{float}\ velocidadeInicialPulo\ =\ 1000.0f;}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{comment}{//\ Verificações}}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{bool}\ moedaColetada\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{bool}\ puloIniciado\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{bool}\ estaNoAr\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{bool}\ movDireita\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{bool}\ movEsquerda\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{bool}\ existe\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \mbox{\hyperlink{class_colisao}{Colisao}}\ \&colisao;}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{comment}{//\ Construtor}}
+\DoxyCodeLine{00051\ \ \ \ \ \mbox{\hyperlink{class_poderes_especiais_a1dcfa4cd34c9b1c01c19566016c280a3}{PoderesEspeciais}}(\mbox{\hyperlink{class_colisao}{Colisao}}\ \&colisao);\ \ }
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{comment}{//\ Carregamento}}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_poderes_especiais_a9fc5db207fad8b5da5f76630573f9ac8}{carregarMoedas}}();}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_poderes_especiais_ac9f7c3d0fc85b50e6bfb5e31e98c4282}{carregarPoderes}}();}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{comment}{//\ Métodos\ usados\ diretamente}}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_poderes_especiais_a25c605ece354ed1d102fe4c440e0d73b}{gerarTipoAleatorio}}();}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_poderes_especiais_a5e4761e949527339f508e99953855c15}{inicializarNoMapa}}(\mbox{\hyperlink{class_mapa}{Mapa}}\&\ mapa);}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_poderes_especiais_a5ceef4cd33568d8593c9e890b82e703d}{inicializar}}(\textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y);}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_poderes_especiais_a7200c16b8969178a31a4c0885bea2322}{desenhar}}(sf::RenderWindow\&\ janela);}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_poderes_especiais_a0a9e90ee9807462f3653ad9799a7284e}{ModificacaoPosicaoPoderes}}(sf::Time\ deltaTime);}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_poderes_especiais_a9d62b56a0585af20080b6658f95b0ecc}{ModificacaoPosicaoMoeda}}(sf::Time\ deltaTime);}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_poderes_especiais_a217d3fdeb7e74f3b10af6b2ccf749439}{atualizar}}(sf::Time\ deltaTime,\ sf::Time\ tempoAtual);}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_poderes_especiais_ad78b2eb4b8cde1337ed84773faae6d87}{voltarPosicaoInicial}}();}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{comment}{//\ Verificação}}
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_poderes_especiais_a36a66f39624368b3c1ea41a3d24e99b2}{verificarColisao}}(sf::Vector2f\ posicaoPersonagem,\ \textcolor{keywordtype}{int}\ altura,\ \textcolor{keywordtype}{int}\ largura);}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{comment}{//\ Getters}}
+\DoxyCodeLine{00130\ \ \ \ \ sf::Vector2f\ \mbox{\hyperlink{class_poderes_especiais_a2c48315278bb5e59f275c36e3beb6e41}{getPosicaoInicial}}();}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_poderes_especiais_acc6d9f6ad80c9e3e50608a8413b7b361}{getTipo}}();}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00142\ \ \ \ \ sf::Vector2f\ \mbox{\hyperlink{class_poderes_especiais_a48ae4bb0dce5cfe4cef57bc1682e7a5d}{getPosicaoAtual}}();}
+\DoxyCodeLine{00143\ \};}
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00145\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

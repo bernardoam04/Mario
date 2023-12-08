@@ -74,8 +74,9 @@ $(function() {
 
 <h3><a id="index_a" name="index_a"></a>- a -</h3><ul>
 <li>atacar()&#160;:&#160;<a class="el" href="class_goomba.html#ac60b707c19cc45455822ab5ffd4ea178">Goomba</a></li>
-<li>ativarSom()&#160;:&#160;<a class="el" href="class_sound_manager.html#a69f8d19b11ca3b5487ef89f042030adf">SoundManager</a></li>
-<li>atualizar()&#160;:&#160;<a class="el" href="class_game_over.html#a65a3a968f9c97e0dd6035b2b7393fe0d">GameOver</a>, <a class="el" href="class_menu.html#a804e77d73f34e5cb944c53304d5c2879">Menu</a></li>
+<li>ativarSom()&#160;:&#160;<a class="el" href="class_gerenciador_geral.html#ad68229819d36c51968680dec79dee8ec">GerenciadorGeral</a>, <a class="el" href="class_sound_manager.html#a69f8d19b11ca3b5487ef89f042030adf">SoundManager</a></li>
+<li>atualizar()&#160;:&#160;<a class="el" href="class_game_over.html#a65a3a968f9c97e0dd6035b2b7393fe0d">GameOver</a>, <a class="el" href="class_gerenciador_geral.html#a52af3e57fc0893f3baea436a4e76a970">GerenciadorGeral</a>, <a class="el" href="class_menu.html#a804e77d73f34e5cb944c53304d5c2879">Menu</a>, <a class="el" href="class_poderes_especiais.html#a217d3fdeb7e74f3b10af6b2ccf749439">PoderesEspeciais</a></li>
+<li>atualizarEventos()&#160;:&#160;<a class="el" href="class_gerenciador_geral.html#a5ebf98ac43ee31a580bb4f6440f14e0b">GerenciadorGeral</a></li>
 <li>atualizarOpcaoSelecionada()&#160;:&#160;<a class="el" href="class_menu.html#a61f589e780f06b94cd43a9103ce54837">Menu</a></li>
 <li>atualizarPontuacao()&#160;:&#160;<a class="el" href="class_pontuacao.html#aafb9b32d497b8efa9177ffc9fceb7bb5">Pontuacao</a></li>
 <li>atualizarPosicao()&#160;:&#160;<a class="el" href="class_camera.html#aaad23bcffbf5ab72156f5f8baf9a3e18">Camera</a></li>
@@ -85,15 +86,19 @@ $(function() {
 
 <h3><a id="index_c" name="index_c"></a>- c -</h3><ul>
 <li>Camera()&#160;:&#160;<a class="el" href="class_camera.html#a8c3367ec7dcd66f93ae7d295655a6420">Camera</a></li>
+<li>carregarMoedas()&#160;:&#160;<a class="el" href="class_poderes_especiais.html#a9fc5db207fad8b5da5f76630573f9ac8">PoderesEspeciais</a></li>
+<li>carregarPoderes()&#160;:&#160;<a class="el" href="class_poderes_especiais.html#ac9f7c3d0fc85b50e6bfb5e31e98c4282">PoderesEspeciais</a></li>
 <li>carregarSomVazio()&#160;:&#160;<a class="el" href="class_sound_manager.html#a5eeaa3e6ed255bd78da57ac1aaaddade">SoundManager</a></li>
 <li>Colisao()&#160;:&#160;<a class="el" href="class_colisao.html#a1f573be335703afb3b132d26a17ae2d0">Colisao</a></li>
 </ul>
 
 
 <h3><a id="index_d" name="index_d"></a>- d -</h3><ul>
-<li>desativarSom()&#160;:&#160;<a class="el" href="class_sound_manager.html#af41be3e4e3d745dc3374b26f35c3e894">SoundManager</a></li>
-<li>desenhar()&#160;:&#160;<a class="el" href="class_jogador.html#a7a682a6e955b61c76d89a3af6a2c6b0d">Jogador</a></li>
+<li>desativarSom()&#160;:&#160;<a class="el" href="class_gerenciador_geral.html#a02836862a7149d5621f1e261a0bf128c">GerenciadorGeral</a>, <a class="el" href="class_sound_manager.html#af41be3e4e3d745dc3374b26f35c3e894">SoundManager</a></li>
+<li>desenhar()&#160;:&#160;<a class="el" href="class_jogador.html#a7a682a6e955b61c76d89a3af6a2c6b0d">Jogador</a>, <a class="el" href="class_poderes_especiais.html#a7200c16b8969178a31a4c0885bea2322">PoderesEspeciais</a></li>
 <li>desenharGoomba()&#160;:&#160;<a class="el" href="class_goomba.html#aeef8a04059ef83845ef5c0e4859fd659">Goomba</a></li>
+<li>desenharMapa()&#160;:&#160;<a class="el" href="class_gerenciador_geral.html#a8bca0e03474da629008e107500ad3574">GerenciadorGeral</a></li>
+<li>desenharPoderesEspeciais()&#160;:&#160;<a class="el" href="class_gerenciador_geral.html#a7e4b8fdc7f9a7dec04e1edd5076f9575">GerenciadorGeral</a></li>
 <li>desenharTela()&#160;:&#160;<a class="el" href="class_game_over.html#a031563f59126a4459020723bd5542240">GameOver</a>, <a class="el" href="class_menu.html#a4395fccd9fa4a692d201cc7a80dd7a57">Menu</a></li>
 <li>dobrarAltura()&#160;:&#160;<a class="el" href="class_jogador.html#ae73db6b042fb67fe3c89e01a35598bd0">Jogador</a></li>
 </ul>
@@ -111,6 +116,8 @@ $(function() {
 
 <h3><a id="index_g" name="index_g"></a>- g -</h3><ul>
 <li>GameOver()&#160;:&#160;<a class="el" href="class_game_over.html#a5768b4b17d324f71b9c4e02976466be6">GameOver</a></li>
+<li>gerarTipoAleatorio()&#160;:&#160;<a class="el" href="class_poderes_especiais.html#a25c605ece354ed1d102fe4c440e0d73b">PoderesEspeciais</a></li>
+<li>GerenciadorGeral()&#160;:&#160;<a class="el" href="class_gerenciador_geral.html#a8436434bd4c553d696311d77e9074cfc">GerenciadorGeral</a></li>
 <li>getAlturaJogador()&#160;:&#160;<a class="el" href="class_jogador.html#a01f6e0af4a08a7ccb06cfbf76b611e54">Jogador</a></li>
 <li>getCenter()&#160;:&#160;<a class="el" href="class_camera.html#a6aa324249dd53699f38ef35c9fd6d918">Camera</a></li>
 <li>getGanhou()&#160;:&#160;<a class="el" href="class_jogador.html#a60b072f8182adaaa9837c23b50939dd5">Jogador</a></li>
@@ -119,10 +126,13 @@ $(function() {
 <li>getOpcaoSelecionada()&#160;:&#160;<a class="el" href="class_menu.html#a4f426f95fddd76c551d95718fd771993">Menu</a></li>
 <li>getPerdeu()&#160;:&#160;<a class="el" href="class_jogador.html#ab5fe99a014e06804bf20eb79da672d59">Jogador</a></li>
 <li>getPontuacaoTotal()&#160;:&#160;<a class="el" href="class_pontuacao.html#a8c58428d74bf27a92f5e8027a3533f89">Pontuacao</a></li>
+<li>getPosicaoAtual()&#160;:&#160;<a class="el" href="class_poderes_especiais.html#a48ae4bb0dce5cfe4cef57bc1682e7a5d">PoderesEspeciais</a></li>
+<li>getPosicaoInicial()&#160;:&#160;<a class="el" href="class_poderes_especiais.html#a2c48315278bb5e59f275c36e3beb6e41">PoderesEspeciais</a></li>
 <li>getSbGameover()&#160;:&#160;<a class="el" href="class_sound_manager.html#a75febcafdbfb8e594776a0803a62056f">SoundManager</a></li>
 <li>getSbMoeda()&#160;:&#160;<a class="el" href="class_sound_manager.html#a5fe5941f9b110daa57b20e2ec54a3e6e">SoundManager</a></li>
 <li>getSbPulo()&#160;:&#160;<a class="el" href="class_sound_manager.html#a63db67e116f722ca2c602b127bc5f4ac">SoundManager</a></li>
 <li>getSomAtivo()&#160;:&#160;<a class="el" href="class_menu.html#a8d6290f297ec0830d26146c9fe6d7c96">Menu</a></li>
+<li>getTipo()&#160;:&#160;<a class="el" href="class_poderes_especiais.html#acc6d9f6ad80c9e3e50608a8413b7b361">PoderesEspeciais</a></li>
 <li>getVelocidadeCamera()&#160;:&#160;<a class="el" href="class_camera.html#a5ed5b75ec3424572ee57e440df3cc624">Camera</a></li>
 <li>getVida()&#160;:&#160;<a class="el" href="class_jogador.html#a827c66480020e8fd60b61933f59d8a0a">Jogador</a></li>
 <li>getView()&#160;:&#160;<a class="el" href="class_camera.html#a917ea4f367d0752f7c220bc26fe755a4">Camera</a></li>
@@ -131,13 +141,17 @@ $(function() {
 
 
 <h3><a id="index_i" name="index_i"></a>- i -</h3><ul>
+<li>inicializar()&#160;:&#160;<a class="el" href="class_poderes_especiais.html#a5ceef4cd33568d8593c9e890b82e703d">PoderesEspeciais</a></li>
 <li>inicializarBooleanos()&#160;:&#160;<a class="el" href="class_jogador.html#a690c1ee0aa789e450a2d4dca1adb1736">Jogador</a></li>
 <li>inicializarGoombas()&#160;:&#160;<a class="el" href="class_goomba.html#a910307aecea4f08221d98251e8199c33">Goomba</a></li>
+<li>inicializarNoMapa()&#160;:&#160;<a class="el" href="class_poderes_especiais.html#a5e4761e949527339f508e99953855c15">PoderesEspeciais</a></li>
+<li>InicializarPoderesEspeciais()&#160;:&#160;<a class="el" href="class_gerenciador_geral.html#a5637b1b339f572998559ba0b8fcbad16">GerenciadorGeral</a></li>
 <li>isSoundPlaying()&#160;:&#160;<a class="el" href="class_sound_manager.html#aa2c638795165cddd3422565228df8c80">SoundManager</a></li>
 </ul>
 
 
 <h3><a id="index_j" name="index_j"></a>- j -</h3><ul>
+<li>janelaAberta()&#160;:&#160;<a class="el" href="class_gerenciador_geral.html#ac568dd22c14215e46bdb90bb1f4e1b2d">GerenciadorGeral</a></li>
 <li>Jogador()&#160;:&#160;<a class="el" href="class_jogador.html#aed41f8e1bddfc8ce5ebf531d7784b4bd">Jogador</a></li>
 </ul>
 
@@ -149,6 +163,8 @@ $(function() {
 
 <h3><a id="index_m" name="index_m"></a>- m -</h3><ul>
 <li>Menu()&#160;:&#160;<a class="el" href="class_menu.html#afdb3eb41cfadc1b99bbdbae3edba48bd">Menu</a></li>
+<li>ModificacaoPosicaoMoeda()&#160;:&#160;<a class="el" href="class_poderes_especiais.html#a9d62b56a0585af20080b6658f95b0ecc">PoderesEspeciais</a></li>
+<li>ModificacaoPosicaoPoderes()&#160;:&#160;<a class="el" href="class_poderes_especiais.html#a0a9e90ee9807462f3653ad9799a7284e">PoderesEspeciais</a></li>
 <li>modificarPosicao()&#160;:&#160;<a class="el" href="class_goomba.html#a61093bd89d7d40d5f8a7802e91febf3c">Goomba</a>, <a class="el" href="class_jogador.html#a453e4ce824fb4388742b918ca1608cee">Jogador</a>, <a class="el" href="class_personagem.html#a1290c9132aa3d3d379c9efbaeb5014e0">Personagem</a></li>
 <li>morrer()&#160;:&#160;<a class="el" href="class_goomba.html#a8a86996227e2f2c5a1d03956c15eb3de">Goomba</a></li>
 <li>musicaPausada()&#160;:&#160;<a class="el" href="class_sound_manager.html#a993d597679bb85b62c5ab49bcf170704">SoundManager</a></li>
@@ -166,12 +182,14 @@ $(function() {
 <li>perderVida()&#160;:&#160;<a class="el" href="class_jogador.html#a3441165b951c51d3146cee6f66f2214f">Jogador</a></li>
 <li>perdeuMudarTextura()&#160;:&#160;<a class="el" href="class_jogador.html#a1ed2befc236d5baf4cad8aa319ff10c5">Jogador</a></li>
 <li>Personagem()&#160;:&#160;<a class="el" href="class_personagem.html#a5db7fd106c2074f92825e403a9d91bcc">Personagem</a></li>
+<li>PoderesEspeciais()&#160;:&#160;<a class="el" href="class_poderes_especiais.html#a1dcfa4cd34c9b1c01c19566016c280a3">PoderesEspeciais</a></li>
 <li>Pontuacao()&#160;:&#160;<a class="el" href="class_pontuacao.html#ad84b6b0a5a99a6680a2315b8f834f1bb">Pontuacao</a></li>
 </ul>
 
 
 <h3><a id="index_r" name="index_r"></a>- r -</h3><ul>
 <li>reiniciarMusica()&#160;:&#160;<a class="el" href="class_sound_manager.html#adbd32619c647393431ec15c422e40c82">SoundManager</a></li>
+<li>renderizar()&#160;:&#160;<a class="el" href="class_gerenciador_geral.html#a8c58ba1c8dc9fb09a063b967a6b3c34b">GerenciadorGeral</a></li>
 <li>resetarSelecao()&#160;:&#160;<a class="el" href="class_menu.html#a4ef84f1b29c9d7850e02e2c67c4b8a90">Menu</a></li>
 </ul>
 
@@ -196,13 +214,14 @@ $(function() {
 
 
 <h3><a id="index_v" name="index_v"></a>- v -</h3><ul>
-<li>verificarColisao()&#160;:&#160;<a class="el" href="class_colisao.html#a5b9cc0144a59c3f0899c066804d08ba0">Colisao</a>, <a class="el" href="class_goomba.html#a6f406314c09dfa0eabcfa57f87c75910">Goomba</a></li>
+<li>verificarColisao()&#160;:&#160;<a class="el" href="class_colisao.html#a5b9cc0144a59c3f0899c066804d08ba0">Colisao</a>, <a class="el" href="class_gerenciador_geral.html#aeeb1e8721b2c1e560f45c29200a2754f">GerenciadorGeral</a>, <a class="el" href="class_goomba.html#a6f406314c09dfa0eabcfa57f87c75910">Goomba</a>, <a class="el" href="class_poderes_especiais.html#a36a66f39624368b3c1ea41a3d24e99b2">PoderesEspeciais</a></li>
 <li>verificarColisaoComGoomba()&#160;:&#160;<a class="el" href="class_goomba.html#ad8fea39a6b8dd00464d84e793eac23c4">Goomba</a></li>
 <li>verificarColisaoDistanciaX()&#160;:&#160;<a class="el" href="class_goomba.html#af62ae8d17c813ed7e1941f14a49d10b2">Goomba</a>, <a class="el" href="class_jogador.html#a51f776f7a148c3e0e18074d38daf5dee">Jogador</a></li>
 <li>verificarColisaoDistanciaY()&#160;:&#160;<a class="el" href="class_goomba.html#a9e07183a9df7e532055598cfb7ef5ce2">Goomba</a>, <a class="el" href="class_jogador.html#ada209f8d0156bf16fd6cd08840b657dd">Jogador</a></li>
 <li>verificarColisaoLateralComGoomba()&#160;:&#160;<a class="el" href="class_goomba.html#a064c2c68069b740ae58dbd37eee8cfc0">Goomba</a></li>
 <li>verificarColisaoLateralComGoombaDireita()&#160;:&#160;<a class="el" href="class_goomba.html#a643f804faab017d3029a56bd26db385b">Goomba</a></li>
 <li>verificarColisaoLateralComGoombaEsquerda()&#160;:&#160;<a class="el" href="class_goomba.html#a07c724d9d0623da55f813f6bb1787704">Goomba</a></li>
+<li>voltarPosicaoInicial()&#160;:&#160;<a class="el" href="class_poderes_especiais.html#ad78b2eb4b8cde1337ed84773faae6d87">PoderesEspeciais</a></li>
 </ul>
 
 
