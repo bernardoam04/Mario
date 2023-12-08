@@ -95,85 +95,103 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;Goomba.hpp&quot;</span></div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;set&gt;</span></div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="foldopen" id="foldopen00014" data-start="{" data-end="};">
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="class_gerenciador_geral.html">   14</a></span><span class="keyword">class </span><a class="code hl_class" href="class_gerenciador_geral.html">GerenciadorGeral</a>{</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="comment">//Informações da tela(mesma do main)</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keyword">const</span> <span class="keywordtype">float</span> alturaTela = 640;</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keyword">const</span> <span class="keywordtype">float</span> larguraTela = 640;</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="comment">//Tipos Abstratos</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    std::shared_ptr &lt;sf::RenderWindow&gt; janela;</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    std::shared_ptr &lt;Pontuacao&gt; pontuacao;</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <a class="code hl_class" href="class_mapa.html">Mapa</a> mapa;  </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    std::shared_ptr &lt;Camera&gt; camera;</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    std::shared_ptr &lt;Colisao&gt; colisao;</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    std::vector&lt;std::shared_ptr &lt;PoderesEspeciais&gt;&gt; vetorPoderesEspeciais;</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    std::vector&lt;std::shared_ptr &lt;Goomba&gt;&gt; goombas;</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    std::shared_ptr&lt;SoundManager&gt; _sounds;</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    std::shared_ptr &lt;Jogador&gt; mario;</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    std::set&lt;unsigned int&gt; indicesComColisao;</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    std::set&lt;unsigned int&gt; indicesPoderesEspeciais;</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    std::shared_ptr &lt;Goomba&gt; goomba;</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="comment">//Textos da pontuacao</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    sf::Text textoMaisCem;</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    sf::Text textoMaisMil;</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    sf::Text textoGanhou;</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    sf::Clock temporizadorTexto;</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    sf::Time duracaoTexto = sf::seconds(0.5f);</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="comment">//Métodos privados</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordtype">void</span> inicializarVariaveis();</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordtype">void</span> InicializarGoombas();</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordtype">void</span> inicializarTextos(sf::Font &amp;fonte);</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keywordtype">void</span> atualizarPosicaoTexto(sf::Text &amp;texto);</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="comment">//Verificações</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordtype">bool</span> puloHabilitado;</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keywordtype">bool</span> gameOver;</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keywordtype">bool</span> somAtivo = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    std::vector &lt;int&gt; contagemDesenhoPoderes;</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="comment">//Contador</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordtype">int</span> contadorPerdeu = 0;</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keywordtype">int</span> contadorInvencivel;</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keywordtype">int</span> contagemMoedasMisteriosas = 0;</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="keyword">public</span>:    </div>
+<div class="foldopen" id="foldopen00017" data-start="{" data-end="};">
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="class_gerenciador_geral.html">   17</a></span><span class="keyword">class </span><a class="code hl_class" href="class_gerenciador_geral.html">GerenciadorGeral</a> {</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="comment">// Informações da tela (mesma do main)</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keyword">const</span> <span class="keywordtype">float</span> alturaTela = 640;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keyword">const</span> <span class="keywordtype">float</span> larguraTela = 640;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="comment">// Tipos Abstratos</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    std::shared_ptr&lt;sf::RenderWindow&gt; janela;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    std::shared_ptr&lt;Pontuacao&gt; pontuacao;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <a class="code hl_class" href="class_mapa.html">Mapa</a> mapa;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    std::shared_ptr&lt;Camera&gt; camera;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    std::shared_ptr&lt;Colisao&gt; colisao;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    std::vector&lt;std::shared_ptr&lt;PoderesEspeciais&gt;&gt; vetorPoderesEspeciais;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    std::vector&lt;std::shared_ptr&lt;Goomba&gt;&gt; goombas;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    std::shared_ptr&lt;SoundManager&gt; _sounds;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    std::shared_ptr&lt;Jogador&gt; mario;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    std::set&lt;unsigned int&gt; indicesComColisao;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    std::set&lt;unsigned int&gt; indicesPoderesEspeciais;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    std::shared_ptr&lt;Goomba&gt; goomba;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="comment">// Textos da pontuação</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    sf::Text textoMaisCem;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    sf::Text textoMaisMil;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    sf::Text textoGanhou;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    sf::Clock temporizadorTexto;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    sf::Time duracaoTexto = sf::seconds(0.5f);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="comment">// Métodos privados</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordtype">void</span> inicializarVariaveis();</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keywordtype">void</span> InicializarGoombas();</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordtype">void</span> inicializarTextos(sf::Font &amp;fonte);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keywordtype">void</span> atualizarPosicaoTexto(sf::Text &amp;texto);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="comment">// Verificações</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keywordtype">bool</span> puloHabilitado;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordtype">bool</span> gameOver;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keywordtype">bool</span> somAtivo = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    std::vector&lt;int&gt; contagemDesenhoPoderes;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="comment">// Contador</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keywordtype">int</span> contadorPerdeu = 0;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keywordtype">int</span> contadorInvencivel;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keywordtype">int</span> contagemMoedasMisteriosas = 0;</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="comment">//Construtor e Destrutor</span></div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <a class="code hl_class" href="class_gerenciador_geral.html">GerenciadorGeral</a>(std::shared_ptr &lt;sf::RenderWindow&gt; janela1, sf::Font &amp;fonte, std::shared_ptr&lt;SoundManager&gt; sounds);</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="comment">//Métodos de Verificação</span></div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordtype">int</span> verificarColisao(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keywordtype">bool</span> janelaAberta() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="comment">//Métodos utilizados no jogo diretamente</span></div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="keywordtype">void</span> InicializarPoderesEspeciais();</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keywordtype">bool</span> atualizar(sf::Time tempoAtual, sf::Time deltaTime, sf::Event ev);</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="keywordtype">bool</span> atualizarEventos(sf::Event ev);</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="keywordtype">void</span> renderizar(sf::Time tempoAtual);</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keywordtype">void</span> desenharPoderesEspeciais();</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="keywordtype">void</span> desenharMapa(sf::Time tempoAtual);</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="keywordtype">void</span> desativarSom();</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="keywordtype">void</span> ativarSom();</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="comment">//Getters</span></div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="keywordtype">float</span> getAlturaTela() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <span class="keywordtype">float</span> getLarguraTela() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="keywordtype">int</span> getPontuacaoTotal() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keyword">const</span> sf::View&amp; getViewCamera() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="keywordtype">bool</span> getGamerOver();</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    std::shared_ptr&lt;Jogador&gt; getMario() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="keywordtype">int</span> getContagemPoderesEspeciais() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="keyword">public</span>:    </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="comment">// Construtor e Destrutor</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="class_gerenciador_geral.html#a8436434bd4c553d696311d77e9074cfc">   70</a></span>    <a class="code hl_function" href="class_gerenciador_geral.html#a8436434bd4c553d696311d77e9074cfc">GerenciadorGeral</a>(std::shared_ptr&lt;sf::RenderWindow&gt; janela1, sf::Font &amp;fonte, std::shared_ptr&lt;SoundManager&gt; sounds);</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="comment">// Métodos de Verificação</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="class_gerenciador_geral.html#aeeb1e8721b2c1e560f45c29200a2754f">   79</a></span>    <span class="keywordtype">int</span> <a class="code hl_function" href="class_gerenciador_geral.html#aeeb1e8721b2c1e560f45c29200a2754f">verificarColisao</a>(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="class_gerenciador_geral.html#ac568dd22c14215e46bdb90bb1f4e1b2d">   85</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_gerenciador_geral.html#ac568dd22c14215e46bdb90bb1f4e1b2d">janelaAberta</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>};</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    <span class="comment">// Métodos utilizados no jogo diretamente</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="class_gerenciador_geral.html#a5637b1b339f572998559ba0b8fcbad16">   91</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_gerenciador_geral.html#a5637b1b339f572998559ba0b8fcbad16">InicializarPoderesEspeciais</a>();</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="class_gerenciador_geral.html#a52af3e57fc0893f3baea436a4e76a970">  100</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_gerenciador_geral.html#a52af3e57fc0893f3baea436a4e76a970">atualizar</a>(sf::Time tempoAtual, sf::Time deltaTime, sf::Event ev);</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno"><a class="line" href="class_gerenciador_geral.html#a5ebf98ac43ee31a580bb4f6440f14e0b">  107</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_gerenciador_geral.html#a5ebf98ac43ee31a580bb4f6440f14e0b">atualizarEventos</a>(sf::Event ev);</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno"><a class="line" href="class_gerenciador_geral.html#a8c58ba1c8dc9fb09a063b967a6b3c34b">  113</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_gerenciador_geral.html#a8c58ba1c8dc9fb09a063b967a6b3c34b">renderizar</a>(sf::Time tempoAtual);</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno"><a class="line" href="class_gerenciador_geral.html#a7e4b8fdc7f9a7dec04e1edd5076f9575">  118</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_gerenciador_geral.html#a7e4b8fdc7f9a7dec04e1edd5076f9575">desenharPoderesEspeciais</a>();</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno"><a class="line" href="class_gerenciador_geral.html#a8bca0e03474da629008e107500ad3574">  124</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_gerenciador_geral.html#a8bca0e03474da629008e107500ad3574">desenharMapa</a>(sf::Time tempoAtual);</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno"><a class="line" href="class_gerenciador_geral.html#a02836862a7149d5621f1e261a0bf128c">  129</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_gerenciador_geral.html#a02836862a7149d5621f1e261a0bf128c">desativarSom</a>();</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno"><a class="line" href="class_gerenciador_geral.html#ad68229819d36c51968680dec79dee8ec">  134</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_gerenciador_geral.html#ad68229819d36c51968680dec79dee8ec">ativarSom</a>();</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span> </div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    <span class="comment">//Getters</span></div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>    <span class="keywordtype">float</span> getAlturaTela() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>    <span class="keywordtype">float</span> getLarguraTela() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>    <span class="keywordtype">int</span> getPontuacaoTotal() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    <span class="keyword">const</span> sf::View&amp; getViewCamera() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    <span class="keywordtype">bool</span> getGamerOver();</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    std::shared_ptr&lt;Jogador&gt; getMario() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    <span class="keywordtype">int</span> getContagemPoderesEspeciais() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span> </div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>};</div>
 </div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclass_gerenciador_geral_html"><div class="ttname"><a href="class_gerenciador_geral.html">GerenciadorGeral</a></div><div class="ttdef"><b>Definição</b> GerenciadorGeral.hpp:14</div></div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclass_gerenciador_geral_html"><div class="ttname"><a href="class_gerenciador_geral.html">GerenciadorGeral</a></div><div class="ttdoc">Classe que gerencia o estado geral do jogo.</div><div class="ttdef"><b>Definição</b> GerenciadorGeral.hpp:17</div></div>
+<div class="ttc" id="aclass_gerenciador_geral_html_a02836862a7149d5621f1e261a0bf128c"><div class="ttname"><a href="class_gerenciador_geral.html#a02836862a7149d5621f1e261a0bf128c">GerenciadorGeral::desativarSom</a></div><div class="ttdeci">void desativarSom()</div><div class="ttdoc">Desativa o som no jogo.</div></div>
+<div class="ttc" id="aclass_gerenciador_geral_html_a52af3e57fc0893f3baea436a4e76a970"><div class="ttname"><a href="class_gerenciador_geral.html#a52af3e57fc0893f3baea436a4e76a970">GerenciadorGeral::atualizar</a></div><div class="ttdeci">bool atualizar(sf::Time tempoAtual, sf::Time deltaTime, sf::Event ev)</div><div class="ttdoc">Atualiza o estado do jogo.</div></div>
+<div class="ttc" id="aclass_gerenciador_geral_html_a5637b1b339f572998559ba0b8fcbad16"><div class="ttname"><a href="class_gerenciador_geral.html#a5637b1b339f572998559ba0b8fcbad16">GerenciadorGeral::InicializarPoderesEspeciais</a></div><div class="ttdeci">void InicializarPoderesEspeciais()</div><div class="ttdoc">Inicializa os poderes especiais no jogo.</div></div>
+<div class="ttc" id="aclass_gerenciador_geral_html_a5ebf98ac43ee31a580bb4f6440f14e0b"><div class="ttname"><a href="class_gerenciador_geral.html#a5ebf98ac43ee31a580bb4f6440f14e0b">GerenciadorGeral::atualizarEventos</a></div><div class="ttdeci">bool atualizarEventos(sf::Event ev)</div><div class="ttdoc">Atualiza os eventos do jogo.</div></div>
+<div class="ttc" id="aclass_gerenciador_geral_html_a7e4b8fdc7f9a7dec04e1edd5076f9575"><div class="ttname"><a href="class_gerenciador_geral.html#a7e4b8fdc7f9a7dec04e1edd5076f9575">GerenciadorGeral::desenharPoderesEspeciais</a></div><div class="ttdeci">void desenharPoderesEspeciais()</div><div class="ttdoc">Desenha os poderes especiais na janela.</div></div>
+<div class="ttc" id="aclass_gerenciador_geral_html_a8436434bd4c553d696311d77e9074cfc"><div class="ttname"><a href="class_gerenciador_geral.html#a8436434bd4c553d696311d77e9074cfc">GerenciadorGeral::GerenciadorGeral</a></div><div class="ttdeci">GerenciadorGeral(std::shared_ptr&lt; sf::RenderWindow &gt; janela1, sf::Font &amp;fonte, std::shared_ptr&lt; SoundManager &gt; sounds)</div><div class="ttdoc">Constrói um objeto GerenciadorGeral.</div></div>
+<div class="ttc" id="aclass_gerenciador_geral_html_a8bca0e03474da629008e107500ad3574"><div class="ttname"><a href="class_gerenciador_geral.html#a8bca0e03474da629008e107500ad3574">GerenciadorGeral::desenharMapa</a></div><div class="ttdeci">void desenharMapa(sf::Time tempoAtual)</div><div class="ttdoc">Desenha o mapa na janela.</div></div>
+<div class="ttc" id="aclass_gerenciador_geral_html_a8c58ba1c8dc9fb09a063b967a6b3c34b"><div class="ttname"><a href="class_gerenciador_geral.html#a8c58ba1c8dc9fb09a063b967a6b3c34b">GerenciadorGeral::renderizar</a></div><div class="ttdeci">void renderizar(sf::Time tempoAtual)</div><div class="ttdoc">Renderiza o estado atual do jogo.</div></div>
+<div class="ttc" id="aclass_gerenciador_geral_html_ac568dd22c14215e46bdb90bb1f4e1b2d"><div class="ttname"><a href="class_gerenciador_geral.html#ac568dd22c14215e46bdb90bb1f4e1b2d">GerenciadorGeral::janelaAberta</a></div><div class="ttdeci">bool janelaAberta() const</div><div class="ttdoc">Verifica se a janela do jogo está aberta.</div></div>
+<div class="ttc" id="aclass_gerenciador_geral_html_ad68229819d36c51968680dec79dee8ec"><div class="ttname"><a href="class_gerenciador_geral.html#ad68229819d36c51968680dec79dee8ec">GerenciadorGeral::ativarSom</a></div><div class="ttdeci">void ativarSom()</div><div class="ttdoc">Ativa o som no jogo.</div></div>
+<div class="ttc" id="aclass_gerenciador_geral_html_aeeb1e8721b2c1e560f45c29200a2754f"><div class="ttname"><a href="class_gerenciador_geral.html#aeeb1e8721b2c1e560f45c29200a2754f">GerenciadorGeral::verificarColisao</a></div><div class="ttdeci">int verificarColisao(float x, float y) const</div><div class="ttdoc">Verifica se há colisão em uma posição específica.</div></div>
 <div class="ttc" id="aclass_mapa_html"><div class="ttname"><a href="class_mapa.html">Mapa</a></div><div class="ttdef"><b>Definição</b> Mapa.hpp:14</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

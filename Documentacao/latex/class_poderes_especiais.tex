@@ -1,53 +1,245 @@
 \doxysection{Referência à classe Poderes\+Especiais}
 \hypertarget{class_poderes_especiais}{}\label{class_poderes_especiais}\index{PoderesEspeciais@{PoderesEspeciais}}
+
+
+Classe que representa os poderes especiais no jogo.  
+
+
+
+
+{\ttfamily \#include $<$Poderes\+Especiais.\+hpp$>$}
+
 \doxysubsubsection*{Membros públicos}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{class_poderes_especiais_a1dcfa4cd34c9b1c01c19566016c280a3}\label{class_poderes_especiais_a1dcfa4cd34c9b1c01c19566016c280a3} 
-{\bfseries Poderes\+Especiais} (\mbox{\hyperlink{class_colisao}{Colisao}} \&colisao)
-\item 
+\mbox{\hyperlink{class_poderes_especiais_a1dcfa4cd34c9b1c01c19566016c280a3}{Poderes\+Especiais}} (\mbox{\hyperlink{class_colisao}{Colisao}} \&colisao)
+\begin{DoxyCompactList}\small\item\em Constrói um objeto \doxylink{class_poderes_especiais}{Poderes\+Especiais}. \end{DoxyCompactList}\item 
 \Hypertarget{class_poderes_especiais_a9fc5db207fad8b5da5f76630573f9ac8}\label{class_poderes_especiais_a9fc5db207fad8b5da5f76630573f9ac8} 
 void {\bfseries carregar\+Moedas} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Carrega as texturas para as moedas. \end{DoxyCompactList}\item 
 \Hypertarget{class_poderes_especiais_ac9f7c3d0fc85b50e6bfb5e31e98c4282}\label{class_poderes_especiais_ac9f7c3d0fc85b50e6bfb5e31e98c4282} 
 void {\bfseries carregar\+Poderes} ()
-\item 
-\Hypertarget{class_poderes_especiais_a25c605ece354ed1d102fe4c440e0d73b}\label{class_poderes_especiais_a25c605ece354ed1d102fe4c440e0d73b} 
-int {\bfseries gerar\+Tipo\+Aleatorio} ()
-\item 
-\Hypertarget{class_poderes_especiais_a5e4761e949527339f508e99953855c15}\label{class_poderes_especiais_a5e4761e949527339f508e99953855c15} 
-bool {\bfseries inicializar\+No\+Mapa} (\mbox{\hyperlink{class_mapa}{Mapa}} \&mapa)
-\item 
-\Hypertarget{class_poderes_especiais_a5ceef4cd33568d8593c9e890b82e703d}\label{class_poderes_especiais_a5ceef4cd33568d8593c9e890b82e703d} 
-void {\bfseries inicializar} (float x, float y)
-\item 
-\Hypertarget{class_poderes_especiais_a7200c16b8969178a31a4c0885bea2322}\label{class_poderes_especiais_a7200c16b8969178a31a4c0885bea2322} 
-void {\bfseries desenhar} (sf\+::\+Render\+Window \&janela)
-\item 
-\Hypertarget{class_poderes_especiais_a0a9e90ee9807462f3653ad9799a7284e}\label{class_poderes_especiais_a0a9e90ee9807462f3653ad9799a7284e} 
-void {\bfseries Modificacao\+Posicao\+Poderes} (sf\+::\+Time delta\+Time)
-\item 
-\Hypertarget{class_poderes_especiais_a9d62b56a0585af20080b6658f95b0ecc}\label{class_poderes_especiais_a9d62b56a0585af20080b6658f95b0ecc} 
-void {\bfseries Modificacao\+Posicao\+Moeda} (sf\+::\+Time delta\+Time)
-\item 
-\Hypertarget{class_poderes_especiais_a217d3fdeb7e74f3b10af6b2ccf749439}\label{class_poderes_especiais_a217d3fdeb7e74f3b10af6b2ccf749439} 
-void {\bfseries atualizar} (sf\+::\+Time delta\+Time, sf\+::\+Time tempo\+Atual)
-\item 
+\begin{DoxyCompactList}\small\item\em Carrega as texturas para os poderes. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_poderes_especiais_a25c605ece354ed1d102fe4c440e0d73b}{gerar\+Tipo\+Aleatorio}} ()
+\begin{DoxyCompactList}\small\item\em Gera um tipo aleatório para o poder especial. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_poderes_especiais_a5e4761e949527339f508e99953855c15}{inicializar\+No\+Mapa}} (\mbox{\hyperlink{class_mapa}{Mapa}} \&mapa)
+\begin{DoxyCompactList}\small\item\em Inicializa o poder especial no mapa. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_poderes_especiais_a5ceef4cd33568d8593c9e890b82e703d}{inicializar}} (float x, float y)
+\begin{DoxyCompactList}\small\item\em Inicializa as propriedades do poder especial. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_poderes_especiais_a7200c16b8969178a31a4c0885bea2322}{desenhar}} (sf\+::\+Render\+Window \&janela)
+\begin{DoxyCompactList}\small\item\em Desenha o poder especial na janela. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_poderes_especiais_a0a9e90ee9807462f3653ad9799a7284e}{Modificacao\+Posicao\+Poderes}} (sf\+::\+Time delta\+Time)
+\begin{DoxyCompactList}\small\item\em Modifica a posição do poder especial com base no tempo delta. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_poderes_especiais_a9d62b56a0585af20080b6658f95b0ecc}{Modificacao\+Posicao\+Moeda}} (sf\+::\+Time delta\+Time)
+\begin{DoxyCompactList}\small\item\em Modifica a posição da moeda com base no tempo delta. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_poderes_especiais_a217d3fdeb7e74f3b10af6b2ccf749439}{atualizar}} (sf\+::\+Time delta\+Time, sf\+::\+Time tempo\+Atual)
+\begin{DoxyCompactList}\small\item\em Atualiza o estado do poder especial. \end{DoxyCompactList}\item 
 \Hypertarget{class_poderes_especiais_ad78b2eb4b8cde1337ed84773faae6d87}\label{class_poderes_especiais_ad78b2eb4b8cde1337ed84773faae6d87} 
 void {\bfseries voltar\+Posicao\+Inicial} ()
-\item 
-\Hypertarget{class_poderes_especiais_a36a66f39624368b3c1ea41a3d24e99b2}\label{class_poderes_especiais_a36a66f39624368b3c1ea41a3d24e99b2} 
-bool {\bfseries verificar\+Colisao} (sf\+::\+Vector2f posicao\+Personagem, int altura, int largura)
-\item 
-\Hypertarget{class_poderes_especiais_a2c48315278bb5e59f275c36e3beb6e41}\label{class_poderes_especiais_a2c48315278bb5e59f275c36e3beb6e41} 
-sf\+::\+Vector2f {\bfseries get\+Posicao\+Inicial} ()
-\item 
-\Hypertarget{class_poderes_especiais_acc6d9f6ad80c9e3e50608a8413b7b361}\label{class_poderes_especiais_acc6d9f6ad80c9e3e50608a8413b7b361} 
-int {\bfseries get\+Tipo} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Retorna o poder especial para a posição inicial. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_poderes_especiais_a36a66f39624368b3c1ea41a3d24e99b2}{verificar\+Colisao}} (sf\+::\+Vector2f posicao\+Personagem, int altura, int largura)
+\begin{DoxyCompactList}\small\item\em Verifica se há colisão com o poder especial. \end{DoxyCompactList}\item 
+sf\+::\+Vector2f \mbox{\hyperlink{class_poderes_especiais_a2c48315278bb5e59f275c36e3beb6e41}{get\+Posicao\+Inicial}} ()
+\begin{DoxyCompactList}\small\item\em Obtém a posição inicial do poder especial. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_poderes_especiais_acc6d9f6ad80c9e3e50608a8413b7b361}{get\+Tipo}} ()
+\begin{DoxyCompactList}\small\item\em Obtém o tipo do poder especial. \end{DoxyCompactList}\item 
+sf\+::\+Vector2f \mbox{\hyperlink{class_poderes_especiais_a48ae4bb0dce5cfe4cef57bc1682e7a5d}{get\+Posicao\+Atual}} ()
+\begin{DoxyCompactList}\small\item\em Obtém a posição atual do poder especial. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrição detalhada}
+Classe que representa os poderes especiais no jogo. 
+
+\doxysubsection{Documentação dos Construtores \& Destrutor}
+\Hypertarget{class_poderes_especiais_a1dcfa4cd34c9b1c01c19566016c280a3}\label{class_poderes_especiais_a1dcfa4cd34c9b1c01c19566016c280a3} 
+\index{PoderesEspeciais@{PoderesEspeciais}!PoderesEspeciais@{PoderesEspeciais}}
+\index{PoderesEspeciais@{PoderesEspeciais}!PoderesEspeciais@{PoderesEspeciais}}
+\doxysubsubsection{\texorpdfstring{PoderesEspeciais()}{PoderesEspeciais()}}
+{\footnotesize\ttfamily Poderes\+Especiais\+::\+Poderes\+Especiais (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_colisao}{Colisao}} \&}]{colisao }\end{DoxyParamCaption})}
+
+
+
+Constrói um objeto \doxylink{class_poderes_especiais}{Poderes\+Especiais}. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em colisao} & Referência para o objeto de colisão. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Documentação das funções}
+\Hypertarget{class_poderes_especiais_a217d3fdeb7e74f3b10af6b2ccf749439}\label{class_poderes_especiais_a217d3fdeb7e74f3b10af6b2ccf749439} 
+\index{PoderesEspeciais@{PoderesEspeciais}!atualizar@{atualizar}}
+\index{atualizar@{atualizar}!PoderesEspeciais@{PoderesEspeciais}}
+\doxysubsubsection{\texorpdfstring{atualizar()}{atualizar()}}
+{\footnotesize\ttfamily void Poderes\+Especiais\+::atualizar (\begin{DoxyParamCaption}\item[{sf\+::\+Time}]{delta\+Time,  }\item[{sf\+::\+Time}]{tempo\+Atual }\end{DoxyParamCaption})}
+
+
+
+Atualiza o estado do poder especial. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em delta\+Time} & Tempo decorrido desde a última atualização. \\
+\hline
+{\em tempo\+Atual} & Tempo atual do jogo. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_poderes_especiais_a7200c16b8969178a31a4c0885bea2322}\label{class_poderes_especiais_a7200c16b8969178a31a4c0885bea2322} 
+\index{PoderesEspeciais@{PoderesEspeciais}!desenhar@{desenhar}}
+\index{desenhar@{desenhar}!PoderesEspeciais@{PoderesEspeciais}}
+\doxysubsubsection{\texorpdfstring{desenhar()}{desenhar()}}
+{\footnotesize\ttfamily void Poderes\+Especiais\+::desenhar (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{janela }\end{DoxyParamCaption})}
+
+
+
+Desenha o poder especial na janela. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em janela} & Referência para a janela do jogo. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_poderes_especiais_a25c605ece354ed1d102fe4c440e0d73b}\label{class_poderes_especiais_a25c605ece354ed1d102fe4c440e0d73b} 
+\index{PoderesEspeciais@{PoderesEspeciais}!gerarTipoAleatorio@{gerarTipoAleatorio}}
+\index{gerarTipoAleatorio@{gerarTipoAleatorio}!PoderesEspeciais@{PoderesEspeciais}}
+\doxysubsubsection{\texorpdfstring{gerarTipoAleatorio()}{gerarTipoAleatorio()}}
+{\footnotesize\ttfamily int Poderes\+Especiais\+::gerar\+Tipo\+Aleatorio (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gera um tipo aleatório para o poder especial. 
+
+\begin{DoxyReturn}{Retorna}
+Tipo gerado aleatoriamente. 
+\end{DoxyReturn}
 \Hypertarget{class_poderes_especiais_a48ae4bb0dce5cfe4cef57bc1682e7a5d}\label{class_poderes_especiais_a48ae4bb0dce5cfe4cef57bc1682e7a5d} 
-sf\+::\+Vector2f {\bfseries get\+Posicao\+Atual} ()
-\end{DoxyCompactItemize}
+\index{PoderesEspeciais@{PoderesEspeciais}!getPosicaoAtual@{getPosicaoAtual}}
+\index{getPosicaoAtual@{getPosicaoAtual}!PoderesEspeciais@{PoderesEspeciais}}
+\doxysubsubsection{\texorpdfstring{getPosicaoAtual()}{getPosicaoAtual()}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Poderes\+Especiais\+::get\+Posicao\+Atual (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtém a posição atual do poder especial. 
+
+\begin{DoxyReturn}{Retorna}
+Posição atual. 
+\end{DoxyReturn}
+\Hypertarget{class_poderes_especiais_a2c48315278bb5e59f275c36e3beb6e41}\label{class_poderes_especiais_a2c48315278bb5e59f275c36e3beb6e41} 
+\index{PoderesEspeciais@{PoderesEspeciais}!getPosicaoInicial@{getPosicaoInicial}}
+\index{getPosicaoInicial@{getPosicaoInicial}!PoderesEspeciais@{PoderesEspeciais}}
+\doxysubsubsection{\texorpdfstring{getPosicaoInicial()}{getPosicaoInicial()}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Poderes\+Especiais\+::get\+Posicao\+Inicial (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtém a posição inicial do poder especial. 
+
+\begin{DoxyReturn}{Retorna}
+Posição inicial. 
+\end{DoxyReturn}
+\Hypertarget{class_poderes_especiais_acc6d9f6ad80c9e3e50608a8413b7b361}\label{class_poderes_especiais_acc6d9f6ad80c9e3e50608a8413b7b361} 
+\index{PoderesEspeciais@{PoderesEspeciais}!getTipo@{getTipo}}
+\index{getTipo@{getTipo}!PoderesEspeciais@{PoderesEspeciais}}
+\doxysubsubsection{\texorpdfstring{getTipo()}{getTipo()}}
+{\footnotesize\ttfamily int Poderes\+Especiais\+::get\+Tipo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtém o tipo do poder especial. 
+
+\begin{DoxyReturn}{Retorna}
+Tipo do poder especial. 
+\end{DoxyReturn}
+\Hypertarget{class_poderes_especiais_a5ceef4cd33568d8593c9e890b82e703d}\label{class_poderes_especiais_a5ceef4cd33568d8593c9e890b82e703d} 
+\index{PoderesEspeciais@{PoderesEspeciais}!inicializar@{inicializar}}
+\index{inicializar@{inicializar}!PoderesEspeciais@{PoderesEspeciais}}
+\doxysubsubsection{\texorpdfstring{inicializar()}{inicializar()}}
+{\footnotesize\ttfamily void Poderes\+Especiais\+::inicializar (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y }\end{DoxyParamCaption})}
+
+
+
+Inicializa as propriedades do poder especial. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em x} & Posição inicial X. \\
+\hline
+{\em y} & Posição inicial Y. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_poderes_especiais_a5e4761e949527339f508e99953855c15}\label{class_poderes_especiais_a5e4761e949527339f508e99953855c15} 
+\index{PoderesEspeciais@{PoderesEspeciais}!inicializarNoMapa@{inicializarNoMapa}}
+\index{inicializarNoMapa@{inicializarNoMapa}!PoderesEspeciais@{PoderesEspeciais}}
+\doxysubsubsection{\texorpdfstring{inicializarNoMapa()}{inicializarNoMapa()}}
+{\footnotesize\ttfamily bool Poderes\+Especiais\+::inicializar\+No\+Mapa (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_mapa}{Mapa}} \&}]{mapa }\end{DoxyParamCaption})}
+
+
+
+Inicializa o poder especial no mapa. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em mapa} & Referência para o objeto de mapa. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+True se a inicialização foi bem-\/sucedida, caso contrário, false. 
+\end{DoxyReturn}
+\Hypertarget{class_poderes_especiais_a9d62b56a0585af20080b6658f95b0ecc}\label{class_poderes_especiais_a9d62b56a0585af20080b6658f95b0ecc} 
+\index{PoderesEspeciais@{PoderesEspeciais}!ModificacaoPosicaoMoeda@{ModificacaoPosicaoMoeda}}
+\index{ModificacaoPosicaoMoeda@{ModificacaoPosicaoMoeda}!PoderesEspeciais@{PoderesEspeciais}}
+\doxysubsubsection{\texorpdfstring{ModificacaoPosicaoMoeda()}{ModificacaoPosicaoMoeda()}}
+{\footnotesize\ttfamily void Poderes\+Especiais\+::\+Modificacao\+Posicao\+Moeda (\begin{DoxyParamCaption}\item[{sf\+::\+Time}]{delta\+Time }\end{DoxyParamCaption})}
+
+
+
+Modifica a posição da moeda com base no tempo delta. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em delta\+Time} & Tempo decorrido desde a última atualização. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_poderes_especiais_a0a9e90ee9807462f3653ad9799a7284e}\label{class_poderes_especiais_a0a9e90ee9807462f3653ad9799a7284e} 
+\index{PoderesEspeciais@{PoderesEspeciais}!ModificacaoPosicaoPoderes@{ModificacaoPosicaoPoderes}}
+\index{ModificacaoPosicaoPoderes@{ModificacaoPosicaoPoderes}!PoderesEspeciais@{PoderesEspeciais}}
+\doxysubsubsection{\texorpdfstring{ModificacaoPosicaoPoderes()}{ModificacaoPosicaoPoderes()}}
+{\footnotesize\ttfamily void Poderes\+Especiais\+::\+Modificacao\+Posicao\+Poderes (\begin{DoxyParamCaption}\item[{sf\+::\+Time}]{delta\+Time }\end{DoxyParamCaption})}
+
+
+
+Modifica a posição do poder especial com base no tempo delta. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em delta\+Time} & Tempo decorrido desde a última atualização. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_poderes_especiais_a36a66f39624368b3c1ea41a3d24e99b2}\label{class_poderes_especiais_a36a66f39624368b3c1ea41a3d24e99b2} 
+\index{PoderesEspeciais@{PoderesEspeciais}!verificarColisao@{verificarColisao}}
+\index{verificarColisao@{verificarColisao}!PoderesEspeciais@{PoderesEspeciais}}
+\doxysubsubsection{\texorpdfstring{verificarColisao()}{verificarColisao()}}
+{\footnotesize\ttfamily bool Poderes\+Especiais\+::verificar\+Colisao (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{posicao\+Personagem,  }\item[{int}]{altura,  }\item[{int}]{largura }\end{DoxyParamCaption})}
+
+
+
+Verifica se há colisão com o poder especial. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em posicao\+Personagem} & Posição do personagem. \\
+\hline
+{\em altura} & Altura do personagem. \\
+\hline
+{\em largura} & Largura do personagem. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+True se houver colisão, caso contrário, false. 
+\end{DoxyReturn}
 
 
 A documentação para esta classe foi gerada a partir do seguinte ficheiro\+:\begin{DoxyCompactItemize}

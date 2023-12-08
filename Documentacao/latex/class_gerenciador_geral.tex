@@ -1,41 +1,43 @@
 \doxysection{Referência à classe Gerenciador\+Geral}
 \hypertarget{class_gerenciador_geral}{}\label{class_gerenciador_geral}\index{GerenciadorGeral@{GerenciadorGeral}}
+
+
+Classe que gerencia o estado geral do jogo.  
+
+
+
+
+{\ttfamily \#include $<$Gerenciador\+Geral.\+hpp$>$}
+
 \doxysubsubsection*{Membros públicos}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{class_gerenciador_geral_a8436434bd4c553d696311d77e9074cfc}\label{class_gerenciador_geral_a8436434bd4c553d696311d77e9074cfc} 
-{\bfseries Gerenciador\+Geral} (std\+::shared\+\_\+ptr$<$ sf\+::\+Render\+Window $>$ janela1, sf\+::\+Font \&fonte, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sound_manager}{Sound\+Manager}} $>$ sounds)
-\item 
-\Hypertarget{class_gerenciador_geral_aeeb1e8721b2c1e560f45c29200a2754f}\label{class_gerenciador_geral_aeeb1e8721b2c1e560f45c29200a2754f} 
-int {\bfseries verificar\+Colisao} (float x, float y) const
-\item 
-\Hypertarget{class_gerenciador_geral_ac568dd22c14215e46bdb90bb1f4e1b2d}\label{class_gerenciador_geral_ac568dd22c14215e46bdb90bb1f4e1b2d} 
-bool {\bfseries janela\+Aberta} () const
-\item 
+\mbox{\hyperlink{class_gerenciador_geral_a8436434bd4c553d696311d77e9074cfc}{Gerenciador\+Geral}} (std\+::shared\+\_\+ptr$<$ sf\+::\+Render\+Window $>$ janela1, sf\+::\+Font \&fonte, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sound_manager}{Sound\+Manager}} $>$ sounds)
+\begin{DoxyCompactList}\small\item\em Constrói um objeto \doxylink{class_gerenciador_geral}{Gerenciador\+Geral}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_gerenciador_geral_aeeb1e8721b2c1e560f45c29200a2754f}{verificar\+Colisao}} (float x, float y) const
+\begin{DoxyCompactList}\small\item\em Verifica se há colisão em uma posição específica. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_gerenciador_geral_ac568dd22c14215e46bdb90bb1f4e1b2d}{janela\+Aberta}} () const
+\begin{DoxyCompactList}\small\item\em Verifica se a janela do jogo está aberta. \end{DoxyCompactList}\item 
 \Hypertarget{class_gerenciador_geral_a5637b1b339f572998559ba0b8fcbad16}\label{class_gerenciador_geral_a5637b1b339f572998559ba0b8fcbad16} 
 void {\bfseries Inicializar\+Poderes\+Especiais} ()
-\item 
-\Hypertarget{class_gerenciador_geral_a52af3e57fc0893f3baea436a4e76a970}\label{class_gerenciador_geral_a52af3e57fc0893f3baea436a4e76a970} 
-bool {\bfseries atualizar} (sf\+::\+Time tempo\+Atual, sf\+::\+Time delta\+Time, sf\+::\+Event ev)
-\item 
-\Hypertarget{class_gerenciador_geral_a5ebf98ac43ee31a580bb4f6440f14e0b}\label{class_gerenciador_geral_a5ebf98ac43ee31a580bb4f6440f14e0b} 
-bool {\bfseries atualizar\+Eventos} (sf\+::\+Event ev)
-\item 
-\Hypertarget{class_gerenciador_geral_a8c58ba1c8dc9fb09a063b967a6b3c34b}\label{class_gerenciador_geral_a8c58ba1c8dc9fb09a063b967a6b3c34b} 
-void {\bfseries renderizar} (sf\+::\+Time tempo\+Atual)
-\item 
+\begin{DoxyCompactList}\small\item\em Inicializa os poderes especiais no jogo. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_gerenciador_geral_a52af3e57fc0893f3baea436a4e76a970}{atualizar}} (sf\+::\+Time tempo\+Atual, sf\+::\+Time delta\+Time, sf\+::\+Event ev)
+\begin{DoxyCompactList}\small\item\em Atualiza o estado do jogo. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_gerenciador_geral_a5ebf98ac43ee31a580bb4f6440f14e0b}{atualizar\+Eventos}} (sf\+::\+Event ev)
+\begin{DoxyCompactList}\small\item\em Atualiza os eventos do jogo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_gerenciador_geral_a8c58ba1c8dc9fb09a063b967a6b3c34b}{renderizar}} (sf\+::\+Time tempo\+Atual)
+\begin{DoxyCompactList}\small\item\em Renderiza o estado atual do jogo. \end{DoxyCompactList}\item 
 \Hypertarget{class_gerenciador_geral_a7e4b8fdc7f9a7dec04e1edd5076f9575}\label{class_gerenciador_geral_a7e4b8fdc7f9a7dec04e1edd5076f9575} 
 void {\bfseries desenhar\+Poderes\+Especiais} ()
-\item 
-\Hypertarget{class_gerenciador_geral_a8bca0e03474da629008e107500ad3574}\label{class_gerenciador_geral_a8bca0e03474da629008e107500ad3574} 
-void {\bfseries desenhar\+Mapa} (sf\+::\+Time tempo\+Atual)
-\item 
+\begin{DoxyCompactList}\small\item\em Desenha os poderes especiais na janela. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_gerenciador_geral_a8bca0e03474da629008e107500ad3574}{desenhar\+Mapa}} (sf\+::\+Time tempo\+Atual)
+\begin{DoxyCompactList}\small\item\em Desenha o mapa na janela. \end{DoxyCompactList}\item 
 \Hypertarget{class_gerenciador_geral_a02836862a7149d5621f1e261a0bf128c}\label{class_gerenciador_geral_a02836862a7149d5621f1e261a0bf128c} 
 void {\bfseries desativar\+Som} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Desativa o som no jogo. \end{DoxyCompactList}\item 
 \Hypertarget{class_gerenciador_geral_ad68229819d36c51968680dec79dee8ec}\label{class_gerenciador_geral_ad68229819d36c51968680dec79dee8ec} 
 void {\bfseries ativar\+Som} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Ativa o som no jogo. \end{DoxyCompactList}\item 
 \Hypertarget{class_gerenciador_geral_a1c21501693ce355403e6cc828794dadf}\label{class_gerenciador_geral_a1c21501693ce355403e6cc828794dadf} 
 float {\bfseries get\+Altura\+Tela} () const
 \item 
@@ -57,6 +59,137 @@ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_jogador}{Jogador}} $>$ {\bfseri
 \Hypertarget{class_gerenciador_geral_a81ba494051baefdd6a557801448d7d44}\label{class_gerenciador_geral_a81ba494051baefdd6a557801448d7d44} 
 int {\bfseries get\+Contagem\+Poderes\+Especiais} () const
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrição detalhada}
+Classe que gerencia o estado geral do jogo. 
+
+\doxysubsection{Documentação dos Construtores \& Destrutor}
+\Hypertarget{class_gerenciador_geral_a8436434bd4c553d696311d77e9074cfc}\label{class_gerenciador_geral_a8436434bd4c553d696311d77e9074cfc} 
+\index{GerenciadorGeral@{GerenciadorGeral}!GerenciadorGeral@{GerenciadorGeral}}
+\index{GerenciadorGeral@{GerenciadorGeral}!GerenciadorGeral@{GerenciadorGeral}}
+\doxysubsubsection{\texorpdfstring{GerenciadorGeral()}{GerenciadorGeral()}}
+{\footnotesize\ttfamily Gerenciador\+Geral\+::\+Gerenciador\+Geral (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ sf\+::\+Render\+Window $>$}]{janela1,  }\item[{sf\+::\+Font \&}]{fonte,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_sound_manager}{Sound\+Manager}} $>$}]{sounds }\end{DoxyParamCaption})}
+
+
+
+Constrói um objeto \doxylink{class_gerenciador_geral}{Gerenciador\+Geral}. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em janela1} & Ponteiro compartilhado para a janela do jogo. \\
+\hline
+{\em fonte} & Fonte utilizada para os textos no jogo. \\
+\hline
+{\em sounds} & Gerenciador de som. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Documentação das funções}
+\Hypertarget{class_gerenciador_geral_a52af3e57fc0893f3baea436a4e76a970}\label{class_gerenciador_geral_a52af3e57fc0893f3baea436a4e76a970} 
+\index{GerenciadorGeral@{GerenciadorGeral}!atualizar@{atualizar}}
+\index{atualizar@{atualizar}!GerenciadorGeral@{GerenciadorGeral}}
+\doxysubsubsection{\texorpdfstring{atualizar()}{atualizar()}}
+{\footnotesize\ttfamily bool Gerenciador\+Geral\+::atualizar (\begin{DoxyParamCaption}\item[{sf\+::\+Time}]{tempo\+Atual,  }\item[{sf\+::\+Time}]{delta\+Time,  }\item[{sf\+::\+Event}]{ev }\end{DoxyParamCaption})}
+
+
+
+Atualiza o estado do jogo. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em tempo\+Atual} & Tempo atual do jogo. \\
+\hline
+{\em delta\+Time} & Tempo decorrido desde a última atualização. \\
+\hline
+{\em ev} & Evento do SFML para tratar eventos de entrada. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+True se o jogo deve continuar, caso contrário, false. 
+\end{DoxyReturn}
+\Hypertarget{class_gerenciador_geral_a5ebf98ac43ee31a580bb4f6440f14e0b}\label{class_gerenciador_geral_a5ebf98ac43ee31a580bb4f6440f14e0b} 
+\index{GerenciadorGeral@{GerenciadorGeral}!atualizarEventos@{atualizarEventos}}
+\index{atualizarEventos@{atualizarEventos}!GerenciadorGeral@{GerenciadorGeral}}
+\doxysubsubsection{\texorpdfstring{atualizarEventos()}{atualizarEventos()}}
+{\footnotesize\ttfamily bool Gerenciador\+Geral\+::atualizar\+Eventos (\begin{DoxyParamCaption}\item[{sf\+::\+Event}]{ev }\end{DoxyParamCaption})}
+
+
+
+Atualiza os eventos do jogo. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em ev} & Evento do SFML para tratar eventos de entrada. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+True se um evento foi tratado, caso contrário, false. 
+\end{DoxyReturn}
+\Hypertarget{class_gerenciador_geral_a8bca0e03474da629008e107500ad3574}\label{class_gerenciador_geral_a8bca0e03474da629008e107500ad3574} 
+\index{GerenciadorGeral@{GerenciadorGeral}!desenharMapa@{desenharMapa}}
+\index{desenharMapa@{desenharMapa}!GerenciadorGeral@{GerenciadorGeral}}
+\doxysubsubsection{\texorpdfstring{desenharMapa()}{desenharMapa()}}
+{\footnotesize\ttfamily void Gerenciador\+Geral\+::desenhar\+Mapa (\begin{DoxyParamCaption}\item[{sf\+::\+Time}]{tempo\+Atual }\end{DoxyParamCaption})}
+
+
+
+Desenha o mapa na janela. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em tempo\+Atual} & Tempo atual do jogo. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_gerenciador_geral_ac568dd22c14215e46bdb90bb1f4e1b2d}\label{class_gerenciador_geral_ac568dd22c14215e46bdb90bb1f4e1b2d} 
+\index{GerenciadorGeral@{GerenciadorGeral}!janelaAberta@{janelaAberta}}
+\index{janelaAberta@{janelaAberta}!GerenciadorGeral@{GerenciadorGeral}}
+\doxysubsubsection{\texorpdfstring{janelaAberta()}{janelaAberta()}}
+{\footnotesize\ttfamily bool Gerenciador\+Geral\+::janela\+Aberta (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Verifica se a janela do jogo está aberta. 
+
+\begin{DoxyReturn}{Retorna}
+True se a janela estiver aberta, caso contrário, false. 
+\end{DoxyReturn}
+\Hypertarget{class_gerenciador_geral_a8c58ba1c8dc9fb09a063b967a6b3c34b}\label{class_gerenciador_geral_a8c58ba1c8dc9fb09a063b967a6b3c34b} 
+\index{GerenciadorGeral@{GerenciadorGeral}!renderizar@{renderizar}}
+\index{renderizar@{renderizar}!GerenciadorGeral@{GerenciadorGeral}}
+\doxysubsubsection{\texorpdfstring{renderizar()}{renderizar()}}
+{\footnotesize\ttfamily void Gerenciador\+Geral\+::renderizar (\begin{DoxyParamCaption}\item[{sf\+::\+Time}]{tempo\+Atual }\end{DoxyParamCaption})}
+
+
+
+Renderiza o estado atual do jogo. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em tempo\+Atual} & Tempo atual do jogo. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_gerenciador_geral_aeeb1e8721b2c1e560f45c29200a2754f}\label{class_gerenciador_geral_aeeb1e8721b2c1e560f45c29200a2754f} 
+\index{GerenciadorGeral@{GerenciadorGeral}!verificarColisao@{verificarColisao}}
+\index{verificarColisao@{verificarColisao}!GerenciadorGeral@{GerenciadorGeral}}
+\doxysubsubsection{\texorpdfstring{verificarColisao()}{verificarColisao()}}
+{\footnotesize\ttfamily int Gerenciador\+Geral\+::verificar\+Colisao (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y }\end{DoxyParamCaption}) const}
+
+
+
+Verifica se há colisão em uma posição específica. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em x} & Coordenada X. \\
+\hline
+{\em y} & Coordenada Y. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Índice da colisão se houver, caso contrário, -\/1. 
+\end{DoxyReturn}
 
 
 A documentação para esta classe foi gerada a partir do seguinte ficheiro\+:\begin{DoxyCompactItemize}

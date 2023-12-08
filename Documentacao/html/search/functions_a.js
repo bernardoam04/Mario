@@ -4,5 +4,6 @@ var searchData=
   ['perdervida_1',['perderVida',['../class_jogador.html#a3441165b951c51d3146cee6f66f2214f',1,'Jogador']]],
   ['perdeumudartextura_2',['perdeuMudarTextura',['../class_jogador.html#a1ed2befc236d5baf4cad8aa319ff10c5',1,'Jogador']]],
   ['personagem_3',['Personagem',['../class_personagem.html#a5db7fd106c2074f92825e403a9d91bcc',1,'Personagem']]],
-  ['pontuacao_4',['Pontuacao',['../class_pontuacao.html#ad84b6b0a5a99a6680a2315b8f834f1bb',1,'Pontuacao']]]
+  ['poderesespeciais_4',['PoderesEspeciais',['../class_poderes_especiais.html#a1dcfa4cd34c9b1c01c19566016c280a3',1,'PoderesEspeciais']]],
+  ['pontuacao_5',['Pontuacao',['../class_pontuacao.html#ad84b6b0a5a99a6680a2315b8f834f1bb',1,'Pontuacao']]]
 ];
